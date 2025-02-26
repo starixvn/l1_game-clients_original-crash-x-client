@@ -1,12 +1,8 @@
-body {
+#Background{
     background: #120138;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 1024px) and (orientation: portrait) {
-    body {
-        background: #120138;
-    }
-}
+
 
 .splash-container .splash_bg_game_vi {
     background-image: url("./game_background_vi.jpg?v1");
