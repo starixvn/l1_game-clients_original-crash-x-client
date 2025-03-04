@@ -23,6 +23,14 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         this.newHandleBetData(betData, betKey);
     }
 
+    setEarlyBet(betKey: number) {
+        this.betControlStore.earlyBet[betKey] = true;
+    }
+
+    cancelEarlyBet(betKey: number) {
+        this.betControlStore.earlyBet[betKey] = false;
+    }
+
     newHandleBetData(data: any, betKey: number) {
         const amount = data.amount;
         if (this.isValidBet(amount) && !this.betControlStore.processing[betKey]) {

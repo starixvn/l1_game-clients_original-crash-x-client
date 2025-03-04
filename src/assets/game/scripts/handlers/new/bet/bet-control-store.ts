@@ -2,6 +2,10 @@ import inversify from "inversify";
 import mobx from "mobx";
 const { injectable, inject } = inversify;
 
+import gc from "@sg/game-client-base";
+
+export const ButtonState = gc.GameCrash.ButtonState;
+
 export interface IBetControlSettings {
     isAuto: boolean;
     autoCashOut: boolean;
@@ -16,7 +20,20 @@ export class BetControlStore {
         mobx.makeAutoObservable(this);
     }
 
-    processing = {};
+    processing = {
+        0: false,
+        1: false,
+    };
+
+    betState = {
+        0: ButtonState.PLACE_BET,
+        1: ButtonState.PLACE_BET,
+    };
+
+    earlyBet = {
+        0: false,
+        1: false,
+    };
 
     settings: IBetControlSettings[] = [
         {
@@ -57,5 +74,13 @@ export class BetControlStore {
 
     getBetSetting(betKey: number) {
         return this.settings[betKey];
+    }
+
+    getBetState(betKey: number) {
+        return this.betState[betKey];
+    }
+
+    setBetState(betKey: number, state: any) {
+        this.betState[betKey] = state;
     }
 }
