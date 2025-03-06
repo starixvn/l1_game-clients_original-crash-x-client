@@ -2,6 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, EditBox, Node, Toggle } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
+import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
 
@@ -57,6 +58,16 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.cancelEarlyBet(betKey))
     onClickCancelEarlyBet() {
+        return this.betKey;
+    }
+
+    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoBet(betKey))
+    onToggleAutoBet() {
+        return this.betKey;
+    }
+
+    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
+    onToggleAutoCashOut() {
         return this.betKey;
     }
 

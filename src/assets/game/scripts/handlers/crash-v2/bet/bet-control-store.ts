@@ -88,6 +88,14 @@ export class BetControlStore {
         };
     }
 
+    toggleAutoBet(betKey: number) {
+        this.settings[betKey] = { ...this.settings[betKey], autoBet: !this.settings[betKey].autoBet };
+    }
+
+    toggleAutoCashOut(betKey: number) {
+        this.settings[betKey] = { ...this.settings[betKey], autoCashOut: !this.settings[betKey].autoCashOut };
+    }
+
     setAuto(betKey: number, enabled: boolean) {
         this.settings[betKey] = { ...this.settings[betKey], isAuto: enabled };
     }
