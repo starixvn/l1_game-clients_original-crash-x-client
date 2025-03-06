@@ -8,6 +8,7 @@ import { ButtonState, CrashCashOutData, IBetControlSettings } from "../interface
 @injectable()
 export class BetControlStore {
     @inject(gc.Rounds.RoundTimeStore) protected readonly roundTimeStore: gc.Rounds.RoundTimeStore;
+    @inject(gc.GameCrash.CrashMultiplier.MultiplierStore) protected readonly multiplierStore: gc.GameCrash.CrashMultiplier.MultiplierStore;
 
     constructor() {
         mobx.makeAutoObservable(this);
@@ -130,5 +131,16 @@ export class BetControlStore {
         }
 
         return ButtonState.PLACE_BET;
+    }
+
+    getBetAmount(betKey: number) {
+        return this.settings[betKey].amount;
+    }
+
+    getCashedOutValue(betKey: number) {
+        const cashedOut = this.cashedOut[betKey];
+        const betAmount = this.getBetAmount(betKey);
+
+        return cashedOut ? cashedOut.cashOutWin : betAmount * this.multiplierStore.multiplier;
     }
 }

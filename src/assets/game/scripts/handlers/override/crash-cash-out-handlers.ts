@@ -20,7 +20,7 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     @inject(BetControlStore) private betControlStore: BetControlStore;
 
     protected handleMultiplier() {
-        //TODO:update possible win amount by multiplier
+        //dont need, compute by betControlStore.getCashedOutValue(betKey)
     }
 
     protected handleCashOutFull(cashOut: CrashCashOutData) {
@@ -47,7 +47,6 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     }
 
     protected resetCashOut() {
-        //TODO:reset cashout when start round
         this.betControlStore.resetLastBet();
         this.betStore.lastReceivedBet = null;
     }
