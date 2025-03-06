@@ -3,7 +3,8 @@ import { ObserverComponent } from "db://shared-components/shared/common-componen
 const { ccclass, property } = _decorator;
 
 import Observer from "observer";
-import { BetControlStore, IBetControlSettings } from "./scripts/handlers/new/bet/bet-control-store";
+import { BetControlStore } from "./scripts/handlers/crash-v2/bet/bet-control-store";
+import { IBetControlSettings } from "./scripts/handlers/crash-v2/interfaces";
 const { render, handle } = Observer;
 
 @ccclass("Test")

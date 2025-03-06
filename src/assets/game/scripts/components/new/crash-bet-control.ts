@@ -2,7 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, EditBox, Node, Toggle } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
-import { ButtonState, IBetControlSettings } from "../../handlers/new/bet/bet-control-store";
+import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
 
 const { Connection } = gc;
@@ -42,6 +42,21 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
     onClickBet() {
+        return this.betKey;
+    }
+
+    @handle(CrashBetHandler, (handler, betKey: number) => handler.callCashOut(betKey))
+    onClickCashOut() {
+        return this.betKey;
+    }
+
+    @handle(CrashBetHandler, (handler, betKey: number) => handler.setEarlyBet(betKey))
+    onClickBetNextRound() {
+        return this.betKey;
+    }
+
+    @handle(CrashBetHandler, (handler, betKey: number) => handler.cancelEarlyBet(betKey))
+    onClickCancelEarlyBet() {
         return this.betKey;
     }
 

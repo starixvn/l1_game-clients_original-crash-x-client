@@ -2,7 +2,11 @@ import gc from "@sg/game-client-base";
 import { LogStore } from "db://shared-components/game/scripts/stores/log-store";
 
 import { sharedContainer } from "../../scripts/shared-container";
-
+import * as CrashGameV2 from "../scripts/handlers/crash-v2";
+import { BetResponseHandlers } from "./handlers/override/bet-response-handlers";
+import { CrashBetHandler } from "./handlers/override/crash-bet-handler";
+import { CrashCashOutHandlers } from "./handlers/override/crash-cash-out-handlers";
+import { PlayerActionHandlers } from "./handlers/override/player-action-handlers";
 export const settings = {
     id: 73,
     name: "Spaceflight",
@@ -14,7 +18,7 @@ export const settings = {
         startRound: 1,
     },
     numberOfRoundHistory: 11,
-    validateBalanceWhenBet:true
+    validateBalanceWhenBet: true,
 };
 
 export const containerOptions: gc.IContainerOptions = {
@@ -22,6 +26,11 @@ export const containerOptions: gc.IContainerOptions = {
     onContainerCreated: (container) => {
         container.bind(gc.GameConfigs.GameSetting).toConstantValue(settings);
         container.bind(LogStore).to(LogStore);
+
+        container.bind(gc.GameCrash.PlayerActions.PlayerActionHandlers).to(PlayerActionHandlers);
+        container.bind(gc.GameCrash.CrashBet.CrashBetHandler).to(CrashBetHandler);
+        container.bind(gc.GameCrash.CrashCashOut.CrashCashOutHandlers).to(CrashCashOutHandlers);
+        container.bind(gc.Bet.BetResponseHandlers).to(BetResponseHandlers);
     },
-    features: [gc.GameCrash, ...gc.defaultFeatures],
+    features: [CrashGameV2, gc.GameCrash, ...gc.defaultFeatures],
 };

@@ -2,7 +2,8 @@ import gc from "@sg/game-client-base";
 import { _decorator } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
-import { BetControlStore, IBetControlSettings } from "../../handlers/new/bet/bet-control-store";
+import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
+import { IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import CrashBetControl from "./crash-bet-control";
 
 const { Connection } = gc;

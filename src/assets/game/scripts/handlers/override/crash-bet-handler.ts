@@ -1,12 +1,11 @@
 import gc from "@sg/game-client-base";
 import inversify from "inversify";
-import { BetControlStore } from "../new/bet/bet-control-store";
+import { BetControlStore } from "../crash-v2/bet/bet-control-store";
 const { injectable, inject } = inversify;
 
 @injectable()
 export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     @inject(BetControlStore) private betControlStore: BetControlStore;
-
     processing = {};
 
     handle() {}
@@ -23,6 +22,18 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         this.newHandleBetData(betData, betKey);
     }
 
+    callCashOut(betKey: number) {
+        const cashOutData = {
+            betKey,
+            username: this.mainPlayerStore.name,
+            roundId: this.roundStore.clientRoundId,
+            clientSendTime: new Date(),
+            m: 1,
+        };
+        this.connectionStore.send(gc.GameCrash.GameCrashEmitMessage.CashOut.eventName, cashOutData);
+        this.retryGameHandler.handle();
+    }
+
     setEarlyBet(betKey: number) {
         this.betControlStore.earlyBet[betKey] = true;
     }
@@ -34,7 +45,7 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     newHandleBetData(data: any, betKey: number) {
         const amount = data.amount;
         if (this.isValidBet(amount) && !this.betControlStore.processing[betKey]) {
-            this.betControlStore.processing[betKey] = true;
+            this.betControlStore.setProcessing(betKey, true);
             this.connectionStore.send(gc.GameClientEmitMessage.Bet.eventName, data);
             this.retryGameHandler.handle();
         }
