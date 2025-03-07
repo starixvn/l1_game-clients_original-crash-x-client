@@ -569,11 +569,7 @@
     "__prefab": {
       "__id__": 21
     },
-    "clickEvents": [
-      {
-        "__id__": 22
-      }
-    ],
+    "clickEvents": [],
     "_interactable": true,
     "_transition": 0,
     "_normalColor": {
@@ -616,7 +612,11 @@
     "_target": {
       "__id__": 3
     },
-    "checkEvents": [],
+    "checkEvents": [
+      {
+        "__id__": 22
+      }
+    ],
     "_isChecked": true,
     "_checkMark": {
       "__id__": 7
@@ -1090,11 +1090,7 @@
     "__prefab": {
       "__id__": 42
     },
-    "clickEvents": [
-      {
-        "__id__": 43
-      }
-    ],
+    "clickEvents": [],
     "_interactable": true,
     "_transition": 0,
     "_normalColor": {
@@ -1137,7 +1133,11 @@
     "_target": {
       "__id__": 24
     },
-    "checkEvents": [],
+    "checkEvents": [
+      {
+        "__id__": 43
+      }
+    ],
     "_isChecked": true,
     "_checkMark": {
       "__id__": 28

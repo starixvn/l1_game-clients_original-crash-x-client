@@ -41,14 +41,12 @@ export class BetControlStore {
 
     settings: IBetControlSettings[] = [
         {
-            isAuto: false,
             autoCashOut: false,
             autoBet: false,
             cashOutAt: 2.0,
             amount: 1,
         },
         {
-            isAuto: false,
             autoCashOut: false,
             autoBet: false,
             cashOutAt: 5.0,
@@ -94,10 +92,6 @@ export class BetControlStore {
 
     toggleAutoCashOut(betKey: number) {
         this.settings[betKey] = { ...this.settings[betKey], autoCashOut: !this.settings[betKey].autoCashOut };
-    }
-
-    setAuto(betKey: number, enabled: boolean) {
-        this.settings[betKey] = { ...this.settings[betKey], isAuto: enabled };
     }
 
     setAutoBet(betKey: number, enabled: boolean) {

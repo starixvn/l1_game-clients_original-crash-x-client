@@ -1,7 +1,6 @@
 import gc from "@sg/game-client-base";
 
 export interface IBetControlSettings {
-    isAuto: boolean;
     autoCashOut: boolean;
     autoBet: boolean;
     cashOutAt: number;

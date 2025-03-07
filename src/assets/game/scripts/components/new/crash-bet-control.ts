@@ -87,7 +87,7 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     renderSetting(setting: IBetControlSettings) {
-        this.toggleAutoBet.isChecked = setting.isAuto;
+        this.toggleAutoBet.isChecked = setting.autoBet;
         this.toggleAutoCashOut.isChecked = setting.autoCashOut;
         this.inputBetAmount.string = setting.amount.toString();
         this.inputCashOutAt.string = setting.cashOutAt.toString();
