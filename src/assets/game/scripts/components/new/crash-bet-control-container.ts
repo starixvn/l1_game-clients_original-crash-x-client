@@ -41,4 +41,14 @@ export default class CrashBetControlContainer extends ObserverComponent {
     renderBetSettingSecond(setting: IBetControlSettings) {
         this.controls[1].renderSetting(setting);
     }
+
+    @render(BetControlStore, (store) => store.getCashedOutValue(0))
+    renderCashOutValueFirst(value: number) {
+        this.controls[0].renderCashOutValue(value);
+    }
+
+    @render(BetControlStore, (store) => store.getCashedOutValue(1))
+    renderCashOutValueSecond(value: number) {
+        this.controls[1].renderCashOutValue(value);
+    }
 }

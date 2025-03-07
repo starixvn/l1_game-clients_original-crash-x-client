@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, EditBox, Node, Toggle } from "cc";
+import { _decorator, EditBox, Label, Node, Toggle } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
@@ -38,6 +38,9 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(Node)
     nodeWaitingNextRound: Node = null;
+
+    @property(Label)
+    labelCashOutValue: Label = null;
 
     betKey = 0;
 
@@ -88,5 +91,9 @@ export default class CrashBetControl extends ObserverComponent {
         this.toggleAutoCashOut.isChecked = setting.autoCashOut;
         this.inputBetAmount.string = setting.amount.toString();
         this.inputCashOutAt.string = setting.cashOutAt.toString();
+    }
+
+    renderCashOutValue(value: number) {
+        this.labelCashOutValue.string = value.toString();
     }
 }
