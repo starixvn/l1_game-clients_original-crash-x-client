@@ -385,24 +385,24 @@ async function process(processor, configPath, outputDir) {
 /** Parses arguments from command line. */
 function parseArguments() {
     const parser = new ArgumentParser();
-    parser.addArgument(["-t", "--type"], {
+    parser.add_argument("-t", "--type", {
         choices: ["remote", "local"],
         required: true,
     });
-    parser.addArgument(["-a", "--address"], {
+    parser.add_argument("-a", "--address", {
         required: false,
     });
-    parser.addArgument(["-i", "--input"], {
+    parser.add_argument("-i", "--input", {
         help: "Path to the settings JSON file",
         nargs: 1,
         required: true,
     });
-    parser.addArgument(["-o", "--output"], {
+    parser.add_argument("-o", "--output", {
         help: "Path to the output directory",
         nargs: 1,
         required: true,
     });
-    const args = parser.parseArgs();
+    const args = parser.parse_args();
     console.dir(args);
     return {
         type: args.type,
