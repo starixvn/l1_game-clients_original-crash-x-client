@@ -37,9 +37,7 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     }
 
     protected isCashedOutAllBets() {
-        const betCount = Object.values(this.betControlStore.betAccepted).filter((bet) => bet).length;
-        const cashedOutCount = Object.values(this.betControlStore.cashedOut).filter((bet) => bet).length;
-        return cashedOutCount === betCount;
+        return this.betControlStore.isCashedOutAllBets();
     }
 
     protected handleOwnBets(ownBets: CrashOwnBets) {

@@ -20,3 +20,12 @@ export interface ICrashBetResponse {
     endBet: number;
     betKey: number;
 }
+
+export interface IBetControl {
+    processing: boolean;
+    betAccepted: boolean;
+    earlyBet: boolean;
+    betState: string;
+    cashedOut: CrashCashOutData;
+    setting: IBetControlSettings;
+}

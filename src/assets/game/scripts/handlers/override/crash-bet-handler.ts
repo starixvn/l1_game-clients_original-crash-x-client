@@ -6,7 +6,6 @@ const { injectable, inject } = inversify;
 @injectable()
 export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     @inject(BetControlStore) private betControlStore: BetControlStore;
-    processing = {};
 
     handle() {}
 
@@ -35,16 +34,17 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     }
 
     setEarlyBet(betKey: number) {
-        this.betControlStore.earlyBet[betKey] = true;
+        this.betControlStore.setEarlyBet(betKey, true);
     }
 
     cancelEarlyBet(betKey: number) {
-        this.betControlStore.earlyBet[betKey] = false;
+        this.betControlStore.setEarlyBet(betKey, false);
     }
 
     newHandleBetData(data: any, betKey: number) {
         const amount = data.amount;
-        if (this.isValidBet(amount) && !this.betControlStore.processing[betKey]) {
+        const control = this.betControlStore.controls[betKey];
+        if (this.isValidBet(amount) && !control.processing[betKey]) {
             this.betControlStore.setProcessing(betKey, true);
             this.connectionStore.send(gc.GameClientEmitMessage.Bet.eventName, data);
             this.retryGameHandler.handle();
@@ -52,19 +52,19 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     }
 
     autoPlaceBet() {
-        this.betControlStore.settings.forEach((setting, index) => {
-            const earlyBet = this.betControlStore.earlyBet[index];
-            if (setting.autoBet || earlyBet) {
+        Object.values(this.betControlStore.controls).forEach((control, index) => {
+            const earlyBet = control.earlyBet[index];
+            if (control.setting.autoBet || earlyBet) {
                 this.callBet(index);
                 if (earlyBet) {
-                    this.betControlStore.earlyBet[index] = false;
+                    control.earlyBet[index] = false;
                 }
             }
         });
     }
 
     stopAutoBet() {
-        Object.keys(this.betControlStore.settings).forEach((betKey) => {
+        Object.keys(this.betControlStore.controls).forEach((betKey) => {
             this.betControlStore.setAutoBet(+betKey, false);
         });
     }

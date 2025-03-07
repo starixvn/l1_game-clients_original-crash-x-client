@@ -3,7 +3,7 @@ import mobx from "mobx";
 const { injectable, inject } = inversify;
 
 import gc from "@sg/game-client-base";
-import { ButtonState, CrashCashOutData, IBetControlSettings } from "../interfaces";
+import { ButtonState, CrashCashOutData, IBetControl } from "../interfaces";
 
 @injectable()
 export class BetControlStore {
@@ -14,52 +14,41 @@ export class BetControlStore {
         mobx.makeAutoObservable(this);
     }
 
-    processing = {
-        0: false,
-        1: false,
-    };
-
-    betState = {
-        0: ButtonState.PLACE_BET,
-        1: ButtonState.PLACE_BET,
-    };
-
-    betAccepted = {
-        0: false,
-        1: false,
-    };
-
-    cashedOut: { [betKey: number]: CrashCashOutData } = {
-        0: null,
-        1: null,
-    };
-
-    earlyBet = {
-        0: false,
-        1: false,
-    };
-
-    settings: IBetControlSettings[] = [
-        {
-            autoCashOut: false,
-            autoBet: false,
-            cashOutAt: 2.0,
-            amount: 1,
+    controls: { [betKey: number]: IBetControl } = {
+        0: {
+            processing: false,
+            betAccepted: false,
+            earlyBet: false,
+            betState: ButtonState.PLACE_BET,
+            cashedOut: null,
+            setting: {
+                autoCashOut: false,
+                autoBet: false,
+                cashOutAt: 2.0,
+                amount: 1,
+            },
         },
-        {
-            autoCashOut: false,
-            autoBet: false,
-            cashOutAt: 5.0,
-            amount: 2,
+        1: {
+            processing: false,
+            betAccepted: false,
+            earlyBet: false,
+            betState: ButtonState.PLACE_BET,
+            cashedOut: null,
+            setting: {
+                autoCashOut: false,
+                autoBet: false,
+                cashOutAt: 5.0,
+                amount: 2,
+            },
         },
-    ];
+    };
 
     setProcessing(betKey: number, processing: boolean) {
-        this.processing[betKey] = processing;
+        this.controls[betKey].processing = processing;
     }
 
     setAcceptedBet(betKey: number, accepted: boolean) {
-        this.betAccepted[betKey] = accepted;
+        this.controls[betKey].betAccepted = accepted;
         this.setProcessing(betKey, false);
     }
 
@@ -68,56 +57,73 @@ export class BetControlStore {
         if (!cashedOut.betKey) {
             cashedOut.betKey = 0;
         }
-        this.cashedOut[cashedOut.betKey] = cashedOut;
+        this.controls[cashedOut.betKey].cashedOut = cashedOut;
     }
 
     resetLastBet() {
-        this.processing = {
-            0: false,
-            1: false,
-        };
-        this.betAccepted = {
-            0: false,
-            1: false,
-        };
-        this.cashedOut = {
-            0: null,
-            1: null,
-        };
+        // Đặt lại tất cả các trạng thái về mặc định cho tất cả các betKey
+        Object.keys(this.controls).forEach((key) => {
+            const betKey = Number(key);
+            this.controls[betKey].processing = false;
+            this.controls[betKey].betAccepted = false;
+            this.controls[betKey].cashedOut = null;
+        });
     }
 
     toggleAutoBet(betKey: number) {
-        this.settings[betKey] = { ...this.settings[betKey], autoBet: !this.settings[betKey].autoBet };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            autoBet: !this.controls[betKey].setting.autoBet,
+        };
     }
 
     toggleAutoCashOut(betKey: number) {
-        this.settings[betKey] = { ...this.settings[betKey], autoCashOut: !this.settings[betKey].autoCashOut };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            autoCashOut: !this.controls[betKey].setting.autoCashOut,
+        };
     }
 
     setAutoBet(betKey: number, enabled: boolean) {
-        this.settings[betKey] = { ...this.settings[betKey], autoBet: enabled };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            autoBet: enabled,
+        };
     }
 
     setAutoCashOut(betKey: number, enabled: boolean) {
-        this.settings[betKey] = { ...this.settings[betKey], autoCashOut: enabled };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            autoCashOut: enabled,
+        };
+    }
+
+    setEarlyBet(betKey: number, earlyBet: boolean) {
+        this.controls[betKey].earlyBet = earlyBet;
     }
 
     setCashOutMultiplier(betKey: number, multiplier: number) {
-        this.settings[betKey] = { ...this.settings[betKey], cashOutAt: multiplier };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            cashOutAt: multiplier,
+        };
     }
 
     setBetAmount(betKey: number, amount: number) {
-        this.settings[betKey] = { ...this.settings[betKey], amount: amount };
+        this.controls[betKey].setting = {
+            ...this.controls[betKey].setting,
+            amount: amount,
+        };
     }
 
     getBetSetting(betKey: number) {
-        return this.settings[betKey];
+        return this.controls[betKey].setting;
     }
 
     getBetState(betKey: number) {
-        const betAccepted = this.betAccepted[betKey];
-        const cashedOut = this.cashedOut[betKey];
-        const earlyBet = this.earlyBet[betKey];
+        const betAccepted = this.controls[betKey].betAccepted;
+        const cashedOut = this.controls[betKey].cashedOut;
+        const earlyBet = this.controls[betKey].earlyBet;
 
         if (this.roundTimeStore.roundTime > 0 && this.roundTimeStore.roundTime <= this.roundTimeStore.placingBet) {
             return betAccepted ? ButtonState.BET_ACCEPTED : ButtonState.PLACE_BET;
@@ -136,13 +142,20 @@ export class BetControlStore {
     }
 
     getBetAmount(betKey: number) {
-        return this.settings[betKey].amount;
+        return this.controls[betKey].setting.amount;
     }
 
     getCashedOutValue(betKey: number) {
-        const cashedOut = this.cashedOut[betKey];
+        const cashedOut = this.controls[betKey].cashedOut;
         const betAmount = this.getBetAmount(betKey);
 
         return cashedOut ? cashedOut.cashOutWin : betAmount * this.multiplierStore.multiplier;
+    }
+
+    isCashedOutAllBets() {
+        const controls = Object.values(this.controls);
+        const betCount = controls.filter((control) => control.betAccepted).length;
+        const cashedOutCount = controls.filter((control) => control.cashedOut).length;
+        return cashedOutCount === betCount;
     }
 }
