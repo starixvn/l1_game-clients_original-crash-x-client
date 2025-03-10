@@ -1,10 +1,11 @@
 import gc from "@sg/game-client-base";
-import { _decorator, EditBox, Label, Node, Toggle } from "cc";
+import { _decorator, Button, EditBox, Label, Node, Toggle } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
+import { InputValueItem } from "./input-value-item";
 
 const { Connection } = gc;
 const { ccclass, property } = _decorator;
@@ -41,6 +42,9 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(Label)
     labelCashOutValue: Label = null;
+
+    @property(Node)
+    nodeInputValues: Node = null;
 
     betKey = 0;
 
@@ -95,5 +99,41 @@ export default class CrashBetControl extends ObserverComponent {
 
     renderCashOutValue(value: number) {
         this.labelCashOutValue.string = value.toString();
+    }
+
+    renderInputValues(values: number[]) {
+        this.nodeInputValues.children.forEach((child, index) => {
+            const item = child.getComponent(InputValueItem);
+            if (index < values.length) {
+                item.setValue(values[index]);
+            }
+            item.node.on(Button.EventType.CLICK, () => {
+                this.onClickInputValue(index);
+            });
+        });
+    }
+
+    @handle(BetControlStore, (handler, data: { betKey: number; index: number }) => handler.selectBetInput(data.betKey, data.index))
+    onClickInputValue(index: number) {
+        return {
+            betKey: this.betKey,
+            index: index,
+        };
+    }
+
+    @handle(BetControlStore, (handler, data: { betKey: number; increase: boolean }) => handler.changeBetAmount(data.betKey, data.increase))
+    onClickInreaseBet() {
+        return {
+            betKey: this.betKey,
+            increase: true,
+        };
+    }
+
+    @handle(BetControlStore, (handler, data: { betKey: number; increase: boolean }) => handler.changeBetAmount(data.betKey, data.increase))
+    onClickDecreaseBet() {
+        return {
+            betKey: this.betKey,
+            increase: false,
+        };
     }
 }

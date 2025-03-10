@@ -10,8 +10,37 @@ export class BetControlStore {
     @inject(gc.Rounds.RoundTimeStore) protected readonly roundTimeStore: gc.Rounds.RoundTimeStore;
     @inject(gc.GameCrash.CrashMultiplier.MultiplierStore) protected readonly multiplierStore: gc.GameCrash.CrashMultiplier.MultiplierStore;
 
+    @inject(gc.GameConfigs.GameConfigStore) protected readonly gameConfigStore: gc.GameConfigs.GameConfigStore;
+    @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
+
+    @inject(gc.GameUserSettings.GameUserSettingStore) protected readonly gameUserSettingStore: gc.GameUserSettings.GameUserSettingStore;
+
     constructor() {
         mobx.makeAutoObservable(this);
+        setTimeout(() => {
+            this.onLoadStorage();
+
+            mobx.reaction(
+                () => this.gameConfigStore.chips,
+                (chips) => {
+                    this.inputValues = chips.map((chip) => +chip);
+
+                    if (this.inputValues.length > 3) {
+                        console.warn("Setting chips MUST equal 3");
+                        this.inputValues = this.inputValues.slice(0, 3);
+                    }
+                }
+            );
+
+            mobx.reaction(
+                () => this.gameUserSettingStore.permanentStorage,
+                (trigger) => {
+                    if (trigger?.action === gc.GameUserSettings.GameUserSettingAction.Save) {
+                        this.onSaveStorage();
+                    }
+                }
+            );
+        }, 0);
     }
 
     controls: { [betKey: number]: IBetControl } = {
@@ -42,6 +71,36 @@ export class BetControlStore {
             },
         },
     };
+
+    inputValues: number[] = [];
+
+    selectBetInput(betkey: number, index: number) {
+        let value = 0;
+        if (index < this.inputValues.length) {
+            value = this.inputValues[index];
+        } else {
+            value = Math.min(this.maxBet, this.mainPlayerStore.balance);
+        }
+
+        this.setBetAmount(betkey, value);
+    }
+
+    get maxBet() {
+        return this.gameConfigStore.maxBet;
+    }
+
+    get minBet() {
+        return this.gameConfigStore.minBet;
+    }
+
+    changeBetAmount(betkey: number, increase: boolean) {
+        const amount = this.minBet * (increase ? 1 : -1);
+        const currentAmount = this.getBetAmount(betkey);
+        let newAmount = currentAmount + amount;
+        newAmount = Math.min(newAmount, this.maxBet);
+        newAmount = Math.max(newAmount, this.minBet);
+        this.setBetAmount(betkey, newAmount);
+    }
 
     setProcessing(betKey: number, processing: boolean) {
         this.controls[betKey].processing = processing;
@@ -157,5 +216,21 @@ export class BetControlStore {
         const betCount = controls.filter((control) => control.betAccepted).length;
         const cashedOutCount = controls.filter((control) => control.cashedOut).length;
         return cashedOutCount === betCount;
+    }
+
+    onSaveStorage() {
+        const settings = {};
+        Object.values(this.controls).map((control, betKey) => (settings[betKey] = control.setting));
+        gc.StorageManager.set(gc.localStorageKeys.permanentGameUserSetting, settings);
+    }
+
+    onLoadStorage() {
+        const data = gc.StorageManager.get(gc.localStorageKeys.permanentGameUserSetting);
+
+        if (data) {
+            Object.values(data).forEach((setting, index) => {
+                this.controls[index].setting = setting;
+            });
+        }
     }
 }
