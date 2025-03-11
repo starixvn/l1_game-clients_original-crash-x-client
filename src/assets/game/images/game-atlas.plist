@@ -154,7 +154,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bg-history-multiplier-yelow.png</key>
+            <key>bg-history-multiplier-yellow.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -166,21 +166,6 @@
                 <string>{44,44}</string>
                 <key>textureRect</key>
                 <string>{{715,163},{44,44}}</string>
-                <key>textureRotated</key>
-                <false/>
-            </dict>
-            <key>bg-history-multiplyer.png</key>
-            <dict>
-                <key>aliases</key>
-                <array/>
-                <key>spriteOffset</key>
-                <string>{0,0}</string>
-                <key>spriteSize</key>
-                <string>{44,44}</string>
-                <key>spriteSourceSize</key>
-                <string>{44,44}</string>
-                <key>textureRect</key>
-                <string>{{769,113},{44,44}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -408,7 +393,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:fd5765e9f1101a91b3e439ead6e5daa0:ede8603a77c0f9e3058bb47f090d2b00:e636e8631f1c301f4702d08ab25a8b59$</string>
+            <string>$TexturePacker:SmartUpdate:3b0f5034f0ed12812505ec2da57ed9db:2f2589523deae1bf4b1cee2787cd2158:e636e8631f1c301f4702d08ab25a8b59$</string>
             <key>textureFileName</key>
             <string>game-atlas.png</string>
         </dict>
