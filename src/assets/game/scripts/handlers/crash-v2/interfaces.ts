@@ -23,7 +23,7 @@ export interface ICrashBetResponse {
 
 export interface IBetControl {
     processing: boolean;
-    betAccepted: boolean;
+    betAccepted: { value: number };
     earlyBet: boolean;
     betState: string;
     cashedOut: CrashCashOutData;

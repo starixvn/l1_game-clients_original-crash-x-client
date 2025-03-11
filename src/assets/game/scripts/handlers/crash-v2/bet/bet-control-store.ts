@@ -48,7 +48,7 @@ export class BetControlStore {
     controls: { [betKey: number]: IBetControl } = {
         0: {
             processing: false,
-            betAccepted: false,
+            betAccepted: null,
             earlyBet: false,
             betState: ButtonState.PLACE_BET,
             cashedOut: null,
@@ -61,7 +61,7 @@ export class BetControlStore {
         },
         1: {
             processing: false,
-            betAccepted: false,
+            betAccepted: null,
             earlyBet: false,
             betState: ButtonState.PLACE_BET,
             cashedOut: null,
@@ -88,7 +88,8 @@ export class BetControlStore {
     }
 
     get maxBet() {
-        return this.gameConfigStore.maxBet;
+        const betAmount = Object.values(this.controls).reduce((acc, control) => acc + (control?.betAccepted?.value ?? 0), 0);
+        return this.gameConfigStore.maxBet - betAmount;
     }
 
     get minBet() {
@@ -118,8 +119,8 @@ export class BetControlStore {
         this.controls[betKey].processing = processing;
     }
 
-    setAcceptedBet(betKey: number, accepted: boolean) {
-        this.controls[betKey].betAccepted = accepted;
+    setAcceptedBet(betKey: number, value: number) {
+        this.controls[betKey].betAccepted = { value };
         this.setProcessing(betKey, false);
     }
 
@@ -136,7 +137,7 @@ export class BetControlStore {
         Object.keys(this.controls).forEach((key) => {
             const betKey = Number(key);
             this.controls[betKey].processing = false;
-            this.controls[betKey].betAccepted = false;
+            this.controls[betKey].betAccepted = null;
             this.controls[betKey].cashedOut = null;
         });
     }
