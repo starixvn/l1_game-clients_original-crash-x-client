@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, EditBox, Label, Node, Toggle } from "cc";
+import { _decorator, Button, EditBox, Label, Node, Toggle, warn } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
@@ -93,8 +93,62 @@ export default class CrashBetControl extends ObserverComponent {
     renderSetting(setting: IBetControlSettings) {
         this.toggleAutoBet.isChecked = setting.autoBet;
         this.toggleAutoCashOut.isChecked = setting.autoCashOut;
-        this.inputBetAmount.string = setting.amount.toString();
-        this.inputCashOutAt.string = setting.cashOutAt.toString();
+        this.inputBetAmount.string = gc.FormatUtils.numberWithCommas(setting.amount, 2);
+        this.inputBetAmount.placeholder = this.inputBetAmount.string;
+        this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2)}x`;
+        this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
+    }
+
+    onLoad() {
+        this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
+        this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
+        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetCashOutAt, this);
+        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
+        super.onLoad();
+    }
+
+    onEditBegin(editBox: EditBox) {
+        const text = editBox.string;
+        const cleanText = text.replace(/,/g, "");
+        const numValue = Number(cleanText);
+        editBox.string = numValue.toString();
+        editBox.placeholder = numValue.toString();
+    }
+
+    onEditEndBetAmount(editBox: EditBox) {
+        try {
+            const value = Number(editBox.string);
+            this.setValidBetAmount(value);
+        } catch (error) {
+            warn("input bet amount error ----------------- ", editBox.string);
+        }
+    }
+
+    onEditEndBetCashOutAt(editBox: EditBox) {
+        try {
+            const value = Number(editBox.string);
+            this.setValidCashOutAt(value);
+        } catch (error) {
+            warn("input cash out at error ----------------- ", editBox.string);
+        }
+    }
+
+    @handle(BetControlStore, (handler, data: { betKey: number; amount: number }) => handler.setValidBetAmount(data.betKey, data.amount))
+    setValidBetAmount(value: number) {
+        return {
+            betKey: this.betKey,
+            amount: value,
+        };
+    }
+
+    @handle(BetControlStore, (handler, data: { betKey: number; cashOutAt: number }) =>
+        handler.setValidCashOutAt(data.betKey, data.cashOutAt)
+    )
+    setValidCashOutAt(value: number) {
+        return {
+            betKey: this.betKey,
+            cashOutAt: value,
+        };
     }
 
     renderCashOutValue(value: number) {

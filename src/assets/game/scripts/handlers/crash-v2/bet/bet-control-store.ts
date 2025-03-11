@@ -11,6 +11,8 @@ export class BetControlStore {
     @inject(gc.GameCrash.CrashMultiplier.MultiplierStore) protected readonly multiplierStore: gc.GameCrash.CrashMultiplier.MultiplierStore;
 
     @inject(gc.GameConfigs.GameConfigStore) protected readonly gameConfigStore: gc.GameConfigs.GameConfigStore;
+    @inject(gc.GameCrash.CrashGameConfigs.CrashGameConfigStore)
+    protected readonly crashGameConfigStore: gc.GameCrash.CrashGameConfigs.CrashGameConfigStore;
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
 
     @inject(gc.GameUserSettings.GameUserSettingStore) protected readonly gameUserSettingStore: gc.GameUserSettings.GameUserSettingStore;
@@ -82,7 +84,7 @@ export class BetControlStore {
             value = Math.min(this.maxBet, this.mainPlayerStore.balance);
         }
 
-        this.setBetAmount(betkey, value);
+        this.setValidBetAmount(betkey, value);
     }
 
     get maxBet() {
@@ -97,9 +99,19 @@ export class BetControlStore {
         const amount = this.minBet * (increase ? 1 : -1);
         const currentAmount = this.getBetAmount(betkey);
         let newAmount = currentAmount + amount;
-        newAmount = Math.min(newAmount, this.maxBet);
-        newAmount = Math.max(newAmount, this.minBet);
-        this.setBetAmount(betkey, newAmount);
+        this.setValidBetAmount(betkey, newAmount);
+    }
+
+    setValidBetAmount(betKey: number, amount: number) {
+        let validAmount = Math.min(amount, this.maxBet);
+        validAmount = Math.max(validAmount, this.minBet);
+        this.setBetAmount(betKey, validAmount);
+    }
+
+    setValidCashOutAt(betKey: number, cashOutAt: number) {
+        let validCashOutAt = Math.min(cashOutAt, this.crashGameConfigStore.maxMultiplier);
+        validCashOutAt = Math.max(validCashOutAt, this.crashGameConfigStore.minMultiplier);
+        this.setCashOutMultiplier(betKey, validCashOutAt);
     }
 
     setProcessing(betKey: number, processing: boolean) {
