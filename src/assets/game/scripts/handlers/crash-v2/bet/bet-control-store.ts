@@ -134,6 +134,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoBet: !this.controls[betKey].setting.autoBet,
         };
+        this.onSaveStorage();
     }
 
     toggleAutoCashOut(betKey: number) {
@@ -141,6 +142,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoCashOut: !this.controls[betKey].setting.autoCashOut,
         };
+        this.onSaveStorage();
     }
 
     setAutoBet(betKey: number, enabled: boolean) {
@@ -148,6 +150,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoBet: enabled,
         };
+        this.onSaveStorage();
     }
 
     setAutoCashOut(betKey: number, enabled: boolean) {
@@ -155,6 +158,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoCashOut: enabled,
         };
+        this.onSaveStorage();
     }
 
     setEarlyBet(betKey: number, earlyBet: boolean) {
@@ -166,6 +170,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             cashOutAt: multiplier,
         };
+        this.onSaveStorage();
     }
 
     setBetAmount(betKey: number, amount: number) {
@@ -173,6 +178,7 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             amount: amount,
         };
+        this.onSaveStorage();
     }
 
     getBetSetting(betKey: number) {
