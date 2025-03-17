@@ -53,11 +53,11 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
 
     autoPlaceBet() {
         Object.values(this.betControlStore.controls).forEach((control, index) => {
-            const earlyBet = control.earlyBet[index];
+            const earlyBet = control.earlyBet;
             if (control.setting.autoBet || earlyBet) {
                 this.callBet(index);
                 if (earlyBet) {
-                    control.earlyBet[index] = false;
+                    control.earlyBet = false;
                 }
             }
         });

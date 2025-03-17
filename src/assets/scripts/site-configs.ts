@@ -14,19 +14,20 @@ const defaultConfig: gc.Configs.SiteConfigs = {
         localhost: "lumigame.com",
     },
     ssl: true,
-    subDomain: "l1-proxy1",
+    subDomain: "l1-proxy",
     env: "LOCAL",
     subGuideDomain: "l1-guide-1",
     SGConnectSubDomain: "connectsite",
     enableMsgpackParserAllGames: false,
     enableMsgpackParserOnNotification: false,
     websocket: {
-        proxyPath: "spaceflight",
-        route: "spaceflight",
+        proxyPath: "rocketx",
+        route: "rocketx",
     },
-    mainObserverNamespace: "Spaceflight",
+    mainObserverNamespace: "RocketX",
     tolgeeUrl: "",
-    storagePrefixKey: "spaceflight",
+    storagePrefixKey: "RocketX",
+    clientSubDomain: "l1-client",
 };
 
 let configDev = {

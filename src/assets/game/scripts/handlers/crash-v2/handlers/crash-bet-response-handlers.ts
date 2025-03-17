@@ -8,10 +8,6 @@ const { injectable, inject } = inversify;
 export class CrashBetResponseHandlers {
     eventHandleList = [
         {
-            name: "endBet",
-            handle: this.tempHandle,
-        },
-        {
             name: "endBet,betKey",
             handle: this.handleResponseByBetKey,
         },
@@ -23,15 +19,7 @@ export class CrashBetResponseHandlers {
     handleResponseByBetKey(data: ICrashBetResponse) {
         if (data.endBet > 0) {
             this.betStore.lastReceivedBet = { value: data.endBet, isAnimated: true };
-            this.betControlStore.setAcceptedBet(data.betKey, true);
+            this.betControlStore.setAcceptedBet(data.betKey, data.endBet);
         }
-    }
-
-    tempHandle(endBet: number) {
-        const data = {
-            endBet,
-            betKey: 0,
-        };
-        this.handleResponseByBetKey(data);
     }
 }

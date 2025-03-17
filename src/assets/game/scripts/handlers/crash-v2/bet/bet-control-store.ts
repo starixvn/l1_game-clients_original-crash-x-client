@@ -125,15 +125,10 @@ export class BetControlStore {
     }
 
     setCashedOut(cashedOut: CrashCashOutData) {
-        //TODO:remove this after testing
-        if (!cashedOut.betKey) {
-            cashedOut.betKey = 0;
-        }
         this.controls[cashedOut.betKey].cashedOut = cashedOut;
     }
 
     resetLastBet() {
-        // Đặt lại tất cả các trạng thái về mặc định cho tất cả các betKey
         Object.keys(this.controls).forEach((key) => {
             const betKey = Number(key);
             this.controls[betKey].processing = false;

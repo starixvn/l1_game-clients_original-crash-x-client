@@ -9,8 +9,8 @@ import { CrashBetHandler } from "./handlers/override/crash-bet-handler";
 import { CrashCashOutHandlers } from "./handlers/override/crash-cash-out-handlers";
 import { PlayerActionHandlers } from "./handlers/override/player-action-handlers";
 export const settings = {
-    id: 73,
-    name: "Spaceflight",
+    id: 113,
+    name: "RocketX",
     durations: {
         wholeRound: 14,
         lockingBet: 3,
