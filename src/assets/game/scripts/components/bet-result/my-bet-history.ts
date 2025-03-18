@@ -1,10 +1,20 @@
-import { _decorator, CCInteger, Component, Node, Prefab, UITransform, instantiate, Label } from 'cc';
+import gc from "@sg/game-client-base";
+import { _decorator, CCInteger, instantiate, Node, Prefab, UITransform } from "cc";
+import Observer from "observer";
+
+import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { BetHistoryRocketXModel, BetHistoryRocketXStore } from "../../handlers/crash-v2/bet/rocketx-bet-history-store";
+import { BetHistoryRocketXHandlers } from "../../handlers/crash-v2/handlers/bet-history-handlers";
+import BetResultHistoryBodyItem from "./bet-result-history-body-item";
+
+const eventName = "getHistory";
+const pageSize = 10;
 const { ccclass, property } = _decorator;
+const { render, handle } = Observer;
+const { BetHistory } = gc;
 
-
-@ccclass('MyBetHistory')
-export class MyBetHistory extends Component {
-    
+@ccclass("MyBetHistory")
+export class MyBetHistory extends ObserverComponent {
     @property({ type: Node })
     content: Node = null;
 
@@ -18,71 +28,91 @@ export class MyBetHistory extends Component {
     totalItems: number = 100;
 
     @property({ type: CCInteger })
-    startYPosition: number = -20;
+    startYPosition: number = -50;
 
     @property({ type: CCInteger })
     itemHeight: number = 100;
 
     private stepItems: number = 20;
-    private currentItem: number = 20;
+    private currentPageIndex: number = 1;
 
+    getHistoryItemComponent(node: Node) {
+        return node.getComponent(BetResultHistoryBodyItem);
+    }
 
-    protected onLoad() {
-        this.itemHeight = this.itemPrefab.data.height;  // Get the height of the item
-        //this.items = [];  // Keep track of the created items
-        this.content.getComponent(UITransform).height = this.totalItems * this.itemHeight; 
-        this.loadItems();  // Initially load the items
-        this.node.on('scrolling', this.onScrolling, this);
+    buildBodyRow(
+        bodyItemPrefab: Prefab,
+        betHistoryLog: gc.BetHistory.BetHistoryLog,
+        index: number,
+        betKey: number,
+        fractionalOddsFormat?: boolean
+    ): Node {
+        const bodyItem = instantiate(bodyItemPrefab);
+        this.getHistoryItemComponent(bodyItem)?.setData({
+            betHistoryLog,
+            index,
+            betKey,
+            fractionalOddsFormat,
+        });
+        return bodyItem;
+    }
+
+    @handle(
+        BetHistoryRocketXHandlers.BetHistoryRocketXCallServiceHandler,
+        (handler, pageNumber: number, responseKey: string, pageSize: number) => handler.getHistory(pageNumber, pageSize, eventName)
+    )
+    fetchData() {
+        return this.currentPageIndex;
+    }
+
+    @render(BetHistoryRocketXStore, (store) => store.betHistoryRocketXModel, { fireImmediately: false })
+    showBetHistory(betHistoryRocketXModel: BetHistoryRocketXModel) {
+        let index = 0;
+        betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
+            betLogItem.betLogDetails.forEach((betLogDetail) => {
+                if (betLogDetail.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString()) {
+                    let item = this.buildBodyRow(this.itemPrefab, betLogItem, rowIndex, Number(betLogDetail.betKey));
+                    this.content.addChild(item);
+
+                    let currentPosition = item.getPosition();
+                    let y = this.startYPosition - ((this.currentPageIndex - 1) * pageSize + index) * this.itemHeight;
+
+                    item.setPosition(currentPosition.x, y);
+                    index++;
+                }
+            });
+        });
+    }
+
+    onLoad() {
+        this.itemHeight = this.itemPrefab.data.height;
+        this.content.getComponent(UITransform).height = this.totalItems * this.itemHeight;
+        super.onLoad();
+        this.fetchData();
+        this.node.on("scrolling", this.onScrolling, this);
     }
 
     onScrolling(event) {
-
-       
-        const contentY = event.content.getPosition().y; 
-console.log('contentY', contentY);
-console.log('window.innerHeight', window.innerHeight);
-console.log('this.content.getComponent(UITransform).height', this.content.getComponent(UITransform).height);
-
-
-//const scrollViewHeight = this.scrollView.node.height;
-
-
-// Check if the ScrollView is scrolled to the bottom
-const scrollPosition = this.content.position;
-
+        const contentY = event.content.getPosition().y;
+        const scrollPosition = this.content.position;
 
         // Check if we've reached the threshold at the bottom of the scroll view
-       
+
         if (contentY <= -this.loadThreshold) {
             this.addItemsToTop(); // Add items to the top when we reach the bottom
         }
         // Check if we've reached the threshold at the top of the scroll view
+        else if (contentY >= this.content.getComponent(UITransform).height - 180) {
+            //else if (contentY >= this.content.getComponent(UITransform).height - window.innerHeight + this.loadThreshold) {
+            // this.addItemsToBottom(); // Add items to the bottom when we reach the top
 
-       else if (contentY >= this.content.getComponent(UITransform).height - 180) {
-        //else if (contentY >= this.content.getComponent(UITransform).height - window.innerHeight + this.loadThreshold) {
-            this.addItemsToBottom(); // Add items to the bottom when we reach the top
-        }
-        
-    }
-
-    loadItems() {
-        for (let i = 0; i < this.totalItems; i++) {
-            let item = instantiate(this.itemPrefab); 
-            this.content.addChild(item);  
-            item.getComponentInChildren(Label).string = "Item + " +   (i + 1).toString() ;
-            
-            
-            let currentPosition = item.getPosition();
-            let y = this.startYPosition - (i * this.itemHeight);
-            console.log(y);
-            item.setPosition(currentPosition.x, y);
-
-            //this.items.push(item); // Keep track of the item
+            this.currentPageIndex++;
+            this.fetchData();
         }
     }
 
     addItemsToTop() {
-        console.log('addItemsToTop');
+        console.log("addItemsToTop");
         /*
         let firstItem = this.items[0];
         this.items.shift(); // Remove the first item from the array
@@ -94,49 +124,4 @@ const scrollPosition = this.content.position;
         // Optionally, update the label or content here
         firstItem.getComponentInChildren(cc.Label).string = `Item ${this.items.length + 1}`;*/
     }
-
-    // This method adds items to the bottom of the list
-    addItemsToBottom() {
-        console.log('addItemsToBottom');
-
-
-        /*
-        let lastItem = this.items[this.items.length - 1];
-        this.items.pop(); // Remove the last item from the array
-
-        // Move the last item to the top
-        lastItem.y = this.items[0].y + this.itemHeight;
-        this.items.unshift(lastItem); // Add it at the start of the array
-
-        // Optionally, update the label or content here
-        lastItem.getComponentInChildren(cc.Label).string = `Item ${this.items.length + 1}`;
-        */
-
-        let currentItem = this.totalItems;
-        
-        
-        for (let i = 0; i < this.stepItems; i++) {
-            currentItem++;
-            let item = instantiate(this.itemPrefab); 
-            this.content.addChild(item);  
-            item.getComponentInChildren(Label).string = "Item + " +   (i + 1).toString() ;
-            
-            
-            let currentPosition = item.getPosition();
-            let y =  -(currentItem * this.itemHeight);
-            console.log(y);
-            item.setPosition(currentPosition.x, y);
-
-
-            //this.items.push(item); // Keep track of the item
-        }
-
-        this.totalItems += this.stepItems;
-        this.content.getComponent(UITransform).height = this.totalItems * this.itemHeight; 
-
-        console.log(this.totalItems);
-
-    }
 }
-
-
