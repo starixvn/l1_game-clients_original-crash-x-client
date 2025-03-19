@@ -72,9 +72,7 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         });
 
         this.lblTime && (this.lblTime.string = formattedTime);
-
         this.lblRound.string = roundId.toString();
-
         this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(betwin, 2));
 
         let amount = betHistoryLog.betLogDetails.find(
@@ -84,7 +82,6 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         );
 
         let totalAmount = amount === undefined ? 0 : Number(amount.amount);
-
         this.lblTotalStake && (this.lblTotalStake.string = FormatUtils.numberWithCommas(totalAmount, 2));
 
         if (this.lblWinLoss) {
@@ -98,9 +95,7 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         );
 
         this.lblMultiplier.string = multiplier === undefined ? "-" : `${FormatUtils.numberWithCommas(+multiplier.multiplier, 2, false)}x`;
-
         this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
-
         this.betWinCell.getComponent(BetWinCell)?.setData(betwin, Boolean(multiplier?.isReachedMaxWin));
     }
 

@@ -13,21 +13,21 @@ export class LeaderBoardMainPlayer extends Component {
     secondRow: LeaderBoardCashOut = null;
 
     onLoad() {
+        this.setFirstRowDisplay(false);
         this.setSecondRowDisplay(false);
     }
 
     setData(data: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer) {
         const { name, cashOut, halfCashOut, amount } = data;
-        this.setSecondRowDisplay(false);
-        /*
         if (cashOut) {
             if (this.firstRow.node.active) {
-                if (this.firstRow.getAmount() === cashOut.amount) {  
+                let firstRowAmount = Number(this.firstRow.lblBetAmount.string);
+                if (firstRowAmount === cashOut.amount) {
                     this.firstRow.setData({
                         name,
                         amount: cashOut.amount,
                         multiplier: cashOut.multiplier,
-                        win: cashOut.win, 
+                        win: cashOut.win,
                     });
                 } else {
                     this.secondRow.setData({
@@ -44,15 +44,17 @@ export class LeaderBoardMainPlayer extends Component {
                     name,
                     amount,
                 });
+                this.setSecondRowDisplay(true);
             } else {
                 this.firstRow.setData({
                     name,
                     amount,
                 });
+                this.setFirstRowDisplay(true);
             }
-        } 
-            */
+        }
 
+        /*
         if (halfCashOut && cashOut) {
             this.firstRow.setData({
                 name,
@@ -94,6 +96,7 @@ export class LeaderBoardMainPlayer extends Component {
                 amount,
             });
         }
+            */
     }
 
     setSecondRowDisplay(status: boolean) {
@@ -102,5 +105,13 @@ export class LeaderBoardMainPlayer extends Component {
 
     isShowSecondRow(): boolean {
         return this.secondRow.node.active;
+    }
+
+    setFirstRowDisplay(status: boolean) {
+        this.firstRow.node.active = status;
+    }
+
+    isShowFirstRow(): boolean {
+        return this.firstRow.node.active;
     }
 }

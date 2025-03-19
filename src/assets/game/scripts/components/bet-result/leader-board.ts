@@ -66,10 +66,11 @@ export class LeaderBoard extends ObserverComponent {
             return;
         }
         const { halfCashOut } = mainPlayer;
-
         this.setMainPlayerDisplay(true);
         this.cpnMainPlayer?.setData(mainPlayer);
-        this.scrollOtherPlayer(halfCashOut ? this.itemHeight * 2 : this.itemHeight);
+
+        let isSecondRowActive = this.cpnMainPlayer.secondRow.node.active;
+        this.scrollOtherPlayer(isSecondRowActive ? this.itemHeight * 2 : this.itemHeight);
         this.updateContentHeight();
     }
 
@@ -77,6 +78,8 @@ export class LeaderBoard extends ObserverComponent {
     private resetOtherPlayerScroll(isStartRound: boolean) {
         if (isStartRound) {
             this.scrollOtherPlayer(0);
+            this.cpnMainPlayer.setFirstRowDisplay(false);
+            this.cpnMainPlayer.setSecondRowDisplay(false);
         }
     }
 

@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
+import { _decorator, Color, Component, instantiate, Label, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("BetResultContainer")
@@ -36,10 +36,12 @@ export class BetResultContainer extends Component {
             if (i === index) {
                 this.prefabInstances[i] = instantiate(this.prefabContents[i]);
                 this.tabContents[i].addChild(this.prefabInstances[i]);
+                this.tabButtons[i].getComponentInChildren(Label).color = new Color().fromHEX("30df0a");
             } else {
                 if (this.prefabInstances[i]) {
                     this.prefabInstances[i].destroy();
                     this.prefabInstances[i] = null;
+                    this.tabButtons[i].getComponentInChildren(Label).color = new Color().fromHEX("E6E5DF");
                 }
             }
         }
