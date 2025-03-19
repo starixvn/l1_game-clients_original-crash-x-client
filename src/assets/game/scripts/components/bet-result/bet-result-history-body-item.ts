@@ -3,6 +3,7 @@ import { _decorator, Button, Color, Component, Label, Node } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
@@ -51,6 +52,9 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
     @property(Label)
     lblWinLoss: Label = null;
 
+    @property(Node)
+    betWinCell: Node = null;
+
     betHistoryLog: gc.BetHistory.BetHistoryLog = null;
 
     setData(data: BetResultHistoryBodyItemType) {
@@ -58,8 +62,7 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         this.betHistoryLog = betHistoryLog;
         this.nodeBackground.active = index % 2 > 0;
         const { time, betwin, roundId } = betHistoryLog;
-
-        this.lblDate && (this.lblTime.string = DateTimeUtils.getStringDate(time));
+        this.lblDate && (this.lblDate.string = DateTimeUtils.getStringDate(time));
 
         const date = new Date(time);
         const formattedTime = date.toLocaleTimeString("en-US", {
@@ -97,6 +100,8 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         this.lblMultiplier.string = multiplier === undefined ? "-" : `${FormatUtils.numberWithCommas(+multiplier.multiplier, 2, false)}x`;
 
         this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
+
+        this.betWinCell.getComponent(BetWinCell)?.setData(betwin, Boolean(multiplier?.isReachedMaxWin));
     }
 
     @handle(BetHistory.BetDetailsHandlers)
@@ -110,7 +115,7 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         return gc.Audios.AudioIds.CLICK;
     }
 
-    @handle(gc.RoundBasePF.ProvablyFairHandler, (handle, roundId: number) => handle.openVerificationHistory(roundId))
+    @handle(gc.GameCrash.ProvablyFair.ProvablyFairHandler, (handle, roundId: number) => handle.openVerificationHistory(roundId))
     onClickVerify() {
         this.playSoundClick();
         return this.betHistoryLog.roundId;

@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, CCInteger, instantiate, Node, Prefab, UITransform } from "cc";
+import { _decorator, CCInteger, instantiate, Node, Prefab, ScrollView, UITransform } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
@@ -8,7 +8,7 @@ import { BetHistoryRocketXHandlers } from "../../handlers/crash-v2/handlers/bet-
 import BetResultHistoryBodyItem from "./bet-result-history-body-item";
 
 const eventName = "getHistory";
-const pageSize = 10;
+const pageSize = 11;
 const { ccclass, property } = _decorator;
 const { render, handle } = Observer;
 const { BetHistory } = gc;
@@ -25,16 +25,18 @@ export class MyBetHistory extends ObserverComponent {
     loadThreshold: number = 50;
 
     @property({ type: CCInteger })
-    totalItems: number = 100;
+    totalItems: number = 10;
 
     @property({ type: CCInteger })
     startYPosition: number = -50;
 
     @property({ type: CCInteger })
-    itemHeight: number = 100;
+    itemHeight: number = 80;
 
-    private stepItems: number = 20;
     private currentPageIndex: number = 1;
+    private currentIndex: number = 0;
+    private isFetchingData: boolean = false;
+    private isNodataToFetch: boolean = false;
 
     getHistoryItemComponent(node: Node) {
         return node.getComponent(BetResultHistoryBodyItem);
@@ -57,9 +59,8 @@ export class MyBetHistory extends ObserverComponent {
         return bodyItem;
     }
 
-    @handle(
-        BetHistoryRocketXHandlers.BetHistoryRocketXCallServiceHandler,
-        (handler, pageNumber: number, responseKey: string, pageSize: number) => handler.getHistory(pageNumber, pageSize, eventName)
+    @handle(BetHistoryRocketXHandlers.BetHistoryRocketXCallServiceHandler, (handler, pageNumber: number) =>
+        handler.getHistory(pageNumber, pageSize, eventName)
     )
     fetchData() {
         return this.currentPageIndex;
@@ -67,7 +68,6 @@ export class MyBetHistory extends ObserverComponent {
 
     @render(BetHistoryRocketXStore, (store) => store.betHistoryRocketXModel, { fireImmediately: false })
     showBetHistory(betHistoryRocketXModel: BetHistoryRocketXModel) {
-        let index = 0;
         betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
             betLogItem.betLogDetails.forEach((betLogDetail) => {
                 if (betLogDetail.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString()) {
@@ -75,53 +75,42 @@ export class MyBetHistory extends ObserverComponent {
                     this.content.addChild(item);
 
                     let currentPosition = item.getPosition();
-                    let y = this.startYPosition - ((this.currentPageIndex - 1) * pageSize + index) * this.itemHeight;
+                    let y = this.startYPosition - this.currentIndex * this.itemHeight;
 
                     item.setPosition(currentPosition.x, y);
-                    index++;
+                    this.currentIndex++;
                 }
             });
         });
+
+        if (betHistoryRocketXModel.betLogs.length < pageSize) {
+            this.isNodataToFetch = true;
+        }
+
+        this.content.getComponent(UITransform).height = this.currentIndex * this.itemHeight;
+        this.isFetchingData = false;
     }
 
     onLoad() {
         this.itemHeight = this.itemPrefab.data.height;
-        this.content.getComponent(UITransform).height = this.totalItems * this.itemHeight;
         super.onLoad();
         this.fetchData();
-        this.node.on("scrolling", this.onScrolling, this);
+        this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);
     }
 
-    onScrolling(event) {
-        const contentY = event.content.getPosition().y;
-        const scrollPosition = this.content.position;
-
-        // Check if we've reached the threshold at the bottom of the scroll view
-
-        if (contentY <= -this.loadThreshold) {
-            this.addItemsToTop(); // Add items to the top when we reach the bottom
-        }
-        // Check if we've reached the threshold at the top of the scroll view
-        else if (contentY >= this.content.getComponent(UITransform).height - 180) {
-            //else if (contentY >= this.content.getComponent(UITransform).height - window.innerHeight + this.loadThreshold) {
-            // this.addItemsToBottom(); // Add items to the bottom when we reach the top
-
+    onScrolling() {
+        if (!this.isNodataToFetch) {
             this.currentPageIndex++;
-            this.fetchData();
+            if (!this.isFetchingData) {
+                this.fetchData();
+                this.isFetchingData = true;
+            }
         }
     }
 
-    addItemsToTop() {
-        console.log("addItemsToTop");
-        /*
-        let firstItem = this.items[0];
-        this.items.shift(); // Remove the first item from the array
-
-        // Move the first item to the bottom
-        firstItem.y = this.items[this.items.length - 1].y - this.itemHeight;
-        this.items.push(firstItem); // Add it back at the end of the array
-
-        // Optionally, update the label or content here
-        firstItem.getComponentInChildren(cc.Label).string = `Item ${this.items.length + 1}`;*/
+    onDestroy() {
+        if (this.node !== null) {
+            this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);
+        }
     }
 }
