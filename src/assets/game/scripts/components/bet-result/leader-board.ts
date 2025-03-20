@@ -8,7 +8,6 @@ import { LeaderBoardMainPlayer } from "./leader-board-main-player";
 
 const { ccclass, property } = _decorator;
 const { render } = Observer;
-
 const { GameCrash, Rounds } = gc;
 
 @ccclass
@@ -47,7 +46,6 @@ export class LeaderBoard extends ObserverComponent {
 
         otherPlayers.forEach((player, index) => {
             let node = this.nodeOtherPlayers.children[index];
-
             if (!node) {
                 node = this.createBoardItem();
             }

@@ -404,7 +404,7 @@
     "__prefab": {
       "__id__": 12
     },
-    "key": "Spaceflight.player",
+    "key": "RocketX.player",
     "format": 0,
     "prefix": "",
     "suffix": "",
@@ -701,7 +701,7 @@
     "__prefab": {
       "__id__": 30
     },
-    "key": "Spaceflight.glossary_bet",
+    "key": "RocketX.glossary_bet",
     "format": 0,
     "prefix": "",
     "suffix": "",
@@ -959,7 +959,7 @@
     "__prefab": {
       "__id__": 46
     },
-    "key": "Spaceflight.multiplier",
+    "key": "RocketX.glossary_multiplier",
     "format": 0,
     "prefix": "",
     "suffix": "",

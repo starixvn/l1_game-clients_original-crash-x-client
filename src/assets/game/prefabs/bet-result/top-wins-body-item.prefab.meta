@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "50154fb0-b057-4732-9681-d0e552050136",
+  "uuid": "66fd8058-3f56-4c07-b5dd-f3504047a3a2",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "my-bet-history_test"
+    "syncNodeName": "top-wins-body-item"
   }
 }

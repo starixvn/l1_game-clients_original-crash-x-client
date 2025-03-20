@@ -1,36 +1,18 @@
-import { _decorator, Component, Node, Toggle, ToggleContainer, Sprite } from 'cc';
+import { _decorator, Color, Label, Sprite } from "cc";
+import { TabsControl } from "./tabs-control";
 const { ccclass, property } = _decorator;
 
-@ccclass('TopBoard')
-export class TopBoard extends Component {
-    @property({type: ToggleContainer})
-    toggleGroup: ToggleContainer = null;
-    
-    @property({type: [Node]})
-    tabButtons: Toggle[] = [];
-    
-    @property({type: [Node]})
-    tabContents: Node[] = [];
-    
-    onLoad() {
-        let toggles = this.toggleGroup.getComponentsInChildren(Toggle);
-        toggles.forEach((tabButton, index) => {
-            tabButton.node.on(Toggle.EventType.CLICK, this.onTabChanged.bind(this, index));
-            if (index === 0) {
-                tabButton.isChecked = true;
-            }
-        });
-        
-        this.onTabChanged(0);
+@ccclass("TopBoard")
+export class TopBoard extends TabsControl {
+    extendShowTab(index: number): void {
+        const sprite = this.tabButtons[index].getComponentInChildren(Sprite);
+        sprite.spriteFrame = sprite.spriteAtlas.getSpriteFrame("line-active");
+        this.tabButtons[index].getComponentInChildren(Label).color = new Color().fromHEX("30df0a");
     }
 
-
-    onTabChanged(index) {
-        for (let i = 0; i < this.tabContents.length; i++) {
-            this.tabContents[i].active = (i === index); 
-            this.tabButtons[i].getComponent(Sprite).enabled = (i === index);
-        }
+    extendHideTab(index: number): void {
+        const sprite = this.tabButtons[index].getComponentInChildren(Sprite);
+        sprite.spriteFrame = sprite.spriteAtlas.getSpriteFrame("line");
+        this.tabButtons[index].getComponentInChildren(Label).color = new Color().fromHEX("E6E5DF");
     }
 }
-
-
