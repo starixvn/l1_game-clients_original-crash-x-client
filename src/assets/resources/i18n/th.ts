@@ -246,6 +246,7 @@ export const languages = {
         "cashed": "เงินสด",
         "cashout": "ถอนเงิน",
         "crashed": "ล้มเหลว",
+        "date": "เวลา",
         "glossary_bet": "เดิมพัน",
         "glossary_crash": "ชน",
         "glossary_crash_point": "แต้มการพังของจรวด",

@@ -246,6 +246,7 @@ export const languages = {
         "cashed": "兌現",
         "cashout": "兌現",
         "crashed": "墜毀",
+        "date": "時間",
         "glossary_bet": "賭注",
         "glossary_crash": "爆炸",
         "glossary_crash_point": "崩潰點",

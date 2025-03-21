@@ -5,8 +5,10 @@ import Observer from "observer";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { BetHistoryRocketXModel, BetHistoryRocketXStore } from "../../handlers/crash-v2/bet/rocketx-bet-history-store";
 import { BetHistoryRocketXHandlers } from "../../handlers/crash-v2/handlers/bet-history-handlers";
+import ApiClient from "../api-client/api-client";
 import TopWinsBodyItem from "./top-wins-body-item";
 
+const apiClient = new ApiClient("https://l1-proxy3.lumigame.com");
 const eventName = "getHistory";
 const pageSize = 11;
 const { ccclass, property } = _decorator;
@@ -14,7 +16,7 @@ const { render, handle } = Observer;
 const { BetHistory } = gc;
 
 @ccclass("TopWinsMonth")
-export class MyBetHistory extends ObserverComponent {
+export class TopWinsMonth extends ObserverComponent {
     @property({ type: Node })
     content: Node = null;
 
@@ -37,6 +39,22 @@ export class MyBetHistory extends ObserverComponent {
     private currentIndex: number = 0;
     private isFetchingData: boolean = false;
     private isNodataToFetch: boolean = false;
+
+    async fetchData1() {
+        try {
+            const response = await apiClient.get<ApiResponseItem[]>("/top-stats/monthly-top-results?gameId=113");
+            //const data: ApiResponseItem[] = response.json();
+            response.forEach((item) => {
+                console.log(`ID: ${item.id}, Result: ${item.result}`);
+                console.log(`Provably Fair - Round ID: ${item.provablyFair.roundId}`);
+                console.log(`Server Seed Hash: ${item.provablyFair.serverSeedHash}`);
+            });
+
+            console.log("GET response data:", response);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
 
     getHistoryItemComponent(node: Node) {
         return node.getComponent(TopWinsBodyItem);
@@ -91,6 +109,7 @@ export class MyBetHistory extends ObserverComponent {
     }
 
     onLoad() {
+        this.fetchData1();
         this.itemHeight = this.itemPrefab.data.height;
         super.onLoad();
         this.fetchData();
@@ -112,4 +131,23 @@ export class MyBetHistory extends ObserverComponent {
             this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);
         }
     }
+}
+
+interface ProvablyFair {
+    clientSeeds: string[];
+    time: string;
+    roundId: number;
+    serverSeedHash: string;
+    serverSeed: string;
+    __v: number;
+    finalHash: string;
+    mergeClientSeed: string;
+    mergeSeed: string;
+}
+
+interface ApiResponseItem {
+    id: number;
+    result: number;
+    time: string;
+    provablyFair: ProvablyFair;
 }

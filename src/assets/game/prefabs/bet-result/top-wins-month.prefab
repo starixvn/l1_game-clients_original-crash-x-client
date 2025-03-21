@@ -378,7 +378,7 @@
     "__prefab": {
       "__id__": 12
     },
-    "key": "Spaceflight.player",
+    "key": "RocketX.player",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -589,11 +589,11 @@
     "node": {
       "__id__": 14
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 22
     },
-    "key": "Spaceflight.glossary_bet",
+    "key": "RocketX.glossary_bet",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -841,11 +841,11 @@
     "node": {
       "__id__": 28
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 36
     },
-    "key": "Spaceflight.multiplier",
+    "key": "RocketX.glossary_multiplier",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -1097,7 +1097,7 @@
     "__prefab": {
       "__id__": 50
     },
-    "key": "Spaceflight.crash",
+    "key": "RocketX.glossary_crash",
     "format": 3,
     "prefix": "",
     "suffix": "",

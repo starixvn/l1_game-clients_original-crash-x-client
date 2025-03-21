@@ -249,6 +249,7 @@ export const languages = {
         "cashed": "Cashed",
         "cashout": "Rút Tiền",
         "crashed": "ĐÃ NỔ",
+        "date": "Thời Gian",
         "glossary_bet": "Cược",
         "glossary_crash": "Nổ",
         "glossary_crash_point": "Điểm Nổ",

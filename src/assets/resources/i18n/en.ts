@@ -249,6 +249,7 @@ export const languages = {
         "cashed": "Cashed",
         "cashout": "Cashout",
         "crashed": "Crashed",
+        "date": "Date",
         "game_icon_name": "Rocket X",
         "game_name": "Rocket X",
         "glossary_bet": "Bet",

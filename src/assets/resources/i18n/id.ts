@@ -246,6 +246,7 @@ export const languages = {
         "cashed": "Dicairkan",
         "cashout": "Cashout",
         "crashed": "Jatuh",
+        "date": "Waktu",
         "glossary_bet": "Taruhan",
         "glossary_crash": "Jatuh",
         "glossary_crash_point": "Titik jatuh",

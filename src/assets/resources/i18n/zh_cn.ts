@@ -246,6 +246,7 @@ export const languages = {
         "cashed": "兑现",
         "cashout": "兑现",
         "crashed": "坠毁",
+        "date": "时间",
         "glossary_bet": "赌注",
         "glossary_crash": "爆炸",
         "glossary_crash_point": "崩溃点",

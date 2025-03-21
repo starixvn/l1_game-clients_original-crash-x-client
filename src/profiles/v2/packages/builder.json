@@ -12,6 +12,7 @@
         "state": "success",
         "stage": "build",
         "message": "1-5-2024 09:15:18 build success in 83791 ms!",
+        "detailMessage": "",
         "options": {
           "name": "cocos-3x",
           "platform": "web-mobile",
@@ -87,7 +88,15 @@
             "macroConfig": {
               "cleanupImageCache": "off"
             }
-          }
+          },
+          "nativeCodeBundleMode": "both",
+          "md5CacheOptions": {
+            "excludes": [],
+            "includes": [],
+            "replaceOnly": [],
+            "handleTemplateMd5Link": true
+          },
+          "wasmCompressionMode": false
         },
         "time": "1-5-2024 09:13:55",
         "dirty": false
