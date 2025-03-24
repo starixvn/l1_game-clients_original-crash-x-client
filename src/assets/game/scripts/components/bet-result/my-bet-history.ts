@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, CCInteger, instantiate, Node, Prefab, ScrollView, UITransform } from "cc";
+import { _decorator, Button, CCInteger, instantiate, Node, Prefab, ScrollView, UITransform, Vec3 } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
@@ -20,6 +20,9 @@ export class MyBetHistory extends ObserverComponent {
 
     @property({ type: Prefab })
     itemPrefab: Prefab = null;
+
+    @property({ type: Node })
+    reachMaxWinNode: Node = null;
 
     @property({ type: CCInteger })
     loadThreshold: number = 50;
@@ -56,7 +59,22 @@ export class MyBetHistory extends ObserverComponent {
             betKey,
             fractionalOddsFormat,
         });
+        bodyItem.on("hover-trigger-parent", this.onHoverMaxReachTrigger, this);
+        bodyItem.on("exit-hover-trigger-parent", this.onExitHoverMaxReachTrigger, this);
         return bodyItem;
+    }
+
+    onHoverMaxReachTrigger(childNode: Node) {
+        let node = this.reachMaxWinNode.getComponent(Button);
+        let position = childNode.getPosition();
+        let positionY = this.content.getPosition().y + position.y - 40;
+        node.node.setPosition(new Vec3(241, positionY, 0));
+        node.node.active = true;
+    }
+
+    onExitHoverMaxReachTrigger() {
+        let node = this.reachMaxWinNode.getComponent(Button);
+        node.node.active = false;
     }
 
     @handle(BetHistoryRocketXHandlers.BetHistoryRocketXCallServiceHandler, (handler, pageNumber: number) =>

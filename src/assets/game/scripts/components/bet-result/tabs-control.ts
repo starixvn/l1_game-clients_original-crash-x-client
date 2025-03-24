@@ -16,6 +16,7 @@ export class TabsControl extends Component {
     prefabContents: Prefab[] = [];
 
     private prefabInstances: Node[] = [];
+    private currentTabIndex: number = -1;
 
     onLoad() {
         let toggles = this.toggleGroup.getComponentsInChildren(Toggle);
@@ -30,13 +31,16 @@ export class TabsControl extends Component {
     }
 
     onTabChanged(index) {
-        for (let i = 0; i < this.tabContents.length; i++) {
-            this.tabContents[i].active = i === index;
-            this.tabButtons[i].getComponent(Sprite).enabled = i === index;
-            if (i === index) {
-                this.showTab(index);
-            } else {
-                this.hideTab(i);
+        if (index !== this.currentTabIndex) {
+            this.currentTabIndex = index;
+            for (let i = 0; i < this.tabContents.length; i++) {
+                this.tabContents[i].active = i === index;
+                this.tabButtons[i].getComponent(Sprite).enabled = i === index;
+                if (i === index) {
+                    this.showTab(index);
+                } else {
+                    this.hideTab(i);
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-import { _decorator, Button, Component, Label, Node } from "cc";
+import { _decorator, Button, Color, Component, Label } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("BetWinCell")
@@ -9,29 +9,9 @@ export class BetWinCell extends Component {
     @property(Button)
     btnReachMaxWin: Button = null;
 
-    onLoad() {
-        this.btnReachMaxWin.node.getComponentInChildren(Button).node.active = false;
-        this.btnReachMaxWin.node.on(Node.EventType.MOUSE_ENTER, this.onHover, this);
-
-        this.btnReachMaxWin.node.on(Node.EventType.MOUSE_LEAVE, this.onExitHover, this);
-    }
-    onDestroy() {
-        if (this.btnReachMaxWin.node !== null) {
-            this.btnReachMaxWin.node.off(Node.EventType.MOUSE_ENTER, this.onHover, this);
-            this.btnReachMaxWin.node.off(Node.EventType.MOUSE_LEAVE, this.onExitHover, this);
-        }
-    }
-
-    onHover() {
-        this.btnReachMaxWin.node.getComponentInChildren(Button).node.active = true;
-    }
-
-    onExitHover() {
-        this.btnReachMaxWin.node.getComponentInChildren(Button).node.active = false;
-    }
-
-    setData(amount: number, isReachMaxWin: boolean) {
-        this.lblWin.string = amount.toString();
+    setData(amount: string, isReachMaxWin: boolean) {
+        this.lblWin.string = amount;
+        this.lblWin.color = new Color().fromHEX("F1E344");
         this.btnReachMaxWin.node.active = isReachMaxWin;
         if (!isReachMaxWin) {
             this.lblWin.node.setPosition(0, 0);

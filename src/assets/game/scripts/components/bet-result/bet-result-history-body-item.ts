@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, Color, Component, Label, Node } from "cc";
+import { _decorator, Button, Color, Label, Node } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
@@ -7,8 +7,8 @@ import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
-const { BetHistory } = gc;
 const { handle } = Observer;
+const cashOutEventName = "cashOut";
 
 export type BetResultHistoryBodyItemType = {
     betHistoryLog: gc.BetHistory.BetHistoryLog;
@@ -34,23 +34,14 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
     @property(Label)
     lblMultiplier: Label = null;
 
-    @property(Label)
-    lblWin: Label = null;
-
     @property(Node)
     nodeBackground: Node = null;
-
-    @property(Label)
-    lblHour: Label = null;
 
     @property(Button)
     btnRound: Button = null;
 
     @property(Label)
     lblResult: Label = null;
-
-    @property(Label)
-    lblWinLoss: Label = null;
 
     @property(Node)
     betWinCell: Node = null;
@@ -61,48 +52,75 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         const { betHistoryLog, index, betKey } = data;
         this.betHistoryLog = betHistoryLog;
         this.nodeBackground.active = index % 2 > 0;
-        const { time, betwin, roundId } = betHistoryLog;
-        this.lblDate && (this.lblDate.string = DateTimeUtils.getStringDate(time));
 
-        const date = new Date(time);
-        const formattedTime = date.toLocaleTimeString("en-US", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-        });
+        const betTime = this.getBetTime(betHistoryLog, betKey);
+        this.setLabels(betTime, betHistoryLog, betKey);
+    }
 
-        this.lblTime && (this.lblTime.string = formattedTime);
-        this.lblRound.string = roundId.toString();
-        this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(betwin, 2));
+    private getBetTime(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): string {
+        return betHistoryLog.betLogDetails
+            .find(
+                (element) =>
+                    element.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString() &&
+                    element.betKey.toString() === betKey.toString()
+            )
+            ?.time.toString();
+    }
 
-        let amount = betHistoryLog.betLogDetails.find(
+    private setLabels(betTime: string, betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
+        if (this.lblDate) this.lblDate.string = DateTimeUtils.getStringDate(betTime);
+        if (this.lblTime) this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
+        this.lblRound.string = betHistoryLog.roundId.toString();
+
+        const totalAmount = this.getTotalAmount(betHistoryLog, betKey);
+        if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(totalAmount, 2);
+
+        this.bindMultiplier(betHistoryLog, betKey);
+        this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
+        this.bindWin(betHistoryLog, betKey);
+    }
+
+    private getTotalAmount(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): number {
+        const amount = betHistoryLog.betLogDetails.find(
             (element) =>
                 element.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString() &&
                 element.betKey.toString() === betKey.toString()
         );
-
-        let totalAmount = amount === undefined ? 0 : Number(amount.amount);
-        this.lblTotalStake && (this.lblTotalStake.string = FormatUtils.numberWithCommas(totalAmount, 2));
-
-        if (this.lblWinLoss) {
-            const winloss = betwin - totalAmount;
-            this.lblWinLoss.string = FormatUtils.numberWithCommas(winloss, 2);
-            this.lblWinLoss.color = winloss >= 0 ? new Color().fromHEX("F1E344") : new Color().fromHEX("EB3D26");
-        }
-
-        let multiplier = betHistoryLog.betLogDetails.find(
-            (element) => element.action.toString() === "cashOut" && element.betKey.toString() === betKey.toString()
-        );
-
-        this.lblMultiplier.string = multiplier === undefined ? "-" : `${FormatUtils.numberWithCommas(+multiplier.multiplier, 2, false)}x`;
-        this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
-        this.betWinCell.getComponent(BetWinCell)?.setData(betwin, Boolean(multiplier?.isReachedMaxWin));
+        return amount === undefined ? 0 : Number(amount.amount);
     }
 
-    @handle(BetHistory.BetDetailsHandlers)
-    openTicketDetail() {
-        this.playSoundClick();
-        return this.betHistoryLog;
+    private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
+        const multiplierRow = betHistoryLog.betLogDetails.find(
+            (element) => element.action.toString() === cashOutEventName && element.betKey.toString() === betKey.toString()
+        );
+
+        let multiplierText = "-";
+        if (multiplierRow !== undefined) {
+            const multiplier = Number(multiplierRow.multiplier);
+            this.lblMultiplier.color = this.getMultiplierColor(multiplier);
+            multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
+        }
+
+        this.lblMultiplier.string = multiplierText;
+    }
+
+    private getMultiplierColor(multiplier: number): Color {
+        if (multiplier <= 2) return new Color().fromHEX("01d8ff");
+        if (multiplier <= 5) return new Color().fromHEX("7b32f3");
+        if (multiplier < 10) return new Color().fromHEX("ff9601");
+        return new Color().fromHEX("ff010d");
+    }
+
+    private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
+        const betCashOut = betHistoryLog.betLogDetails.find(
+            (element) => element.action.toString() === cashOutEventName && element.betKey.toString() === betKey.toString()
+        );
+
+        const isReachMaxWin = Boolean(betCashOut?.reachMaxWin);
+        const betwin = betCashOut === undefined ? 0 : Number(betCashOut.winAmount);
+        const win = FormatUtils.numberWithCommas(betwin, 2);
+
+        this.betWinCell.getComponent(BetWinCell)?.setData(win, isReachMaxWin);
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
@@ -116,18 +134,22 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         return this.betHistoryLog.roundId;
     }
 
-    @handle(gc.BetDetailsNew.BetDetailsHandler, (handler, payload: any) => handler.openBetDetails(payload))
-    openBetDetails() {
-        this.playSoundClick();
-        return {
-            roundId: this.betHistoryLog.roundId,
-            mode: "dark",
-            language: gc.Translator.getLanguageId(),
-            timeZoneOffset: -new Date().getTimezoneOffset() / 60,
-        };
+    onLoad() {
+        this.setupEventListeners();
+        super.onLoad();
     }
-}
 
-export class BaseResultBodyItem extends Component {
-    setData(result: gc.BetHistory.DynamicObject<object>, settlementResult: gc.BetHistory.DynamicObject<boolean>) {}
+    private setupEventListeners() {
+        const betWinCellComponent = this.betWinCell.getComponent(BetWinCell);
+        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_ENTER, this.triggerHoverMaxReachCallback, this);
+        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_LEAVE, this.triggerExitHoverMaxReachCallback, this);
+    }
+
+    triggerHoverMaxReachCallback() {
+        this.node.emit("hover-trigger-parent", this.node);
+    }
+
+    triggerExitHoverMaxReachCallback() {
+        this.node.emit("exit-hover-trigger-parent", this.node);
+    }
 }
