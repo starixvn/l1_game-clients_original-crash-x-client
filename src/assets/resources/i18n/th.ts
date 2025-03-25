@@ -239,26 +239,36 @@ export const languages = {
         "you_reach_max_win": "คุณถึงยอดชนะสูงสุด"
     },
     "RocketX": {
+        "all_bets": "การเดิมพันทั้งหมด",
         "auto_cashout": "ถอนเงินอัตโนมัติ",
         "auto_play": "เล่นอัตโนมัติ",
         "bet_accepted": "ยอมรับการเดิมพันแล้ว",
+        "biggest_win": "การชนะครั้งใหญ่",
         "cancel_bet": "(ยกเลิกเดิมพัน)",
         "cashed": "เงินสด",
         "cashout": "ถอนเงิน",
         "crashed": "ล้มเหลว",
         "date": "เวลา",
+        "game_icon_name": "ร็อคเก็ต เอ็กซ์",
+        "game_name": "ร็อคเก็ต เอ็กซ์",
         "glossary_bet": "เดิมพัน",
         "glossary_crash": "ชน",
         "glossary_crash_point": "แต้มการพังของจรวด",
-        "glossary_message_reach_max_win": "คุณถึงยอดชนะสูงสุด",
+        "glossary_message_reach_max_win": "ไปให้ถึงการชนะสูงสุด",
         "glossary_multiplier": "ตัวคูณ",
+        "glossary_this_game_is_provably_fair": "เกมนี้ยุติธรรม{provablyFairIcon} และสามารถพิสูจน์ได้ ",
+        "highest_crash_points": "จุดที่มีการชนสูงสุด",
         "message_bet_is_accepted": "ยอมรับการเดิมพันแล้ว",
         "message_total_cashout_amounts_reach_max_win": "จ่ายเงินยอดชนะสูงสุด",
+        "month": "เดือน",
+        "my_bets": "การเดิมพันของฉัน",
         "next_round": "(รอบต่อไป)",
         "place_bet": "วางเดิมพัน",
         "player": "ผู้เล่น",
         "start_in": "เริ่มเข้า",
-        "waiting": "กำลังรอ..."
+        "top": "อันดับสูงสุด",
+        "waiting": "กำลังรอ...",
+        "year": "ปี"
     }
 };
 

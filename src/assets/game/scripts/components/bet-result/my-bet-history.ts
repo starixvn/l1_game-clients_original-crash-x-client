@@ -8,7 +8,7 @@ import { BetHistoryRocketXHandlers } from "../../handlers/crash-v2/handlers/bet-
 import BetResultHistoryBodyItem from "./bet-result-history-body-item";
 
 const eventName = "getHistory";
-const pageSize = 11;
+const pageSize = 20;
 const { ccclass, property } = _decorator;
 const { render, handle } = Observer;
 const { BetHistory } = gc;

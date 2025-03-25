@@ -239,26 +239,36 @@ export const languages = {
         "you_reach_max_win": "Anda mencapai Maksimal Menang"
     },
     "RocketX": {
+        "all_bets": "Semua Taruhan",
         "auto_cashout": "Cashout Otomatis",
         "auto_play": "Auto-Play",
         "bet_accepted": "Taruhan Diterima",
+        "biggest_win": "Kemenangan Terbesar",
         "cancel_bet": "(Batalkan Taruhan)",
         "cashed": "Dicairkan",
         "cashout": "Cashout",
         "crashed": "Jatuh",
         "date": "Waktu",
+        "game_icon_name": "Roket X",
+        "game_name": "Roket X",
         "glossary_bet": "Taruhan",
         "glossary_crash": "Jatuh",
         "glossary_crash_point": "Titik jatuh",
-        "glossary_message_reach_max_win": "Anda mencapai Maksimal Menang",
+        "glossary_message_reach_max_win": "Raih Kemenangan Maksimal",
         "glossary_multiplier": "Pengali",
+        "glossary_this_game_is_provably_fair": "Permainan ini {provablyFairIcon} Provably Fair.",
+        "highest_crash_points": "Titik Tabrakan Tertinggi",
         "message_bet_is_accepted": "Taruhan diterima",
         "message_total_cashout_amounts_reach_max_win": "Total jumlah pembayaran Raih kemenangan maksimal",
+        "month": "Bulan",
+        "my_bets": "Taruhan Saya",
         "next_round": "(Ronde Selanjutnya)",
         "place_bet": "Pasang Taruhan",
         "player": "Pemain",
         "start_in": "Mulai masuk",
-        "waiting": "MENUNGGU..."
+        "top": "Teratas",
+        "waiting": "MENUNGGU...",
+        "year": "Tahun"
     }
 };
 

@@ -250,6 +250,8 @@ export const languages = {
         "cashout": "Rút Tiền",
         "crashed": "ĐÃ NỔ",
         "date": "Thời Gian",
+        "game_icon_name": "Tên Lửa X",
+        "game_name": "Tên Lửa X",
         "glossary_bet": "Cược",
         "glossary_crash": "Nổ",
         "glossary_crash_point": "Điểm Nổ",
