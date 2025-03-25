@@ -23,6 +23,16 @@ export class TopResultClient {
         let response = await this.apiClient.get<TopCrashItem[]>(ApiPath.yearlyTopCrash + settings.id);
         return response;
     }
+
+    async getTopWinMonthly() {
+        let response = await this.apiClient.get<TopWinItem[]>(ApiPath.monthlyTopWin + settings.id);
+        return response;
+    }
+
+    async getTopWinYearly() {
+        let response = await this.apiClient.get<TopWinItem[]>(ApiPath.yearlyTopWin + settings.id);
+        return response;
+    }
 }
 
 export interface ProvablyFair {
@@ -42,4 +52,15 @@ export interface TopCrashItem {
     result: number;
     time: string;
     provablyFair: ProvablyFair;
+}
+
+export interface TopWinItem {
+    cashoutPoint: number;
+    crashPoint: number;
+    uid: string;
+    name: string;
+    operatorId: string;
+    currency: string;
+    time: string;
+    roundId: number;
 }

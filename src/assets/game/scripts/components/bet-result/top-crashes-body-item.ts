@@ -7,7 +7,6 @@ import { ObserverComponent } from "db://shared-components/shared/common-componen
 
 const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
-const { BetHistory } = gc;
 const { handle } = Observer;
 
 @ccclass

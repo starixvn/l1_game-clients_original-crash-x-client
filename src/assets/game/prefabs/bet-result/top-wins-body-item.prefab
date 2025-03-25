@@ -1532,7 +1532,7 @@
       "__id__": 1
     },
     "component": "",
-    "_componentId": "a3ee4TKuYFNpIpKNwbGkiKG",
+    "_componentId": "b5b56rKFLFP8qFctygFDSG2",
     "handler": "onClickVerify",
     "customEventData": ""
   },
@@ -1686,7 +1686,6 @@
     "lblResult": {
       "__id__": 52
     },
-    "lblWinLoss": null,
     "_id": ""
   },
   {
