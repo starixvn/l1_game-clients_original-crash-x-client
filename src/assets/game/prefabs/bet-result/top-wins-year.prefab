@@ -436,7 +436,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -120.171,
+      "x": -130,
       "y": 0,
       "z": 0
     },
@@ -688,7 +688,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 52.067999999999984,
+      "x": 0,
       "y": 0,
       "z": 0
     },
@@ -824,7 +824,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 1,
+      "x": 0.5,
       "y": 0.5
     },
     "_id": ""
@@ -940,7 +940,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 89.971,
+      "x": 126,
       "y": 0,
       "z": 0
     },
@@ -1076,7 +1076,7 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0,
+      "x": 0.5,
       "y": 0.5
     },
     "_id": ""
@@ -1189,7 +1189,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 229.96500000000003,
+      "x": 230,
       "y": 0,
       "z": 0
     },
@@ -1619,7 +1619,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -275,
+      "y": -232.5,
       "z": 0
     },
     "_lrot": {
@@ -1856,7 +1856,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 12,
-      "height": 460
+      "height": 375
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2031,7 +2031,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 200,
+      "y": 185,
       "z": 0
     },
     "_lrot": {
@@ -2129,7 +2129,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 680,
-      "height": 460
+      "height": 375
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2238,7 +2238,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 680,
-      "height": 460
+      "height": 375
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2292,7 +2292,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 710,
-      "height": 460
+      "height": 375
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2400,7 +2400,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 710,
-      "height": 505
+      "height": 420
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

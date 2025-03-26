@@ -1,8 +1,9 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, Color, Label, Node } from "cc";
+import { _decorator, Button, Label, Node } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { CrashUtils } from "../../crash-utils";
 import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
@@ -97,18 +98,11 @@ export default class BetResultHistoryBodyItem extends ObserverComponent {
         let multiplierText = "-";
         if (multiplierRow !== undefined) {
             const multiplier = Number(multiplierRow.multiplier);
-            this.lblMultiplier.color = this.getMultiplierColor(multiplier);
+            this.lblMultiplier.color = CrashUtils.getMultiplierColor(multiplier);
             multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
         }
 
         this.lblMultiplier.string = multiplierText;
-    }
-
-    private getMultiplierColor(multiplier: number): Color {
-        if (multiplier <= 2) return new Color().fromHEX("01d8ff");
-        if (multiplier <= 5) return new Color().fromHEX("7b32f3");
-        if (multiplier < 10) return new Color().fromHEX("ff9601");
-        return new Color().fromHEX("ff010d");
     }
 
     private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {

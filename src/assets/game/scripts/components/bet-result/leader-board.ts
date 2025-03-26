@@ -4,6 +4,7 @@ import Observer from "observer";
 
 import { LeaderBoardCashOut } from "db://shared-components/game-crash/leader-board/scripts/components/leader-board-cash-out";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { CrashUtils } from "../../crash-utils";
 import { LeaderBoardMainPlayer } from "./leader-board-main-player";
 
 const { ccclass, property } = _decorator;
@@ -24,10 +25,11 @@ export class LeaderBoard extends ObserverComponent {
     @property(Node)
     nodeLeaderBoardMask: Node = null;
 
-    private readonly itemHeight = 45;
+    private readonly itemHeight = 50;
     private otherPlayerTween: Tween<Widget> = null;
 
     onLoad() {
+        //this.itemHeight =
         this.resetOtherPlayers();
         this.setMainPlayerDisplay(false);
         super.onLoad();
@@ -51,6 +53,7 @@ export class LeaderBoard extends ObserverComponent {
             }
 
             const comp = node.getComponent(LeaderBoardCashOut);
+            comp.lblMultiplier.color = CrashUtils.getMultiplierColor(player.multiplier);
             comp?.setData(player);
         });
         this.updateContentHeight();

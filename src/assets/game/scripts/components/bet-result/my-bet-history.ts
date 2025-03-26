@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, CCInteger, instantiate, Node, Prefab, ScrollView, UITransform, Vec3 } from "cc";
+import { _decorator, Button, instantiate, Node, Prefab, ScrollView, UITransform, Vec3 } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
@@ -24,17 +24,8 @@ export class MyBetHistory extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    @property({ type: CCInteger })
-    loadThreshold: number = 50;
-
-    @property({ type: CCInteger })
-    totalItems: number = 10;
-
-    @property({ type: CCInteger })
-    startYPosition: number = -50;
-
-    @property({ type: CCInteger })
-    itemHeight: number = 80;
+    private startYPosition: number = -40;
+    private itemHeight: number = 80;
 
     private currentPageIndex: number = 1;
     private currentIndex: number = 0;
@@ -111,6 +102,7 @@ export class MyBetHistory extends ObserverComponent {
 
     onLoad() {
         this.itemHeight = this.itemPrefab.data.height;
+        this.startYPosition = -this.itemHeight / 2;
         super.onLoad();
         this.fetchData();
         this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);

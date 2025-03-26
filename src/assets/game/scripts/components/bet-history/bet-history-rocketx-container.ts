@@ -20,7 +20,6 @@ export default class BetHistoryRocketXContainer extends NodeContainer {
     }
 
     showDialog() {
-        console.log("showDialog");
         if (!this.wrapperNode?.active) {
             this.wrapperNode = this.createNode();
         }
@@ -29,6 +28,5 @@ export default class BetHistoryRocketXContainer extends NodeContainer {
     @render(gc.Dialogs.DialogsStore, (store) => store.forceClosed, { fireImmediately: false })
     popupVisibility(forceClosed: any) {
         forceClosed && this.wrapperNode?.destroy();
-        console.log("closeDialog ");
     }
 }

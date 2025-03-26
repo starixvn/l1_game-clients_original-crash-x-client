@@ -3,6 +3,7 @@ import { _decorator, Label, Node } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { CrashUtils } from "../../crash-utils";
 import { TopWinItem } from "../api-client/top-result-client";
 
 const { property, ccclass } = _decorator;
@@ -41,11 +42,13 @@ export default class TopWinsBodyItem extends ObserverComponent {
     setData(index: number, item: TopWinItem) {
         this.nodeBackground.active = index % 2 > 0;
 
-        this.lblPlayer && (this.lblPlayer.string = this.encryptedName(item.name));
+        this.lblPlayer && (this.lblPlayer.string = CrashUtils.encryptedName(item.name));
         this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(item.cashoutPoint, 2));
         this.lblTotalStake && (this.lblTotalStake.string = FormatUtils.numberWithCommas(item.cashoutPoint, 2));
 
         this.lblMultiplier.string = `${FormatUtils.numberWithCommas(+item.cashoutPoint, 2, false)}x`;
+        this.lblMultiplier.color = CrashUtils.getMultiplierColor(item.cashoutPoint);
+
         this.lblResult.string = `${FormatUtils.numberWithCommas(+item.crashPoint, 2, false)}x`;
         this.roundId = item.roundId;
     }
@@ -59,9 +62,5 @@ export default class TopWinsBodyItem extends ObserverComponent {
     onClickVerify() {
         this.playSoundClick();
         return this.roundId;
-    }
-
-    private encryptedName(name: string): string {
-        return `${name.substring(0, 1)}***${name.substring(name.length - 3, name.length)}`;
     }
 }
