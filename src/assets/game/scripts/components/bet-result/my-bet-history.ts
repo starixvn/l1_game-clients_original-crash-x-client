@@ -24,8 +24,8 @@ export class MyBetHistory extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    private startYPosition: number = -40;
-    private itemHeight: number = 80;
+    private startYPosition: number;
+    private itemHeight: number;
 
     private currentPageIndex: number = 1;
     private currentIndex: number = 0;

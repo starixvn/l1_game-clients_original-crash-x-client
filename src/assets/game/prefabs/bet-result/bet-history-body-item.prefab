@@ -43,7 +43,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -50,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -206,7 +206,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 680,
+      "width": 710,
       "height": 80
     },
     "_anchorPoint": {
@@ -2485,7 +2485,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 680,
+      "width": 710,
       "height": 80
     },
     "_anchorPoint": {
@@ -2545,7 +2545,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 680,
+      "width": 710,
       "height": 80
     },
     "_anchorPoint": {

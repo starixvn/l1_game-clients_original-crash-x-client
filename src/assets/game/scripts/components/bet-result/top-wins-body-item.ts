@@ -43,8 +43,8 @@ export default class TopWinsBodyItem extends ObserverComponent {
         this.nodeBackground.active = index % 2 > 0;
 
         this.lblPlayer && (this.lblPlayer.string = CrashUtils.encryptedName(item.name));
-        this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(item.cashoutPoint, 2));
-        this.lblTotalStake && (this.lblTotalStake.string = FormatUtils.numberWithCommas(item.cashoutPoint, 2));
+        this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(item.winAmount, 2));
+        this.lblTotalStake && (this.lblTotalStake.string = FormatUtils.numberWithCommas(item.betAmount, 2));
 
         this.lblMultiplier.string = `${FormatUtils.numberWithCommas(+item.cashoutPoint, 2, false)}x`;
         this.lblMultiplier.color = CrashUtils.getMultiplierColor(item.cashoutPoint);

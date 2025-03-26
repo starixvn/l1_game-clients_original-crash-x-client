@@ -29,7 +29,7 @@ export class TopWinsBody extends ObserverComponent {
             this.content.addChild(item);
 
             let currentPosition = item.getPosition();
-            let y = this.itemHeight / 2 - this.currentIndex * this.itemHeight;
+            let y = -this.itemHeight / 2 - this.currentIndex * this.itemHeight;
             item.setPosition(currentPosition.x, y);
             this.currentIndex++;
         });

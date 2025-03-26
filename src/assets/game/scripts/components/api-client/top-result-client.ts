@@ -63,4 +63,6 @@ export interface TopWinItem {
     currency: string;
     time: string;
     roundId: number;
+    betAmount: number;
+    winAmount: number;
 }
