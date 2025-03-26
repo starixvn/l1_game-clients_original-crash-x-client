@@ -2,22 +2,22 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "3d79afed-8a7c-435b-9f30-1142b9706fb6",
+  "uuid": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca",
   "files": [
     ".json",
-    ".png"
+    ".webp"
   ],
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "3d79afed-8a7c-435b-9f30-1142b9706fb6@6c48a",
+      "uuid": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca@6c48a",
       "displayName": "game-atlas",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "3d79afed-8a7c-435b-9f30-1142b9706fb6",
+        "imageUuidOrDatabaseUri": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,7 +34,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "3d79afed-8a7c-435b-9f30-1142b9706fb6@f9941",
+      "uuid": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca@f9941",
       "displayName": "game-atlas",
       "id": "f9941",
       "name": "spriteFrame",
@@ -114,7 +114,7 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "3d79afed-8a7c-435b-9f30-1142b9706fb6@6c48a",
+        "imageUuidOrDatabaseUri": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca@6c48a",
         "atlasUuid": ""
       },
       "ver": "1.0.12",
@@ -129,6 +129,6 @@
     "type": "sprite-frame",
     "hasAlpha": true,
     "fixAlphaTransparencyArtifacts": false,
-    "redirect": "3d79afed-8a7c-435b-9f30-1142b9706fb6@6c48a"
+    "redirect": "61a1f6a5-a0b1-4c2c-aaa9-3f7737d05eca@6c48a"
   }
 }

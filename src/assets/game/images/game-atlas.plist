@@ -569,13 +569,13 @@
             <key>premultiplyAlpha</key>
             <false/>
             <key>realTextureFileName</key>
-            <string>game-atlas.png</string>
+            <string>game-atlas.webp</string>
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0589dd903ceba6ce5c206defc64e74f4:8d69630b04ec9a19154561fe24d0abb9:e636e8631f1c301f4702d08ab25a8b59$</string>
+            <string>$TexturePacker:SmartUpdate:1a97c1215be234e66623349694aac24b:8d69630b04ec9a19154561fe24d0abb9:02a452150431e4fb3dc3c23c8a3eb8eb$</string>
             <key>textureFileName</key>
-            <string>game-atlas.png</string>
+            <string>game-atlas.webp</string>
         </dict>
     </dict>
 </plist>
