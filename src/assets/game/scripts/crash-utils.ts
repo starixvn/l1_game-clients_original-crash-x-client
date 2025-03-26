@@ -1,17 +1,11 @@
-import { _decorator, Color, Component, Sprite, SpriteAtlas } from "cc";
+import { _decorator, Color, Component } from "cc";
 const { ccclass, property } = _decorator;
 
 export class CrashUtils extends Component {
-    static SetSpriteFrameBg(multiplier: number, nodeBg: Sprite, mainAtlas: SpriteAtlas) {
-        let sufix = "";
-        if (multiplier <= 5) {
-            sufix = "blue";
-        } else if (multiplier <= 10) {
-            sufix = "yelow";
-        } else {
-            sufix = "red";
-        }
-        nodeBg.spriteFrame = mainAtlas.getSpriteFrame(`statistics-bar-${sufix}`);
+    static getMultiplierIndex(multiplier: number): number {
+        const thresholds = [2, 5, 10];
+        const index = thresholds.findIndex((threshold) => multiplier <= threshold);
+        return index === -1 ? thresholds.length : index;
     }
 
     static getMultiplierColor(multiplier: number): Color {
