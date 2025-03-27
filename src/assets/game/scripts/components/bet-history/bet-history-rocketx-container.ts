@@ -8,7 +8,7 @@ import Observer from "observer";
 const { ccclass, property } = _decorator;
 const { render, handle } = Observer;
 
-@ccclass("BetHistoryContainer")
+@ccclass("BetHistoryRocketXContainer")
 export default class BetHistoryRocketXContainer extends NodeContainer {
     wrapperNode: Node = null;
 

@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
+import { _decorator, Component, instantiate, Node, Prefab, RichText, Sprite, Toggle, ToggleContainer } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("TabsControl")
@@ -14,6 +14,9 @@ export class TabsControl extends Component {
 
     @property({ type: [Prefab] })
     prefabContents: Prefab[] = [];
+
+    @property({ type: RichText })
+    provablyFair: RichText;
 
     private prefabInstances: Node[] = [];
     private currentTabIndex: number = -1;
@@ -55,7 +58,8 @@ export class TabsControl extends Component {
 
     hideTab(index: number) {
         if (this.prefabInstances[index]) {
-            this.prefabInstances[index].destroy();
+            this.tabContents[index].removeAllChildren();
+            // this.prefabInstances[index].destroy();
             this.prefabInstances[index] = null;
         }
         this.extendHideTab(index);

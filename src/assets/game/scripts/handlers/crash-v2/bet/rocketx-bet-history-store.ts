@@ -31,6 +31,14 @@ export type BetHistoryRocketXModel = {
     fractionalOddsFormat?: boolean;
 };
 
+export type MyBetModel = {
+    page: number;
+    pageSize: number;
+    total: number;
+    betLogs: Array<BetHistoryLog>;
+    fractionalOddsFormat?: boolean;
+};
+
 @injectable()
 export class BetHistoryRocketXStore {
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
@@ -44,5 +52,21 @@ export class BetHistoryRocketXStore {
     setData(betHistoryRocketXModel: BetHistoryRocketXModel) {
         betHistoryRocketXModel.fractionalOddsFormat = this.mainPlayerStore?.fractionalOddsFormat;
         this.betHistoryRocketXModel = betHistoryRocketXModel;
+    }
+}
+
+@injectable()
+export class MyBetStore {
+    @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
+
+    constructor() {
+        mobx.makeAutoObservable(this);
+    }
+
+    myBetModel: MyBetModel = null;
+
+    setData(myBetModel: MyBetModel) {
+        myBetModel.fractionalOddsFormat = this.mainPlayerStore?.fractionalOddsFormat;
+        this.myBetModel = myBetModel;
     }
 }
