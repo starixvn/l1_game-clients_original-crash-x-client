@@ -4242,7 +4242,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "_alignFlags": 40,
+    "_alignFlags": 41,
     "_target": null,
     "_left": 0,
     "_right": 0,
@@ -4258,7 +4258,7 @@
     "_isAbsVerticalCenter": true,
     "_originalWidth": 100,
     "_originalHeight": 64,
-    "_alignMode": 2,
+    "_alignMode": 0,
     "_lockFlags": 0,
     "_id": "40WnnPIOFCrLrb8nNqPOrg"
   },
