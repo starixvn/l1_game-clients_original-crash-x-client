@@ -124,7 +124,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bg-history-multiplier-purple.png</key>
+            <key>bg-history-multiplier-green.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -139,7 +139,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bg-history-multiplier-red.png</key>
+            <key>bg-history-multiplier-orange.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -154,7 +154,7 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
-            <key>bg-history-multiplier-yellow.png</key>
+            <key>bg-history-multiplier-purple.png</key>
             <dict>
                 <key>aliases</key>
                 <array/>
@@ -166,6 +166,21 @@
                 <string>{44,44}</string>
                 <key>textureRect</key>
                 <string>{{883,299},{44,44}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
+            <key>bg-history-multiplier-red.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{44,44}</string>
+                <key>spriteSourceSize</key>
+                <string>{44,44}</string>
+                <key>textureRect</key>
+                <string>{{961,325},{44,44}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -420,7 +435,7 @@
                 <key>spriteSourceSize</key>
                 <string>{42,42}</string>
                 <key>textureRect</key>
-                <string>{{961,325},{42,42}}</string>
+                <string>{{773,286},{42,42}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -525,7 +540,7 @@
                 <key>spriteSourceSize</key>
                 <string>{25,25}</string>
                 <key>textureRect</key>
-                <string>{{773,286},{25,25}}</string>
+                <string>{{715,312},{25,25}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -540,7 +555,7 @@
                 <key>spriteSourceSize</key>
                 <string>{25,25}</string>
                 <key>textureRect</key>
-                <string>{{800,286},{25,25}}</string>
+                <string>{{742,312},{25,25}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -573,7 +588,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1a97c1215be234e66623349694aac24b:8d69630b04ec9a19154561fe24d0abb9:02a452150431e4fb3dc3c23c8a3eb8eb$</string>
+            <string>$TexturePacker:SmartUpdate:a5fd28c0b96e7da44738baf52228d08c:57e24f11232d744d35795f6853c3f1af:02a452150431e4fb3dc3c23c8a3eb8eb$</string>
             <key>textureFileName</key>
             <string>game-atlas.webp</string>
         </dict>
