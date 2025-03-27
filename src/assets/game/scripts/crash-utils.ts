@@ -2,23 +2,36 @@ import { _decorator, Color, Component } from "cc";
 const { ccclass, property } = _decorator;
 
 export class CrashUtils extends Component {
+    static readonly config = {
+        thresholds: [2, 5, 10],
+        colors: ["01d8ff", "ff9601", "ff010d", "D608FB"],
+        colorNames: ["blue", "orange", "red", "purple"],
+    };
+
     static getMultiplierIndex(multiplier: number): number {
-        const thresholds = [2, 5, 10];
-        const index = thresholds.findIndex((threshold) => multiplier <= threshold);
-        return index === -1 ? thresholds.length : index;
+        const index = CrashUtils.config.thresholds.findIndex((threshold) => multiplier <= threshold);
+        return index === -1 ? CrashUtils.config.thresholds.length : index;
     }
 
     static getMultiplierColor(multiplier: number): Color {
-        if (multiplier < 1) return new Color().fromHEX("E6E5DF");
-        if (multiplier <= 2) return new Color().fromHEX("01d8ff");
-        if (multiplier <= 5) return new Color().fromHEX("7b32f3");
-        if (multiplier < 10) return new Color().fromHEX("ff9601");
-        return new Color().fromHEX("ff010d");
+        const index = CrashUtils.getMultiplierIndex(multiplier);
+        return new Color().fromHEX(CrashUtils.config.colors[index]);
+        // 7b32f3 old purple
+        // E6E5DF near white
+    }
+
+    static getMultiplierColorByIndex(index: number): Color {
+        return new Color().fromHEX(CrashUtils.config.colors[index]);
+    }
+
+    static getMultiplierColorName(index: number): string {
+        return CrashUtils.config.colorNames[index];
     }
 
     static getFontMultiplier(multiplierIndex: number): string {
-        const fonts = ["blue", "orange", "red", "purple"];
-        return multiplierIndex < fonts.length ? `${fonts[multiplierIndex]}-number` : fonts[fonts.length - 1];
+        return multiplierIndex < CrashUtils.config.colorNames.length
+            ? `${CrashUtils.config.colorNames[multiplierIndex]}-number`
+            : CrashUtils.config.colorNames[CrashUtils.config.colorNames.length - 1];
     }
 
     static encryptedName(name: string): string {
