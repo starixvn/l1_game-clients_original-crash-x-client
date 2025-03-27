@@ -53,7 +53,8 @@ export class LeaderBoard extends ObserverComponent {
             }
 
             const comp = node.getComponent(LeaderBoardCashOut);
-            comp.lblMultiplier.color = CrashUtils.getMultiplierColor(player.multiplier);
+            comp.lblMultiplier.color =
+                player.multiplier < 1 ? CrashUtils.getWhiteColor() : CrashUtils.getMultiplierColor(player.multiplier);
             comp?.setData(player);
         });
         this.updateContentHeight();

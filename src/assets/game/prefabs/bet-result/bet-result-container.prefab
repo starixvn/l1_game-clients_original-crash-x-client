@@ -2643,7 +2643,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 345.89976501464844,
+      "width": 348.1097717285156,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -2670,7 +2670,7 @@
       "__id__": 109
     },
     "_lineHeight": 30,
-    "_string": "This game is <img src='icon-pf' width='30' height='30' vertical-align='middle'/> Provably Fair.",
+    "_string": "This game is <img src='icon-pf' width='30' height='30' vertical-align='middle'/> <strong>Provably Fair</strong>.",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_fontSize": 26,
@@ -2750,7 +2750,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 355.89976501464844,
+      "width": 358.1097717285156,
       "height": 70
     },
     "_anchorPoint": {

@@ -257,7 +257,7 @@ export const languages = {
         "glossary_crash_point": "Crash Point",
         "glossary_message_reach_max_win": "Reach the Max Win",
         "glossary_multiplier": "Multiplier",
-        "glossary_this_game_is_provably_fair": "This game is {provablyFairIcon} Provably Fair.",
+        "glossary_this_game_is_provably_fair": "This game is {provablyFairIcon} <strong>Provably Fair</strong>.",
         "highest_crash_points": "Highest Crash Points",
         "message_bet_is_accepted": "Bet is accepted",
         "message_total_cashout_amounts_reach_max_win": "Total cashout amounts reach the max win",

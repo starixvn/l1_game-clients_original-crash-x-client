@@ -256,7 +256,7 @@ export const languages = {
         "glossary_crash_point": "崩潰點",
         "glossary_message_reach_max_win": "達到最大勝利",
         "glossary_multiplier": "乘數",
-        "glossary_this_game_is_provably_fair": "該遊戲是{provablyFairIcon}可證明公平的。",
+        "glossary_this_game_is_provably_fair": "該遊戲是{provablyFairIcon}<strong>可證明公平的</strong>。",
         "highest_crash_points": "最高崩潰點數",
         "message_bet_is_accepted": "投注接受",
         "message_total_cashout_amounts_reach_max_win": "提現總額 達到最大勝利",

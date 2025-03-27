@@ -56,7 +56,7 @@ export class LeaderBoardMainPlayer extends Component {
                 this.setFirstRowDisplay(true);
             }
 
-            this.firstRow.lblMultiplier.color = CrashUtils.getMultiplierColor(0);
+            this.firstRow.lblMultiplier.color = CrashUtils.getWhiteColor();
         }
     }
 
