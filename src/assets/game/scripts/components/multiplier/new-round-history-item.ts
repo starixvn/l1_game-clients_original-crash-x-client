@@ -13,6 +13,7 @@ export default class NewRoundHistoryItem extends RoundHistoryItem {
     @property({
         type: Color,
         visible: false,
+        override: true,
     })
     labelColors: Color[] = [];
 
