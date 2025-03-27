@@ -1,17 +1,17 @@
 {
 "skeleton": {
-	"hash": "Xj/WK7aNcwknG3M/XkUdgFm98CM",
+	"hash": "peSwL6qzrBd31alNtIPnnfX/GYU",
 	"spine": "3.8.99",
 	"x": -120,
 	"y": -264.54,
 	"width": 240,
-	"height": 335.92,
+	"height": 335.54,
 	"images": "",
 	"audio": "D:/MYWORKFOLDER/design/telegram/rocket-anim"
 },
 "bones": [
 	{ "name": "root" },
-	{ "name": "vfx", "parent": "root", "x": -4 },
+	{ "name": "vfx", "parent": "root", "x": -4, "y": -0.38 },
 	{ "name": "rocket", "parent": "vfx", "x": 1.6, "y": 40.7 },
 	{ "name": "bg-duoi", "parent": "vfx", "x": 1.1, "y": -161.76 },
 	{ "name": "smoke", "parent": "vfx", "x": 4, "y": -195.46 },
@@ -20,27 +20,27 @@
 	{ "name": "2", "parent": "vfx", "x": 3.06, "y": -39.47 },
 	{ "name": "3", "parent": "vfx", "x": -7.04, "y": -39.6 },
 	{ "name": "4", "parent": "vfx", "x": 10.98, "y": -39.46 },
-	{ "name": "vfx2", "parent": "root", "x": -4 },
+	{ "name": "vfx2", "parent": "root", "x": -4, "y": -0.38 },
 	{ "name": "bg-duoi2", "parent": "vfx2", "x": -1.64, "y": -161.76 },
 	{ "name": "smoke2", "parent": "vfx2", "x": 4, "y": -195.46 },
 	{ "name": "5", "parent": "vfx2", "x": -10.2, "y": -39.47 },
 	{ "name": "6", "parent": "vfx2", "x": 3.06, "y": -39.47 },
 	{ "name": "7", "parent": "vfx2", "x": -7.04, "y": -39.6 },
 	{ "name": "8", "parent": "vfx2", "x": 10.98, "y": -39.46 },
-	{ "name": "vfx3", "parent": "root", "x": -4 },
+	{ "name": "vfx3", "parent": "root", "x": -4, "y": -0.38 },
 	{ "name": "bg-duoi3", "parent": "vfx3", "x": 1.1, "y": -161.76 },
 	{ "name": "smoke3", "parent": "vfx3", "x": 4, "y": -195.46 },
 	{ "name": "9", "parent": "vfx3", "x": -10.2, "y": -39.47 },
 	{ "name": "10", "parent": "vfx3", "x": 3.06, "y": -39.47 },
-	{ "name": "11", "parent": "vfx3", "x": -7.04, "y": -39.6 },
+	{ "name": "11", "parent": "vfx3", "x": -7.04, "y": -77.9 },
 	{ "name": "12", "parent": "vfx3", "x": 10.98, "y": -39.46 },
-	{ "name": "vfx4", "parent": "root", "x": -4 },
-	{ "name": "bg-duoi4", "parent": "vfx4", "x": -1.64, "y": -161.76 },
+	{ "name": "vfx4", "parent": "root", "x": -4, "y": -1.15 },
+	{ "name": "bg-duoi4", "parent": "vfx4", "x": 1.25, "y": -161.76 },
 	{ "name": "smoke4", "parent": "vfx4", "x": 4, "y": -195.46 },
-	{ "name": "13", "parent": "vfx4", "x": -10.2, "y": -39.47 },
+	{ "name": "13", "parent": "vfx4", "x": -10.2, "y": -68.85 },
 	{ "name": "14", "parent": "vfx4", "x": 3.06, "y": -39.47 },
-	{ "name": "15", "parent": "vfx4", "x": -7.04, "y": -39.6 },
-	{ "name": "16", "parent": "vfx4", "x": 10.98, "y": -39.46 },
+	{ "name": "15", "parent": "vfx4", "x": -7.04, "y": -77.52 },
+	{ "name": "16", "parent": "vfx4", "x": 11.21, "y": -71.29 },
 	{ "name": "rocket2", "parent": "vfx2", "x": 1.6, "y": 40.7 },
 	{ "name": "rocket3", "parent": "vfx3", "x": 1.6, "y": 40.7 },
 	{ "name": "rocket4", "parent": "vfx4", "x": 1.6, "y": 40.7 },
@@ -51,7 +51,7 @@
 	{ "name": "bg-duoi", "bone": "bg-duoi", "attachment": "bg-duoi" },
 	{ "name": "bg-duoi3", "bone": "bg-duoi3", "attachment": "bg-duoi" },
 	{ "name": "bg-duoi2", "bone": "bg-duoi2", "attachment": "bg-duoixanh" },
-	{ "name": "bg-duoi4", "bone": "bg-duoi4", "attachment": "bg-duoixanh" },
+	{ "name": "bg-duoi4", "bone": "bg-duoi4", "attachment": "bg-duoitim" },
 	{ "name": "duoi/1", "bone": "smoke", "attachment": "duoi/9" },
 	{ "name": "duoi/3", "bone": "smoke3", "attachment": "duoi/9" },
 	{ "name": "duoi/2", "bone": "smoke2", "attachment": "duoixanh/9" },
@@ -59,19 +59,19 @@
 	{ "name": "2", "bone": "2", "attachment": "2" },
 	{ "name": "10", "bone": "10", "attachment": "2" },
 	{ "name": "6", "bone": "6", "attachment": "2xanh" },
-	{ "name": "14", "bone": "14", "attachment": "2xanh" },
+	{ "name": "14", "bone": "14", "attachment": "2tim" },
 	{ "name": "4", "bone": "4", "attachment": "4" },
-	{ "name": "12", "bone": "12", "attachment": "4" },
+	{ "name": "12", "bone": "12", "attachment": "4do" },
 	{ "name": "8", "bone": "8", "attachment": "4xanh" },
-	{ "name": "16", "bone": "16", "attachment": "4xanh" },
+	{ "name": "16", "bone": "16", "attachment": "4yim" },
 	{ "name": "3", "bone": "3", "attachment": "3" },
-	{ "name": "11", "bone": "11", "attachment": "3" },
+	{ "name": "11", "bone": "11", "attachment": "3do" },
 	{ "name": "7", "bone": "7", "attachment": "3xanh" },
-	{ "name": "15", "bone": "15", "attachment": "3xanh" },
+	{ "name": "15", "bone": "15", "attachment": "3tim" },
 	{ "name": "1", "bone": "1", "attachment": "1" },
 	{ "name": "9", "bone": "9", "attachment": "1" },
 	{ "name": "5", "bone": "5", "attachment": "1xanh" },
-	{ "name": "13", "bone": "13", "attachment": "1xanh" },
+	{ "name": "13", "bone": "13", "attachment": "1tim" },
 	{ "name": "smoke/smoke00", "bone": "smoke-idle", "attachment": "smoke/smoke20" },
 	{ "name": "rocket", "bone": "rocket", "attachment": "rocket" },
 	{ "name": "rocket2", "bone": "rocket2", "attachment": "rocket" },
@@ -114,22 +114,24 @@
 				"2": { "x": -0.63, "y": -39.29, "width": 11, "height": 93 }
 			},
 			"11": {
-				"3": { "x": -0.25, "y": -37.19, "width": 18, "height": 79 }
+				"3do": { "y": 0.5, "width": 18, "height": 79 }
 			},
 			"12": {
-				"4": { "x": 0.32, "y": -30.38, "width": 16, "height": 67 }
+				"4do": { "y": -31.31, "width": 16, "height": 67 }
 			},
 			"13": {
-				"1xanh": { "x": -1.69, "y": -29.05, "width": 8, "height": 64 }
+				"1tim": { "width": 8, "height": 64 }
 			},
 			"14": {
-				"2xanh": { "x": -1.16, "y": -39.34, "width": 11, "height": 93 }
+				"2tim": { "x": -0.92, "y": -39.08, "width": 11, "height": 93 }
 			},
 			"15": {
+				"3tim": { "y": 0.5, "width": 18, "height": 79 },
 				"3xanh": { "y": -37.68, "width": 18, "height": 79 }
 			},
 			"16": {
-				"4xanh": { "x": 0.42, "y": -31.04, "width": 16, "height": 67 }
+				"4xanh": { "x": 0.42, "y": -31.04, "width": 16, "height": 67 },
+				"4yim": { "y": 0.5, "width": 16, "height": 67 }
 			},
 			"background-planet": {
 				"background-planet": {
@@ -150,7 +152,7 @@
 				"bg-duoi": { "width": 34, "height": 206 }
 			},
 			"bg-duoi4": {
-				"bg-duoixanh": { "x": 2.73, "width": 36, "height": 206 }
+				"bg-duoitim": { "width": 36, "height": 206 }
 			},
 			"duoi/1": {
 				"duoi/1": { "y": 0.5, "width": 100, "height": 343 },
@@ -365,6 +367,26 @@
 				]
 			},
 			"12": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"13": {
+				"color": [
+					{ "color": "ffffff04" }
+				]
+			},
+			"14": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"15": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"16": {
 				"color": [
 					{ "color": "ffffff00" }
 				]
@@ -2336,6 +2358,26 @@
 					{ "color": "ffffff00" }
 				]
 			},
+			"9": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"10": {
+				"color": [
+					{ "color": "ffffff04" }
+				]
+			},
+			"11": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
+			"12": {
+				"color": [
+					{ "color": "ffffff00" }
+				]
+			},
 			"13": {
 				"color": [
 					{ "color": "ffffff00" }
@@ -3979,22 +4021,12 @@
 			},
 			"9": {
 				"color": [
-					{ "color": "fb1414ff" }
+					{ "color": "f10000ff" }
 				]
 			},
 			"10": {
 				"color": [
-					{ "color": "fb1414ff" }
-				]
-			},
-			"11": {
-				"color": [
-					{ "color": "ff4d6aff" }
-				]
-			},
-			"12": {
-				"color": [
-					{ "color": "ff4e6aff" }
+					{ "color": "f10000ff" }
 				]
 			},
 			"13": {
@@ -5674,26 +5706,6 @@
 					{ "color": "ff4d6a00" }
 				]
 			},
-			"13": {
-				"color": [
-					{ "color": "e414c4ff" }
-				]
-			},
-			"14": {
-				"color": [
-					{ "color": "e414c4ff" }
-				]
-			},
-			"15": {
-				"color": [
-					{ "color": "ff79c0ff" }
-				]
-			},
-			"16": {
-				"color": [
-					{ "color": "ff79c0ff" }
-				]
-			},
 			"bg-duoi": {
 				"color": [
 					{ "color": "ffffff00" }
@@ -5707,11 +5719,6 @@
 			"bg-duoi3": {
 				"color": [
 					{ "color": "f71f1f00" }
-				]
-			},
-			"bg-duoi4": {
-				"color": [
-					{ "color": "ff29d8ff" }
 				]
 			},
 			"duoi/1": {
@@ -6137,7 +6144,7 @@
 			},
 			"duoi/4": {
 				"color": [
-					{ "color": "ff00efff" }
+					{ "color": "ff2c92ff" }
 				],
 				"attachment": [
 					{ "name": "duoixanh/1" },
