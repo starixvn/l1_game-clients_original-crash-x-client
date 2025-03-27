@@ -16,6 +16,11 @@ export class CrashUtils extends Component {
         return new Color().fromHEX("ff010d");
     }
 
+    static getFontMultiplier(multiplierIndex: number): string {
+        const fonts = ["blue", "orange", "red", "purple"];
+        return multiplierIndex < fonts.length ? `${fonts[multiplierIndex]}-number` : fonts[fonts.length - 1];
+    }
+
     static encryptedName(name: string): string {
         return `${name.substring(0, 1)}***${name.substring(name.length - 3, name.length)}`;
     }
