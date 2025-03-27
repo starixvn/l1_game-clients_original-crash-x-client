@@ -927,7 +927,7 @@
     "lblDigitSecond": {
       "__id__": 29
     },
-    "heightOffset": 30,
+    "heightOffset": 10,
     "animated": true,
     "lockingColor": {
       "__type__": "cc.Color",
