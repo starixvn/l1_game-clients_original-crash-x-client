@@ -193,6 +193,10 @@ export class BetControlStore {
         return this.controls[betKey].setting;
     }
 
+    getBetAccepted(betKey: number) {
+        return this.controls[betKey].betAccepted;
+    }
+
     getBetState(betKey: number) {
         const betAccepted = this.controls[betKey].betAccepted;
         const cashedOut = this.controls[betKey].cashedOut;
