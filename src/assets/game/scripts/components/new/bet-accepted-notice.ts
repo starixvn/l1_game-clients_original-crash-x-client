@@ -27,7 +27,7 @@ export default class BetAcceptedNotice extends ObserverComponent {
     }
 
     renderBetAccepted(betAccepted: any) {
-        if (betAccepted.value > 0) {
+        if (betAccepted?.value > 0) {
             this.showNotice(true);
         }
     }
