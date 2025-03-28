@@ -256,7 +256,7 @@ export const languages = {
         "glossary_crash_point": "Titik jatuh",
         "glossary_message_reach_max_win": "Raih Kemenangan Maksimal",
         "glossary_multiplier": "Pengali",
-        "glossary_this_game_is_provably_fair": "Permainan ini {provablyFairIcon} <strong>Provably Fair</strong>.",
+        "glossary_this_game_is_provably_fair": "Permainan ini {provablyFairIcon} <b>Provably Fair</b>.",
         "highest_crash_points": "Titik Tabrakan Tertinggi",
         "message_bet_is_accepted": "Taruhan diterima",
         "message_total_cashout_amounts_reach_max_win": "Total jumlah pembayaran Raih kemenangan maksimal",

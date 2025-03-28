@@ -257,7 +257,7 @@ export const languages = {
         "glossary_crash_point": "Điểm Nổ",
         "glossary_message_reach_max_win": "Đạt Mức Tiền Thắng Tối Đa",
         "glossary_multiplier": "Hệ Số Nhân",
-        "glossary_this_game_is_provably_fair": "Trò chơi được chứng minh là {probablyFairIcon} <strong>công bằng</strong>.",
+        "glossary_this_game_is_provably_fair": "Trò chơi được chứng minh là {probablyFairIcon} <b>công bằng</b>.",
         "highest_crash_points": "Điểm Nổ Cao",
         "message_bet_is_accepted": "Đã xác nhận cược",
         "message_total_cashout_amounts_reach_max_win": "Tổng tiền đã rút đạt mức tối đa",
