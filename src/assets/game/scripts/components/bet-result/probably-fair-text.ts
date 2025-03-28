@@ -5,7 +5,7 @@ const { ccclass, property, executeInEditMode } = _decorator;
 
 @ccclass("ProbablyFairRichText")
 @executeInEditMode
-export class LocalizedRichText extends Component {
+export class ProbablyFairRichText extends Component {
     richText: RichText | null = null;
 
     @property({ visible: false })
@@ -32,7 +32,7 @@ export class LocalizedRichText extends Component {
     }
 
     fetchRender() {
-        let richText = this.getComponent("cc.RichText") as RichText;
+        let richText = this.getComponent(RichText);
         if (richText) {
             this.richText = richText;
             this.updateRichText();

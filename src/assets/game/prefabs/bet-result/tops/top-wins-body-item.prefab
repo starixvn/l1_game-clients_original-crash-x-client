@@ -385,16 +385,16 @@
     },
     "_string": "V***123",
     "_horizontalAlign": 1,
-    "_verticalAlign": 1,
+    "_verticalAlign": 0,
     "_actualFontSize": 26,
     "_fontSize": 26,
     "_fontFamily": "Arial",
-    "_lineHeight": 26,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -465,8 +465,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 81.45794677734375,
-      "height": 32.76
+      "width": 84.07,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -615,16 +615,16 @@
     },
     "_string": "20",
     "_horizontalAlign": 1,
-    "_verticalAlign": 1,
+    "_verticalAlign": 0,
     "_actualFontSize": 26,
     "_fontSize": 26,
     "_fontFamily": "Arial",
-    "_lineHeight": 26,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -695,8 +695,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30.627975463867188,
-      "height": 32.76
+      "width": 30.33,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -845,16 +845,16 @@
     },
     "_string": "20",
     "_horizontalAlign": 1,
-    "_verticalAlign": 1,
+    "_verticalAlign": 0,
     "_actualFontSize": 26,
     "_fontSize": 26,
     "_fontFamily": "Arial",
-    "_lineHeight": 26,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -925,8 +925,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30.627975463867188,
-      "height": 32.76
+      "width": 30.33,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1075,8 +1075,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16.327987670898438,
-      "height": 32.76
+      "width": 15.6,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1113,16 +1113,16 @@
     },
     "_string": "0",
     "_horizontalAlign": 1,
-    "_verticalAlign": 1,
+    "_verticalAlign": 0,
     "_actualFontSize": 26,
     "_fontSize": 26,
     "_fontFamily": "Arial",
-    "_lineHeight": 26,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -1237,8 +1237,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 16.327987670898438,
-      "height": 32.76
+      "width": 15.6,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1275,16 +1275,16 @@
     },
     "_string": "0",
     "_horizontalAlign": 1,
-    "_verticalAlign": 1,
+    "_verticalAlign": 0,
     "_actualFontSize": 26,
     "_fontSize": 26,
     "_fontFamily": "Arial",
-    "_lineHeight": 26,
+    "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
