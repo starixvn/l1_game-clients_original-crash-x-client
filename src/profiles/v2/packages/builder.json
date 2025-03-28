@@ -34,7 +34,7 @@
           "outputName": "web-mobile",
           "scenes": [
             {
-              "url": "db://assets/game/game.scene",
+              "url": "db://assets/game/direct-game.scene",
               "uuid": "4229fd91-1ded-407f-b130-7b678b820c27",
               "inBundle": false
             },

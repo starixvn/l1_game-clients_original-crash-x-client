@@ -46,6 +46,9 @@ export default class CrashBetControl extends ObserverComponent {
     @property(Node)
     nodeInputValues: Node = null;
 
+    @property(Node)
+    nodePreventInput: Node = null;
+
     betKey = 0;
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
@@ -88,6 +91,9 @@ export default class CrashBetControl extends ObserverComponent {
         this.nodeBetNextRound.active = state === ButtonState.BET_NEXT_ROUND;
         this.nodeWaitingNextRound.active = state === ButtonState.CANCEL_BET;
         this.nodeBetNextRound.parent.active = this.nodeWaitingNextRound.active || this.nodeBetNextRound.active;
+
+        const disableInput = state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
+        this.nodePreventInput.active = disableInput;
     }
 
     renderSetting(setting: IBetControlSettings) {
@@ -152,7 +158,7 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     renderCashOutValue(value: number) {
-        this.labelCashOutValue.string = value.toString();
+        this.labelCashOutValue.string = gc.FormatUtils.numberWithCommas(value, 2);
     }
 
     renderInputValues(values: number[]) {
