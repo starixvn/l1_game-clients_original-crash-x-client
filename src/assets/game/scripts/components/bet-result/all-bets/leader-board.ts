@@ -5,6 +5,8 @@ import Observer from "observer";
 import { LeaderBoardCashOut } from "db://shared-components/game-crash/leader-board/scripts/components/leader-board-cash-out";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { CrashUtils } from "../../../crash-utils";
+import { CrashBetListStore } from "../../../handlers/crash-v2/bet/crash-bet-list-store";
+import { MainPlayerBetData } from "../../../handlers/crash-v2/interfaces";
 import { LeaderBoardMainPlayer } from "./leader-board-main-player";
 
 const { ccclass, property } = _decorator;
@@ -60,19 +62,20 @@ export class LeaderBoard extends ObserverComponent {
         this.updateContentHeight();
     }
 
-    @render(GameCrash.CrashBetList.CrashBetListStore, (store) => store.mainPlayer)
-    private updateMainPlayer(mainPlayer: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer) {
-        if (!mainPlayer) {
+    @render(CrashBetListStore, (store) => store.mainPlayerData)
+    private updateMainPlayer(mainPlayerData: MainPlayerBetData[]) {
+        if (mainPlayerData.length === 0) {
             this.setMainPlayerDisplay(false);
             this.scrollOtherPlayer(0);
             return;
         }
-        const { halfCashOut } = mainPlayer;
-        this.setMainPlayerDisplay(true);
-        this.cpnMainPlayer?.setData(mainPlayer);
 
-        let isSecondRowActive = this.cpnMainPlayer.secondRow.node.active;
-        this.scrollOtherPlayer(isSecondRowActive ? this.itemHeight * 2 : this.itemHeight);
+        this.setMainPlayerDisplay(true);
+        mainPlayerData.forEach((betRecord) => {
+            this.cpnMainPlayer?.setData(betRecord);
+        });
+
+        this.scrollOtherPlayer(mainPlayerData.length * this.itemHeight);
         this.updateContentHeight();
     }
 
@@ -96,7 +99,6 @@ export class LeaderBoard extends ObserverComponent {
 
     private scrollOtherPlayer(top: number, isAnimated = true) {
         const otherPlayerWidget = this.nodeOtherPlayers.getComponent(Widget);
-
         if (isAnimated) {
             this.otherPlayerTween?.stop();
             this.otherPlayerTween = tween(otherPlayerWidget)

@@ -11,6 +11,10 @@ export class CrashCashOutData extends gc.GameCrash.GameCrashServiceMessage.Crash
     betKey: number;
 }
 
+export class MainPlayerBetData extends CrashCashOutData {
+    name: string;
+}
+
 export class CrashOwnBets {
     [betKey: number]: gc.GameCrash.GameCrashServiceMessage.CrashOwnBets;
 }

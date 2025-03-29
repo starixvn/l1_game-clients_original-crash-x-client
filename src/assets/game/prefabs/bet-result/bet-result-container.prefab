@@ -168,7 +168,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -235.83333333333331,
+      "x": -236,
       "y": -5,
       "z": 0
     },
@@ -396,7 +396,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 236.33333333333334,
+      "width": 236,
       "height": 66
     },
     "_anchorPoint": {
@@ -559,7 +559,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0.5000000000000284,
+      "x": 2.842170943040401e-14,
       "y": -5,
       "z": 0
     },
@@ -787,7 +787,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 236.33333333333334,
+      "width": 236,
       "height": 66
     },
     "_anchorPoint": {
@@ -948,7 +948,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 236.83333333333337,
+      "x": 236,
       "y": -5,
       "z": 0
     },
@@ -1176,7 +1176,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 236.33333333333334,
+      "width": 236,
       "height": 66
     },
     "_anchorPoint": {
@@ -1321,7 +1321,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 710,
+      "width": 708,
       "height": 55
     },
     "_anchorPoint": {
@@ -1355,7 +1355,7 @@
       "height": 40
     },
     "_startAxis": 0,
-    "_paddingLeft": 1,
+    "_paddingLeft": 0,
     "_paddingRight": 0,
     "_paddingTop": 0,
     "_paddingBottom": 0,
@@ -2670,7 +2670,7 @@
       "__id__": 109
     },
     "_lineHeight": 30,
-    "_string": "This game is <img src='icon-pf' width='30' height='30' vertical-align='middle'/> <strong>Provably Fair</strong>.",
+    "_string": "This game is <img src='icon-pf' width='30' height='30' vertical-align='middle'/> <b>Provably Fair</b>.",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_fontSize": 26,

@@ -1,8 +1,8 @@
-import gc from "@sg/game-client-base";
 import { _decorator, Component } from "cc";
 
 import { LeaderBoardCashOut } from "db://shared-components/game-crash/leader-board/scripts/components/leader-board-cash-out";
 import { CrashUtils } from "../../../crash-utils";
+import { MainPlayerBetData } from "../../../handlers/crash-v2/interfaces";
 
 const { ccclass, property } = _decorator;
 @ccclass
@@ -18,44 +18,28 @@ export class LeaderBoardMainPlayer extends Component {
         this.setSecondRowDisplay(false);
     }
 
-    setData(data: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer) {
-        const { name, cashOut, halfCashOut, amount } = data;
-        if (cashOut) {
-            if (this.firstRow.node.active) {
-                let firstRowAmount = Number(this.firstRow.lblBetAmount.string);
-                if (firstRowAmount === cashOut.amount) {
-                    this.firstRow.setData({
-                        name,
-                        amount: cashOut.amount,
-                        multiplier: cashOut.multiplier,
-                        win: cashOut.win,
-                    });
-                } else {
-                    this.secondRow.setData({
-                        name,
-                        amount: cashOut.amount,
-                        multiplier: cashOut.multiplier,
-                        win: cashOut.win,
-                    });
-                }
-
-                this.firstRow.lblMultiplier.color = CrashUtils.getMultiplierColor(cashOut.multiplier);
-            }
+    setData(data: MainPlayerBetData) {
+        let currentRow = this.firstRow;
+        if (data.betKey === 1) {
+            currentRow = this.secondRow;
+            this.setSecondRowDisplay(true);
         } else {
-            if (this.firstRow.node.active) {
-                this.secondRow.setData({
-                    name,
-                    amount,
-                });
-                this.setSecondRowDisplay(true);
-            } else {
-                this.firstRow.setData({
-                    name,
-                    amount,
-                });
-                this.setFirstRowDisplay(true);
-            }
+            this.setFirstRowDisplay(true);
+        }
 
+        if (data.cashOutWin !== undefined && data.cashOutWin > 0) {
+            currentRow.setData({
+                name: data.name,
+                amount: data.amount,
+                multiplier: data.multiplier,
+                win: data.cashOutWin,
+            });
+            currentRow.lblMultiplier.color = CrashUtils.getMultiplierColor(data.multiplier);
+        } else {
+            currentRow.setData({
+                name: data.name,
+                amount: data.amount,
+            });
             this.firstRow.lblMultiplier.color = CrashUtils.getWhiteColor();
         }
     }

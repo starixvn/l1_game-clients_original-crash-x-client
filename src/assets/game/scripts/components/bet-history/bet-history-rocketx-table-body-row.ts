@@ -2,6 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, Label, Node } from "cc";
 import Observer from "observer";
 
+import { DynamicObject } from "@sg/game-client-base/dist/game/bet-history";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { CrashUtils } from "../../crash-utils";
 import { BetWinCell } from "./bet-win-cell";
@@ -10,6 +11,7 @@ const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
 const { handle } = Observer;
 const cashOutEventName = "cashOut";
+const refundEventName = "refund";
 
 export type BetResultHistoryBodyItemType = {
     betHistoryLog: gc.BetHistory.BetHistoryLog;
@@ -56,13 +58,7 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     private getBetTime(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): string {
-        return betHistoryLog.betLogDetails
-            .find(
-                (element) =>
-                    element.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString() &&
-                    element.betKey.toString() === betKey.toString()
-            )
-            ?.time.toString();
+        return betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()))?.time.toString();
     }
 
     private setLabels(betTime: string, betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
@@ -70,27 +66,21 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         if (this.lblTime) this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
         this.lblRound.string = betHistoryLog.roundId.toString();
 
-        const totalAmount = this.getTotalAmount(betHistoryLog, betKey);
-        if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(totalAmount, 2);
+        const betAmount = this.getBetAmount(betHistoryLog, betKey);
+        if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
 
         this.bindMultiplier(betHistoryLog, betKey);
         this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
         this.bindWin(betHistoryLog, betKey);
     }
 
-    private getTotalAmount(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): number {
-        const amount = betHistoryLog.betLogDetails.find(
-            (element) =>
-                element.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString() &&
-                element.betKey.toString() === betKey.toString()
-        );
+    private getBetAmount(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): number {
+        const amount = betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()));
         return amount === undefined ? 0 : Number(amount.amount);
     }
 
     private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
-        const multiplierRow = betHistoryLog.betLogDetails.find(
-            (element) => element.action.toString() === cashOutEventName && element.betKey.toString() === betKey.toString()
-        );
+        const multiplierRow = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
 
         let multiplierText = "-";
         if (multiplierRow !== undefined) {
@@ -103,15 +93,23 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
-        const betCashOut = betHistoryLog.betLogDetails.find(
-            (element) => element.action.toString() === cashOutEventName && element.betKey.toString() === betKey.toString()
-        );
+        const betCashOut = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
 
         const isReachMaxWin = Boolean(betCashOut?.reachMaxWin);
         const betwin = betCashOut === undefined ? 0 : Number(betCashOut.winAmount);
         const win = FormatUtils.numberWithCommas(betwin, 2);
 
         this.betWinCell.getComponent(BetWinCell)?.setData(win, isReachMaxWin);
+    }
+
+    isBetRowData(betDetail: DynamicObject<object>, betKey: string): boolean {
+        let actionName = betDetail.action.toString();
+        return actionName === gc.GameClientEmitMessage.Bet.eventName.toString() && betDetail.betKey.toString() === betKey;
+    }
+
+    isSettledData(betDetail: DynamicObject<object>, betKey: string): boolean {
+        let actionName = betDetail.action.toString();
+        return (actionName === cashOutEventName || actionName === refundEventName) && betDetail.betKey.toString() === betKey;
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
