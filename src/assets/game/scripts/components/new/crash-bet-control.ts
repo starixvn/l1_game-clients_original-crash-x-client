@@ -106,7 +106,7 @@ export default class CrashBetControl extends ObserverComponent {
         this.inputBetAmount.string = betValue;
         this.labelBetValue.string = betValue;
         this.inputBetAmount.placeholder = betValue;
-        this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2)}x`;
+        this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
         this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
     }
 
@@ -183,7 +183,6 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(BetControlStore, (handler, data: { betKey: number; index: number }) => handler.selectBetInput(data.betKey, data.index))
     onClickInputValue(index: number) {
-        console.log("onClickInputValue ", index);
         return {
             betKey: this.betKey,
             index: index,
