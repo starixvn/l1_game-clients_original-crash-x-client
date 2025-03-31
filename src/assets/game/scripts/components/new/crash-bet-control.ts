@@ -126,7 +126,7 @@ export default class CrashBetControl extends ObserverComponent {
 
     onEditBegin(editBox: EditBox) {
         const text = editBox.string;
-        const cleanText = text.replace(/,/g, "");
+        const cleanText = text.replace(/,/g, "").replace(/x/g, "");
         const numValue = Number(cleanText);
         editBox.string = numValue.toString();
         editBox.placeholder = numValue.toString();

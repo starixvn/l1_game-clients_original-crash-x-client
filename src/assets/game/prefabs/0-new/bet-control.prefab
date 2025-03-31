@@ -2464,7 +2464,7 @@
     "_tabIndex": 0,
     "_backgroundImage": null,
     "_inputFlag": 5,
-    "_inputMode": 2,
+    "_inputMode": 5,
     "_maxLength": 8,
     "_id": ""
   },
@@ -3858,7 +3858,7 @@
       "__expectedType__": "cc.SpriteFrame"
     },
     "_inputFlag": 5,
-    "_inputMode": 2,
+    "_inputMode": 5,
     "_maxLength": 9,
     "_id": ""
   },
