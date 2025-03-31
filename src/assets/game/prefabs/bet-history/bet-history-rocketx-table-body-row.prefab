@@ -35,10 +35,13 @@
       },
       {
         "__id__": 143
+      },
+      {
+        "__id__": 145
       }
     ],
     "_prefab": {
-      "__id__": 145
+      "__id__": 147
     },
     "_lpos": {
       "__type__": "cc.Vec3",
@@ -884,7 +887,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -140,
+      "x": -150,
       "y": 0,
       "z": 0
     },
@@ -1291,7 +1294,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -45,
+      "x": -55,
       "y": 0,
       "z": 0
     },
@@ -1521,7 +1524,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 96,
+      "x": 86,
       "y": 18.821,
       "z": 0
     },
@@ -1749,7 +1752,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 96,
+      "x": 86,
       "y": -14,
       "z": 0
     },
@@ -2199,7 +2202,7 @@
     ],
     "value": {
       "__type__": "cc.Vec3",
-      "x": 240,
+      "x": 250,
       "y": 0,
       "z": 0
     }
@@ -2447,7 +2450,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 332,
+      "x": 340,
       "y": 15.40300000000002,
       "z": 0
     },
@@ -2728,7 +2731,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 710,
+      "width": 756,
       "height": 80
     },
     "_anchorPoint": {
@@ -2783,6 +2786,42 @@
   {
     "__type__": "cc.CompPrefabInfo",
     "fileId": "0eu6wQXkxNiamaylgaL0FD"
+  },
+  {
+    "__type__": "cc.Widget",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "__prefab": {
+      "__id__": 146
+    },
+    "_alignFlags": 40,
+    "_target": null,
+    "_left": 0,
+    "_right": 0,
+    "_top": 0,
+    "_bottom": 0,
+    "_horizontalCenter": 0,
+    "_verticalCenter": 0,
+    "_isAbsLeft": true,
+    "_isAbsRight": true,
+    "_isAbsTop": true,
+    "_isAbsBottom": true,
+    "_isAbsHorizontalCenter": true,
+    "_isAbsVerticalCenter": true,
+    "_originalWidth": 710,
+    "_originalHeight": 0,
+    "_alignMode": 2,
+    "_lockFlags": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.CompPrefabInfo",
+    "fileId": "8aBWeRFHxBTIArhMJeTZIH"
   },
   {
     "__type__": "cc.PrefabInfo",

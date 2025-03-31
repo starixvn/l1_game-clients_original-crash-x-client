@@ -131,6 +131,8 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         const betWinCellComponent = this.betWinCell.getComponent(BetWinCell);
         betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_ENTER, this.triggerHoverMaxReachCallback, this);
         betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_LEAVE, this.triggerExitHoverMaxReachCallback, this);
+        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.TOUCH_START, this.triggerHoverMaxReachCallback, this);
+        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.TOUCH_END, this.triggerTouchEndMaxReachCallback, this);
     }
 
     triggerHoverMaxReachCallback() {
@@ -139,5 +141,11 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
 
     triggerExitHoverMaxReachCallback() {
         this.node.emit("exit-hover-trigger-parent", this.node);
+    }
+
+    triggerTouchEndMaxReachCallback() {
+        setTimeout(() => {
+            this.node.emit("exit-hover-trigger-parent", this.node);
+        }, 2000);
     }
 }

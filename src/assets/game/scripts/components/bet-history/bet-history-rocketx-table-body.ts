@@ -57,7 +57,7 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
         let node = this.reachMaxWinNode.getComponent(Button);
         let position = childNode.getPosition();
         let positionY = this.content.getPosition().y + position.y - 40;
-        node.node.setPosition(new Vec3(241, positionY, 0));
+        node.node.setPosition(new Vec3(251, positionY, 0));
         node.node.active = true;
     }
 
