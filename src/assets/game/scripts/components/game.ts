@@ -5,16 +5,25 @@ import Observer from "observer";
 import GameCrashComponent from "../../../../extensions/shared-components/assets/game-crash/scripts/components/game-crash-component";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
+import { BetControlStore } from "../handlers/crash-v2/bet/bet-control-store";
 import "./../../../resources/i18n";
 
 startGame(settings.name, containerOptions, siteConfigs);
 
 const { ccclass } = _decorator;
-const { observer } = Observer;
+const { observer, handle } = Observer;
 
 @ccclass
 @observer(settings.name)
 export default class Game extends GameCrashComponent {
     override namespace = settings.name;
     override containerOptions = containerOptions;
+
+    onHideGame() {
+        this.stopAutoBet();
+        super.onHideGame();
+    }
+
+    @handle(BetControlStore, (handler) => handler.stopAutoBet())
+    stopAutoBet() {}
 }
