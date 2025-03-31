@@ -23,6 +23,8 @@ export class MyBetTableBody extends ObserverComponent {
     protected startYPosition: number;
     protected itemHeight: number;
 
+    private tooltipPositionX: number = 251;
+    private tooltipPositionYBuffer: number = 40;
     protected currentPageIndex: number = 1;
     protected currentIndex: number = 0;
     protected isFetchingData: boolean = false;
@@ -47,16 +49,16 @@ export class MyBetTableBody extends ObserverComponent {
             betKey,
             fractionalOddsFormat,
         });
-        bodyItem.on("hover-trigger-parent", this.onHoverMaxReachTrigger, this);
-        bodyItem.on("exit-hover-trigger-parent", this.onExitHoverMaxReachTrigger, this);
+        bodyItem.on(HistoryConstants.hoverTriggerParent, this.onHoverMaxReachTrigger, this);
+        bodyItem.on(HistoryConstants.exitHoverTriggerParent, this.onExitHoverMaxReachTrigger, this);
         return bodyItem;
     }
 
     onHoverMaxReachTrigger(childNode: Node) {
         let node = this.reachMaxWinNode.getComponent(Button);
         let position = childNode.getPosition();
-        let positionY = this.content.getPosition().y + position.y - 40;
-        node.node.setPosition(new Vec3(251, positionY, 0));
+        let positionY = this.content.getPosition().y + position.y - this.tooltipPositionYBuffer;
+        node.node.setPosition(new Vec3(this.tooltipPositionX, positionY, 0));
         node.node.active = true;
     }
 

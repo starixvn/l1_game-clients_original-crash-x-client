@@ -11,7 +11,9 @@ export class HistoryConstants {
     static mybet = "mybet";
     static history = "history";
     static pageSizeHistory = 20;
-    static pageSizeMyHistory = 11;
+    static pageSizeMyHistory = 12;
+    static hoverTriggerParent = "hover-trigger-parent";
+    static exitHoverTriggerParent = "exit-hover-trigger-parent";
 }
 
 export namespace BetHistoryRocketXHandlers {

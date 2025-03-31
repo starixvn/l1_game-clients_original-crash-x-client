@@ -4,6 +4,7 @@ import Observer from "observer";
 
 import { DynamicObject } from "@sg/game-client-base/dist/game/bet-history";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { HistoryConstants } from "../../handlers/crash-v2";
 import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
@@ -136,16 +137,16 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     triggerHoverMaxReachCallback() {
-        this.node.emit("hover-trigger-parent", this.node);
+        this.node.emit(HistoryConstants.hoverTriggerParent, this.node);
     }
 
     triggerExitHoverMaxReachCallback() {
-        this.node.emit("exit-hover-trigger-parent", this.node);
+        this.node.emit(HistoryConstants.exitHoverTriggerParent, this.node);
     }
 
     triggerTouchEndMaxReachCallback() {
         setTimeout(() => {
-            this.node.emit("exit-hover-trigger-parent", this.node);
+            this.triggerExitHoverMaxReachCallback();
         }, 2000);
     }
 }
