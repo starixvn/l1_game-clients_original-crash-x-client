@@ -203,7 +203,7 @@
     },
     "_string": "Date",
     "_horizontalAlign": 1,
-    "_verticalAlign": 0,
+    "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
     "_fontFamily": "Arial",
@@ -211,8 +211,8 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -283,8 +283,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.8,
-      "height": 30
+      "width": 51.38395690917969,
+      "height": 37.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -418,7 +418,7 @@
     },
     "_string": "Crash Point",
     "_horizontalAlign": 1,
-    "_verticalAlign": 0,
+    "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
     "_fontFamily": "Arial",
@@ -426,8 +426,8 @@
     "_overflow": 1,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
