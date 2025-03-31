@@ -11,6 +11,7 @@ import { PlayerActionHandlers } from "./handlers/override/player-action-handlers
 export const settings = {
     id: 113,
     name: "RocketX",
+    namespaces: ["RocketX", "Spaceflight"],
     durations: {
         wholeRound: 14,
         lockingBet: 3,
