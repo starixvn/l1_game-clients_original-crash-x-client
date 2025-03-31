@@ -1,6 +1,7 @@
 import gc from "@sg/game-client-base";
 import inversify from "inversify";
 import { BetControlStore } from "../crash-v2/bet/bet-control-store";
+import { IBetControl } from "../crash-v2/interfaces";
 const { injectable, inject } = inversify;
 
 @injectable()
@@ -57,10 +58,16 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
             if (control.setting.autoBet || earlyBet) {
                 this.callBet(index);
                 if (earlyBet) {
-                    control.earlyBet = false;
+                    this.delayTurnOffEarlyBet(control);
                 }
             }
         });
+    }
+
+    private delayTurnOffEarlyBet(control: IBetControl) {
+        setTimeout(() => {
+            control.earlyBet = false;
+        }, 100);
     }
 
     stopAutoBet() {

@@ -214,10 +214,6 @@ export class BetControlStore {
         const cashedOut = this.controls[betKey].cashedOut;
         const earlyBet = this.controls[betKey].earlyBet;
 
-        if (this.roundTimeStore.roundTime > 0 && this.roundTimeStore.roundTime <= this.roundTimeStore.placingBet) {
-            return betAccepted ? ButtonState.BET_ACCEPTED : ButtonState.PLACE_BET;
-        }
-
         if (this.roundTimeStore.roundTime === 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
             //flying and result
             if (betAccepted) {
@@ -227,7 +223,8 @@ export class BetControlStore {
             }
         }
 
-        return ButtonState.PLACE_BET;
+        const state = earlyBet ? ButtonState.CANCEL_BET : ButtonState.PLACE_BET;
+        return betAccepted ? ButtonState.BET_ACCEPTED : state;
     }
 
     getBetAmount(betKey: number) {
