@@ -42,6 +42,19 @@ export class BetControlStore {
                     }
                 }
             );
+
+            mobx.reaction(
+                () => this.roundTimeStore.roundTime,
+                (roundTime) => {
+                    if (roundTime === 0) {
+                        Object.values(this.controls).forEach((control, betKey) => {
+                            if (control.setting.autoBet) {
+                                this.setEarlyBet(betKey, true);
+                            }
+                        });
+                    }
+                }
+            );
         }, 0);
     }
 
