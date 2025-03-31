@@ -60,7 +60,14 @@ export default class CrashBetControl extends ObserverComponent {
 
     betKey = 0;
 
-    private btnCashOut: Button = null;
+    private _btnCashOut: Button = null;
+
+    get btnCashOut() {
+        if (!this._btnCashOut) {
+            this._btnCashOut = this.nodeCashOut.getComponent(Button);
+        }
+        return this._btnCashOut;
+    }
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
     onClickBet() {
@@ -119,8 +126,6 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     onLoad() {
-        this.btnCashOut = this.nodeCashOut.getComponent(Button);
-
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
         this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetCashOutAt, this);
