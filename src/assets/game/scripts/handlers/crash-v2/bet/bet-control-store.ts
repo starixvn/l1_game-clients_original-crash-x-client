@@ -75,15 +75,20 @@ export class BetControlStore {
     };
 
     inputValues: number[] = [];
+    selectedInputIndex: { [betKey: number]: number } = {};
 
     selectBetInput(betkey: number, index: number) {
         let value = 0;
         if (index < this.inputValues.length) {
-            value = this.inputValues[index];
+            if (this.selectedInputIndex[betkey] === index) {
+                value = this.getBetAmount(betkey);
+            }
+            value += this.inputValues[index];
         } else {
             value = Math.min(this.maxBet, this.mainPlayerStore.balance);
         }
 
+        this.selectedInputIndex[betkey] = index;
         this.setValidBetAmount(betkey, value);
     }
 

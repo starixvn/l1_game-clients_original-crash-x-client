@@ -54,6 +54,9 @@ export default class CrashBetControlContainer extends ObserverComponent {
 
     @render(BetControlStore, (store) => store.inputValues)
     renderInputValues(values: number[]) {
+        if (values.length === 0) {
+            return;
+        }
         this.controls.forEach((control) => {
             control.renderInputValues(values);
         });

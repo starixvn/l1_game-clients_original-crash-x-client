@@ -43,6 +43,9 @@ export default class CrashBetControl extends ObserverComponent {
     @property(Label)
     labelCashOutValue: Label = null;
 
+    @property(Label)
+    labelBetValue: Label = null;
+
     @property(Node)
     nodeInputValues: Node = null;
 
@@ -99,8 +102,10 @@ export default class CrashBetControl extends ObserverComponent {
     renderSetting(setting: IBetControlSettings) {
         this.toggleAutoBet.isChecked = setting.autoBet;
         this.toggleAutoCashOut.isChecked = setting.autoCashOut;
-        this.inputBetAmount.string = gc.FormatUtils.numberWithCommas(setting.amount, 2);
-        this.inputBetAmount.placeholder = this.inputBetAmount.string;
+        const betValue = gc.FormatUtils.numberWithCommas(setting.amount, 2);
+        this.inputBetAmount.string = betValue;
+        this.labelBetValue.string = betValue;
+        this.inputBetAmount.placeholder = betValue;
         this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2)}x`;
         this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
     }
@@ -110,6 +115,12 @@ export default class CrashBetControl extends ObserverComponent {
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
         this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetCashOutAt, this);
         this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
+
+        this.nodeInputValues.children.forEach((child, index) => {
+            child.on(Button.EventType.CLICK, () => {
+                this.onClickInputValue(index);
+            });
+        });
         super.onLoad();
     }
 
@@ -158,7 +169,7 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     renderCashOutValue(value: number) {
-        this.labelCashOutValue.string = gc.FormatUtils.numberWithCommas(value, 2);
+        this.labelCashOutValue.string = gc.FormatUtils.numberWithCommas(value, 2, false);
     }
 
     renderInputValues(values: number[]) {
@@ -167,14 +178,12 @@ export default class CrashBetControl extends ObserverComponent {
             if (index < values.length) {
                 item.setValue(values[index]);
             }
-            item.node.on(Button.EventType.CLICK, () => {
-                this.onClickInputValue(index);
-            });
         });
     }
 
     @handle(BetControlStore, (handler, data: { betKey: number; index: number }) => handler.selectBetInput(data.betKey, data.index))
     onClickInputValue(index: number) {
+        console.log("onClickInputValue ", index);
         return {
             betKey: this.betKey,
             index: index,
