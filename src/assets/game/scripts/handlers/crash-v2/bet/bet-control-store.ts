@@ -220,6 +220,12 @@ export class BetControlStore {
         return betAccepted ? ButtonState.BET_ACCEPTED : state;
     }
 
+    disableCashOut(betKey: number) {
+        const state = this.getBetState(betKey);
+        const cashedOut = this.controls[betKey].cashedOut;
+        return state === ButtonState.CASH_OUT && (cashedOut || this.multiplierStore.rocketState === gc.GameCrash.RocketState.CRASHED);
+    }
+
     getBetAmount(betKey: number) {
         return this.controls[betKey].setting.amount;
     }

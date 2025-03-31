@@ -32,6 +32,16 @@ export default class CrashBetControlContainer extends ObserverComponent {
         this.controls[1].renderBetState(state);
     }
 
+    @render(BetControlStore, (store) => store.disableCashOut(0))
+    renderDisableCashOut0(disable: boolean) {
+        this.controls[0].setDisableCashOut(disable);
+    }
+
+    @render(BetControlStore, (store) => store.disableCashOut(1))
+    renderDisableCashOut1(disable: boolean) {
+        this.controls[1].setDisableCashOut(disable);
+    }
+
     @render(BetControlStore, (store) => store.getBetSetting(0))
     renderBetSettingFirst(setting: IBetControlSettings) {
         this.controls[0].renderSetting(setting);
