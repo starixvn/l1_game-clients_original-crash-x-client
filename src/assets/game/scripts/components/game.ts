@@ -5,7 +5,7 @@ import Observer from "observer";
 import GameCrashComponent from "../../../../extensions/shared-components/assets/game-crash/scripts/components/game-crash-component";
 import { siteConfigs } from "../../../scripts/site-configs";
 import { containerOptions, settings } from "../game-settings";
-import { BetControlStore } from "../handlers/crash-v2/bet/bet-control-store";
+import { CrashBetHandler } from "../handlers/override/crash-bet-handler";
 import "./../../../resources/i18n";
 
 startGame(settings.name, containerOptions, siteConfigs);
@@ -24,6 +24,6 @@ export default class Game extends GameCrashComponent {
         super.onHideGame();
     }
 
-    @handle(BetControlStore, (handler) => handler.stopAutoBet())
+    @handle(CrashBetHandler, (handler) => handler.stopAutoBet())
     stopAutoBet() {}
 }

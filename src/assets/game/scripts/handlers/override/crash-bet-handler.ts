@@ -75,4 +75,22 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
             this.betControlStore.setAutoBet(+betKey, false);
         });
     }
+
+    toggleAutoBet(betKey: number) {
+        this.betControlStore.toggleAutoBet(betKey);
+        if (this.betControlStore.getBetSetting(betKey).autoBet) {
+            this.onTurnOnAutoBet(betKey);
+        }
+    }
+
+    onTurnOnAutoBet(betKey: number) {
+        if (this.roundTimeStore.isPlacingBet) {
+            const betAccepted = this.betControlStore.getBetAccepted(betKey);
+            if (!betAccepted) {
+                this.callBet(betKey);
+            }
+        } else if (this.roundTimeStore.roundTime === 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
+            this.betControlStore.setEarlyBet(betKey, true);
+        }
+    }
 }

@@ -158,13 +158,6 @@ export class BetControlStore {
         this.onSaveStorage();
     }
 
-    stopAutoBet() {
-        Object.keys(this.controls).forEach((key) => {
-            const betKey = Number(key);
-            this.setAutoBet(betKey, false);
-        });
-    }
-
     setAutoBet(betKey: number, enabled: boolean) {
         this.controls[betKey].setting = {
             ...this.controls[betKey].setting,

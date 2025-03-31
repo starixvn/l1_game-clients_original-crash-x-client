@@ -74,7 +74,7 @@ export default class CrashBetControl extends ObserverComponent {
         return this.betKey;
     }
 
-    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoBet(betKey))
+    @handle(CrashBetHandler, (handler, betKey: number) => handler.toggleAutoBet(betKey))
     onToggleAutoBet() {
         return this.betKey;
     }
