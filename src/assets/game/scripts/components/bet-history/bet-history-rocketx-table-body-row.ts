@@ -4,7 +4,6 @@ import Observer from "observer";
 
 import { DynamicObject } from "@sg/game-client-base/dist/game/bet-history";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { CrashUtils } from "../../crash-utils";
 import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
@@ -85,7 +84,7 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         let multiplierText = "-";
         if (multiplierRow !== undefined) {
             const multiplier = Number(multiplierRow.multiplier);
-            this.lblMultiplier.color = CrashUtils.getMultiplierColor(multiplier);
+            // this.lblMultiplier.color = CrashUtils.getMultiplierColor(multiplier);
             multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
         }
 
