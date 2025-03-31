@@ -7,6 +7,10 @@ export class CrashUtils extends Component {
         colors: ["01d8ff", "ff9601", "ff010d", "D608FB"],
         colorNames: ["blue", "orange", "red", "purple"],
         whiteColor: "E6E5DF",
+        tabColors: {
+            Active: "30df0a",
+            InActive: "E6E5DF",
+        },
     };
 
     static getMultiplierIndex(multiplier: number): number {
@@ -19,6 +23,14 @@ export class CrashUtils extends Component {
         return new Color().fromHEX(CrashUtils.config.colors[index]);
         // 7b32f3 old purple
         // E6E5DF near white
+    }
+
+    static getColorActiveTab(): Color {
+        return new Color().fromHEX(CrashUtils.config.tabColors.Active);
+    }
+
+    static getColorInActiveTab(): Color {
+        return new Color().fromHEX(CrashUtils.config.tabColors.InActive);
     }
 
     static getWhiteColor(): Color {

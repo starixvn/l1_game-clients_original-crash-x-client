@@ -2,11 +2,11 @@ import gc from "@sg/game-client-base";
 import { _decorator, instantiate, Layout, Node, Prefab, Tween, tween, UITransform, Widget } from "cc";
 import Observer from "observer";
 
-import { LeaderBoardCashOut } from "db://shared-components/game-crash/leader-board/scripts/components/leader-board-cash-out";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { CrashUtils } from "../../../crash-utils";
 import { CrashBetListStore } from "../../../handlers/crash-v2/bet/crash-bet-list-store";
 import { MainPlayerBetData } from "../../../handlers/crash-v2/interfaces";
+import { LeaderBoardCashOut } from "./leader-board-cash-out";
 import { LeaderBoardMainPlayer } from "./leader-board-main-player";
 
 const { ccclass, property } = _decorator;
@@ -57,7 +57,7 @@ export class LeaderBoard extends ObserverComponent {
             const comp = node.getComponent(LeaderBoardCashOut);
             comp.lblMultiplier.color =
                 player.multiplier < 1 ? CrashUtils.getWhiteColor() : CrashUtils.getMultiplierColor(player.multiplier);
-            comp?.setData(player);
+            comp?.setData(player, index);
         });
         this.updateContentHeight();
     }

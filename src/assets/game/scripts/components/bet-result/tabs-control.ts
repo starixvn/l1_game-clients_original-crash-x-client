@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Node, Prefab, RichText, Sprite, Toggle, ToggleContainer } from "cc";
+import { _decorator, Component, instantiate, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
 const { ccclass, property } = _decorator;
 
 @ccclass("TabsControl")
@@ -14,9 +14,6 @@ export class TabsControl extends Component {
 
     @property({ type: [Prefab] })
     prefabContents: Prefab[] = [];
-
-    @property({ type: RichText })
-    provablyFair: RichText;
 
     private prefabInstances: Node[] = [];
     private currentTabIndex: number = -1;

@@ -26,7 +26,7 @@ export default class TopDrashesBodyItem extends ObserverComponent {
         this.nodeBackground.active = index % 2 > 0;
         this.lblDate && (this.lblDate.string = DateTimeUtils.getStringDateByTime(item.time));
         this.lblResult.string = `${FormatUtils.numberWithCommas(+item.result, 2, false)}x`;
-        this.roundId = item.provablyFair.roundId;
+        this.roundId = item.provablyFair?.roundId;
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
