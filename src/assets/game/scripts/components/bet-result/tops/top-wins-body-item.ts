@@ -34,9 +34,6 @@ export default class TopWinsBodyItem extends ObserverComponent {
     @property(Node)
     nodeBackground: Node = null;
 
-    @property(Label)
-    lblResult: Label = null;
-
     private roundId: number;
 
     setData(index: number, item: TopWinItem) {
@@ -49,7 +46,6 @@ export default class TopWinsBodyItem extends ObserverComponent {
         this.lblMultiplier.string = `${FormatUtils.numberWithCommas(+item.cashoutPoint, 2, false)}x`;
         this.lblMultiplier.color = CrashUtils.getMultiplierColor(item.cashoutPoint);
 
-        this.lblResult.string = `${FormatUtils.numberWithCommas(+item.crashPoint, 2, false)}x`;
         this.roundId = item.roundId;
     }
 

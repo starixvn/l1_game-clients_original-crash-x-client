@@ -14,6 +14,9 @@ export default class TopDrashesBodyItem extends ObserverComponent {
     @property(Label)
     lblDate: Label = null;
 
+    @property(Label)
+    lblRound: Label = null;
+
     @property(Node)
     nodeBackground: Node = null;
 
@@ -25,6 +28,7 @@ export default class TopDrashesBodyItem extends ObserverComponent {
     setData(index: number, item: TopCrashItem) {
         this.nodeBackground.active = index % 2 > 0;
         this.lblDate && (this.lblDate.string = DateTimeUtils.getStringDateByTime(item.time));
+        this.lblRound.string = item.provablyFair?.roundId.toString();
         this.lblResult.string = `${FormatUtils.numberWithCommas(+item.result, 2, false)}x`;
         this.roundId = item.provablyFair?.roundId;
     }

@@ -70,7 +70,7 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
 
         this.bindMultiplier(betHistoryLog, betKey);
-        this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
+        // this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
         this.bindWin(betHistoryLog, betKey);
     }
 
