@@ -153,7 +153,10 @@ export default class CrashBetControl extends ObserverComponent {
 
     onEditEndBetAmount(editBox: EditBox) {
         try {
-            const value = Number(editBox.string);
+            let value = Number(editBox.string);
+            if (isNaN(value)) {
+                value = 1;
+            }
             this.setValidBetAmount(value);
         } catch (error) {
             warn("input bet amount error ----------------- ", editBox.string);
@@ -162,7 +165,10 @@ export default class CrashBetControl extends ObserverComponent {
 
     onEditEndBetCashOutAt(editBox: EditBox) {
         try {
-            const value = Number(editBox.string);
+            let value = Number(editBox.string);
+            if (isNaN(value)) {
+                value = 1;
+            }
             this.setValidCashOutAt(value);
         } catch (error) {
             warn("input cash out at error ----------------- ", editBox.string);
