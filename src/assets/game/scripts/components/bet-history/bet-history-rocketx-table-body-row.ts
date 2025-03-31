@@ -83,9 +83,8 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         const multiplierRow = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
 
         let multiplierText = "-";
-        if (multiplierRow !== undefined) {
+        if (multiplierRow !== undefined && Number(multiplierRow.multiplier) !== 0) {
             const multiplier = Number(multiplierRow.multiplier);
-            // this.lblMultiplier.color = CrashUtils.getMultiplierColor(multiplier);
             multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
         }
 
