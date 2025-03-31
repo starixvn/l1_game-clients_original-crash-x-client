@@ -101,6 +101,16 @@ export class BetControlStore {
         return this.gameConfigStore.minBet;
     }
 
+    activeDownBet(betKey: number) {
+        const currentAmount = this.getBetAmount(betKey);
+        return currentAmount > this.minBet;
+    }
+
+    activeUpBet(betKey: number) {
+        const currentAmount = this.getBetAmount(betKey);
+        return currentAmount < this.maxBet;
+    }
+
     changeBetAmount(betkey: number, increase: boolean) {
         const amount = this.minBet * (increase ? 1 : -1);
         const currentAmount = this.getBetAmount(betkey);

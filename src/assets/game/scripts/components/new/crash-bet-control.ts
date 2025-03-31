@@ -52,6 +52,12 @@ export default class CrashBetControl extends ObserverComponent {
     @property(Node)
     nodePreventInput: Node = null;
 
+    @property(Button)
+    btnDecreaseBet: Button = null;
+
+    @property(Button)
+    btnIncreaseBet: Button = null;
+
     betKey = 0;
 
     private btnCashOut: Button = null;
@@ -211,5 +217,13 @@ export default class CrashBetControl extends ObserverComponent {
             betKey: this.betKey,
             increase: false,
         };
+    }
+
+    setActiveDownBet(active: boolean) {
+        this.btnDecreaseBet.interactable = active;
+    }
+
+    setActiveUpBet(active: boolean) {
+        this.btnIncreaseBet.interactable = active;
     }
 }
