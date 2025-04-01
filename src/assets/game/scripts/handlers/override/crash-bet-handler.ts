@@ -34,8 +34,12 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         this.retryGameHandler.handle();
     }
 
-    setEarlyBet(betKey: number) {
-        this.betControlStore.setEarlyBet(betKey, true);
+    enableEarlyBet(betKey: number) {
+        if (this.mainPlayerStore.balance >= this.betControlStore.getBetAmount(betKey)) {
+            this.betControlStore.setEarlyBet(betKey, true);
+        } else {
+            this.showNoticePlaceBetFailure();
+        }
     }
 
     cancelEarlyBet(betKey: number) {
@@ -90,7 +94,7 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
                 this.callBet(betKey);
             }
         } else if (this.roundTimeStore.roundTime === 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
-            this.betControlStore.setEarlyBet(betKey, true);
+            this.enableEarlyBet(betKey);
         }
     }
 }

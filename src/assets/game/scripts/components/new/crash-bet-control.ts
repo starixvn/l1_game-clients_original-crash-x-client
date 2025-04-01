@@ -79,7 +79,7 @@ export default class CrashBetControl extends ObserverComponent {
         return this.betKey;
     }
 
-    @handle(CrashBetHandler, (handler, betKey: number) => handler.setEarlyBet(betKey))
+    @handle(CrashBetHandler, (handler, betKey: number) => handler.enableEarlyBet(betKey))
     onClickBetNextRound() {
         return this.betKey;
     }
