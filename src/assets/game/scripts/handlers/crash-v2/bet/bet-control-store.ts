@@ -56,6 +56,13 @@ export class BetControlStore {
                     }
                 }
             );
+
+            mobx.reaction(
+                () => this.roundStore.maxBet && this.roundStore.minBet,
+                () => {
+                    this.validCurrentBetAmounts();
+                }
+            );
         }, 0);
     }
 
@@ -123,6 +130,13 @@ export class BetControlStore {
     activeUpBet(betKey: number) {
         const currentAmount = this.getBetAmount(betKey);
         return currentAmount < this.maxBet;
+    }
+
+    validCurrentBetAmounts() {
+        Object.values(this.controls).forEach((control, betKey) => {
+            const currentAmount = control.setting.amount;
+            this.setValidBetAmount(betKey, currentAmount);
+        });
     }
 
     changeBetAmount(betkey: number, increase: boolean) {
