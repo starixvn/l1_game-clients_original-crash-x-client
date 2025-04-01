@@ -12,31 +12,37 @@ const { observer, render, handle } = Observer;
 
 @ccclass("NewMultiplierChanger")
 export default class NewMultiplierChanger extends ObserverComponent {
+    private lastNode: Node = null;
+    private lastIndex = -1;
+
     @render(gc.GameCrash.CrashMultiplier.MultiplierStore, (store) => store.multiplier)
     private async renderMultiplier(multiplier: number) {
-        const newIndex = CrashUtils.getMultiplierIndex(multiplier);
-        const lastIndex = Math.max(0, newIndex - 1);
-
         if (multiplier === 1) {
             this.resetDefaultFont();
             return;
         }
 
-        if (newIndex === lastIndex) {
+        const newIndex = CrashUtils.getMultiplierIndex(multiplier);
+        if (newIndex === this.lastIndex) {
             return;
         }
+        this.lastIndex = newIndex;
 
-        if (newIndex >= this.node.children.length) {
-            return;
+        const prevIndex = Math.max(0, newIndex - 1);
+
+        if (!this.lastNode) {
+            this.lastNode = this.node.children[0];
         }
 
-        const newNode = this.node.children[newIndex];
-        const lastNode = this.node.children[lastIndex];
+        const newNode = this.node.children.find((node) => node !== this.lastNode);
+        const lastNode = this.lastNode;
 
         lastNode.setSiblingIndex(0);
         newNode.setSiblingIndex(1);
 
-        await this.changeFontMultiplier(lastNode, lastIndex);
+        this.lastNode = newNode;
+
+        await this.changeFontMultiplier(lastNode, prevIndex);
         await this.changeFontMultiplier(newNode, newIndex);
 
         AnimationUtils.fadeIn(newNode, 0.2);
@@ -45,6 +51,7 @@ export default class NewMultiplierChanger extends ObserverComponent {
 
     async resetDefaultFont() {
         const node = this.node.children[0];
+        this.lastNode = node;
         await this.changeFontMultiplier(node, 0);
         AnimationUtils.setOpacityNode(node, 255);
 
