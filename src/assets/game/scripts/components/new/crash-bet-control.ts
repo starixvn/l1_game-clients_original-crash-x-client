@@ -69,6 +69,15 @@ export default class CrashBetControl extends ObserverComponent {
         return this._btnCashOut;
     }
 
+    private _btnBet: Button = null;
+
+    get btnBet() {
+        if (!this._btnBet) {
+            this._btnBet = this.nodePlaceBet.parent.getComponent(Button);
+        }
+        return this._btnBet;
+    }
+
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
     onClickBet() {
         return this.betKey;
@@ -104,7 +113,7 @@ export default class CrashBetControl extends ObserverComponent {
 
         this.nodeAcceptedBet.active = state === ButtonState.BET_ACCEPTED;
         this.nodePlaceBet.active = state === ButtonState.PLACE_BET;
-        this.nodePlaceBet.parent.active = this.nodePlaceBet.active || this.nodeAcceptedBet.active;
+        this.btnBet.node.active = this.nodePlaceBet.active || this.nodeAcceptedBet.active;
 
         this.nodeBetNextRound.active = state === ButtonState.BET_NEXT_ROUND;
         this.nodeWaitingNextRound.active = state === ButtonState.CANCEL_BET;
@@ -173,6 +182,11 @@ export default class CrashBetControl extends ObserverComponent {
         } catch (error) {
             warn("input cash out at error ----------------- ", editBox.string);
         }
+    }
+
+    @render(gc.Rounds.RoundTimeStore, (store) => store.isLocking)
+    renderLockingBet(isLocking: boolean) {
+        this.btnBet.interactable = !isLocking;
     }
 
     @handle(BetControlStore, (handler, data: { betKey: number; amount: number }) => handler.setValidBetAmount(data.betKey, data.amount))
