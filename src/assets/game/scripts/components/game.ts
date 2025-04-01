@@ -8,7 +8,7 @@ import { containerOptions, settings } from "../game-settings";
 import { CrashBetHandler } from "../handlers/override/crash-bet-handler";
 import "./../../../resources/i18n";
 
-startGame(settings.name, containerOptions, siteConfigs);
+startGame(settings.name, containerOptions, siteConfigs, settings.namespaces);
 
 const { ccclass } = _decorator;
 const { observer, handle } = Observer;
