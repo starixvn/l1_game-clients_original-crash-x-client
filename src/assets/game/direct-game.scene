@@ -6995,7 +6995,7 @@
       "__id__": 332
     },
     "asset": {
-      "__uuid__": "642e5b50-d6f9-4b80-8081-f70aad0391ac",
+      "__uuid__": "8f77bb26-8517-4cb3-b34f-f13c74a410ae",
       "__expectedType__": "cc.Prefab"
     },
     "fileId": "92iSiXPmdOtIPsjtUUD1Hg",
@@ -7007,7 +7007,7 @@
   },
   {
     "__type__": "cc.PrefabInstance",
-    "fileId": "81nuPoIIZDO4P33sIaAlHE",
+    "fileId": "e2jNRLk85K45wPjLS78hAn",
     "prefabRootNode": null,
     "mountedChildren": [],
     "mountedComponents": [],
@@ -7038,7 +7038,7 @@
     "propertyPath": [
       "_name"
     ],
-    "value": "game-guide-container"
+    "value": "game-guide-direct-container"
   },
   {
     "__type__": "cc.TargetInfo",
