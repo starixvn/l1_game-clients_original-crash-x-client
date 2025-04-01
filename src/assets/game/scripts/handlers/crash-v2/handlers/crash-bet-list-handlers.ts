@@ -90,7 +90,11 @@ export class CrashBetListHandlers implements IMultipleHandlers {
         const players: gc.GameCrash.LeaderBoardPlayer[] = [];
         Object.keys(data).forEach((key) => {
             const player = data[key];
-            this.generateLeaderBoardPlayer(players, player);
+
+            Object.keys(player).forEach((betkey) => {
+                let bet = player[betkey];
+                this.generateLeaderBoardPlayer(players, bet);
+            });
         });
 
         return players;

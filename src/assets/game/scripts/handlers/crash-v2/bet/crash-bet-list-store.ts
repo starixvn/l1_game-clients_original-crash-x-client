@@ -7,7 +7,11 @@ import { ICrashBetResponse, MainPlayerBetData } from "../interfaces";
 const { injectable, inject } = inversify;
 
 export interface ICrashBetList {
-    [playerId: string]: GameCrashServiceMessage.CrashOtherPlayer;
+    [playerId: string]: ICrashBetListDetail;
+}
+
+export interface ICrashBetListDetail {
+    [betKey: number]: GameCrashServiceMessage.CrashOtherPlayer;
 }
 
 @injectable()

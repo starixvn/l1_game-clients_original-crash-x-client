@@ -41,7 +41,7 @@ export class LeaderBoard extends ObserverComponent {
         this.nodeOtherPlayers.destroyAllChildren();
     }
 
-    @render(GameCrash.CrashBetList.CrashBetListStore, (store) => store.otherPlayers)
+    @render(CrashBetListStore, (store) => store.otherPlayers)
     private updateOtherPlayers(otherPlayers: gc.GameCrash.LeaderBoardPlayer[]) {
         if (otherPlayers.length === 0) {
             this.resetOtherPlayers();
