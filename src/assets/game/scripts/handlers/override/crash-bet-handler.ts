@@ -34,11 +34,17 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         this.retryGameHandler.handle();
     }
 
-    enableEarlyBet(betKey: number) {
-        if (this.mainPlayerStore.balance >= this.betControlStore.getBetAmount(betKey)) {
-            this.betControlStore.setEarlyBet(betKey, true);
-        } else {
+    validateBetWithBalance(betKey: number) {
+        if (this.mainPlayerStore.balance < this.betControlStore.getBetAmount(betKey)) {
             this.showNoticePlaceBetFailure();
+            return false;
+        }
+        return true;
+    }
+
+    enableEarlyBet(betKey: number) {
+        if (this.validateBetWithBalance(betKey)) {
+            this.betControlStore.setEarlyBet(betKey, true);
         }
     }
 
@@ -60,6 +66,13 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         Object.values(this.betControlStore.controls).forEach((control, index) => {
             const earlyBet = control.earlyBet;
             if (control.setting.autoBet || earlyBet) {
+                if (!this.validateBetWithBalance(index)) {
+                    if (control.setting.autoBet) {
+                        this.betControlStore.setAutoBet(index, false);
+                    }
+                    return;
+                }
+
                 this.callBet(index);
                 if (earlyBet) {
                     this.delayTurnOffEarlyBet(control);
