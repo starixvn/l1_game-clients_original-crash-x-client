@@ -8,6 +8,7 @@ import { ButtonState, CrashCashOutData, IBetControl } from "../interfaces";
 @injectable()
 export class BetControlStore {
     @inject(gc.Rounds.RoundTimeStore) protected readonly roundTimeStore: gc.Rounds.RoundTimeStore;
+    @inject(gc.Rounds.RoundStore) protected readonly roundStore: gc.Rounds.RoundStore;
     @inject(gc.GameCrash.CrashMultiplier.MultiplierStore) protected readonly multiplierStore: gc.GameCrash.CrashMultiplier.MultiplierStore;
 
     @inject(gc.GameConfigs.GameConfigStore) protected readonly gameConfigStore: gc.GameConfigs.GameConfigStore;
@@ -107,11 +108,11 @@ export class BetControlStore {
 
     get maxBet() {
         const betAmount = Object.values(this.controls).reduce((acc, control) => acc + (control?.betAccepted?.value ?? 0), 0);
-        return this.gameConfigStore.maxBet - betAmount;
+        return this.roundStore.maxBet - betAmount;
     }
 
     get minBet() {
-        return this.gameConfigStore.minBet;
+        return this.roundStore.minBet;
     }
 
     activeDownBet(betKey: number) {
