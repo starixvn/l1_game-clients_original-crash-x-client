@@ -25,6 +25,7 @@ export class RocketFly extends ObserverComponent {
     private readonly smallExplosionMultiplier = 1.02;
     private preparingRocket = false;
     private multiplierIndex = 0;
+    private time = 0;
     private flying = false;
     private flyingTween: Tween<Node> = null;
     private crashed = false;
@@ -63,25 +64,11 @@ export class RocketFly extends ObserverComponent {
         }
     }
 
-    @render(gc.Rounds.RoundTimeStore, (store) => store.isInRoundTime)
-    renderInRoundTime(isInRoundTime: boolean) {
-        if (isInRoundTime && !this.preparingRocket) {
-            this.prepareForRocket(false);
-        }
-    }
-
-    @render(gc.Rounds.RoundTimeStore, (store) => store.isStartRound)
-    startNewRound(isStartRound: boolean) {
-        if (!isStartRound) {
-            return;
-        }
-        this.prepareForRocket(true);
-    }
-
-    private prepareForRocket(animated: boolean) {
+    private resetIdleMode() {
         this.preparingRocket = true;
         this.spineRocket.node.active = true;
 
+        this.spineRocket.timeScale = 1;
         this.spineRocket.setAnimation(0, "idle", true);
         this.spineRocket.node.position = v3(this.landingNode.position);
 
@@ -93,19 +80,55 @@ export class RocketFly extends ObserverComponent {
 
     @render(GameCrash.CrashMultiplier.MultiplierStore, (store) => store.time, { fireImmediately: false })
     private renderCurrentTime(time: number) {
-        if (time === 0) {
-            this.rocketStartFlying();
-        }
+        this.time = time;
     }
 
-    private rocketStartFlying() {
+    handleRocketFlying() {
         if (this.flying) {
             return;
         }
+        if (this.time > 0 && this.time > 200) {
+            this.startedFly();
+        } else {
+            this.startFly();
+        }
+    }
+
+    @render(GameCrash.CrashMultiplier.MultiplierStore, (store) => store.rocketState)
+    renderRocketState(rocketState: string) {
+        switch (rocketState) {
+            case GameCrash.RocketState.CRASHED:
+                this.flewAway();
+                break;
+            case GameCrash.RocketState.FLYING:
+                this.handleRocketFlying();
+                break;
+            case GameCrash.RocketState.ONLAND:
+                this.resetIdleMode();
+                break;
+        }
+    }
+
+    private flewAway() {
+        AnimationUtils.pauseSpineAnimation(this.spineRocket, 0.99, "crash1");
+
+        this.spinePlanet.timeScale = 0;
+        this.spinePlanet.setAnimation(0, "hanhtinh", true);
+    }
+
+    private startFly() {
         this.flying = true;
         this.flyingTween = tween(this.spineRocket.node)
             .to(0.7, { position: v3(0, 0, 0) }, { easing: "sineInOut" })
             .start();
+
+        this.spinePlanet.timeScale = 1;
+        this.spinePlanet.setAnimation(0, "hanhtinh", true);
+    }
+
+    private startedFly() {
+        this.flying = true;
+        this.spineRocket.node.position = v3(0, 0, 0);
 
         this.spinePlanet.timeScale = 1;
         this.spinePlanet.setAnimation(0, "hanhtinh", true);
