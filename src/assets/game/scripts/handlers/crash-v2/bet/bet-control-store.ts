@@ -71,7 +71,6 @@ export class BetControlStore {
             processing: false,
             betAccepted: null,
             earlyBet: false,
-            betState: ButtonState.PLACE_BET,
             cashedOut: null,
             setting: {
                 autoCashOut: false,
@@ -84,7 +83,6 @@ export class BetControlStore {
             processing: false,
             betAccepted: null,
             earlyBet: false,
-            betState: ButtonState.PLACE_BET,
             cashedOut: null,
             setting: {
                 autoCashOut: false,

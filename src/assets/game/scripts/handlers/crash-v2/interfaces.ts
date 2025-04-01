@@ -29,7 +29,6 @@ export interface IBetControl {
     processing: boolean;
     betAccepted: { value: number };
     earlyBet: boolean;
-    betState: string;
     cashedOut: CrashCashOutData;
     setting: IBetControlSettings;
 }
