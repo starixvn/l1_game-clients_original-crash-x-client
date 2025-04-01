@@ -443,7 +443,7 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 255
+      "a": 0
     },
     "_spriteFrame": {
       "__uuid__": "2b15ad5e-08d0-4a39-bb98-cf6ff3ece5cc@0e81e",
@@ -529,7 +529,7 @@
       "r": 255,
       "g": 255,
       "b": 255,
-      "a": 255
+      "a": 0
     },
     "_spriteFrame": {
       "__uuid__": "ffb88a8f-af62-48f4-8f1d-3cb606443a43@f9941",
@@ -609,7 +609,7 @@
       "__id__": 16
     },
     "_direction": 1,
-    "_enableAutoHide": false,
+    "_enableAutoHide": true,
     "_autoHideTime": 1,
     "_id": ""
   },

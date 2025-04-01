@@ -56,10 +56,12 @@ export class CrashBetListStore {
 
     updateCashOutData(value: MainPlayerBetData) {
         let cashOut = this.mainPlayerData.find((element) => element.betKey === value.betKey);
-        cashOut.win = value.win;
-        cashOut.cashOutWin = value.cashOutWin;
-        cashOut.multiplier = value.multiplier;
-        cashOut.reachMaxWin = value.reachMaxWin;
+        if (cashOut != undefined) {
+            cashOut.win = value.win;
+            cashOut.cashOutWin = value.cashOutWin;
+            cashOut.multiplier = value.multiplier;
+            cashOut.reachMaxWin = value.reachMaxWin;
+        }
 
         let newMainPlayerData = [];
         newMainPlayerData.push(...this.mainPlayerData);

@@ -15,7 +15,7 @@
                 <key>spriteSourceSize</key>
                 <string>{27,27}</string>
                 <key>textureRect</key>
-                <string>{{174,130},{27,27}}</string>
+                <string>{{44,213},{27,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{39,39}</string>
                 <key>textureRect</key>
-                <string>{{133,117},{39,39}}</string>
+                <string>{{3,213},{39,39}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -75,7 +75,7 @@
                 <key>spriteSourceSize</key>
                 <string>{84,66}</string>
                 <key>textureRect</key>
-                <string>{{3,61},{84,66}}</string>
+                <string>{{3,145},{84,66}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -105,7 +105,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,48}</string>
                 <key>textureRect</key>
-                <string>{{89,67},{48,48}}</string>
+                <string>{{181,80},{48,48}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -120,7 +120,7 @@
                 <key>spriteSourceSize</key>
                 <string>{42,42}</string>
                 <key>textureRect</key>
-                <string>{{89,117},{42,42}}</string>
+                <string>{{139,180},{42,42}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -135,7 +135,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,48}</string>
                 <key>textureRect</key>
-                <string>{{139,67},{48,48}}</string>
+                <string>{{181,130},{48,48}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -150,7 +150,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,48}</string>
                 <key>textureRect</key>
-                <string>{{189,80},{48,48}}</string>
+                <string>{{89,180},{48,48}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -165,7 +165,37 @@
                 <key>spriteSourceSize</key>
                 <string>{20,2}</string>
                 <key>textureRect</key>
-                <string>{{245,3},{20,2}}</string>
+                <string>{{90,61},{20,2}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>tooltip_1.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{82,85}</string>
+                <key>spriteSourceSize</key>
+                <string>{82,85}</string>
+                <key>textureRect</key>
+                <string>{{3,61},{82,85}}</string>
+                <key>textureRotated</key>
+                <true/>
+            </dict>
+            <key>tooltip_2.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{82,85}</string>
+                <key>spriteSourceSize</key>
+                <string>{82,85}</string>
+                <key>textureRect</key>
+                <string>{{94,67},{82,85}}</string>
                 <key>textureRotated</key>
                 <true/>
             </dict>
@@ -183,7 +213,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:23301271cd5f30b24c5faf9a7aa68578:dae3ca66fda0285c6ac1d8a9a017e971:7efe54cad030a3455f176c48de91722e$</string>
+            <string>$TexturePacker:SmartUpdate:393611611d6208e550cfa9447b721ac0:17158c078adc308bd8b20341ae331d6c:7efe54cad030a3455f176c48de91722e$</string>
             <key>textureFileName</key>
             <string>game-pf-atlas.webp</string>
         </dict>
