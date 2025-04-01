@@ -194,7 +194,7 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     renderCashOutValue(value: number) {
-        this.labelCashOutValue.string = gc.FormatUtils.numberWithCommas(value, 2, false);
+        this.labelCashOutValue.string = gc.FormatUtils.numberWithCommas(value, 2);
     }
 
     renderInputValues(values: number[]) {
