@@ -1,1 +1,1 @@
-window.crossConfig = { backgroundLocalized: true, storagePrefixKey: "RocketX" };
+window.crossConfig = { backgroundLocalized: false, storagePrefixKey: "RocketX" };
