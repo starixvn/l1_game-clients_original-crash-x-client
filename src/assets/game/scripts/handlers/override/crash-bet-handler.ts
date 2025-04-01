@@ -70,6 +70,10 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
                     if (control.setting.autoBet) {
                         this.betControlStore.setAutoBet(index, false);
                     }
+
+                    if (earlyBet) {
+                        this.betControlStore.setEarlyBet(index, false);
+                    }
                     return;
                 }
 
