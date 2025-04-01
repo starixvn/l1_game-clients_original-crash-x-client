@@ -1,6 +1,7 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Button, EditBox, Label, Node, Toggle, warn } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { ToggleNode } from "db://shared-components/shared/common-components/toggle-node";
 import Observer from "observer";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
@@ -126,12 +127,21 @@ export default class CrashBetControl extends ObserverComponent {
     renderSetting(setting: IBetControlSettings) {
         this.toggleAutoBet.setIsCheckedWithoutNotify(setting.autoBet);
         this.toggleAutoCashOut.setIsCheckedWithoutNotify(setting.autoCashOut);
+        this.updateToggleNodes();
+
         const betValue = gc.FormatUtils.numberWithCommas(setting.amount, 2);
         this.inputBetAmount.string = betValue;
         this.labelBetValue.string = betValue;
         this.inputBetAmount.placeholder = betValue;
         this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
         this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
+    }
+
+    private updateToggleNodes() {
+        [this.toggleAutoBet, this.toggleAutoCashOut].forEach((toggle) => {
+            const toggleNode = toggle.getComponent(ToggleNode);
+            toggleNode.updateDisplay();
+        });
     }
 
     onLoad() {

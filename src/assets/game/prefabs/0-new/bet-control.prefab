@@ -4996,7 +4996,11 @@
     "__prefab": {
       "__id__": 213
     },
-    "checkedNodes": [],
+    "checkedNodes": [
+      {
+        "__id__": 198
+      }
+    ],
     "unCheckedNodes": [
       {
         "__id__": 192
@@ -6043,7 +6047,11 @@
     "__prefab": {
       "__id__": 259
     },
-    "checkedNodes": [],
+    "checkedNodes": [
+      {
+        "__id__": 244
+      }
+    ],
     "unCheckedNodes": [
       {
         "__id__": 238
