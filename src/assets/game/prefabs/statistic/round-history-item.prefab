@@ -1441,7 +1441,7 @@
       }
     ],
     "_interactable": true,
-    "_transition": 3,
+    "_transition": 0,
     "_normalColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -1470,10 +1470,7 @@
       "b": 124,
       "a": 255
     },
-    "_normalSprite": {
-      "__uuid__": "2d67d332-0b65-4c26-aacf-03f54c9217cc@ae198",
-      "__expectedType__": "cc.SpriteFrame"
-    },
+    "_normalSprite": null,
     "_hoverSprite": null,
     "_pressedSprite": null,
     "_disabledSprite": null,
