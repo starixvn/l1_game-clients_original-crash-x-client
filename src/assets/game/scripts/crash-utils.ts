@@ -21,8 +21,6 @@ export class CrashUtils extends Component {
     static getMultiplierColor(multiplier: number): Color {
         const index = CrashUtils.getMultiplierIndex(multiplier);
         return new Color().fromHEX(CrashUtils.config.colors[index]);
-        // 7b32f3 old purple
-        // E6E5DF near white
     }
 
     static getColorActiveTab(): Color {
