@@ -1,5 +1,6 @@
 import gc from "@sg/game-client-base";
 import inversify from "inversify";
+import { CrashBetListHandlers } from "../crash-v2";
 import { BetControlStore } from "../crash-v2/bet/bet-control-store";
 import { CrashCashOutData, CrashOwnBets } from "../crash-v2/interfaces";
 const { injectable, inject } = inversify;
@@ -18,6 +19,7 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     ];
 
     @inject(BetControlStore) private betControlStore: BetControlStore;
+    @inject(CrashBetListHandlers) private crashBetListHandlers: CrashBetListHandlers;
 
     protected handleMultiplier() {
         //dont need, compute by betControlStore.getCashedOutValue(betKey)
@@ -52,6 +54,8 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
             }
             data.cashOut && this.betControlStore.setCashedOut({ betKey: +betKey, ...data.cashOut } as CrashCashOutData);
         });
+
+        this.crashBetListHandlers.handleOwnBets(ownBets);
     }
 
     protected resetCashOut() {
