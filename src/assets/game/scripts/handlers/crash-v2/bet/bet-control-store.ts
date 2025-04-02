@@ -239,6 +239,9 @@ export class BetControlStore {
     }
 
     getBetState(betKey: number) {
+        if (!this.roundTimeStore.initialized) {
+            return "None";
+        }
         const betAccepted = this.controls[betKey].betAccepted;
         const cashedOut = this.controls[betKey].cashedOut;
         const earlyBet = this.controls[betKey].earlyBet;
