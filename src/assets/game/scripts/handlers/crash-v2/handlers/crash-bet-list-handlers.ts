@@ -226,7 +226,8 @@ export class CrashBetListHandlers implements IMultipleHandlers {
             betData.name = this.mainPlayerStore.name;
             betData.betKey = Number(betKey);
             betData.amount = data.amount;
-            if (!data.cashOut && data.cashOut !== undefined) {
+
+            if (data.cashOut !== undefined) {
                 betData.multiplier = data.cashOut?.multiplier;
                 betData.win = data.cashOut?.win;
                 betData.cashOutWin = data.cashOut?.cashOutWin;
