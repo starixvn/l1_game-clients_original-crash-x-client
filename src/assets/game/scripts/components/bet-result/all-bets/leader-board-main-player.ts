@@ -1,8 +1,8 @@
 import { _decorator, Component } from "cc";
 
-import { LeaderBoardCashOut } from "db://shared-components/game-crash/leader-board/scripts/components/leader-board-cash-out";
 import { CrashUtils } from "../../../crash-utils";
 import { MainPlayerBetData } from "../../../handlers/crash-v2/interfaces";
+import { LeaderBoardCashOut } from "./leader-board-cash-out";
 
 const { ccclass, property } = _decorator;
 @ccclass
@@ -28,18 +28,24 @@ export class LeaderBoardMainPlayer extends Component {
         }
 
         if (data.cashOutWin !== undefined && data.cashOutWin > 0) {
-            currentRow.setData({
-                name: data.name,
-                amount: data.amount,
-                multiplier: data.multiplier,
-                win: data.cashOutWin,
-            });
+            currentRow.setData(
+                {
+                    name: data.name,
+                    amount: data.amount,
+                    multiplier: data.multiplier,
+                    win: data.cashOutWin,
+                },
+                0
+            );
             currentRow.lblMultiplier.color = CrashUtils.getMultiplierColor(data.multiplier);
         } else {
-            currentRow.setData({
-                name: data.name,
-                amount: data.amount,
-            });
+            currentRow.setData(
+                {
+                    name: data.name,
+                    amount: data.amount,
+                },
+                0
+            );
             this.firstRow.lblMultiplier.color = CrashUtils.getWhiteColor();
         }
     }

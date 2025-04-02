@@ -3,7 +3,7 @@ import { GameServiceMessage, IMultipleHandlers } from "@sg/game-client-base/dist
 import inversify from "inversify";
 import mobx from "mobx";
 import { CrashBetListStore, ICrashBetList } from "../bet/crash-bet-list-store";
-import { MainPlayerBetData } from "../interfaces";
+import { CrashOwnBets, ICrashBetResponse, MainPlayerBetData } from "../interfaces";
 const { injectable, inject } = inversify;
 
 @injectable()
@@ -18,7 +18,7 @@ export class CrashBetListHandlers implements IMultipleHandlers {
     constructor() {
         setTimeout(() => {
             mobx.reaction(() => this.roundTimeStore.isStartRound, this.reactionStartRound.bind(this));
-            mobx.reaction(() => this.betStore.lastReceivedBet, this.reactionLastReceivedBet.bind(this));
+            // mobx.reaction(() => this.betStore.lastReceivedBet, this.reactionLastReceivedBet.bind(this));
             mobx.reaction(() => this.crashCashOutStore.cashOut, this.reactionCashOut.bind(this));
         }, 0);
     }
@@ -31,18 +31,18 @@ export class CrashBetListHandlers implements IMultipleHandlers {
         this.resetLeaderBoard();
     }
 
-    private reactionLastReceivedBet(lastReceivedBet: gc.Bet.ILastReceivedBet) {
-        if (!lastReceivedBet || lastReceivedBet.value <= 0) {
-            return;
-        }
+    // private reactionLastReceivedBet(lastReceivedBet: gc.Bet.ILastReceivedBet) {
+    //     if (!lastReceivedBet || lastReceivedBet.value <= 0) {
+    //         return;
+    //     }
 
-        const player = {
-            name: this.mainPlayerStore.name,
-            amount: lastReceivedBet.value,
-        };
-        this.betListStore.mainPlayer = player;
-        this.betListStore.updatePlayerName(this.mainPlayerStore.name);
-    }
+    //     const player = {
+    //         name: this.mainPlayerStore.name,
+    //         amount: lastReceivedBet.value,
+    //     };
+    //     this.betListStore.mainPlayer = player;
+    //     this.betListStore.updatePlayerName(this.mainPlayerStore.name);
+    // }
 
     private reactionCashOut(cashOut: MainPlayerBetData) {
         if (!cashOut) {
@@ -206,6 +206,32 @@ export class CrashBetListHandlers implements IMultipleHandlers {
             multiplier: 0,
             win: 0,
         };
+    }
+
+    handleResponseByBetKey(betResponseData: ICrashBetResponse) {
+        if (betResponseData.endBet > 0) {
+            let betData = new MainPlayerBetData();
+            betData.name = this.mainPlayerStore.name;
+            betData.betKey = betResponseData.betKey;
+            betData.amount = betResponseData.endBet;
+            this.betListStore.addAcceptedBet(betData);
+        }
+    }
+
+    handleOwnBets(ownBets: CrashOwnBets) {
+        Object.keys(ownBets).forEach((betKey) => {
+            const data = ownBets[betKey] as gc.GameCrash.GameCrashServiceMessage.CrashOwnBets;
+            let betData = new MainPlayerBetData();
+            betData.name = this.mainPlayerStore.name;
+            betData.betKey = Number(betKey);
+            betData.amount = data.amount;
+            if (!data.cashOut && data.cashOut !== undefined) {
+                betData.multiplier = data.cashOut?.multiplier;
+                betData.win = data.cashOut?.win;
+                betData.cashOutWin = data.cashOut?.cashOutWin;
+            }
+            this.betListStore.addAcceptedBet(betData);
+        });
     }
 
     eventHandleList = [

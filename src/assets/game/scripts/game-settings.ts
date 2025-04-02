@@ -6,8 +6,10 @@ import * as CrashGameV2 from "../scripts/handlers/crash-v2";
 import { AutoPlayHandler } from "./handlers/override/auto-play-handler";
 import { BetResponseHandlers } from "./handlers/override/bet-response-handlers";
 import { CrashBetHandler } from "./handlers/override/crash-bet-handler";
+import { CrashBetListHandlers } from "./handlers/override/crash-bet-list-handlers";
 import { CrashCashOutHandlers } from "./handlers/override/crash-cash-out-handlers";
 import { PlayerActionHandlers } from "./handlers/override/player-action-handlers";
+
 export const settings = {
     id: 113,
     name: "RocketX",
@@ -34,6 +36,7 @@ export const containerOptions: gc.IContainerOptions = {
         container.bind(gc.GameCrash.CrashCashOut.CrashCashOutHandlers).to(CrashCashOutHandlers);
         container.bind(gc.Bet.BetResponseHandlers).to(BetResponseHandlers);
         container.bind(gc.GameCrash.AutoPlay.AutoPlayHandler).to(AutoPlayHandler);
+        container.bind(gc.GameCrash.CrashBetList.CrashBetListHandlers).to(CrashBetListHandlers);
     },
     features: [CrashGameV2, gc.GameCrash, ...gc.defaultFeatures],
 };

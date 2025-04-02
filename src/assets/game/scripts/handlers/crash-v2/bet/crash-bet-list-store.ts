@@ -2,7 +2,7 @@ import { GameCrashServiceMessage, LeaderBoardPlayer } from "@sg/game-client-base
 import inversify from "inversify";
 import * as _ from "lodash";
 import mobx from "mobx";
-import { ICrashBetResponse, MainPlayerBetData } from "../interfaces";
+import { MainPlayerBetData } from "../interfaces";
 
 const { injectable, inject } = inversify;
 
@@ -48,23 +48,27 @@ export class CrashBetListStore {
         return this._mainPlayerData;
     }
 
-    addAcceptedBet(value: ICrashBetResponse) {
-        let cashOutData = new MainPlayerBetData();
-        cashOutData.betKey = value.betKey;
-        cashOutData.amount = value.endBet;
+    addAcceptedBet(acceptedBetData: MainPlayerBetData) {
         let newMainPlayerData = [];
         newMainPlayerData.push(...this.mainPlayerData);
-        newMainPlayerData.push(cashOutData);
+        newMainPlayerData.push(acceptedBetData);
         this.mainPlayerData = newMainPlayerData;
+
+        if (this.mainPlayer === null || this.mainPlayer === undefined) {
+            let name = acceptedBetData.name;
+            let amount = acceptedBetData.amount;
+            let player = { name, amount };
+            this.mainPlayer = player;
+        }
     }
 
-    updateCashOutData(value: MainPlayerBetData) {
-        let cashOut = this.mainPlayerData.find((element) => element.betKey === value.betKey);
+    updateCashOutData(cashOutData: MainPlayerBetData) {
+        let cashOut = this.mainPlayerData.find((element) => element.betKey === cashOutData.betKey);
         if (cashOut != undefined) {
-            cashOut.win = value.win;
-            cashOut.cashOutWin = value.cashOutWin;
-            cashOut.multiplier = value.multiplier;
-            cashOut.reachMaxWin = value.reachMaxWin;
+            cashOut.win = cashOutData.win;
+            cashOut.cashOutWin = cashOutData.cashOutWin;
+            cashOut.multiplier = cashOutData.multiplier;
+            cashOut.reachMaxWin = cashOutData.reachMaxWin;
         }
 
         let newMainPlayerData = [];
