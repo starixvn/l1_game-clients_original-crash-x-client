@@ -2505,7 +2505,7 @@
       "b": 21,
       "a": 255
     },
-    "_string": "FLYAWAY",
+    "_string": "FLEW AWAY",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 48,
@@ -2560,7 +2560,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "key": "RocketX.glossary_crash",
+    "key": "RocketX.crashed",
     "format": 1,
     "prefix": "",
     "suffix": "",
