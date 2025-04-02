@@ -1,6 +1,6 @@
 import { GameCrashServiceMessage, LeaderBoardPlayer } from "@sg/game-client-base/dist/game-crash";
 import inversify from "inversify";
-import * as _ from "lodash";
+import * as _ from "lodash-es";
 import mobx from "mobx";
 import { MainPlayerBetData } from "../interfaces";
 
