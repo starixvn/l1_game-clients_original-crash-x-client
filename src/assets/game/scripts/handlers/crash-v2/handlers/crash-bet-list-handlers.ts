@@ -141,7 +141,8 @@ export class CrashBetListHandlers implements IMultipleHandlers {
     }
 
     handleNewOtherCashOut(otherPlayer: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer) {
-        const { playerId, halfCashOut, cashOut } = otherPlayer;
+        const { playerId, halfCashOut, cashOut, rate } = otherPlayer;
+        cashOut && this.convertAmountAndWinValue(cashOut, rate);
         const notCashedOut = this.betListStore.otherPlayers.find(
             (player) => player.playerId === playerId && !this.playerHasCashedOut(player)
         );
@@ -242,6 +243,10 @@ export class CrashBetListHandlers implements IMultipleHandlers {
         {
             name: gc.GameServiceMessage.PlayerChip.eventName,
             handle: this.handlePlayerChip,
+        },
+        {
+            name: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer.eventName,
+            handle: this.handleNewOtherCashOut,
         },
     ];
 }

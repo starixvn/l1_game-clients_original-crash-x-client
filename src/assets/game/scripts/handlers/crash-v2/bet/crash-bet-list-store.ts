@@ -64,7 +64,7 @@ export class CrashBetListStore {
 
     updateCashOutData(cashOutData: MainPlayerBetData) {
         let cashOut = this.mainPlayerData.find((element) => element.betKey === cashOutData.betKey);
-        if (cashOut != undefined) {
+        if (cashOut !== undefined) {
             cashOut.win = cashOutData.win;
             cashOut.cashOutWin = cashOutData.cashOutWin;
             cashOut.multiplier = cashOutData.multiplier;
