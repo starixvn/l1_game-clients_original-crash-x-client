@@ -18,7 +18,7 @@ export interface ICrashBetListDetail {
 export class CrashBetListStore {
     private _otherPlayers: LeaderBoardPlayer[] = [];
     private _mainPlayer: GameCrashServiceMessage.CrashOtherPlayer = null;
-    private _mainPlayerData: MainPlayerBetData[] = [];
+    private _mainPlayerCashOut: MainPlayerBetData[] = [];
 
     constructor() {
         mobx.makeAutoObservable(this);
@@ -40,20 +40,18 @@ export class CrashBetListStore {
         return this._mainPlayer;
     }
 
-    set mainPlayerData(value: MainPlayerBetData[]) {
-        this._mainPlayerData = value;
+    set mainPlayerCashOut(value: MainPlayerBetData[]) {
+        this._mainPlayerCashOut = value;
     }
 
-    get mainPlayerData(): MainPlayerBetData[] {
-        return this._mainPlayerData;
+    get mainPlayerCashOut(): MainPlayerBetData[] {
+        return this._mainPlayerCashOut;
     }
 
     addAcceptedBet(acceptedBetData: MainPlayerBetData) {
-        let newMainPlayerData = [];
-        newMainPlayerData.push(...this.mainPlayerData);
-        newMainPlayerData.push(acceptedBetData);
-        this.mainPlayerData = newMainPlayerData;
+        this.mainPlayerCashOut = [...this.mainPlayerCashOut, acceptedBetData];
 
+        //TODO: 2nd bet ??
         if (this.mainPlayer === null || this.mainPlayer === undefined) {
             let name = acceptedBetData.name;
             let amount = acceptedBetData.amount;
@@ -63,21 +61,19 @@ export class CrashBetListStore {
     }
 
     updateCashOutData(cashOutData: MainPlayerBetData) {
-        let cashOut = this.mainPlayerData.find((element) => element.betKey === cashOutData.betKey);
-        if (cashOut !== undefined) {
+        let cashOut = this.mainPlayerCashOut.find((element) => element.betKey === cashOutData.betKey);
+        if (cashOut) {
             cashOut.win = cashOutData.win;
             cashOut.cashOutWin = cashOutData.cashOutWin;
             cashOut.multiplier = cashOutData.multiplier;
             cashOut.reachMaxWin = cashOutData.reachMaxWin;
         }
 
-        let newMainPlayerData = [];
-        newMainPlayerData.push(...this.mainPlayerData);
-        this.mainPlayerData = newMainPlayerData;
+        this.mainPlayerCashOut = [...this.mainPlayerCashOut];
     }
 
     updatePlayerName(name: string) {
-        this._mainPlayerData.forEach((element) => {
+        this._mainPlayerCashOut.forEach((element) => {
             element.name = name;
         });
     }
@@ -97,7 +93,7 @@ export class CrashBetListStore {
         this.otherPlayers.forEach((player: LeaderBoardPlayer) => {
             player.win > 0 && players.push(player);
         });
-        const countMainPlayer = this.mainPlayer?.cashOut || this.mainPlayer?.halfCashOut ? 1 : 0;
+        const countMainPlayer = this.isMainPlayerCashOut ? 1 : 0;
         return this.groupPlayersByName(players) + countMainPlayer;
     }
 
@@ -108,8 +104,14 @@ export class CrashBetListStore {
             otherPlayersCashOut += player.win;
         });
 
-        const mainPlayerCashOut = (this.mainPlayer?.cashOut?.win ?? 0) + (this.mainPlayer?.halfCashOut?.win ?? 0);
+        return otherPlayersCashOut + this.totalMainPlayerCashOut;
+    }
 
-        return otherPlayersCashOut + mainPlayerCashOut;
+    get isMainPlayerCashOut(): boolean {
+        return this.mainPlayerCashOut.some((curr) => curr.win > 0);
+    }
+
+    get totalMainPlayerCashOut(): number {
+        return this.mainPlayerCashOut.reduce((acc, curr) => acc + curr.win, 0);
     }
 }

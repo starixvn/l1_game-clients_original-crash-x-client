@@ -137,7 +137,7 @@ export class CrashBetListHandlers implements IMultipleHandlers {
     private resetLeaderBoard() {
         this.betListStore.otherPlayers = [];
         this.betListStore.mainPlayer = null;
-        this.betListStore.mainPlayerData = [];
+        this.betListStore.mainPlayerCashOut = [];
     }
 
     handleNewOtherCashOut(otherPlayer: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer) {
