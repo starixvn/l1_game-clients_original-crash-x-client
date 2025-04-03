@@ -112,6 +112,6 @@ export class CrashBetListStore {
     }
 
     get totalMainPlayerCashOut(): number {
-        return this.mainPlayerCashOut.reduce((acc, curr) => acc + curr.win, 0);
+        return this.mainPlayerCashOut.reduce((acc, curr) => acc + (curr.win ?? 0), 0);
     }
 }
