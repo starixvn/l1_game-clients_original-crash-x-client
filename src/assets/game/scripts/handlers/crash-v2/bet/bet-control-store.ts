@@ -16,13 +16,12 @@ export class BetControlStore {
     protected readonly crashGameConfigStore: gc.GameCrash.CrashGameConfigs.CrashGameConfigStore;
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
 
-    @inject(gc.GameUserSettings.GameUserSettingStore) protected readonly gameUserSettingStore: gc.GameUserSettings.GameUserSettingStore;
+    @inject(gc.GameUserSettings.GameUserSettingHandler)
+    protected readonly gameUserSettingHandler: gc.GameUserSettings.GameUserSettingHandler;
 
     constructor() {
         mobx.makeAutoObservable(this);
         setTimeout(() => {
-            this.onLoadStorage();
-
             mobx.reaction(
                 () => this.gameConfigStore.chips,
                 (chips) => {
@@ -31,15 +30,6 @@ export class BetControlStore {
                     if (this.inputValues.length > 3) {
                         console.warn("Setting chips MUST equal 3");
                         this.inputValues = this.inputValues.slice(0, 3);
-                    }
-                }
-            );
-
-            mobx.reaction(
-                () => this.gameUserSettingStore.permanentStorage,
-                (trigger) => {
-                    if (trigger?.action === gc.GameUserSettings.GameUserSettingAction.Save) {
-                        this.onSaveStorage();
                     }
                 }
             );
@@ -287,14 +277,11 @@ export class BetControlStore {
     }
 
     onSaveStorage() {
-        const settings = {};
-        Object.values(this.controls).map((control, betKey) => (settings[betKey] = control.setting));
-        gc.StorageManager.set(gc.localStorageKeys.permanentGameUserSetting, settings);
+        this.gameUserSettingHandler.saveTempStorage();
     }
 
     onLoadStorage() {
-        const data = gc.StorageManager.get(gc.localStorageKeys.permanentGameUserSetting);
-
+        const data = gc.StorageManager.get(gc.localStorageKeys.gameUserSetting);
         if (data) {
             Object.values(data).forEach((setting, index) => {
                 this.controls[index].setting = setting;

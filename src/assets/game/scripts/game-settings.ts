@@ -8,6 +8,7 @@ import { BetResponseHandlers } from "./handlers/override/bet-response-handlers";
 import { CrashBetHandler } from "./handlers/override/crash-bet-handler";
 import { CrashBetListHandlers } from "./handlers/override/crash-bet-list-handlers";
 import { CrashCashOutHandlers } from "./handlers/override/crash-cash-out-handlers";
+import { GameCrashUserSettingHandlerV2 } from "./handlers/override/crash-game-user-setting-handler-v2";
 import { PlayerActionHandlers } from "./handlers/override/player-action-handlers";
 
 export const settings = {
@@ -37,6 +38,7 @@ export const containerOptions: gc.IContainerOptions = {
         container.bind(gc.Bet.BetResponseHandlers).to(BetResponseHandlers);
         container.bind(gc.GameCrash.AutoPlay.AutoPlayHandler).to(AutoPlayHandler);
         container.bind(gc.GameCrash.CrashBetList.CrashBetListHandlers).to(CrashBetListHandlers);
+        container.bind(gc.GameCrash.CrashGameUserSetting.GameCrashUserSettingHandler).to(GameCrashUserSettingHandlerV2);
     },
     features: [CrashGameV2, gc.GameCrash, ...gc.defaultFeatures],
 };
