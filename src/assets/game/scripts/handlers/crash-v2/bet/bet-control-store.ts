@@ -169,12 +169,16 @@ export class BetControlStore {
         this.controls[cashedOut.betKey].cashedOut = cashedOut;
     }
 
+    resetControl(betKey: number) {
+        this.controls[betKey].processing = false;
+        this.controls[betKey].betAccepted = null;
+        this.controls[betKey].cashedOut = null;
+    }
+
     resetLastBet() {
         Object.keys(this.controls).forEach((key) => {
             const betKey = Number(key);
-            this.controls[betKey].processing = false;
-            this.controls[betKey].betAccepted = null;
-            this.controls[betKey].cashedOut = null;
+            this.resetControl(betKey);
         });
     }
 

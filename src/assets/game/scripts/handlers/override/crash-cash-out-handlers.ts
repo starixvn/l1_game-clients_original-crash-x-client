@@ -31,11 +31,9 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
         this.handleCashOutMessage(cashOut);
         this.cashOutStore.setCashOutNotice(cashOut);
 
-        if (this.isCashedOutAllBets()) {
-            setTimeout(() => {
-                this.resetCashOut();
-            }, this.displayCashedOutDuration);
-        }
+        setTimeout(() => {
+            this.resetControl(cashOut.betKey);
+        }, this.displayCashedOutDuration);
     }
 
     protected isCashedOutAllBets() {
@@ -43,7 +41,6 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     }
 
     protected handleOwnBets(ownBets: CrashOwnBets) {
-        //TODO:handle own bets when resume game with bet
         Object.keys(ownBets).forEach((betKey) => {
             const data = ownBets[betKey] as gc.GameCrash.GameCrashServiceMessage.CrashOwnBets;
             this.betControlStore.setBetAmount(+betKey, data.amount);
@@ -61,5 +58,9 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
     protected resetCashOut() {
         this.betControlStore.resetLastBet();
         this.betStore.lastReceivedBet = null;
+    }
+
+    protected resetControl(betKey: number) {
+        this.betControlStore.resetControl(betKey);
     }
 }
