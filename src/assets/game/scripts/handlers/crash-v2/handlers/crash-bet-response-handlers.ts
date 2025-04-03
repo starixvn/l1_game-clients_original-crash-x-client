@@ -18,8 +18,11 @@ export class CrashBetResponseHandlers {
     @inject(gc.Bet.BetStore) protected readonly betStore: gc.Bet.BetStore;
     @inject(BetControlStore) protected readonly betControlStore: BetControlStore;
     @inject(CrashBetListHandlers) protected readonly crashBetListHandlers: CrashBetListHandlers;
+    @inject(gc.Connection.ConnectionHandlers.RetryGameHandler)
+    protected readonly retryGameHandler: gc.Connection.ConnectionHandlers.RetryGameHandler;
 
     handleResponseByBetKey(data: ICrashBetResponse) {
+        this.retryGameHandler.clearInterval();
         if (data.endBet > 0) {
             this.betStore.lastReceivedBet = { value: data.endBet, isAnimated: true };
             this.betControlStore.setAcceptedBet(data.betKey, data.endBet);
