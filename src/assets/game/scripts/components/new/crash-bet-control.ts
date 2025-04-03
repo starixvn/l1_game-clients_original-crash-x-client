@@ -79,6 +79,8 @@ export default class CrashBetControl extends ObserverComponent {
         return this._btnBet;
     }
 
+    private disableInput = false;
+
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
     onClickBet() {
         return this.betKey;
@@ -120,7 +122,12 @@ export default class CrashBetControl extends ObserverComponent {
         this.nodeWaitingNextRound.active = state === ButtonState.CANCEL_BET;
         this.nodeBetNextRound.parent.active = this.nodeWaitingNextRound.active || this.nodeBetNextRound.active;
 
-        const disableInput = state === ButtonState.CANCEL_BET || state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
+        this.disableInput = state === ButtonState.CANCEL_BET || state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
+        this.updatePreventInput();
+    }
+
+    updatePreventInput() {
+        const disableInput = this.toggleAutoBet.isChecked || this.disableInput;
         this.nodePreventInput.active = disableInput;
 
         this.inputCashOutAt.enabled = !disableInput;
@@ -131,6 +138,7 @@ export default class CrashBetControl extends ObserverComponent {
         this.toggleAutoBet.setIsCheckedWithoutNotify(setting.autoBet);
         this.toggleAutoCashOut.setIsCheckedWithoutNotify(setting.autoCashOut);
         this.updateToggleNodes();
+        this.updatePreventInput();
 
         const betValue = gc.FormatUtils.numberWithCommas(setting.amount, 2);
         this.inputBetAmount.string = betValue;
