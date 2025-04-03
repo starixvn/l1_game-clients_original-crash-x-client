@@ -2,6 +2,7 @@ import gc from "@sg/game-client-base";
 import { _decorator, EditBox, UIOpacity } from "cc";
 import { ClientSeedSettingsPopup } from "db://shared-components/game-crash/provably-fair/scripts/client-seed-settings-popup";
 import Observer from "observer";
+
 const { ccclass, property } = _decorator;
 const { GameCrash, Shared } = gc;
 const { utils } = Shared;
@@ -10,57 +11,73 @@ const { render, handle } = Observer;
 @ccclass
 export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     @property(EditBox)
-    inputManualSeed: EditBox = null;
+    private inputManualSeed: EditBox = null;
 
-    private readonly OPACITY_DISABLED_1 = 153;
-    private readonly OPACITY_ENABLED_1 = 255;
+    private static readonly OPACITY_DISABLED = 153;
+    private static readonly OPACITY_ENABLED = 255;
+
     onLoad() {
-        this.inputManualSeed.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
-        this.inputManualSeed.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBeginManualSeed, this);
         super.onLoad();
+        this.setupInputListeners();
+        this.setVisibleAutoComponent(true);
+    }
+
+    private setupInputListeners() {
+        const inputNode = this.inputManualSeed.node;
+        inputNode.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
+        inputNode.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBeginManualSeed, this);
     }
 
     clickManualOption() {
         this.inputManualSeed.inputMode = EditBox.InputMode.NUMERIC;
-
         super.clickManualMode();
-        this.setVisibleComponent(false);
+        this.setVisibleAutoComponent(false);
     }
 
     clickAutoOption() {
         this.inputManualSeed.inputMode = EditBox.InputMode.SINGLE_LINE;
         super.clickRandomMode();
-        this.setVisibleComponent(true);
+        this.setVisibleAutoComponent(true);
     }
 
-    setVisibleComponent(selectedRandomMode: boolean) {
-        this.tglRandomClientSeed.node.getComponent(UIOpacity).opacity = selectedRandomMode
-            ? this.OPACITY_ENABLED_1
-            : this.OPACITY_DISABLED_1;
+    private setVisibleAutoComponent(selectedRandomMode: boolean) {
+        this.updateRandomModeElements(selectedRandomMode);
+        this.updateManualModeElements(selectedRandomMode);
+        this.updateInputField(selectedRandomMode);
+    }
+
+    private updateRandomModeElements(selectedRandomMode: boolean) {
+        const opacity = selectedRandomMode ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
+        this.tglRandomClientSeed.node.getComponent(UIOpacity).opacity = opacity;
+        this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity = opacity;
         this.nodeRandomLabelDisabledBg.active = selectedRandomMode;
-
-        this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity = selectedRandomMode
-            ? this.OPACITY_ENABLED_1
-            : this.OPACITY_DISABLED_1;
-
-        this.nodeManualLabelDisabledBg.active = !selectedRandomMode;
-        this.tglManualClientSeed.node.getComponent(UIOpacity).opacity = !selectedRandomMode
-            ? this.OPACITY_ENABLED_1
-            : this.OPACITY_DISABLED_1;
-        this.lblManualClientSeed.node.getComponent(UIOpacity).opacity = !selectedRandomMode
-            ? this.OPACITY_ENABLED_1
-            : this.OPACITY_DISABLED_1;
-
-        this.inputManualSeed.enabled = !selectedRandomMode;
-        this.inputManualSeed.node.getComponent(UIOpacity).opacity = !selectedRandomMode ? this.OPACITY_ENABLED_1 : this.OPACITY_DISABLED_1;
     }
 
-    onEditEndManualSeed() {
-        let manualInputValue = this.inputManualSeed.string;
-        if (manualInputValue !== "") {
+    private updateManualModeElements(selectedRandomMode: boolean) {
+        const opacity = !selectedRandomMode
+            ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED
+            : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
+        this.tglManualClientSeed.node.getComponent(UIOpacity).opacity = opacity;
+        this.lblManualClientSeed.node.getComponent(UIOpacity).opacity = opacity;
+        this.nodeManualLabelDisabledBg.active = !selectedRandomMode;
+    }
+
+    private updateInputField(selectedRandomMode: boolean) {
+        const opacity = !selectedRandomMode
+            ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED
+            : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
+        this.inputManualSeed.enabled = !selectedRandomMode;
+        this.inputManualSeed.node.getComponent(UIOpacity).opacity = opacity;
+    }
+
+    private onEditEndManualSeed() {
+        const manualInputValue = this.inputManualSeed.string;
+        if (manualInputValue) {
             this.updateValueManualMode(manualInputValue);
         }
     }
 
-    onEditBeginManualSeed() {}
+    private onEditBeginManualSeed() {
+        // Handle edit begin if needed
+    }
 }
