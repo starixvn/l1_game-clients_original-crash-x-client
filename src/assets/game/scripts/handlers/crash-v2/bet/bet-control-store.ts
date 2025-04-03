@@ -3,7 +3,7 @@ import mobx from "mobx";
 const { injectable, inject } = inversify;
 
 import gc from "@sg/game-client-base";
-import { ButtonState, CrashCashOutData, IBetControl } from "../interfaces";
+import { ButtonState, CrashCashOutData, IBetControl, MinMultiplier } from "../interfaces";
 
 @injectable()
 export class BetControlStore {
@@ -65,7 +65,7 @@ export class BetControlStore {
             setting: {
                 autoCashOut: false,
                 autoBet: false,
-                cashOutAt: 2.0,
+                cashOutAt: MinMultiplier,
                 amount: 1,
             },
         },
@@ -77,8 +77,8 @@ export class BetControlStore {
             setting: {
                 autoCashOut: false,
                 autoBet: false,
-                cashOutAt: 5.0,
-                amount: 2,
+                cashOutAt: MinMultiplier,
+                amount: 1,
             },
         },
     };

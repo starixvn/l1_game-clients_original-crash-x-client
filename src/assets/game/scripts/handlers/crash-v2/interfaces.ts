@@ -1,5 +1,7 @@
 import gc from "@sg/game-client-base";
 
+export const MinMultiplier = 1.01;
+
 export interface IBetControlSettings {
     autoCashOut: boolean;
     autoBet: boolean;
