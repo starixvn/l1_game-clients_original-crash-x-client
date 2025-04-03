@@ -120,7 +120,7 @@ export default class CrashBetControl extends ObserverComponent {
         this.nodeWaitingNextRound.active = state === ButtonState.CANCEL_BET;
         this.nodeBetNextRound.parent.active = this.nodeWaitingNextRound.active || this.nodeBetNextRound.active;
 
-        const disableInput = state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
+        const disableInput = state === ButtonState.CANCEL_BET || state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
         this.nodePreventInput.active = disableInput;
     }
 
