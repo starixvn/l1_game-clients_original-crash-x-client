@@ -122,6 +122,9 @@ export default class CrashBetControl extends ObserverComponent {
 
         const disableInput = state === ButtonState.CANCEL_BET || state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT;
         this.nodePreventInput.active = disableInput;
+
+        this.inputCashOutAt.enabled = !disableInput;
+        this.inputBetAmount.enabled = !disableInput;
     }
 
     renderSetting(setting: IBetControlSettings) {
