@@ -1,12 +1,9 @@
 import gc from "@sg/game-client-base";
 import { _decorator, EditBox, UIOpacity } from "cc";
 import { ClientSeedSettingsPopup } from "db://shared-components/game-crash/provably-fair/scripts/client-seed-settings-popup";
-import Observer from "observer";
 
 const { ccclass, property } = _decorator;
 const { GameCrash, Shared } = gc;
-const { utils } = Shared;
-const { render, handle } = Observer;
 
 @ccclass
 export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
@@ -19,24 +16,24 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     onLoad() {
         super.onLoad();
         this.setupInputListeners();
-        this.setVisibleAutoComponent(true);
     }
 
     private setupInputListeners() {
         const inputNode = this.inputManualSeed.node;
         inputNode.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
-        inputNode.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBeginManualSeed, this);
+        //inputNode.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBeginManualSeed, this);
     }
 
     clickManualOption() {
-        this.inputManualSeed.inputMode = EditBox.InputMode.NUMERIC;
-        super.clickManualMode();
+        const randomCS = this.lblRandomClientSeed.string;
+        this.inputManualSeed.string = randomCS;
+        this.clickManualMode();
         this.setVisibleAutoComponent(false);
     }
 
     clickAutoOption() {
-        this.inputManualSeed.inputMode = EditBox.InputMode.SINGLE_LINE;
-        super.clickRandomMode();
+        this.inputManualSeed.string = "";
+        this.clickRandomMode();
         this.setVisibleAutoComponent(true);
     }
 
@@ -77,7 +74,9 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         }
     }
 
-    private onEditBeginManualSeed() {
-        // Handle edit begin if needed
+    override updateManualClientSeed(manualClientSeed: string) {
+        this.inputManualSeed.string = manualClientSeed;
     }
+
+    override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {}
 }
