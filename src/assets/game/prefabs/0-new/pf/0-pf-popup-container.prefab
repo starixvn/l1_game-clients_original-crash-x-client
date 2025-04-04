@@ -538,7 +538,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 756,
+      "width": 828,
       "height": 1344
     },
     "_anchorPoint": {
@@ -615,7 +615,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 756,
+      "width": 828,
       "height": 1344
     },
     "_anchorPoint": {
@@ -681,7 +681,7 @@
     "__type__": "PrefabItem",
     "name": "PFVerificationDetail",
     "prefab": {
-      "__uuid__": "3b858c96-26e5-440f-8112-d5a953c7409a",
+      "__uuid__": "5bd393aa-0c64-42b6-8e90-50b2e4c01f77",
       "__expectedType__": "cc.Prefab"
     }
   },
