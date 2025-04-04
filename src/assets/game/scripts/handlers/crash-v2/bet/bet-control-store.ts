@@ -3,7 +3,7 @@ import mobx from "mobx";
 const { injectable, inject } = inversify;
 
 import gc from "@sg/game-client-base";
-import { ButtonState, CrashCashOutData, IBetControl, MinMultiplier } from "../interfaces";
+import { ButtonState, CrashCashOutData, IBetControl, IBetControlSettings, MinMultiplier } from "../interfaces";
 
 @injectable()
 export class BetControlStore {
@@ -22,6 +22,7 @@ export class BetControlStore {
     constructor() {
         mobx.makeAutoObservable(this);
         setTimeout(() => {
+            this.onLoadStorage();
             mobx.reaction(
                 () => this.gameConfigStore.chips,
                 (chips) => {
@@ -56,6 +57,20 @@ export class BetControlStore {
         }, 0);
     }
 
+    defaultSettings: { [betKey: number]: IBetControlSettings } = {
+        0: {
+            autoCashOut: false,
+            autoBet: false,
+            cashOutAt: MinMultiplier,
+            amount: 1,
+        },
+        1: {
+            autoCashOut: false,
+            autoBet: false,
+            cashOutAt: MinMultiplier,
+            amount: 1,
+        },
+    };
     controls: { [betKey: number]: IBetControl } = {
         0: {
             processing: false,
@@ -285,6 +300,10 @@ export class BetControlStore {
         if (data) {
             Object.values(data).forEach((setting, index) => {
                 this.controls[index].setting = setting;
+            });
+        } else {
+            Object.keys(this.defaultSettings).forEach((key) => {
+                this.controls[+key].setting = this.defaultSettings[+key];
             });
         }
     }
