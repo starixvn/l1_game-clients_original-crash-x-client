@@ -24,7 +24,7 @@ export class MyBetTableBody extends ObserverComponent {
     protected itemHeight: number;
 
     private tooltipPositionX: number = 230;
-    private tooltipPositionYBuffer: number = 40;
+    private tooltipPositionYBuffer: number = 48;
     protected currentPageIndex: number = 1;
     protected currentIndex: number = 0;
     protected isFetchingData: boolean = false;

@@ -23,8 +23,8 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
 
     protected startYPosition: number;
     protected itemHeight: number;
-    private tooltipPositionX: number = 235;
-    private tooltipPositionYBuffer: number = 40;
+    private tooltipPositionX: number = 230;
+    private tooltipPositionYBuffer: number = 48;
     protected currentPageIndex: number = 1;
     protected currentIndex: number = 0;
     protected isFetchingData: boolean = false;
