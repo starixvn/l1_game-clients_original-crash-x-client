@@ -86,8 +86,8 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         let multiplierText = "-";
         if (multiplierRow !== undefined) {
             if (multiplierRow.action.toString() === CrashUtils.betEventNames.refund) {
-                this.lblRefund.enabled = true;
-                this.lblMultiplier.enabled = false;
+                this.lblRefund.node.active = true;
+                this.lblMultiplier.node.active = false;
             } else {
                 if (Number(multiplierRow.multiplier) !== 0) {
                     const multiplier = Number(multiplierRow.multiplier);
