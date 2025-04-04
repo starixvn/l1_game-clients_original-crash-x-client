@@ -14,7 +14,6 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
 
     private static readonly OPACITY_DISABLED = 153;
     private static readonly OPACITY_ENABLED = 255;
-    //  @inject(gc.Bet.BetStore) protected readonly betStore: gc.Bet.BetStore;
 
     onLoad() {
         super.onLoad();
@@ -24,14 +23,14 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     private setupInputListeners() {
         const inputNode = this.inputManualSeed.node;
         inputNode.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
-        //inputNode.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBeginManualSeed, this);
     }
 
     clickManualOption() {
-        const randomCS = this.lblRandomClientSeed.string;
-        this.inputManualSeed.string = randomCS;
         this.clickManualMode();
         this.setVisibleAutoComponent(false);
+        const randomCS = this.lblRandomClientSeed.string;
+        this.inputManualSeed.string = randomCS;
+        this.updateValueManualMode(randomCS);
     }
 
     clickAutoOption() {
