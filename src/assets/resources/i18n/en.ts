@@ -255,6 +255,7 @@ export const languages = {
         "glossary_bet": "Bet",
         "glossary_message_reach_max_win": "Reach the Max Win",
         "glossary_multiplier": "Multiplier",
+        "glossary_refund": "Refund",
         "glossary_this_game_is_provably_fair": "This game is {provablyFairIcon} <b>Provably Fair</b>.",
         "highest_crash_points": "Highest Multipliers",
         "message_bet_is_accepted": "Bet is accepted",

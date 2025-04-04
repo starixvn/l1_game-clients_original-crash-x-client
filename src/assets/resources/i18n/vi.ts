@@ -255,6 +255,7 @@ export const languages = {
         "glossary_bet": "Cược",
         "glossary_message_reach_max_win": "Đạt Mức Tiền Thắng Tối Đa",
         "glossary_multiplier": "Hệ Số Nhân",
+        "glossary_refund": "Hoàn Tiền",
         "glossary_this_game_is_provably_fair": "Trò chơi được chứng minh là {provablyFairIcon} <b>Provably Fair</b>.",
         "highest_crash_points": "Hệ Số Nhân Cao Nhất",
         "message_bet_is_accepted": "Đã xác nhận cược",

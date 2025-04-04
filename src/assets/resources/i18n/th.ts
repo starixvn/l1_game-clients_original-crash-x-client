@@ -254,6 +254,7 @@ export const languages = {
         "glossary_bet": "เดิมพัน",
         "glossary_message_reach_max_win": "ไปให้ถึงการชนะสูงสุด",
         "glossary_multiplier": "ตัวคูณ",
+        "glossary_refund": "คืนเงิน",
         "glossary_this_game_is_provably_fair": "เกมนี้ยุติธรรม{provablyFairIcon} <b>และสามารถพิสูจน์ได้</b>",
         "highest_crash_points": "ตัวคูณสูงสุด",
         "message_bet_is_accepted": "ยอมรับการเดิมพันแล้ว",

@@ -254,6 +254,7 @@ export const languages = {
         "glossary_bet": "Taruhan",
         "glossary_message_reach_max_win": "Raih Kemenangan Maksimal",
         "glossary_multiplier": "Pengali",
+        "glossary_refund": "Pengembalian dana",
         "glossary_this_game_is_provably_fair": "Permainan ini {provablyFairIcon} <b>Provably Fair</b>.",
         "highest_crash_points": "Pengganda Tertinggi",
         "message_bet_is_accepted": "Taruhan diterima",

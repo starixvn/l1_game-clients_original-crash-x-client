@@ -254,6 +254,7 @@ export const languages = {
         "glossary_bet": "赌注",
         "glossary_message_reach_max_win": "达到最大胜利",
         "glossary_multiplier": "乘数",
+        "glossary_refund": "退款",
         "glossary_this_game_is_provably_fair": "该游戏是{provablyFairIcon}<b>可证明公平的</b>。",
         "highest_crash_points": "最高乘数",
         "message_bet_is_accepted": "投注接受",
