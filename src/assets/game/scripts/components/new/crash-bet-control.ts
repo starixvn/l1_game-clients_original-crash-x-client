@@ -158,7 +158,7 @@ export default class CrashBetControl extends ObserverComponent {
     onLoad() {
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
-        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetCashOutAt, this);
+        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndCashOutAt, this);
         this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
 
         this.nodeInputValues.children.forEach((child, index) => {
@@ -182,26 +182,27 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     onEditEndBetAmount(editBox: EditBox) {
-        try {
-            let value = Number(editBox.string);
-            if (isNaN(value)) {
-                value = 1;
-            }
-            this.setValidBetAmount(value);
-        } catch (error) {
-            warn("input bet amount error ----------------- ", editBox.string);
-        }
+        const validValue = this.onEditEnd(editBox, false);
+        this.setValidBetAmount(Number(validValue));
     }
 
-    onEditEndBetCashOutAt(editBox: EditBox) {
+    onEditEndCashOutAt(editBox: EditBox) {
+        const validValue = this.onEditEnd(editBox, false);
+        this.setValidCashOutAt(Number(validValue));
+    }
+
+    onEditEnd(editBox: EditBox, noZero: boolean) {
         try {
             let value = Number(editBox.string);
             if (isNaN(value)) {
                 value = 1;
             }
-            this.setValidCashOutAt(value);
+            const valueString = gc.FormatUtils.numberWithCommas(value, 2, noZero);
+            const validValue = valueString.replace(/,/g, "").replace(/x/g, "");
+            return Number(validValue);
         } catch (error) {
-            warn("input cash out at error ----------------- ", editBox.string);
+            warn("input edit box error ----------------- ", editBox.string);
+            return 1;
         }
     }
 
