@@ -26,11 +26,11 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     }
 
     clickManualOption() {
-        this.clickManualMode();
         this.setVisibleAutoComponent(false);
         const randomCS = this.lblRandomClientSeed.string;
         this.inputManualSeed.string = randomCS;
         this.updateValueManualMode(randomCS);
+        this.clickManualMode();
     }
 
     clickAutoOption() {
@@ -66,7 +66,6 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
             ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED
             : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
 
-        console.log("selectedRandomMode", selectedRandomMode);
         this.inputManualSeed.enabled = !selectedRandomMode;
         this.inputManualSeed.node.getComponent(UIOpacity).opacity = opacity;
     }
@@ -82,9 +81,7 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         this.inputManualSeed.string = manualClientSeed;
     }
 
-    override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {
-        this.setVisibleAutoComponent(!showManualClientSeedPopup);
-    }
+    override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {}
 
     @render(gc.Bet.BetStore, (store) => store.lastReceivedBet, { fireImmediately: false })
     closeSettingPopup(lastReceivedBet: gc.Bet.ILastReceivedBet) {
@@ -93,5 +90,10 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         }
 
         this.closeSettingsPopup();
+    }
+
+    override updateRandomMode(randomClientSeedEnabled: boolean) {
+        super.updateRandomMode(randomClientSeedEnabled);
+        this.setVisibleAutoComponent(randomClientSeedEnabled);
     }
 }
