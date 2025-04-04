@@ -1556,6 +1556,8 @@
       "__id__": 0
     },
     "fileId": "f82MnzQERKt6VnvinZJGGt",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -12342,7 +12344,7 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 69.747,
+      "y": 6.178,
       "z": 0
     }
   },
@@ -13218,7 +13220,7 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 6.178,
+      "y": -59.227,
       "z": 0
     }
   },

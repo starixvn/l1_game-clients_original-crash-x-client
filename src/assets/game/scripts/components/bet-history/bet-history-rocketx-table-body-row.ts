@@ -83,19 +83,20 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
 
     private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
         const multiplierRow = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
-
+        let multiplierText = "-";
         if (multiplierRow !== undefined) {
-            if (multiplierRow.action.toString() !== CrashUtils.betEventNames.refund) {
+            if (multiplierRow.action.toString() === CrashUtils.betEventNames.refund) {
                 this.lblRefund.enabled = true;
                 this.lblMultiplier.enabled = false;
             } else {
-                let multiplierText = "-";
                 if (Number(multiplierRow.multiplier) !== 0) {
                     const multiplier = Number(multiplierRow.multiplier);
                     multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
                 }
                 this.lblMultiplier.string = multiplierText;
             }
+        } else {
+            this.lblMultiplier.string = multiplierText;
         }
     }
 
