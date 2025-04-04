@@ -55,7 +55,13 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
     newHandleBetData(data: any, betKey: number) {
         const amount = data.amount;
         const control = this.betControlStore.controls[betKey];
-        if (this.isValidBet(amount) && !control.processing) {
+
+        if (control.processing) {
+            this.showWarningProcessingBet();
+            return;
+        }
+
+        if (this.isValidBet(amount)) {
             this.betControlStore.setProcessing(betKey, true);
             this.connectionStore.send(gc.GameClientEmitMessage.Bet.eventName, data);
             this.retryGameHandler.handle();
