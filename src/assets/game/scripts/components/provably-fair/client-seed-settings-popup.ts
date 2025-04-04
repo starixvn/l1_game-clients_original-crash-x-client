@@ -65,6 +65,8 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         const opacity = !selectedRandomMode
             ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED
             : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
+
+        console.log("selectedRandomMode", selectedRandomMode);
         this.inputManualSeed.enabled = !selectedRandomMode;
         this.inputManualSeed.node.getComponent(UIOpacity).opacity = opacity;
     }
@@ -80,7 +82,9 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         this.inputManualSeed.string = manualClientSeed;
     }
 
-    override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {}
+    override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {
+        this.setVisibleAutoComponent(!showManualClientSeedPopup);
+    }
 
     @render(gc.Bet.BetStore, (store) => store.lastReceivedBet, { fireImmediately: false })
     closeSettingPopup(lastReceivedBet: gc.Bet.ILastReceivedBet) {

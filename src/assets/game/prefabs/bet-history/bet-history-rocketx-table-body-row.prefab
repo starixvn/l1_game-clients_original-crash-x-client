@@ -1639,7 +1639,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Refund",
+    "_string": "Rocketx.refund",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 22,
@@ -1700,7 +1700,7 @@
     "__prefab": {
       "__id__": 79
     },
-    "key": "Common.refund",
+    "key": "RocketX.refund",
     "format": 3,
     "prefix": "",
     "suffix": "",
