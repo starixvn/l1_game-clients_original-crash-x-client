@@ -1,9 +1,11 @@
 import gc from "@sg/game-client-base";
 import { _decorator, EditBox, UIOpacity } from "cc";
 import { ClientSeedSettingsPopup } from "db://shared-components/game-crash/provably-fair/scripts/client-seed-settings-popup";
+import Observer from "observer";
 
 const { ccclass, property } = _decorator;
 const { GameCrash, Shared } = gc;
+const { render, handle } = Observer;
 
 @ccclass
 export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
@@ -12,6 +14,7 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
 
     private static readonly OPACITY_DISABLED = 153;
     private static readonly OPACITY_ENABLED = 255;
+    //  @inject(gc.Bet.BetStore) protected readonly betStore: gc.Bet.BetStore;
 
     onLoad() {
         super.onLoad();
@@ -79,4 +82,13 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     }
 
     override setDisplayManualClientSeedPopup(showManualClientSeedPopup: boolean) {}
+
+    @render(gc.Bet.BetStore, (store) => store.lastReceivedBet, { fireImmediately: false })
+    closeSettingPopup(lastReceivedBet: gc.Bet.ILastReceivedBet) {
+        if (!lastReceivedBet || lastReceivedBet.value <= 0) {
+            return;
+        }
+
+        this.closeSettingsPopup();
+    }
 }

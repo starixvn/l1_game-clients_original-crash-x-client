@@ -4,14 +4,13 @@ import Observer from "observer";
 
 import { DynamicObject } from "@sg/game-client-base/dist/game/bet-history";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { CrashUtils } from "../../crash-utils";
 import { HistoryConstants } from "../../handlers/crash-v2";
 import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
 const { handle } = Observer;
-const cashOutEventName = "cashOut";
-const refundEventName = "refund";
 
 export type BetResultHistoryBodyItemType = {
     betHistoryLog: gc.BetHistory.BetHistoryLog;
@@ -36,6 +35,9 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
 
     @property(Label)
     lblMultiplier: Label = null;
+
+    @property(Label)
+    lblRefund: Label = null;
 
     @property(Node)
     nodeBackground: Node = null;
@@ -75,20 +77,26 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     private getBetAmount(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): number {
-        const amount = betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()));
-        return amount === undefined ? 0 : Number(amount.amount);
+        const betDetail = betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()));
+        return betDetail === undefined ? 0 : Number(betDetail.amount);
     }
 
     private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
         const multiplierRow = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
 
-        let multiplierText = "-";
-        if (multiplierRow !== undefined && Number(multiplierRow.multiplier) !== 0) {
-            const multiplier = Number(multiplierRow.multiplier);
-            multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
+        if (multiplierRow !== undefined) {
+            if (multiplierRow.action.toString() !== CrashUtils.betEventNames.refund) {
+                this.lblRefund.enabled = true;
+                this.lblMultiplier.enabled = false;
+            } else {
+                let multiplierText = "-";
+                if (Number(multiplierRow.multiplier) !== 0) {
+                    const multiplier = Number(multiplierRow.multiplier);
+                    multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
+                }
+                this.lblMultiplier.string = multiplierText;
+            }
         }
-
-        this.lblMultiplier.string = multiplierText;
     }
 
     private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
@@ -99,6 +107,9 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         const win = FormatUtils.numberWithCommas(betwin, 2);
 
         this.betWinCell.getComponent(BetWinCell)?.setData(win, isReachMaxWin);
+        if (isReachMaxWin) {
+            this.setupEventListeners();
+        }
     }
 
     isBetRowData(betDetail: DynamicObject<object>, betKey: string): boolean {
@@ -108,7 +119,10 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
 
     isSettledData(betDetail: DynamicObject<object>, betKey: string): boolean {
         let actionName = betDetail.action.toString();
-        return (actionName === cashOutEventName || actionName === refundEventName) && betDetail.betKey.toString() === betKey;
+        return (
+            (actionName === CrashUtils.betEventNames.cashOut || actionName === CrashUtils.betEventNames.refund) &&
+            betDetail.betKey.toString() === betKey
+        );
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))
@@ -123,16 +137,14 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     onLoad() {
-        this.setupEventListeners();
         super.onLoad();
     }
 
     private setupEventListeners() {
-        const betWinCellComponent = this.betWinCell.getComponent(BetWinCell);
-        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_ENTER, this.triggerHoverMaxReachCallback, this);
-        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.MOUSE_LEAVE, this.triggerExitHoverMaxReachCallback, this);
-        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.TOUCH_START, this.triggerHoverMaxReachCallback, this);
-        betWinCellComponent.btnReachMaxWin.node.on(Node.EventType.TOUCH_END, this.triggerTouchEndMaxReachCallback, this);
+        this.betWinCell.on(Node.EventType.MOUSE_ENTER, this.triggerHoverMaxReachCallback, this);
+        this.betWinCell.on(Node.EventType.MOUSE_LEAVE, this.triggerExitHoverMaxReachCallback, this);
+        this.betWinCell.on(Node.EventType.TOUCH_START, this.triggerHoverMaxReachCallback, this);
+        this.betWinCell.on(Node.EventType.TOUCH_END, this.triggerTouchEndMaxReachCallback, this);
     }
 
     triggerHoverMaxReachCallback() {

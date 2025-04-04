@@ -12,7 +12,10 @@ export class CrashUtils extends Component {
             InActive: "E6E5DF",
         },
     };
-
+    static readonly betEventNames = {
+        cashOut: "cashOut",
+        refund: "refund",
+    };
     static getMultiplierIndex(multiplier: number): number {
         const index = CrashUtils.config.thresholds.findIndex((threshold) => multiplier <= threshold);
         return index === -1 ? CrashUtils.config.thresholds.length : index;
