@@ -100,7 +100,7 @@ export class BetControlStore {
 
     inputValues: number[] = [];
     selectedInputIndex: { [betKey: number]: number } = {};
-    
+
     get notAllowChangeClientSeed(): boolean {
         return this.isNotAllowChangeClientSeed();
     }
@@ -142,7 +142,9 @@ export class BetControlStore {
     validCurrentBetAmounts() {
         Object.values(this.controls).forEach((control, betKey) => {
             const currentAmount = control.setting.amount;
-            this.setValidBetAmount(betKey, currentAmount);
+            if (!control.betAccepted) {
+                this.setValidBetAmount(betKey, currentAmount);
+            }
         });
     }
 
@@ -181,7 +183,7 @@ export class BetControlStore {
     resetControl(betKey: number) {
         this.controls[betKey].processing = false;
         this.controls[betKey].betAccepted = null;
-        this.controls[betKey].cashedOut = null; 
+        this.controls[betKey].cashedOut = null;
     }
 
     resetLastBet() {
@@ -272,11 +274,8 @@ export class BetControlStore {
     }
 
     isNotAllowChangeClientSeed() {
-        const betStates = Object.keys(this.controls).map(betKey => this.getBetState(+betKey));
-        return betStates.some(state => 
-            state === ButtonState.BET_ACCEPTED || 
-            state === ButtonState.CASH_OUT
-        );
+        const betStates = Object.keys(this.controls).map((betKey) => this.getBetState(+betKey));
+        return betStates.some((state) => state === ButtonState.BET_ACCEPTED || state === ButtonState.CASH_OUT);
     }
 
     disableCashOut(betKey: number) {
