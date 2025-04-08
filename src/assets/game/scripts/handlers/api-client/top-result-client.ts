@@ -13,9 +13,13 @@ export class TopResultClient {
     private apiClient: ApiClient;
 
     constructor() {
-        let baseURL = UrlUtils.buildUrl("http", "/", siteConfigs);
+        const path = UrlUtils.getSubDirectory(siteConfigs.subDirectory);
+        let baseURL = UrlUtils.buildUrl("http", `/${path}` , siteConfigs);
+
+        console.log("baseURL", baseURL);
         this.apiClient = new ApiClient(baseURL);
     }
+
 
     async getTopCrashMonthly() {
         let response = await this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashMonthly.url + settings.id);
