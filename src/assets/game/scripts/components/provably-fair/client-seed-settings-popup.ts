@@ -94,11 +94,10 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
 
     @render(BetControlStore, (store) => store.notAllowChangeClientSeed, { fireImmediately: true })
     setDisplayComponentsNew(notAllowChangeClientSeed: boolean) {
-        console.log("notAllowChangeClientSeed", notAllowChangeClientSeed);
         this.setDisplayComponents(notAllowChangeClientSeed);
 
         if(this.tglManualClientSeed.isChecked) {
-            this.inputManualSeed.enabled = !notAllowChangeClientSeed;
+            this.updateInputField(notAllowChangeClientSeed);
         }
     }
 
