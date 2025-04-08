@@ -611,7 +611,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 491.0546875,
-      "height": 50.4
+      "height": 63
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -652,7 +652,7 @@
     "_actualFontSize": 40,
     "_fontSize": 40,
     "_fontFamily": "Arial",
-    "_lineHeight": 40,
+    "_lineHeight": 50,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -726,8 +726,6 @@
       "__id__": 0
     },
     "fileId": "28WaiGO2NAtKfogNNxoxF3",
-    "instance": null,
-    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
