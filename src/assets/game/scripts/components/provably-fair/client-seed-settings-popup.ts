@@ -1,9 +1,8 @@
 import gc from "@sg/game-client-base";
-import { _decorator, EditBox, Label, Node, Toggle, UIOpacity } from "cc";
+import { _decorator, EditBox, UIOpacity } from "cc";
 import { ClientSeedSettingsPopup } from "db://shared-components/game-crash/provably-fair/scripts/client-seed-settings-popup";
 import Observer from "observer";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
-import { ButtonState } from "../../handlers/crash-v2/interfaces";
 
 const { ccclass, property } = _decorator;
 const { render, handle } = Observer;
@@ -12,24 +11,6 @@ const { render, handle } = Observer;
 export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     @property(EditBox)
     private inputManualSeed: EditBox = null;
-
-    @property(Label)
-    lblRandomClientSeed: Label = null;
-
-    @property(Label)
-    lblManualClientSeed: Label = null;
-
-    @property(Toggle)
-    tglRandomClientSeed: Toggle = null;
-
-    @property(Toggle)
-    tglManualClientSeed: Toggle = null;
-
-    @property(Node)
-    nodeRandomLabelDisabledBg: Node = null;
-
-    @property(Node)
-    nodeManualLabelDisabledBg: Node = null;
 
     private static readonly OPACITY_DISABLED = 153;
     private static readonly OPACITY_ENABLED = 255;
@@ -99,12 +80,9 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         if(this.tglManualClientSeed.isChecked) {
             this.updateInputField(notAllowChangeClientSeed);
         }
-    }
-
-    isNotAllowChangeClientSeed(betStates: string[]) {
-        return betStates.some(state => 
-            state === ButtonState.BET_ACCEPTED || 
-            state === ButtonState.CASH_OUT
-        );
+        else
+        {
+            this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity =  notAllowChangeClientSeed ? ClientSeedSettingsDirectPopup.OPACITY_DISABLED : ClientSeedSettingsDirectPopup.OPACITY_ENABLED;
+        }
     }
 }
