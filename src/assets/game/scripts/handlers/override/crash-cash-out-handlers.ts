@@ -46,13 +46,14 @@ export class CrashCashOutHandlers extends gc.GameCrash.CrashCashOut.CrashCashOut
         }
         Object.keys(ownBets).forEach((betKey) => {
             const data = ownBets[betKey] as gc.GameCrash.GameCrashServiceMessage.CrashOwnBets;
-            this.betControlStore.setBetAmount(+betKey, data.amount);
-            this.betControlStore.setAcceptedBet(+betKey, data.amount, false);
-            if (data.autoCashOut > 0) {
-                this.betControlStore.setAutoCashOut(+betKey, true);
-                this.betControlStore.setValidCashOutAt(+betKey, data.autoCashOut);
+            if (!data.cashOut) {
+                this.betControlStore.setBetAmount(+betKey, data.amount);
+                this.betControlStore.setAcceptedBet(+betKey, data.amount, false);
+                if (data.autoCashOut > 0) {
+                    this.betControlStore.setAutoCashOut(+betKey, true);
+                    this.betControlStore.setValidCashOutAt(+betKey, data.autoCashOut);
+                }
             }
-            data.cashOut && this.betControlStore.setCashedOut({ betKey: +betKey, ...data.cashOut } as CrashCashOutData);
         });
 
         this.crashBetListHandlers.handleOwnBets(ownBets);
