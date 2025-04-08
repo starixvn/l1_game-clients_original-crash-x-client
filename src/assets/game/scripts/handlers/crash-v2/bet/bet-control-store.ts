@@ -171,8 +171,8 @@ export class BetControlStore {
         this.controls[betKey].processing = processing;
     }
 
-    setAcceptedBet(betKey: number, value: number) {
-        this.controls[betKey].betAccepted = { value };
+    setAcceptedBet(betKey: number, value: number, animated: boolean) {
+        this.controls[betKey].betAccepted = { value, animated };
         this.setProcessing(betKey, false);
     }
 
@@ -249,8 +249,12 @@ export class BetControlStore {
         return this.controls[betKey].setting;
     }
 
-    getBetAccepted(betKey: number) {
-        return this.controls[betKey].betAccepted;
+    getBetAccepted(betKey: number, checkAnimated = false) {
+        if (!checkAnimated) {
+            return this.controls[betKey].betAccepted;
+        }
+
+        return this.controls[betKey]?.betAccepted?.animated ? this.controls[betKey].betAccepted : null;
     }
 
     getBetState(betKey: number) {

@@ -25,7 +25,7 @@ export class CrashBetResponseHandlers {
         this.retryGameHandler.clearInterval();
         if (data.endBet > 0) {
             this.betStore.lastReceivedBet = { value: data.endBet, isAnimated: true };
-            this.betControlStore.setAcceptedBet(data.betKey, data.endBet);
+            this.betControlStore.setAcceptedBet(data.betKey, data.endBet, true);
             this.crashBetListHandlers.handleResponseByBetKey(data);
         }
     }

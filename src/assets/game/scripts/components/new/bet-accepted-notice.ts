@@ -16,12 +16,12 @@ export default class BetAcceptedNotice extends ObserverComponent {
         super.onLoad();
     }
 
-    @render(BetControlStore, (store) => store.getBetAccepted(0), { fireImmediately: false })
+    @render(BetControlStore, (store) => store.getBetAccepted(0, true), { fireImmediately: false })
     renderBetAccepted0(betAccepted: any) {
         this.renderBetAccepted(betAccepted);
     }
 
-    @render(BetControlStore, (store) => store.getBetAccepted(1), { fireImmediately: false })
+    @render(BetControlStore, (store) => store.getBetAccepted(1, true), { fireImmediately: false })
     renderBetAccepted1(betAccepted: any) {
         this.renderBetAccepted(betAccepted);
     }
