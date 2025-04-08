@@ -3,6 +3,7 @@ import { LogStore } from "db://shared-components/game/scripts/stores/log-store";
 
 import { sharedContainer } from "../../scripts/shared-container";
 import * as CrashGameV2 from "../scripts/handlers/crash-v2";
+import { TopResultClient } from "./handlers/api-client/top-result-client";
 import { AutoPlayHandler } from "./handlers/override/auto-play-handler";
 import { BetResponseHandlers } from "./handlers/override/bet-response-handlers";
 import { CrashBetHandler } from "./handlers/override/crash-bet-handler";
@@ -39,6 +40,7 @@ export const containerOptions: gc.IContainerOptions = {
         container.bind(gc.GameCrash.AutoPlay.AutoPlayHandler).to(AutoPlayHandler);
         container.bind(gc.GameCrash.CrashBetList.CrashBetListHandlers).to(CrashBetListHandlers);
         container.bind(gc.GameCrash.CrashGameUserSetting.GameCrashUserSettingHandler).to(GameCrashUserSettingHandlerV2);
+        container.bind(TopResultClient).to(TopResultClient);
     },
     features: [CrashGameV2, gc.GameCrash, ...gc.defaultFeatures],
 };

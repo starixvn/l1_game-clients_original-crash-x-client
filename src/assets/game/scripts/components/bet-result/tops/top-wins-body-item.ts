@@ -4,7 +4,8 @@ import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { CrashUtils } from "../../../crash-utils";
-import { TopWinItem } from "../../api-client/top-result-client";
+import { TopWinItem } from "../../../handlers/api-client/top-result-client";
+import { TopWinHandlers } from "../../../handlers/crash-v2";
 
 const { property, ccclass } = _decorator;
 const { FormatUtils } = gc;
@@ -54,7 +55,7 @@ export default class TopWinsBodyItem extends ObserverComponent {
         return gc.Audios.AudioIds.CLICK;
     }
 
-    @handle(gc.GameCrash.ProvablyFair.ProvablyFairHandler, (handle, roundId: number) => handle.openVerificationHistory(roundId))
+    @handle(TopWinHandlers, (handle, roundId: number) => handle.openVerificationHistory(roundId))
     onClickVerify() {
         this.playSoundClick();
         return this.roundId;

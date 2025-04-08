@@ -5,8 +5,5 @@ const { ccclass } = _decorator;
 
 @ccclass("TopDrashMonth")
 export class TopDrashesMonth extends TopDrashesBody {
-    async fetchData() {
-        let topCrashItems = await this.topResultClient.getTopCrashMonthly();
-        return topCrashItems;
-    }
+
 }

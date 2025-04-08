@@ -1,18 +1,26 @@
-import { _decorator, instantiate, Node, Prefab, UITransform } from "cc";
+import { _decorator, CCInteger, instantiate, Node, Prefab, UITransform } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { TopResultClient, TopWinItem } from "../../api-client/top-result-client";
+import Observer from "observer";
+import { TopResultClient, TopWinItem } from "../../../handlers/api-client/top-result-client";
+import { TopWinHandlers } from "../../../handlers/crash-v2";
+import { TopWinStore } from "../../../handlers/crash-v2/bet/top-win-store";
 import TopWinsBodyItem from "./top-wins-body-item";
 
 const { ccclass, property } = _decorator;
+const { render, handle } = Observer;
 
 @ccclass("TopWinsBody")
 export class TopWinsBody extends ObserverComponent {
+
     @property({ type: Node })
     content: Node = null;
 
     @property({ type: Prefab })
     itemPrefab: Prefab = null;
 
+    @property({ type: CCInteger, tooltip: "0: Monthly, 1: Yearly" })
+    periodType: number = 0;
+    
     private currentIndex: number = 0;
     private itemHeight: number = 0;
     protected topResultClient: TopResultClient = new TopResultClient();
@@ -22,9 +30,15 @@ export class TopWinsBody extends ObserverComponent {
         return topWinItems;
     }
 
-    async bindContent() {
-        let topWinItems = await this.fetchData();
+    @render(TopWinStore, (store) => store.topWinItems, { fireImmediately: false })
+    async bindContent(topWinItems: TopWinItem[]) {
+        if(!topWinItems || topWinItems.length === 0) {
+            return;
+        }
+
         topWinItems.forEach((data, rowIndex) => {
+            //convert
+
             let item = this.buildBodyRow(this.itemPrefab, rowIndex, data);
             this.content.addChild(item);
 
@@ -47,9 +61,14 @@ export class TopWinsBody extends ObserverComponent {
         return bodyItem;
     }
 
+    @handle(TopWinHandlers, (handle, periodType: number) => handle.getTopWinByType(periodType))
+    getTopWinItems() { 
+        return this.periodType; 
+    }
+
     onLoad() {
         this.itemHeight = this.itemPrefab.data.getComponent(UITransform).height;
         super.onLoad();
-        this.bindContent();
+        this.getTopWinItems();
     }
 }

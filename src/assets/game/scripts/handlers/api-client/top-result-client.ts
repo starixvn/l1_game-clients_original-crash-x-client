@@ -1,11 +1,14 @@
 import gc from "@sg/game-client-base";
-import { siteConfigs } from "db://assets/scripts/site-configs";
+import inversify from "inversify";
+import { siteConfigs } from "../../../../scripts/site-configs";
 import { settings } from "../../game-settings";
-import ApiClient from "../api-client/api-client";
-import { ApiPath } from "./api-urls-constants";
+import ApiClient from "./api-client";
+import { APISettings } from "./api-settings";
 
 const { UrlUtils } = gc;
+const { injectable } = inversify;
 
+@injectable()
 export class TopResultClient {
     private apiClient: ApiClient;
 
@@ -15,28 +18,31 @@ export class TopResultClient {
     }
 
     async getTopCrashMonthly() {
-        let response = await this.apiClient.get<TopCrashItem[]>(ApiPath.monthlyTopCrash + settings.id);
+        let response = await this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashMonthly.url + settings.id);
         return response;
     }
 
     async getTopCrashYearly() {
-        let response = await this.apiClient.get<TopCrashItem[]>(ApiPath.yearlyTopCrash + settings.id);
+        let response = await this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashYearly.url + settings.id);
         return response;
     }
 
     async getTopWinMonthly() {
-        let response = await this.apiClient.get<TopWinItem[]>(ApiPath.monthlyTopWin + settings.id);
+        let response = await this.apiClient.get<TopWinItem[]>(APISettings.TopWinMonthly.url + settings.id);
         return response;
     }
 
     async getTopWinYearly() {
-        let response = await this.apiClient.get<TopWinItem[]>(ApiPath.yearlyTopWin + settings.id);
+        let response = await this.apiClient.get<TopWinItem[]>(APISettings.TopWinYearly.url + settings.id);
         return response;
     }
 }
 
 export interface ProvablyFair {
-    clientSeeds: string[];
+    clientSeeds: Array<{
+        name: string;
+        clientSeed: string;
+      }>;
     time: string;
     roundId: number;
     serverSeedHash: string;
@@ -65,4 +71,5 @@ export interface TopWinItem {
     roundId: number;
     betAmount: number;
     winAmount: number;
+    provablyFair: ProvablyFair;
 }

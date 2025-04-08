@@ -1,9 +1,13 @@
-import { _decorator, instantiate, Node, Prefab, UITransform } from "cc";
+import { _decorator, CCInteger, instantiate, Node, Prefab, UITransform } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { TopCrashItem, TopResultClient } from "../../api-client/top-result-client";
+import Observer from "observer";
+import { TopCrashItem } from "../../../handlers/api-client/top-result-client";
+import { TopCrashStore } from "../../../handlers/crash-v2/bet/top-crash-store";
+import { TopCrashHandlers } from "../../../handlers/crash-v2/handlers/top-crash-handlers";
 import TopDrashesBodyItem from "./top-crashes-body-item";
 
 const { ccclass, property } = _decorator;
+const { render, handle } = Observer;
 
 @ccclass("TopDrashesBody")
 export class TopDrashesBody extends ObserverComponent {
@@ -13,17 +17,18 @@ export class TopDrashesBody extends ObserverComponent {
     @property({ type: Prefab })
     itemPrefab: Prefab = null;
 
+    @property({ type: CCInteger, tooltip: "0: Monthly, 1: Yearly" })
+    periodType: number = 0;
+
     private currentIndex: number = 0;
     private itemHeight: number = 0;
-    protected topResultClient: TopResultClient = new TopResultClient();
 
-    async fetchData() {
-        let topCrashItems: TopCrashItem[] = [];
-        return topCrashItems;
-    }
+    @render(TopCrashStore, (store) => store.topCrashItems, { fireImmediately: false })
+    bindContent(topCrashItems: TopCrashItem[]) {
+        if(!topCrashItems || topCrashItems.length === 0) {
+            return;
+        }
 
-    async bindContent() {
-        let topCrashItems = await this.fetchData();
         topCrashItems.forEach((data, rowIndex) => {
             let item = this.buildBodyRow(this.itemPrefab, rowIndex, data);
             this.content.addChild(item);
@@ -47,9 +52,15 @@ export class TopDrashesBody extends ObserverComponent {
         return bodyItem;
     }
 
+    @handle(TopCrashHandlers, (handle, periodType: number) => handle.getTopCrashByType(periodType))
+    getTopCrashItems() { 
+        return this.periodType; 
+    }
+
     onLoad() {
         this.itemHeight = this.itemPrefab.data.getComponent(UITransform).height;
         super.onLoad();
-        this.bindContent();
+
+        this.getTopCrashItems();
     }
 }

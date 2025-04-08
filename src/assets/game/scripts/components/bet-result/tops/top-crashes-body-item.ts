@@ -1,9 +1,10 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Label, Node } from "cc";
 import Observer from "observer";
-import { TopCrashItem } from "../../api-client/top-result-client";
+import { TopCrashItem } from "../../../handlers/api-client/top-result-client";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import { TopCrashHandlers } from "../../../handlers/crash-v2";
 
 const { property, ccclass } = _decorator;
 const { DateTimeUtils, FormatUtils } = gc;
@@ -38,7 +39,7 @@ export default class TopDrashesBodyItem extends ObserverComponent {
         return gc.Audios.AudioIds.CLICK;
     }
 
-    @handle(gc.GameCrash.ProvablyFair.ProvablyFairHandler, (handle, roundId: number) => handle.openVerificationHistory(roundId))
+    @handle(TopCrashHandlers, (handle, roundId: number) => handle.openVerificationHistory(roundId))
     onClickVerify() {
         this.playSoundClick();
         return this.roundId;
