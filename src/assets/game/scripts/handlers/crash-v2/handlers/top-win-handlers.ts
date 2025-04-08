@@ -48,6 +48,7 @@ export class TopWinHandlers {
             mergeClientSeed: topWinItem.provablyFair?.mergeClientSeed,
             mergeSeed: topWinItem.provablyFair?.mergeSeed,
             finalHash: topWinItem.provablyFair?.finalHash,
+            result: topWinItem.crashPoint,
         }
 
         return roundPfResult;

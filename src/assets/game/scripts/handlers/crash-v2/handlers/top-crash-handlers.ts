@@ -47,6 +47,7 @@ export class TopCrashHandlers {
             mergeClientSeed: topCrashItem.provablyFair?.mergeClientSeed,
             mergeSeed: topCrashItem.provablyFair?.mergeSeed,
             finalHash: topCrashItem.provablyFair?.finalHash,
+            result: topCrashItem.result,
         }
 
         return roundPfResult;

@@ -100,7 +100,6 @@ export class BetControlStore {
 
     inputValues: number[] = [];
     selectedInputIndex: { [betKey: number]: number } = {};
-    states: string[] = [];
     
     get notAllowChangeClientSeed(): boolean {
         return this.isNotAllowChangeClientSeed();
