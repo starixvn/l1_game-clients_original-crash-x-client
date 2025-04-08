@@ -264,7 +264,7 @@ export class BetControlStore {
         const betAccepted = this.controls[betKey].betAccepted;
         const earlyBet = this.controls[betKey].earlyBet;
 
-        if (this.roundTimeStore.roundTime === 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
+        if (this.roundTimeStore.roundTime <= 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
             //flying and result
             if (betAccepted) {
                 return ButtonState.CASH_OUT;
