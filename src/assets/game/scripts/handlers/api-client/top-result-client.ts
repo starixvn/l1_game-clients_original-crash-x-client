@@ -15,8 +15,6 @@ export class TopResultClient {
     constructor() {
         const path = UrlUtils.getSubDirectory(siteConfigs.subDirectory);
         let baseURL = UrlUtils.buildUrl("http", `/${path}` , siteConfigs);
-
-        console.log("baseURL", baseURL);
         this.apiClient = new ApiClient(baseURL);
     }
 
