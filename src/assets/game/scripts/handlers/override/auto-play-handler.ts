@@ -11,6 +11,9 @@ export class AutoPlayHandler extends gc.GameCrash.AutoPlay.AutoPlayHandler {
     }
 
     handleAutoPlaceBetAtPlacingBet() {
-        this.newCrashBetHandler.autoPlaceBet();
+        const clientServerDelayTime = 500;
+        setTimeout(() => {
+            this.newCrashBetHandler.autoPlaceBet();
+        }, clientServerDelayTime);
     }
 }

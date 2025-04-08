@@ -27,6 +27,8 @@ export class CrashBetResponseHandlers {
             this.betStore.lastReceivedBet = { value: data.endBet, isAnimated: true };
             this.betControlStore.setAcceptedBet(data.betKey, data.endBet, true);
             this.crashBetListHandlers.handleResponseByBetKey(data);
+        } else {
+            this.betControlStore.setProcessing(data.betKey, false);
         }
     }
 }
