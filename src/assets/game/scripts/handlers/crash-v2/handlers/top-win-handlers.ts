@@ -23,6 +23,11 @@ export class TopWinHandlers {
         } else if(type === PeriodType.Yearly) {
             topWinItems = await this.topResultClient.getTopWinYearly();
         }
+
+        topWinItems.forEach(item => {
+            this.convertValueByCurrency(item);
+        });
+
         this.topWinStore.topWinItems = topWinItems;
         return topWinItems;
     }
@@ -55,12 +60,10 @@ export class TopWinHandlers {
     }
 
     convertValueByCurrency(topWinItem: TopWinItem) {
-        //const { amount, rate, cashOut, playerId, name } = player;
         this.mainPlayerStore.rate;
-        let rate = this.mainPlayerStore.rate; // get rate
+        let rate = topWinItem.rate; 
         topWinItem.betAmount = gc.NumberUtils.getValueByCurrency(topWinItem.betAmount, this.mainPlayerStore.rate, rate);
         topWinItem.winAmount = gc.NumberUtils.getValueByCurrency(topWinItem.winAmount, this.mainPlayerStore.rate, rate);
-        // topWinItem.cashoutPoint = gc.NumberUtils.getValueByCurrency(topWinItem.cashoutPoint, this.mainPlayerStore.rate, rate);
     }
 
 }

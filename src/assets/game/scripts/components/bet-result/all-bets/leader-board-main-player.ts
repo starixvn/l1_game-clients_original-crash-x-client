@@ -27,13 +27,13 @@ export class LeaderBoardMainPlayer extends Component {
             this.setFirstRowDisplay(true);
         }
 
-        if (data.cashOutWin !== undefined && data.cashOutWin > 0) {
+        if (data.win !== undefined && data.win > 0) {
             currentRow.setData(
                 {
                     name: data.name,
                     amount: data.amount,
                     multiplier: data.multiplier,
-                    win: data.cashOutWin,
+                    win: data.win,
                 },
                 0
             );

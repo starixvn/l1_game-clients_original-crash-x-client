@@ -74,4 +74,5 @@ export interface TopWinItem {
     betAmount: number;
     winAmount: number;
     provablyFair: ProvablyFair;
+    rate: number;
 }
