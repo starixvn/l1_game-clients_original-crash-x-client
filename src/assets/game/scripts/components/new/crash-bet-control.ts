@@ -3,6 +3,7 @@ import { _decorator, Button, EditBox, Label, Node, Toggle, warn } from "cc";
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { ToggleNode } from "db://shared-components/shared/common-components/toggle-node";
 import Observer from "observer";
+import { AudioIds } from "../../../audios/AudioIds";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
@@ -81,13 +82,20 @@ export default class CrashBetControl extends ObserverComponent {
 
     private disableInput = false;
 
+    @handle(gc.Audios.AudioHandler, (handler, id: string) => handler.playSFX(id))
+    playSFX(audioId: string) {
+        return audioId;
+    }
+
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callBet(betKey))
     onClickBet() {
+        this.playSFX(AudioIds.PLACE_BET);
         return this.betKey;
     }
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.callCashOut(betKey))
     onClickCashOut() {
+        this.playSFX(AudioIds.WITHDRAW);
         return this.betKey;
     }
 
@@ -98,16 +106,19 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.cancelEarlyBet(betKey))
     onClickCancelEarlyBet() {
+        this.playSFX(AudioIds.CANCEL_BET);
         return this.betKey;
     }
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.toggleAutoBet(betKey))
     onToggleAutoBet() {
+        this.playSFX(AudioIds.CLICK);
         return this.betKey;
     }
 
     @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
     onToggleAutoCashOut() {
+        this.playSFX(AudioIds.CLICK);
         return this.betKey;
     }
 

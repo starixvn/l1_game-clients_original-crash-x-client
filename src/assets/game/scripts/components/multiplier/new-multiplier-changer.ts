@@ -4,6 +4,7 @@ import { bundleManager } from "db://shared-components/shared/common-components/b
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
+import { AudioIds } from "../../../audios/AudioIds";
 import { CrashUtils } from "../../crash-utils";
 
 const { Connection } = gc;
@@ -14,6 +15,11 @@ const { observer, render, handle } = Observer;
 export default class NewMultiplierChanger extends ObserverComponent {
     private lastNode: Node = null;
     private lastIndex = -1;
+
+    @handle(gc.Audios.AudioHandler, (handler, id: string) => handler.playSFX(id))
+    playSFX(audioId: string) {
+        return audioId;
+    }
 
     @render(gc.GameCrash.CrashMultiplier.MultiplierStore, (store) => store.multiplier)
     private async renderMultiplier(multiplier: number) {
@@ -27,7 +33,7 @@ export default class NewMultiplierChanger extends ObserverComponent {
             return;
         }
         this.lastIndex = newIndex;
-
+        this.playSFX(AudioIds.NEW_MULTIPLIER);
         const prevIndex = Math.max(0, newIndex - 1);
 
         if (!this.lastNode) {

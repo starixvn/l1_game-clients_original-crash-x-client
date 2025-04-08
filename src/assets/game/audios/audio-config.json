@@ -1,44 +1,68 @@
 {
+    "song1": {},
+    "song2": {},
+    "song3": {},
+    "song4": {},
+    "song5": {},
+    "song6": {},
+    "song7": {},
+    "song8": {},
+    "song9": {},
+    "song10": {},
+    "song11": {},
+    "song12": {},
+    "song13": {},
+    "song14": {},
+    "song15": {},
+    "bgm-song1": {},
+    "bgm-song2": {},
+    "bgm-song3": {},
+    "bgm": {
+        "bundle": "resources",
+        "type": "music",
+        "isMusicGame": true,
+        "isLazyLoad": true
+    },
+    "cancel-bet": {
+        "bundle": "resources",
+        "isLazyLoad": true
+    },
     "click": {
-        "bundle": "resources"
-    },
-    "place_bet": {
-        "bundle": "resources"
-    },
-    "cash_out": {
-        "bundle": "resources"
-    },
-    "show_winning": {
-        "bundle": "resources"
+        "bundle": "resources",
+        "isLazyLoad": true
     },
     "count_down": {
-        "bundle": "resources"
-    },
-    "walking_man": {
-        "bundle": "resources"
-    },
-    "rocket_fly": {
-        "bundle": "resources"
-    },
-    "receive-finish": {
-        "bundle": "resources"
-    },
-    "bgm-song1": {
         "bundle": "resources",
-        "path": "background-music/bgm-song1",
-        "isMusicGame": true,
         "isLazyLoad": true
     },
-    "bgm-song2": {
+    "flew-away": {
+        "bundle": "resources"
+    },
+    "plane_flying": {
+        "bundle": "resources"
+    },
+    "new-multiplier": {
         "bundle": "resources",
-        "path": "background-music/bgm-song2",
-        "isMusicGame": true,
         "isLazyLoad": true
     },
-    "bgm-song3": {
+    "place-bet": {
         "bundle": "resources",
-        "path": "background-music/bgm-song3",
-        "isMusicGame": true,
+        "isLazyLoad": true
+    },
+    "start_bet": {
+        "bundle": "resources",
+        "isLazyLoad": true
+    },
+    "stop-bet": {
+        "bundle": "resources",
+        "isLazyLoad": true
+    },
+    "total-win": {
+        "bundle": "resources",
+        "isLazyLoad": true
+    },
+    "withdraw": {
+        "bundle": "resources",
         "isLazyLoad": true
     }
 }

@@ -64,6 +64,10 @@ export class LeaderBoard extends ObserverComponent {
 
     @render(CrashBetListStore, (store) => store.mainPlayerCashOut)
     private updateMainPlayer(mainPlayerData: MainPlayerBetData[]) {
+        if (!mainPlayerData) {
+            return;
+        }
+
         if (mainPlayerData.length === 0) {
             this.setMainPlayerDisplay(false);
             this.scrollOtherPlayer(0);

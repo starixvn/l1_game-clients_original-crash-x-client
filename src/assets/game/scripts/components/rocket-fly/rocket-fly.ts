@@ -4,6 +4,7 @@ import { AnimationUtils } from "db://shared-components/shared/utils";
 import Observer from "observer";
 
 import { ObserverComponent } from "../../../../../extensions/shared-components/assets/shared/common-components/observer-component/scripts/observer-component";
+import { AudioIds } from "../../../audios/AudioIds";
 import { CrashUtils } from "../../crash-utils";
 
 const { ccclass, property } = _decorator;
@@ -23,7 +24,6 @@ export class RocketFly extends ObserverComponent {
     landingNode: Node = null;
 
     private readonly smallExplosionMultiplier = 1.02;
-    private preparingRocket = false;
     private multiplierIndex = 0;
     private time = 0;
     private flying = false;
@@ -58,14 +58,12 @@ export class RocketFly extends ObserverComponent {
     })
     async renderRocketExplosion(result: gc.GameServiceMessage.TResult) {
         if (result) {
-            this.preparingRocket = false;
             +result < this.smallExplosionMultiplier && (await AnimationUtils.delayTime(0.5));
             this.explodeRocket();
         }
     }
 
     private resetIdleMode() {
-        this.preparingRocket = true;
         this.spineRocket.node.active = true;
 
         this.spineRocket.timeScale = 1;
@@ -109,7 +107,13 @@ export class RocketFly extends ObserverComponent {
         }
     }
 
+    @handle(gc.Audios.AudioHandler, (handler, id: string) => handler.playSFX(id))
+    playSFX(audioId: string) {
+        return audioId;
+    }
+
     private flewAway() {
+        this.playSFX(AudioIds.FLEW_AWAY);
         AnimationUtils.pauseSpineAnimation(this.spineRocket, 0.99, "crash1");
 
         this.spinePlanet.timeScale = 0;
