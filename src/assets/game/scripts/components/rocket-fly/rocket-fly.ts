@@ -113,7 +113,6 @@ export class RocketFly extends ObserverComponent {
     }
 
     private flewAway() {
-        this.playSFX(AudioIds.FLEW_AWAY);
         AnimationUtils.pauseSpineAnimation(this.spineRocket, 0.99, "crash1");
 
         this.spinePlanet.timeScale = 0;
@@ -139,6 +138,8 @@ export class RocketFly extends ObserverComponent {
     }
 
     explodeRocket() {
+        this.playSFX(AudioIds.FLEW_AWAY);
+
         const animName = `crash${this.multiplierIndex + 1}`;
         AnimationUtils.playSpine(this.spineRocket, animName, false);
 

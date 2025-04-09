@@ -17,6 +17,7 @@
     "bgm-song1": {},
     "bgm-song2": {},
     "bgm-song3": {},
+    "receive-finish": {},
     "bgm": {
         "bundle": "resources",
         "type": "music",
