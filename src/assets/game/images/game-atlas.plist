@@ -4,6 +4,21 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>bar.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{6,13}</string>
+                <key>spriteSourceSize</key>
+                <string>{6,13}</string>
+                <key>textureRect</key>
+                <string>{{1010,119},{6,13}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>bg-all-bet.png</key>
             <dict>
                 <key>aliases</key>
@@ -619,6 +634,21 @@
                 <key>textureRotated</key>
                 <true/>
             </dict>
+            <key>scrollbar_vertical.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{10,16}</string>
+                <key>spriteSourceSize</key>
+                <string>{10,16}</string>
+                <key>textureRect</key>
+                <string>{{1010,101},{10,16}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>user-green.png</key>
             <dict>
                 <key>aliases</key>
@@ -678,7 +708,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:d5f4b8aa74f16bb9eb44bdd07a9b618e:afe5cc716d2ef6419a01ae5bbc9aad02:02a452150431e4fb3dc3c23c8a3eb8eb$</string>
+            <string>$TexturePacker:SmartUpdate:ceb00a19abbfec59ddf1522cab1b956c:ec8a1d0cc1e5164174c9e4db6a72ed44:02a452150431e4fb3dc3c23c8a3eb8eb$</string>
             <key>textureFileName</key>
             <string>game-atlas.webp</string>
         </dict>
