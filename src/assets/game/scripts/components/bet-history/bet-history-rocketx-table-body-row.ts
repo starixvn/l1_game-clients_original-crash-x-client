@@ -72,7 +72,6 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
 
         this.bindMultiplier(betHistoryLog, betKey);
-        // this.lblResult.string = `${FormatUtils.numberWithCommas(+betHistoryLog.result, 2, false)}x`;
         this.bindWin(betHistoryLog, betKey);
     }
 
@@ -83,21 +82,26 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
 
     private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
         const multiplierRow = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
-        let multiplierText = "-";
-        if (multiplierRow !== undefined) {
-            if (multiplierRow.action.toString() === CrashUtils.betEventNames.refund) {
-                this.lblRefund.node.active = true;
-                this.lblMultiplier.node.active = false;
-            } else {
-                if (Number(multiplierRow.multiplier) !== 0) {
-                    const multiplier = Number(multiplierRow.multiplier);
-                    multiplierText = `${FormatUtils.numberWithCommas(+multiplier, 2, false)}x`;
-                }
-                this.lblMultiplier.string = multiplierText;
-            }
-        } else {
-            this.lblMultiplier.string = multiplierText;
+        const defaultMultiplierText = "-";
+
+        if (!multiplierRow) {
+            this.lblMultiplier.string = defaultMultiplierText;
+            return;
         }
+
+        const isRefund = multiplierRow.action.toString() === CrashUtils.betEventNames.refund;
+        if (isRefund) {
+            this.lblRefund.node.active = true;
+            this.lblMultiplier.node.active = false;
+            return;
+        }
+
+        const multiplier = Number(multiplierRow.multiplier);
+        const multiplierText = multiplier !== 0 
+            ? `${FormatUtils.numberWithCommas(multiplier, 2, false)}x`
+            : defaultMultiplierText;
+            
+        this.lblMultiplier.string = multiplierText;
     }
 
     private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
