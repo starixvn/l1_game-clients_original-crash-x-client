@@ -498,7 +498,7 @@
       "a": 255
     },
     "_string": "Round",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
@@ -773,7 +773,7 @@
       "a": 255
     },
     "_string": "Bet",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
@@ -998,7 +998,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 100,
+      "x": 90,
       "y": 0,
       "z": 0
     },
@@ -1048,7 +1048,7 @@
       "a": 255
     },
     "_string": "Multiplier",
-    "_horizontalAlign": 2,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
@@ -1323,7 +1323,7 @@
       "a": 255
     },
     "_string": "Win",
-    "_horizontalAlign": 0,
+    "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
     "_fontSize": 24,
