@@ -1,8 +1,13 @@
-import { _decorator, Component, instantiate, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
+import gc from "@sg/game-client-base";
+import { _decorator, instantiate, Node, Prefab, Sprite, Toggle, ToggleContainer } from "cc";
+import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
+import Observer from "observer";
+import { AudioIds } from "../../../audios/AudioIds";
 const { ccclass, property } = _decorator;
+const { handle } = Observer;
 
 @ccclass("TabsControl")
-export class TabsControl extends Component {
+export class TabsControl extends ObserverComponent {
     @property({ type: ToggleContainer })
     toggleGroup: ToggleContainer = null;
 
@@ -32,6 +37,7 @@ export class TabsControl extends Component {
 
     onTabChanged(index) {
         if (index !== this.currentTabIndex) {
+            this.playSFX(AudioIds.CLICK);
             this.currentTabIndex = index;
             for (let i = 0; i < this.tabContents.length; i++) {
                 this.tabContents[i].active = i === index;
@@ -43,6 +49,11 @@ export class TabsControl extends Component {
                 }
             }
         }
+    }
+
+    @handle(gc.Audios.AudioHandler, (handler, id: string) => handler.playSFX(id))
+    playSFX(audioId: string) {
+        return audioId;
     }
 
     showTab(index: number) {

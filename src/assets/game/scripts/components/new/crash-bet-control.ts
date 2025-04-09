@@ -101,6 +101,7 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(CrashBetHandler, (handler, betKey: number) => handler.enableEarlyBet(betKey))
     onClickBetNextRound() {
+        this.playSFX(AudioIds.CLICK);
         return this.betKey;
     }
 
@@ -255,6 +256,7 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(BetControlStore, (handler, data: { betKey: number; index: number }) => handler.selectBetInput(data.betKey, data.index))
     onClickInputValue(index: number) {
+        this.playSFX(AudioIds.CLICK);
         return {
             betKey: this.betKey,
             index: index,
@@ -263,6 +265,7 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(BetControlStore, (handler, data: { betKey: number; increase: boolean }) => handler.changeBetAmount(data.betKey, data.increase))
     onClickInreaseBet() {
+        this.playSFX(AudioIds.CLICK);
         return {
             betKey: this.betKey,
             increase: true,
@@ -271,6 +274,7 @@ export default class CrashBetControl extends ObserverComponent {
 
     @handle(BetControlStore, (handler, data: { betKey: number; increase: boolean }) => handler.changeBetAmount(data.betKey, data.increase))
     onClickDecreaseBet() {
+        this.playSFX(AudioIds.CLICK);
         return {
             betKey: this.betKey,
             increase: false,
