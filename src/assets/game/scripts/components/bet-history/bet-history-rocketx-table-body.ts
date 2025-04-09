@@ -36,13 +36,12 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     }
 
     buildBodyRow(
-        bodyItemPrefab: Prefab,
+        bodyItem: Node,
         betHistoryLog: gc.BetHistory.BetHistoryLog,
         index: number,
         betKey: number,
         fractionalOddsFormat?: boolean
     ): Node {
-        const bodyItem = instantiate(bodyItemPrefab);
         this.getHistoryItemComponent(bodyItem)?.setData({
             betHistoryLog,
             index,
@@ -80,27 +79,28 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     }
 
     renderData(betHistoryRocketXModel: BetHistoryRocketXModel) {
-        betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
-            betLogItem.betLogDetails.forEach((betLogDetail) => {
-                if (betLogDetail.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString()) {
-                    let item = this.buildBodyRow(this.itemPrefab, betLogItem, rowIndex, Number(betLogDetail.betKey));
-                    this.content.addChild(item);
-
-                    let currentPosition = item.getPosition();
-                    let y = this.startYPosition - this.currentIndex * this.itemHeight;
-
-                    item.setPosition(currentPosition.x, y);
-                    this.currentIndex++;
-                }
+        if(this.itemPrefab) {
+            betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
+                betLogItem.betLogDetails.forEach((betLogDetail) => {
+                    if (betLogDetail.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString()) {
+                        let bodyItem = instantiate(this.itemPrefab);
+                        let item = this.buildBodyRow(bodyItem, betLogItem, rowIndex, Number(betLogDetail.betKey));
+                        this.content.addChild(item);
+                        let currentPosition = item.getPosition();
+                        let y = this.startYPosition - this.currentIndex * this.itemHeight;
+                        item.setPosition(currentPosition.x, y);
+                        this.currentIndex++;
+                    }
+                });
             });
-        });
 
-        if (betHistoryRocketXModel.betLogs.length < this.pageSize) {
-            this.isNodataToFetch = true;
+            if (betHistoryRocketXModel.betLogs.length < this.pageSize) {
+                this.isNodataToFetch = true;
+            }
+
+            this.content.getComponent(UITransform).height = this.currentIndex * this.itemHeight;
+            this.isFetchingData = false;
         }
-
-        this.content.getComponent(UITransform).height = this.currentIndex * this.itemHeight;
-        this.isFetchingData = false;
     }
 
     onLoad() {

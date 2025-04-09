@@ -16,8 +16,8 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     private static readonly OPACITY_ENABLED = 255;
 
     onLoad() {
-        super.onLoad();
         this.setupInputListeners();
+        super.onLoad();
     }
 
     private setupInputListeners() {
@@ -70,7 +70,9 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
 
     updateRandomMode(randomClientSeedEnabled: boolean) {
         super.updateRandomMode(randomClientSeedEnabled);
+        
         this.updateInputField(randomClientSeedEnabled);
+
     }
 
     @render(BetControlStore, (store) => store.notAllowChangeClientSeed, { fireImmediately: true })
@@ -83,6 +85,11 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
         else
         {
             this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity =  notAllowChangeClientSeed ? ClientSeedSettingsDirectPopup.OPACITY_DISABLED : ClientSeedSettingsDirectPopup.OPACITY_ENABLED;
+        }
+
+        if(!notAllowChangeClientSeed) {
+            this.setDisplayContentManualMode(this.tglManualClientSeed.isChecked);
+            this.setDisplayContentRandomMode(this.tglRandomClientSeed.isChecked);
         }
     }
 }
