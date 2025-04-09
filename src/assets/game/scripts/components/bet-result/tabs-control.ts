@@ -33,6 +33,7 @@ export class TabsControl extends ObserverComponent {
         });
 
         this.onTabChanged(0);
+        super.onLoad();
     }
 
     onTabChanged(index) {
