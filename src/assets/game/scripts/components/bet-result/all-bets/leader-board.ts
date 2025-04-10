@@ -31,7 +31,6 @@ export class LeaderBoard extends ObserverComponent {
     private otherPlayerTween: Tween<Widget> = null;
 
     onLoad() {
-        //this.itemHeight =
         this.resetOtherPlayers();
         this.setMainPlayerDisplay(false);
         super.onLoad();

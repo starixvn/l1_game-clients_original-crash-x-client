@@ -5,53 +5,65 @@ import { MainPlayerBetData } from "../../../handlers/crash-v2/interfaces";
 import { LeaderBoardCashOut } from "./leader-board-cash-out";
 
 const { ccclass, property } = _decorator;
+
 @ccclass
 export class LeaderBoardMainPlayer extends Component {
     @property(LeaderBoardCashOut)
     firstRow: LeaderBoardCashOut = null;
 
-    @property(LeaderBoardCashOut)
+    @property(LeaderBoardCashOut) 
     secondRow: LeaderBoardCashOut = null;
 
     onLoad() {
-        this.setFirstRowDisplay(false);
-        this.setSecondRowDisplay(false);
+        this.hideAllRows();
+    }
+
+    private hideAllRows() {
+        this.setRowDisplay(this.firstRow, false);
+        this.setRowDisplay(this.secondRow, false);
     }
 
     setData(data: MainPlayerBetData) {
-        let currentRow = this.firstRow;
-        if (data.betKey === 1) {
-            currentRow = this.secondRow;
-            this.setSecondRowDisplay(true);
-        } else {
-            this.setFirstRowDisplay(true);
-        }
+        const currentRow = this.getRowForBet(data.betKey);
+        this.updateRowData(currentRow, data);
+    }
 
-        if (data.win !== undefined && data.win > 0) {
-            currentRow.setData(
-                {
-                    name: data.name,
-                    amount: data.amount,
-                    multiplier: data.multiplier,
-                    win: data.win,
-                },
-                0
-            );
-            currentRow.lblMultiplier.color = CrashUtils.getMultiplierColor(data.multiplier);
+    private getRowForBet(betKey: number): LeaderBoardCashOut {
+        if (betKey === 1) {
+            this.setRowDisplay(this.secondRow, true);
+            return this.secondRow;
+        }
+        this.setRowDisplay(this.firstRow, true);
+        return this.firstRow;
+    }
+
+    private updateRowData(row: LeaderBoardCashOut, data: MainPlayerBetData) {
+        const hasWon = data.win !== undefined && data.win > 0;
+        
+        const rowData = {
+            name: data.name,
+            amount: data.amount,
+            ...(hasWon && {
+                multiplier: data.multiplier,
+                win: data.win
+            })
+        };
+
+        row.setData(rowData, 0);
+        
+        if (hasWon) {
+            row.lblMultiplier.color = CrashUtils.getMultiplierColor(data.multiplier);
         } else {
-            currentRow.setData(
-                {
-                    name: data.name,
-                    amount: data.amount,
-                },
-                0
-            );
-            this.firstRow.lblMultiplier.color = CrashUtils.getWhiteColor();
+            row.lblMultiplier.color = CrashUtils.getWhiteColor();
         }
     }
 
+    private setRowDisplay(row: LeaderBoardCashOut, status: boolean) {
+        row.node.active = status;
+    }
+
     setSecondRowDisplay(status: boolean) {
-        this.secondRow.node.active = status;
+        this.setRowDisplay(this.secondRow, status);
     }
 
     isShowSecondRow(): boolean {
@@ -59,7 +71,7 @@ export class LeaderBoardMainPlayer extends Component {
     }
 
     setFirstRowDisplay(status: boolean) {
-        this.firstRow.node.active = status;
+        this.setRowDisplay(this.firstRow, status);
     }
 
     isShowFirstRow(): boolean {

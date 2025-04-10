@@ -37,8 +37,6 @@ export class TopWinsBody extends ObserverComponent {
         }
 
         topWinItems.forEach((data, rowIndex) => {
-            //convert
-
             let item = this.buildBodyRow(this.itemPrefab, rowIndex, data);
             this.content.addChild(item);
 

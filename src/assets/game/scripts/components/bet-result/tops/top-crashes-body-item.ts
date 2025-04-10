@@ -1,9 +1,8 @@
 import gc from "@sg/game-client-base";
 import { _decorator, Label, Node } from "cc";
+import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import Observer from "observer";
 import { TopCrashItem } from "../../../handlers/api-client/top-result-client";
-
-import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
 import { TopCrashHandlers } from "../../../handlers/crash-v2";
 
 const { property, ccclass } = _decorator;

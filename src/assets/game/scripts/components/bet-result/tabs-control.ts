@@ -68,7 +68,6 @@ export class TabsControl extends ObserverComponent {
     hideTab(index: number) {
         if (this.prefabInstances[index]) {
             this.tabContents[index].removeAllChildren();
-            // this.prefabInstances[index].destroy();
             this.prefabInstances[index] = null;
         }
         this.extendHideTab(index);

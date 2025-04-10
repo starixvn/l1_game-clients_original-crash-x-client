@@ -21,110 +21,134 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    protected startYPosition: number;
-    protected itemHeight: number;
-    private tooltipPositionX: number = 230;
-    private tooltipPositionYBuffer: number = 48;
-    protected currentPageIndex: number = 1;
-    protected currentIndex: number = 0;
-    protected isFetchingData: boolean = false;
-    protected isNodataToFetch: boolean = false;
-    private pageSize;
+    private readonly TOOLTIP_POSITION_X = 230;
+    private readonly TOOLTIP_POSITION_Y_BUFFER = 48;
 
-    getHistoryItemComponent(node: Node) {
+    private startYPosition = 0;
+    private itemHeight = 0;
+    private currentPageIndex = 1;
+    private currentIndex = 0;
+    private isFetchingData = false;
+    private isNodataToFetch = false;
+    private pageSize = 0;
+
+    private getHistoryItemComponent(node: Node): BetResultHistoryBodyItem {
         return node.getComponent(BetResultHistoryBodyItem);
     }
 
-    buildBodyRow(
+    private buildBodyRow(
         bodyItem: Node,
         betHistoryLog: gc.BetHistory.BetHistoryLog,
         index: number,
         betKey: number,
         fractionalOddsFormat?: boolean
     ): Node {
-        this.getHistoryItemComponent(bodyItem)?.setData({
+        const component = this.getHistoryItemComponent(bodyItem);
+        component?.setData({
             betHistoryLog,
             index,
             betKey,
             fractionalOddsFormat,
         });
-        bodyItem.on(HistoryConstants.hoverTriggerParent, this.onHoverMaxReachTrigger, this);
-        bodyItem.on(HistoryConstants.exitHoverTriggerParent, this.onExitHoverMaxReachTrigger, this);
+
+        bodyItem.on(HistoryConstants.hoverTriggerParent, this.handleHoverMaxReachTrigger, this);
+        bodyItem.on(HistoryConstants.exitHoverTriggerParent, this.handleExitHoverMaxReachTrigger, this);
+
         return bodyItem;
     }
 
-    onHoverMaxReachTrigger(childNode: Node) {
-        let node = this.reachMaxWinNode.getComponent(Button);
-        let position = childNode.getPosition();
-        let positionY = this.content.getPosition().y + position.y - this.tooltipPositionYBuffer;
-        node.node.setPosition(new Vec3(this.tooltipPositionX, positionY, 0));
-        node.node.active = true;
+    private handleHoverMaxReachTrigger(childNode: Node): void {
+        const tooltipButton = this.reachMaxWinNode.getComponent(Button);
+        const position = childNode.getPosition();
+        const positionY = this.content.getPosition().y + position.y - this.TOOLTIP_POSITION_Y_BUFFER;
+
+        tooltipButton.node.setPosition(new Vec3(this.TOOLTIP_POSITION_X, positionY, 0));
+        tooltipButton.node.active = true;
     }
 
-    onExitHoverMaxReachTrigger() {
-        let node = this.reachMaxWinNode.getComponent(Button);
-        node.node.active = false;
+    private handleExitHoverMaxReachTrigger(): void {
+        const tooltipButton = this.reachMaxWinNode.getComponent(Button);
+        tooltipButton.node.active = false;
     }
 
     @handle(BetHistoryRocketXHandlers.BetHistoryRocketXCallServiceHandler, (handler, pageNumber: number) =>
         handler.getHistory(pageNumber, HistoryConstants.pageSizeHistory, HistoryConstants.history)
     )
-    fetchData() {
+    private fetchData(): number {
         return this.currentPageIndex;
     }
 
     @render(BetHistoryRocketXStore, (store) => store.betHistoryRocketXModel, { fireImmediately: false })
-    showBetHistory(betHistoryRocketXModel: BetHistoryRocketXModel) {
+    private showBetHistory(betHistoryRocketXModel: BetHistoryRocketXModel): void {
         this.renderData(betHistoryRocketXModel);
     }
 
-    renderData(betHistoryRocketXModel: BetHistoryRocketXModel) {
-        if(this.itemPrefab) {
-            betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
-                betLogItem.betLogDetails.forEach((betLogDetail) => {
-                    if (betLogDetail.action.toString() === gc.GameClientEmitMessage.Bet.eventName.toString()) {
-                        let bodyItem = instantiate(this.itemPrefab);
-                        let item = this.buildBodyRow(bodyItem, betLogItem, rowIndex, Number(betLogDetail.betKey));
-                        this.content.addChild(item);
-                        let currentPosition = item.getPosition();
-                        let y = this.startYPosition - this.currentIndex * this.itemHeight;
-                        item.setPosition(currentPosition.x, y);
-                        this.currentIndex++;
-                    }
-                });
-            });
+    private renderData(betHistoryRocketXModel: BetHistoryRocketXModel): void {
+        if (!this.itemPrefab) return;
 
-            if (betHistoryRocketXModel.betLogs.length < this.pageSize) {
-                this.isNodataToFetch = true;
-            }
+        betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
+            this.renderBetLogDetails(betLogItem, rowIndex);
+        });
 
-            this.content.getComponent(UITransform).height = this.currentIndex * this.itemHeight;
-            this.isFetchingData = false;
+        this.updateContentState(betHistoryRocketXModel);
+    }
+
+    private renderBetLogDetails(betLogItem: gc.BetHistory.BetHistoryLog, rowIndex: number): void {
+        betLogItem.betLogDetails.forEach((betLogDetail) => {
+            if (betLogDetail.action.toString() !== gc.GameClientEmitMessage.Bet.eventName.toString()) return;
+
+            const bodyItem = instantiate(this.itemPrefab);
+            const item = this.buildBodyRow(bodyItem, betLogItem, rowIndex, Number(betLogDetail.betKey));
+            
+            this.content.addChild(item);
+            this.positionItem(item);
+            this.currentIndex++;
+        });
+    }
+
+    private positionItem(item: Node): void {
+        const currentPosition = item.getPosition();
+        const y = this.startYPosition - this.currentIndex * this.itemHeight;
+        item.setPosition(currentPosition.x, y);
+    }
+
+    private updateContentState(betHistoryRocketXModel: BetHistoryRocketXModel): void {
+        if (betHistoryRocketXModel.betLogs.length < this.pageSize) {
+            this.isNodataToFetch = true;
         }
+
+        this.content.getComponent(UITransform).height = this.currentIndex * this.itemHeight;
+        this.isFetchingData = false;
     }
 
     onLoad() {
+        this.initializeProperties();
+        super.onLoad();
+        this.fetchData();
+        this.setupScrollListener();
+    }
+
+    private initializeProperties() {
         this.pageSize = HistoryConstants.pageSizeHistory;
         this.itemHeight = this.itemPrefab.data.getComponent(UITransform).height;
         this.startYPosition = -this.itemHeight / 2;
-        super.onLoad();
-        this.fetchData();
-        this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);
     }
 
-    onScrolling() {
-        if (!this.isNodataToFetch) {
-            this.currentPageIndex++;
-            if (!this.isFetchingData) {
-                this.isFetchingData = true;
-                this.fetchData();
-            }
-        }
+    private setupScrollListener() {
+        this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.handleScroll, this);
+    }
+
+    private handleScroll() {
+        if (this.isNodataToFetch || this.isFetchingData) return;
+
+        this.currentPageIndex++;
+        this.isFetchingData = true;
+        this.fetchData();
     }
 
     onDestroy() {
-        if (this.node !== null) {
-            this.node.on(ScrollView.EventType.SCROLL_TO_BOTTOM, this.onScrolling, this);
+        if (this.node) {
+            this.node.off(ScrollView.EventType.SCROLL_TO_BOTTOM, this.handleScroll, this);
         }
     }
 }
