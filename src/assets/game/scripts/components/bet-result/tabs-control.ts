@@ -20,68 +20,88 @@ export class TabsControl extends ObserverComponent {
     @property({ type: [Prefab] })
     prefabContents: Prefab[] = [];
 
-    private prefabInstances: Node[] = [];
+    private prefabInstances: Map<number, Node> = new Map();
     private currentTabIndex: number = -1;
 
     onLoad() {
-        let toggles = this.toggleGroup.getComponentsInChildren(Toggle);
-        toggles.forEach((tabButton, index) => {
-            tabButton.node.on(Toggle.EventType.CLICK, this.onTabChanged.bind(this, index));
-            if (index === 0) {
-                tabButton.isChecked = true;
-            }
-        });
-
-        this.onTabChanged(0);
+        this.initializeToggles();
+        this.selectInitialTab();
         super.onLoad();
     }
 
-    onTabChanged(index) {
-        if (index !== this.currentTabIndex) {
-            this.playSFX(AudioIds.CLICK);
-            this.currentTabIndex = index;
-            for (let i = 0; i < this.tabContents.length; i++) {
-                this.tabContents[i].active = i === index;
-                this.tabButtons[i].getComponent(Sprite).enabled = i === index;
-                if (i === index) {
-                    this.showTab(index);
-                } else {
-                    this.hideTab(i);
-                }
-            }
+    private initializeToggles() {
+        const toggles = this.toggleGroup.getComponentsInChildren(Toggle);
+        toggles.forEach((toggle, index) => {
+            toggle.node.on(Toggle.EventType.CLICK, () => this.handleTabChange(index));
+        });
+    }
+
+    private selectInitialTab() {
+        const firstToggle = this.toggleGroup.getComponentsInChildren(Toggle)[0];
+        if (firstToggle) {
+            firstToggle.isChecked = true;
+            this.handleTabChange(0);
         }
     }
 
+    private handleTabChange(index: number) {
+        if (index === this.currentTabIndex) {
+            return;
+        }
+
+        this.playSFX(AudioIds.CLICK);
+        this.currentTabIndex = index;
+        this.updateTabVisibility(index);
+    }
+
+    private updateTabVisibility(activeIndex: number) {
+        this.tabContents.forEach((content, index) => {
+            const isActive = index === activeIndex;
+            content.active = isActive;
+            this.tabButtons[index].getComponent(Sprite).enabled = isActive;
+            
+            if (isActive) {
+                this.showTab(index);
+            } else {
+                this.hideTab(index);
+            }
+        });
+    }
+
     @handle(gc.Audios.AudioHandler, (handler, id: string) => handler.playSFX(id))
-    playSFX(audioId: string) {
+    private playSFX(audioId: string) {
         return audioId;
     }
 
-    showTab(index: number) {
-        this.prefabInstances[index] = instantiate(this.prefabContents[index]);
-        this.tabContents[index].addChild(this.prefabInstances[index]);
+    private showTab(index: number) {
+        if (!this.prefabInstances.has(index)) {
+            const instance = instantiate(this.prefabContents[index]);
+            this.prefabInstances.set(index, instance);
+            this.tabContents[index].addChild(instance);
+        }
         this.extendShowTab(index);
     }
 
-    extendShowTab(index: number) {}
+    protected extendShowTab(index: number) {}
 
-    hideTab(index: number) {
-        if (this.prefabInstances[index]) {
+    private hideTab(index: number) {
+        if (this.prefabInstances.has(index)) {
             this.tabContents[index].removeAllChildren();
-            this.prefabInstances[index] = null;
+            this.prefabInstances.delete(index);
         }
         this.extendHideTab(index);
     }
 
-    extendHideTab(index: number) {}
+    protected extendHideTab(index: number) {}
 
     onDestroy() {
-        let toggleGroup = this.toggleGroup;
-        if (toggleGroup && toggleGroup.node) {
-            let toggles = toggleGroup.getComponentsInChildren(Toggle);
-            toggles.forEach((tabButton) => {
-                tabButton.node.off(Toggle.EventType.CLICK, this.onTabChanged.bind, this);
-            });
+        if (!this.toggleGroup?.node) {
+            return;
         }
+
+        const toggles = this.toggleGroup.getComponentsInChildren(Toggle);
+        toggles.forEach(toggle => {
+            toggle.node.off(Toggle.EventType.CLICK);
+        });
     }
 }

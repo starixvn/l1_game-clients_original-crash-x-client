@@ -192,18 +192,6 @@ export class CrashBetListHandlers implements IMultipleHandlers {
             this.betListStore.addAcceptedBet(betData);
         });
     }
-    handleReceiveLastClientSeed(clientSeed: string) {
-        console.log("handleReceiveLastClientSeed", clientSeed);
-        if (clientSeed === undefined) {
-            return;
-        }
-        this.provablyFairStore.lastBetClientSeed = clientSeed;
-        if (this.provablyFairStore.randomClientSeedEnabled) {
-            this.provablyFairStore.randomClientSeed = clientSeed;
-        } else {
-            this.provablyFairStore.manualClientSeed = clientSeed;
-        }
-    }
 
     eventHandleList = [
         {
@@ -217,10 +205,6 @@ export class CrashBetListHandlers implements IMultipleHandlers {
         {
             name: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer.eventName,
             handle: this.handleNewOtherCashOut,
-        },
-        {
-            name: "clientSeed",
-            handle: this.handleReceiveLastClientSeed,
-        },
+        }
     ];
 }

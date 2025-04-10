@@ -21,8 +21,19 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     }
 
     private setupInputListeners() {
-        const inputNode = this.inputManualSeed.node;
-        inputNode.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
+        this.inputManualSeed.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndManualSeed, this);
+    }
+
+    private updateInputOpacity(enabled: boolean) {
+        const opacity = enabled ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
+        this.inputManualSeed.enabled = enabled;
+        this.inputManualSeed.node.getComponent(UIOpacity).opacity = opacity;
+    }
+
+    private updateRandomLabelOpacity(enabled: boolean) {
+        this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity = enabled ? 
+            ClientSeedSettingsDirectPopup.OPACITY_ENABLED : 
+            ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
     }
 
     clickManualOption() {
@@ -35,15 +46,6 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     clickAutoOption() {
         this.inputManualSeed.string = "";
         this.clickRandomMode();
-    }
-
-    private updateInputField(selectedRandomMode: boolean) {
-        const opacity = !selectedRandomMode
-            ? ClientSeedSettingsDirectPopup.OPACITY_ENABLED
-            : ClientSeedSettingsDirectPopup.OPACITY_DISABLED;
-
-        this.inputManualSeed.enabled = !selectedRandomMode;
-        this.inputManualSeed.node.getComponent(UIOpacity).opacity = opacity;
     }
 
     private onEditEndManualSeed() {
@@ -61,33 +63,27 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
 
     @render(gc.Bet.BetStore, (store) => store.lastReceivedBet, { fireImmediately: false })
     closeSettingPopup(lastReceivedBet: gc.Bet.ILastReceivedBet) {
-        if (!lastReceivedBet || lastReceivedBet.value <= 0) {
-            return;
+        if (lastReceivedBet?.value > 0) {
+            this.closeSettingsPopup();
         }
-
-        this.closeSettingsPopup();
     }
 
     updateRandomMode(randomClientSeedEnabled: boolean) {
         super.updateRandomMode(randomClientSeedEnabled);
-        
-        this.updateInputField(randomClientSeedEnabled);
-
+        this.updateInputOpacity(!randomClientSeedEnabled);
     }
 
     @render(BetControlStore, (store) => store.notAllowChangeClientSeed, { fireImmediately: true })
     setDisplayComponentsNew(notAllowChangeClientSeed: boolean) {
         this.setDisplayComponents(notAllowChangeClientSeed);
 
-        if(this.tglManualClientSeed.isChecked) {
-            this.updateInputField(notAllowChangeClientSeed);
-        }
-        else
-        {
-            this.lblRandomClientSeed.node.getComponent(UIOpacity).opacity =  notAllowChangeClientSeed ? ClientSeedSettingsDirectPopup.OPACITY_DISABLED : ClientSeedSettingsDirectPopup.OPACITY_ENABLED;
+        if (this.tglManualClientSeed.isChecked) {
+            this.updateInputOpacity(!notAllowChangeClientSeed);
+        } else {
+            this.updateRandomLabelOpacity(!notAllowChangeClientSeed);
         }
 
-        if(!notAllowChangeClientSeed) {
+        if (!notAllowChangeClientSeed) {
             this.setDisplayContentManualMode(this.tglManualClientSeed.isChecked);
             this.setDisplayContentRandomMode(this.tglRandomClientSeed.isChecked);
         }
