@@ -1,5 +1,7 @@
 {
-    "others": { "resources": [] },
+    "others": {
+        "resources": ["spines/hanhtinh", "spines/rocket", "spines/start-in", "fonts/blue-number", "fonts/orange-number"]
+    },
     "localized": {
         "resources": {
             "1": ["text_start_in"]
