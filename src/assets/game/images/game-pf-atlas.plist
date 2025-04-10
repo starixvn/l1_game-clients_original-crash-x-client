@@ -15,7 +15,7 @@
                 <key>spriteSourceSize</key>
                 <string>{27,27}</string>
                 <key>textureRect</key>
-                <string>{{217,147},{27,27}}</string>
+                <string>{{217,183},{27,27}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -30,7 +30,7 @@
                 <key>spriteSourceSize</key>
                 <string>{39,39}</string>
                 <key>textureRect</key>
-                <string>{{184,197},{39,39}}</string>
+                <string>{{3,209},{39,39}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -135,7 +135,7 @@
                 <key>spriteSourceSize</key>
                 <string>{42,42}</string>
                 <key>textureRect</key>
-                <string>{{140,197},{42,42}}</string>
+                <string>{{190,212},{42,42}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -154,6 +154,21 @@
                 <key>textureRotated</key>
                 <false/>
             </dict>
+            <key>icon-pf.png</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{0,0}</string>
+                <key>spriteSize</key>
+                <string>{34,34}</string>
+                <key>spriteSourceSize</key>
+                <string>{34,34}</string>
+                <key>textureRect</key>
+                <string>{{217,147},{34,34}}</string>
+                <key>textureRotated</key>
+                <false/>
+            </dict>
             <key>icon-queston.png</key>
             <dict>
                 <key>aliases</key>
@@ -165,7 +180,7 @@
                 <key>spriteSourceSize</key>
                 <string>{48,48}</string>
                 <key>textureRect</key>
-                <string>{{3,209},{48,48}}</string>
+                <string>{{140,197},{48,48}}</string>
                 <key>textureRotated</key>
                 <false/>
             </dict>
@@ -228,7 +243,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:4884ba5fa433b86d81e56df6174fc54f:d05511ceca6325b8548554b0dc27fc89:7efe54cad030a3455f176c48de91722e$</string>
+            <string>$TexturePacker:SmartUpdate:5215a521177c389c62963775671f228a:e3d7e48a58e629856dc60032bbece3b9:7efe54cad030a3455f176c48de91722e$</string>
             <key>textureFileName</key>
             <string>game-pf-atlas.webp</string>
         </dict>
