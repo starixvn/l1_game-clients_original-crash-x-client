@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "1e10de57-1db5-49f1-bec0-2e561687220a",
+  "uuid": "79dd147a-7665-4c3c-9143-40e9a520d176",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "bet-history-rocketx-direct-container"
+    "syncNodeName": "bet-history-rocketx-direct-table-body-row"
   }
 }

@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "bet-history-rocketx-direct-container",
+    "_name": "bet-history-rocketx-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "bet-history-rocketx-direct-container",
+    "_name": "bet-history-rocketx-container",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -76,8 +76,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 756,
-      "height": 1344
+      "width": 1398,
+      "height": 786
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -139,7 +139,7 @@
       "__id__": 7
     },
     "prefab": {
-      "__uuid__": "aa0263a9-add0-4417-9929-55aa4eed95d0",
+      "__uuid__": "d4b651db-c22a-440a-830c-402339483387",
       "__expectedType__": "cc.Prefab"
     },
     "_id": ""
