@@ -21,7 +21,7 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    private readonly TOOLTIP_POSITION_X = 230;
+    private readonly TOOLTIP_POSITION_X = 318;
     private readonly TOOLTIP_POSITION_Y_BUFFER = 48;
 
     private startYPosition = 0;
@@ -99,7 +99,7 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
 
             const bodyItem = instantiate(this.itemPrefab);
             const item = this.buildBodyRow(bodyItem, betLogItem, rowIndex, Number(betLogDetail.betKey));
-            
+
             this.content.addChild(item);
             this.positionItem(item);
             this.currentIndex++;

@@ -105,7 +105,8 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     private bindWin(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
         const betCashOut = betHistoryLog.betLogDetails.find((element) => this.isSettledData(element, betKey.toString()));
 
-        const isReachMaxWin = Boolean(betCashOut?.reachMaxWin);
+        let isReachMaxWin = Boolean(betCashOut?.reachMaxWin);
+        isReachMaxWin = true;
         const betwin = betCashOut === undefined ? 0 : Number(betCashOut.winAmount);
         const win = FormatUtils.numberWithCommas(betwin, 2);
         this.betWinCell.getComponent(BetWinCell)?.setData(win, isReachMaxWin);
