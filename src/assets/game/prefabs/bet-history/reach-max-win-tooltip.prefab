@@ -22,7 +22,7 @@
         "__id__": 2
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 10
@@ -136,8 +136,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 157.51791381835938,
-      "height": 22
+      "width": 122.51380920410156,
+      "height": 17.64
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -175,10 +175,10 @@
     "_string": "Reach The Max Win",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 18,
-    "_fontSize": 22,
+    "_actualFontSize": 14,
+    "_fontSize": 14,
     "_fontFamily": "Arial",
-    "_lineHeight": 22,
+    "_lineHeight": 14,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -270,8 +270,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 177.51791381835938,
-      "height": 35
+      "width": 142.51380920410156,
+      "height": 20
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

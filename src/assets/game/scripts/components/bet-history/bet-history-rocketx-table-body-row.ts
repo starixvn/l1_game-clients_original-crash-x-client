@@ -97,10 +97,8 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         }
 
         const multiplier = Number(multiplierRow.multiplier);
-        const multiplierText = multiplier !== 0 
-            ? `${FormatUtils.numberWithCommas(multiplier, 2, false)}x`
-            : defaultMultiplierText;
-            
+        const multiplierText = multiplier !== 0 ? `${FormatUtils.numberWithCommas(multiplier, 2, false)}x` : defaultMultiplierText;
+
         this.lblMultiplier.string = multiplierText;
     }
 
@@ -110,7 +108,6 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
         const isReachMaxWin = Boolean(betCashOut?.reachMaxWin);
         const betwin = betCashOut === undefined ? 0 : Number(betCashOut.winAmount);
         const win = FormatUtils.numberWithCommas(betwin, 2);
-
         this.betWinCell.getComponent(BetWinCell)?.setData(win, isReachMaxWin);
         if (isReachMaxWin) {
             this.setupEventListeners();

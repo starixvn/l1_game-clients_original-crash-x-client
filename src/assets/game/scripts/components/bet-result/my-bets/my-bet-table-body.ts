@@ -21,22 +21,16 @@ export class MyBetTableBody extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    private readonly tooltipPositionX: number = 230;
-    private readonly tooltipPositionYBuffer: number = 48;
-    private readonly startYPosition: number;
-    private readonly itemHeight: number;
+    private readonly tooltipPositionX: number = 122;
+    private readonly tooltipPositionYBuffer: number = 28;
+    private startYPosition: number;
+    private itemHeight: number;
     private readonly pageSize: number = HistoryConstants.pageSizeMyHistory;
 
     private currentPageIndex: number = 1;
     private currentIndex: number = 0;
     private isFetchingData: boolean = false;
     private isNodataToFetch: boolean = false;
-
-    constructor() {
-        super();
-        this.itemHeight = this.itemPrefab?.data.getComponent(UITransform).height || 0;
-        this.startYPosition = -this.itemHeight / 2;
-    }
 
     private getHistoryItemComponent(node: Node): BetResultHistoryBodyItem {
         return node.getComponent(BetResultHistoryBodyItem);
@@ -51,7 +45,7 @@ export class MyBetTableBody extends ObserverComponent {
     ): Node {
         const bodyItem = instantiate(bodyItemPrefab);
         const component = this.getHistoryItemComponent(bodyItem);
-        
+
         component?.setData({
             betHistoryLog,
             index,
@@ -72,7 +66,7 @@ export class MyBetTableBody extends ObserverComponent {
         const tooltipButton = this.reachMaxWinNode.getComponent(Button);
         const position = childNode.getPosition();
         const positionY = this.content.getPosition().y + position.y - this.tooltipPositionYBuffer;
-        
+
         tooltipButton.node.setPosition(new Vec3(this.tooltipPositionX, positionY, 0));
         tooltipButton.node.active = true;
     }
@@ -131,6 +125,9 @@ export class MyBetTableBody extends ObserverComponent {
     }
 
     onLoad() {
+        this.itemHeight = this.itemPrefab?.data.getComponent(UITransform).height || 0;
+        this.startYPosition = -this.itemHeight / 2;
+
         super.onLoad();
         this.fetchData();
         this.setupScrollListener();
