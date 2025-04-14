@@ -40,7 +40,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 672,
+      "y": 393,
       "z": 0
     },
     "_lrot": {
@@ -224,7 +224,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -697,
+      "y": -410.5,
       "z": 0
     },
     "_lrot": {
@@ -321,7 +321,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 100,
-      "height": 1294
+      "height": 751
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -535,7 +535,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 647,
+      "y": 375.5,
       "z": 0
     },
     "_lrot": {
@@ -575,7 +575,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828,
+      "width": 398,
       "height": 355
     },
     "_anchorPoint": {
@@ -652,8 +652,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828,
-      "height": 1294
+      "width": 398,
+      "height": 751
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -816,7 +816,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 414,
+      "x": 199,
       "y": 0,
       "z": 0
     },
@@ -994,7 +994,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 8,
-      "height": 1294
+      "height": 751
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1175,8 +1175,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828,
-      "height": 1294
+      "width": 398,
+      "height": 751
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1247,7 +1247,7 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 50,
+    "_top": 35,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -1344,8 +1344,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 828,
-      "height": 1344
+      "width": 398,
+      "height": 786
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1370,10 +1370,10 @@
     "__prefab": {
       "__id__": 69
     },
-    "_alignFlags": 45,
+    "_alignFlags": 5,
     "_target": null,
-    "_left": 0,
-    "_right": 0,
+    "_left": 344,
+    "_right": 344,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,

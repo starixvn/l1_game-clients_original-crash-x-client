@@ -158,7 +158,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -267.245,
+      "x": -185,
       "y": 0,
       "z": 0
     },
@@ -208,12 +208,12 @@
       "a": 255
     },
     "_string": "Player",
-    "_horizontalAlign": 1,
+    "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -289,12 +289,12 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70.12796020507812,
-      "height": 37.8
+      "width": 35.06396484375,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_id": ""
@@ -373,7 +373,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -110,
+      "x": -79,
       "y": 0,
       "z": 0
     },
@@ -425,10 +425,10 @@
     "_string": "Bet",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -504,8 +504,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 38.327972412109375,
-      "height": 37.8
+      "width": 19.163986206054688,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -625,7 +625,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 55,
+      "x": 4,
       "y": 0,
       "z": 0
     },
@@ -677,10 +677,10 @@
     "_string": "Multiplier",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -756,8 +756,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 101.18391418457031,
-      "height": 37.8
+      "width": 50.59193420410156,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -874,7 +874,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 210,
+      "x": 105,
       "y": 0,
       "z": 0
     },
@@ -926,10 +926,10 @@
     "_string": "Win",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -1005,8 +1005,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 39.71995544433594,
-      "height": 37.8
+      "width": 19.859970092773438,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1106,8 +1106,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 680,
-      "height": 45
+      "width": 398,
+      "height": 35
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1141,11 +1141,11 @@
     "node": {
       "__id__": 1
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 59
     },
-    "_alignFlags": 45,
+    "_alignFlags": 5,
     "_target": null,
     "_left": 0,
     "_right": 0,
@@ -1202,8 +1202,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 756,
-      "height": 1344
+      "width": 398,
+      "height": 35
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",

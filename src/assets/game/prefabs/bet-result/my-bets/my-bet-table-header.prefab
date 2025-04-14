@@ -170,7 +170,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -280,
+      "x": -162,
       "y": 0,
       "z": 0
     },
@@ -222,10 +222,10 @@
     "_string": "Time",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 24,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -301,8 +301,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.48796081542969,
-      "height": 30.240000000000002
+      "width": 26.24395751953125,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -422,7 +422,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -150,
+      "x": -82,
       "y": 0,
       "z": 0
     },
@@ -474,10 +474,10 @@
     "_string": "Round",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 44,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -553,8 +553,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70.46395874023438,
-      "height": 55.44
+      "width": 35.231964111328125,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -674,7 +674,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -35,
+      "x": -12,
       "y": 0,
       "z": 0
     },
@@ -726,10 +726,10 @@
     "_string": "Bet",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 44,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -805,8 +805,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 38.327972412109375,
-      "height": 55.44
+      "width": 19.163986206054688,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -926,7 +926,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 90,
+      "x": 62,
       "y": 0,
       "z": 0
     },
@@ -978,10 +978,10 @@
     "_string": "Multiplier",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 44,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -1057,8 +1057,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 101.18391418457031,
-      "height": 55.44
+      "width": 50.59193420410156,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1178,7 +1178,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 230,
+      "x": 135,
       "y": 0,
       "z": 0
     },
@@ -1230,10 +1230,10 @@
     "_string": "Win",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 12,
+    "_fontSize": 12,
     "_fontFamily": "Arial",
-    "_lineHeight": 44,
+    "_lineHeight": 12,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -1309,8 +1309,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 39.71995544433594,
-      "height": 55.44
+      "width": 19.859970092773438,
+      "height": 15.120000000000001
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1428,8 +1428,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 710,
-      "height": 45
+      "width": 400,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1469,10 +1469,10 @@
     },
     "_alignFlags": 45,
     "_target": null,
-    "_left": 59,
-    "_right": 59,
-    "_top": 649.5,
-    "_bottom": 649.5,
+    "_left": 499,
+    "_right": 499,
+    "_top": 375.5,
+    "_bottom": 375.5,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -1524,8 +1524,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 710,
-      "height": 45
+      "width": 400,
+      "height": 35
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
