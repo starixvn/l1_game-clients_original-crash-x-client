@@ -112,7 +112,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 359,
+      "y": 360.5,
       "z": 0
     },
     "_lrot": {
@@ -168,7 +168,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -67,
+      "x": -66.5,
       "y": 0,
       "z": 0
     },
@@ -417,8 +417,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 134,
-      "height": 28
+      "width": 133,
+      "height": 31
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -454,7 +454,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@7a3b1",
+      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@36f18",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -580,7 +580,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 67,
+      "x": 66.5,
       "y": 0,
       "z": 0
     },
@@ -829,8 +829,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 134,
-      "height": 28
+      "width": 133,
+      "height": 31
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -866,7 +866,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@7a3b1",
+      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@36f18",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -975,7 +975,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 270,
-      "height": 30
+      "height": 35
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1008,8 +1008,8 @@
       "height": 40
     },
     "_startAxis": 0,
-    "_paddingLeft": 1,
-    "_paddingRight": 1,
+    "_paddingLeft": 2,
+    "_paddingRight": 2,
     "_paddingTop": 0,
     "_paddingBottom": 0,
     "_spacingX": 0,
@@ -1034,7 +1034,7 @@
     "node": {
       "__id__": 2
     },
-    "_enabled": false,
+    "_enabled": true,
     "__prefab": {
       "__id__": 44
     },
@@ -1049,7 +1049,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@1d342",
+      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@7a3b1",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -1107,7 +1107,7 @@
     "_target": null,
     "_left": 179,
     "_right": 179,
-    "_top": 19,
+    "_top": 15,
     "_bottom": 1270.5055,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,

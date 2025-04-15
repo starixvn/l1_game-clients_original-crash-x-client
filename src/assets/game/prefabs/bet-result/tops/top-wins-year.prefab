@@ -146,7 +146,7 @@
     "value": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -18,
+      "y": -20,
       "z": 0
     }
   },
@@ -247,7 +247,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -408,
+      "y": -35,
       "z": 0
     },
     "_lrot": {
@@ -303,7 +303,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": -373,
       "z": 0
     },
     "_lrot": {
@@ -560,7 +560,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 373,
+      "y": 0,
       "z": 0
     },
     "_lrot": {
@@ -601,7 +601,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 384,
-      "height": 400
+      "height": 315
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -678,12 +678,12 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 384,
-      "height": 746
+      "height": 315
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 1
     },
     "_id": ""
   },
@@ -771,12 +771,12 @@
     "__prefab": {
       "__id__": 37
     },
-    "_alignFlags": 45,
+    "_alignFlags": 40,
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 0,
-    "_bottom": 0,
+    "_top": 185.5,
+    "_bottom": 185.5,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -842,7 +842,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 192,
-      "y": 0,
+      "y": -368,
       "z": 0
     },
     "_lrot": {
@@ -1019,7 +1019,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 8,
-      "height": 746
+      "height": 736
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1094,7 +1094,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 0,
+    "_bottom": 10,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,
@@ -1206,7 +1206,7 @@
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0.5
+      "y": 1
     },
     "_id": ""
   },

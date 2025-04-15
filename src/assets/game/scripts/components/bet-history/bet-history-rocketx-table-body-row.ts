@@ -53,7 +53,7 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     setData(data: BetResultHistoryBodyItemType) {
         const { betHistoryLog, index, betKey } = data;
         this.betHistoryLog = betHistoryLog;
-        this.nodeBackground.active = index % 2 > 0;
+        this.nodeBackground.active = index % 2 === 0;
 
         const betTime = this.getBetTime(betHistoryLog, betKey);
         this.setLabels(betTime, betHistoryLog, betKey);

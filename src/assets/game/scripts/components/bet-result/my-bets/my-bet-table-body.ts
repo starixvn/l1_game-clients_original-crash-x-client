@@ -21,7 +21,7 @@ export class MyBetTableBody extends ObserverComponent {
     @property({ type: Node })
     reachMaxWinNode: Node = null;
 
-    private readonly tooltipPositionX: number = 122;
+    private readonly tooltipPositionX: number = 128;
     private readonly tooltipPositionYBuffer: number = 28;
     private startYPosition: number;
     private itemHeight: number;

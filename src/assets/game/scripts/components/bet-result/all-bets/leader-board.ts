@@ -27,7 +27,7 @@ export class LeaderBoard extends ObserverComponent {
     @property(Node)
     nodeLeaderBoardMask: Node = null;
 
-    private readonly itemHeight = 50;
+    private readonly itemHeight = 35;
     private otherPlayerTween: Tween<Widget> = null;
 
     onLoad() {

@@ -38,7 +38,7 @@ export default class TopWinsBodyItem extends ObserverComponent {
     private roundId: number;
 
     setData(index: number, item: TopWinItem) {
-        this.nodeBackground.active = index % 2 > 0;
+        this.nodeBackground.active = index % 2 === 0;
 
         this.lblPlayer && (this.lblPlayer.string = CrashUtils.encryptedName(item.name));
         this.lblWin && (this.lblWin.string = FormatUtils.numberWithCommas(item.winAmount, 2));
