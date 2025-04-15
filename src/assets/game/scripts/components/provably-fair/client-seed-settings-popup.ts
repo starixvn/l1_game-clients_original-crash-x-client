@@ -20,11 +20,10 @@ export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     setDisplayComponentsNew(notAllowChangeClientSeed: boolean) {
         this.setDisplayComponents(notAllowChangeClientSeed);
 
-        if (!notAllowChangeClientSeed) {
-            this.setDisplayContentManualMode(this.tglManualClientSeed.isChecked);
-            this.setDisplayContentRandomMode(this.tglRandomClientSeed.isChecked);
-        } else {
-            this.nodeOverlayChangeBtn.active = notAllowChangeClientSeed;
-        }
+        const highlightManualMode = !notAllowChangeClientSeed && this.tglManualClientSeed.isChecked;
+        const highlightRandomMode = !notAllowChangeClientSeed && this.tglRandomClientSeed.isChecked;
+
+        this.setDisplayContentManualMode(highlightManualMode);
+        this.setDisplayContentRandomMode(highlightRandomMode);
     }
 }

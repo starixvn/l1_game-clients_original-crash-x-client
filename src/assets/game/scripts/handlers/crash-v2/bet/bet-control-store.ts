@@ -98,8 +98,20 @@ export class BetControlStore {
         },
     };
 
+    private _multiplierAutoCashOut = "0";
+    get multiplierAutoCashOut(): string {
+        return this._multiplierAutoCashOut;
+    }
+
+    set multiplierAutoCashOut(multiplier: string) {
+        this._multiplierAutoCashOut = multiplier;
+    }
+
     inputValues: number[] = [];
     selectedInputIndex: { [betKey: number]: number } = {};
+    currentFocusAutoCashOutIndex: number = 0;
+    enableAutoCashOut: boolean = false;
+    //multiplierAutoCashOut: number = 0;
 
     get notAllowChangeClientSeed(): boolean {
         return this.isNotAllowChangeClientSeed();
@@ -222,6 +234,13 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoCashOut: enabled,
         };
+        this.onSaveStorage();
+    }
+
+    setMultiplierAutoCashOut(multiplier: number) {
+        const betKey = this.currentFocusAutoCashOutIndex;
+        this.controls[betKey].setting.cashOutAt = multiplier;
+        console.log("setMultiplierAutoCashOut", multiplier);
         this.onSaveStorage();
     }
 

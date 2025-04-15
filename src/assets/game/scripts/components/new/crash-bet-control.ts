@@ -125,16 +125,16 @@ export default class CrashBetControl extends ObserverComponent {
         this.playSFX(AudioIds.CLICK);
         return this.betKey;
     }
-    @handle(BetControlStore, (handler, value: boolean) => handler.toggleOpenPopupAutoCashout(value))
-    onToggleOpenPopupAutoCashout() {
-        this.playSFX(AudioIds.CLICK);
-        return true;
-    }
+    // @handle(BetControlStore, (handler, value: boolean) => handler.toggleOpenPopupAutoCashout(value))
+    // onToggleOpenPopupAutoCashout() {
+    //     this.playSFX(AudioIds.CLICK);
+    //     return true;
+    // }
 
-    @handle(GameCrash.AutoCashOut.AutoCashOutPopupHandler, (handle, value: boolean) => handle.togglePopup(value))
+    @handle(CrashBetHandler, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
     openPopup() {
         this.playSFX(AudioIds.CLICK);
-        return true;
+        return 0;
     }
 
     renderBetState(state: string) {

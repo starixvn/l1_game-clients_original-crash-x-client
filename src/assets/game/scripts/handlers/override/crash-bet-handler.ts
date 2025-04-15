@@ -125,4 +125,21 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
             this.enableEarlyBet(betKey);
         }
     }
+
+    closeAutoCashOutPopup() {
+        this.betControlStore.enableAutoCashOut = false;
+    }
+
+    openAutoCashOutPopup(betKey: number) {
+        this.betControlStore.currentFocusAutoCashOutIndex = betKey;
+        this.betControlStore.enableAutoCashOut = true;
+    }
+
+    handleMultiplier(multiplierString: string) {
+        this.betControlStore.multiplierAutoCashOut = multiplierString;
+    }
+
+    setMultiplierAutoCashOut(multiplier: number) {
+        this.betControlStore.setMultiplierAutoCashOut(multiplier);
+    }
 }
