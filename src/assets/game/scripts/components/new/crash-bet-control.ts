@@ -9,7 +9,7 @@ import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interf
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
 import { InputValueItem } from "./input-value-item";
 
-const { Connection } = gc;
+const { Connection, GameCrash } = gc;
 const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 
@@ -26,6 +26,9 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(EditBox)
     inputCashOutAt: EditBox = null;
+
+    @property(Label)
+    labelAutoCashOut: Label = null;
 
     @property(Node)
     nodePlaceBet: Node = null;
@@ -122,6 +125,17 @@ export default class CrashBetControl extends ObserverComponent {
         this.playSFX(AudioIds.CLICK);
         return this.betKey;
     }
+    @handle(BetControlStore, (handler, value: boolean) => handler.toggleOpenPopupAutoCashout(value))
+    onToggleOpenPopupAutoCashout() {
+        this.playSFX(AudioIds.CLICK);
+        return true;
+    }
+
+    @handle(GameCrash.AutoCashOut.AutoCashOutPopupHandler, (handle, value: boolean) => handle.togglePopup(value))
+    openPopup() {
+        this.playSFX(AudioIds.CLICK);
+        return true;
+    }
 
     renderBetState(state: string) {
         this.nodeCashOut.active = state === ButtonState.CASH_OUT;
@@ -141,7 +155,6 @@ export default class CrashBetControl extends ObserverComponent {
     updatePreventInput() {
         const disableInput = this.toggleAutoBet.isChecked || this.disableInput;
         this.nodePreventInput.active = disableInput;
-
         this.inputCashOutAt.enabled = !disableInput;
         this.inputBetAmount.enabled = !disableInput;
     }
@@ -158,6 +171,7 @@ export default class CrashBetControl extends ObserverComponent {
         this.inputBetAmount.placeholder = betValue;
         this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
         this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
+        this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
     }
 
     private updateToggleNodes() {
