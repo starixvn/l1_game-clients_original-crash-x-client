@@ -120,21 +120,26 @@ export default class CrashBetControl extends ObserverComponent {
         return this.betKey;
     }
 
-    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
-    onToggleAutoCashOut() {
-        this.playSFX(AudioIds.CLICK);
-        return this.betKey;
+    @render(BetControlStore, (store) => store.controls[0].setting.cashOutAt)
+    bindAutoMultiPlayer0(cashOutAt: number) {
+        if (this.betKey === 0) {
+            this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+            this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+        }
     }
-    // @handle(BetControlStore, (handler, value: boolean) => handler.toggleOpenPopupAutoCashout(value))
-    // onToggleOpenPopupAutoCashout() {
-    //     this.playSFX(AudioIds.CLICK);
-    //     return true;
-    // }
+
+    @render(BetControlStore, (store) => store.controls[1].setting.cashOutAt)
+    bindAutoMultiPlayer1(cashOutAt: number) {
+        if (this.betKey === 1) {
+            this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+            this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+        }
+    }
 
     @handle(CrashBetHandler, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
     openPopup() {
         this.playSFX(AudioIds.CLICK);
-        return 0;
+        return this.betKey;
     }
 
     renderBetState(state: string) {

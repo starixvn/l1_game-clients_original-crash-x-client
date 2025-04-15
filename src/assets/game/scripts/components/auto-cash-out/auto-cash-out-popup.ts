@@ -81,7 +81,7 @@ export class AutoCashOutPopup extends ObserverComponent {
         )}x`;
     }
 
-    @render(GameCrash.AutoCashOut.AutoCashOutPopupStore, (store) => store.isValid)
+    @render(BetControlStore, (store) => store.isValidAutoCashOutValue)
     updateMultiplierTextColor(isValid: boolean) {
         this.multiplierLabel.color = isValid ? Color.fromHEX(this.multiplierLabel.color, "#4920A4") : Color.RED;
         this.confirmButton.interactable = isValid;

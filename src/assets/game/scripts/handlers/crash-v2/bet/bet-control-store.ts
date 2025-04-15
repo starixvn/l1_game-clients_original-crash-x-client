@@ -111,7 +111,10 @@ export class BetControlStore {
     selectedInputIndex: { [betKey: number]: number } = {};
     currentFocusAutoCashOutIndex: number = 0;
     enableAutoCashOut: boolean = false;
-    //multiplierAutoCashOut: number = 0;
+    get isValidAutoCashOutValue(): boolean {
+        const parsedMultiplier = parseFloat(this.multiplierAutoCashOut);
+        return parsedMultiplier >= this.crashGameConfigStore.minMultiplier && parsedMultiplier <= this.crashGameConfigStore.maxMultiplier;
+    }
 
     get notAllowChangeClientSeed(): boolean {
         return this.isNotAllowChangeClientSeed();
@@ -240,7 +243,7 @@ export class BetControlStore {
     setMultiplierAutoCashOut(multiplier: number) {
         const betKey = this.currentFocusAutoCashOutIndex;
         this.controls[betKey].setting.cashOutAt = multiplier;
-        console.log("setMultiplierAutoCashOut", multiplier);
+
         this.onSaveStorage();
     }
 

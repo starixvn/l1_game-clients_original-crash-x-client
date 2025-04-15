@@ -15,7 +15,6 @@ export class AutoCashOutPopupContainer extends NodeContainer {
 
     @render(BetControlStore, (store) => store.enableAutoCashOut)
     openPopup(enable: boolean) {
-        console.log("openPopup", enable);
         this.nodeOverlay.active = enable;
         if (this.node.children.length > 1) {
             return;
