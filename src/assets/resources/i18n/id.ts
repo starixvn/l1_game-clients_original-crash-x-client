@@ -20,6 +20,7 @@ export const languages = {
         "bet_option_even": "Genap",
         "bet_option_odd": "Ganjil",
         "button_change": "Mengubah",
+        "button_confirm": "Konfirmasi",
         "character_name": "Nama panggilan",
         "copy_failed_md5": "Fungsi salin untuk sementara tidak tersedia.",
         "copy_successfully_md5": "Salin berhasil!",

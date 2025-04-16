@@ -20,6 +20,7 @@ export const languages = {
         "bet_option_even": "双",
         "bet_option_odd": "单",
         "button_change": "改变",
+        "button_confirm": "确认",
         "character_name": "昵称",
         "copy_failed_md5": "复印功能暂时不能用。",
         "copy_successfully_md5": "复制成功！",
