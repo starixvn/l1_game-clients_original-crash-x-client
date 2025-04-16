@@ -28,6 +28,9 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     lblTime: Label = null;
 
     @property(Label)
+    lblDateTime: Label = null;
+
+    @property(Label)
     lblRound: Label = null;
 
     @property(Label)
@@ -66,6 +69,7 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     private setLabels(betTime: string, betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
         if (this.lblDate) this.lblDate.string = DateTimeUtils.getStringDate(betTime);
         if (this.lblTime) this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
+        if (this.lblDateTime) this.lblDateTime.string = DateTimeUtils.getStringDateByTime(betTime);
         this.lblRound.string = betHistoryLog.roundId.toString();
 
         const betAmount = this.getBetAmount(betHistoryLog, betKey);

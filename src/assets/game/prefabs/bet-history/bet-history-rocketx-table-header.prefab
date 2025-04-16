@@ -217,9 +217,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 229,
-      "b": 223,
+      "r": 255,
+      "g": 232,
+      "b": 0,
       "a": 255
     },
     "_string": "Time",
@@ -232,7 +232,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "41a12541-a4db-4259-b803-4c477054c858",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -241,7 +241,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 0,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -304,7 +304,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 45.926971435546875,
+      "width": 53.7919921875,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -492,9 +492,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 229,
-      "b": 223,
+      "r": 255,
+      "g": 232,
+      "b": 0,
       "a": 255
     },
     "_string": "Round",
@@ -507,7 +507,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "41a12541-a4db-4259-b803-4c477054c858",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -516,7 +516,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 0,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -579,7 +579,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.65596008300781,
+      "width": 69.357421875,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -767,9 +767,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 229,
-      "b": 223,
+      "r": 255,
+      "g": 232,
+      "b": 0,
       "a": 255
     },
     "_string": "Bet",
@@ -782,7 +782,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "41a12541-a4db-4259-b803-4c477054c858",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -791,7 +791,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 0,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -854,7 +854,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 33.53697204589844,
+      "width": 34.5966796875,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -1042,9 +1042,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 229,
-      "b": 223,
+      "r": 255,
+      "g": 232,
+      "b": 0,
       "a": 255
     },
     "_string": "Multiplier",
@@ -1057,7 +1057,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "41a12541-a4db-4259-b803-4c477054c858",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -1066,7 +1066,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 0,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1129,7 +1129,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 88.53590393066406,
+      "width": 108.5888671875,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -1317,9 +1317,9 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 229,
-      "b": 223,
+      "r": 255,
+      "g": 232,
+      "b": 0,
       "a": 255
     },
     "_string": "Win",
@@ -1332,7 +1332,7 @@
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "41a12541-a4db-4259-b803-4c477054c858",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -1341,7 +1341,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 0,
-    "_cacheMode": 0,
+    "_cacheMode": 1,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
@@ -1404,7 +1404,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 34.75495910644531,
+      "width": 43.8046875,
       "height": 37.8
     },
     "_anchorPoint": {
