@@ -24,8 +24,8 @@ export default class CrashBetControl extends ObserverComponent {
     @property(EditBox)
     inputBetAmount: EditBox = null;
 
-    @property(EditBox)
-    inputCashOutAt: EditBox = null;
+    // @property(EditBox)
+    // inputCashOutAt: EditBox = null;
 
     @property(Label)
     labelAutoCashOut: Label = null;
@@ -123,7 +123,6 @@ export default class CrashBetControl extends ObserverComponent {
     @render(BetControlStore, (store) => store.controls[0].setting.cashOutAt)
     bindAutoMultiPlayer0(cashOutAt: number) {
         if (this.betKey === 0) {
-            this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
             this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
         }
     }
@@ -131,7 +130,6 @@ export default class CrashBetControl extends ObserverComponent {
     @render(BetControlStore, (store) => store.controls[1].setting.cashOutAt)
     bindAutoMultiPlayer1(cashOutAt: number) {
         if (this.betKey === 1) {
-            this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
             this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
         }
     }
@@ -160,7 +158,7 @@ export default class CrashBetControl extends ObserverComponent {
     updatePreventInput() {
         const disableInput = this.toggleAutoBet.isChecked || this.disableInput;
         this.nodePreventInput.active = disableInput;
-        this.inputCashOutAt.enabled = !disableInput;
+        //this.inputCashOutAt.enabled = !disableInput;
         this.inputBetAmount.enabled = !disableInput;
     }
 
@@ -174,8 +172,8 @@ export default class CrashBetControl extends ObserverComponent {
         this.inputBetAmount.string = betValue;
         this.labelBetValue.string = betValue;
         this.inputBetAmount.placeholder = betValue;
-        this.inputCashOutAt.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
-        this.inputCashOutAt.placeholder = this.inputCashOutAt.string;
+
+        this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
         this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
     }
 
@@ -189,8 +187,8 @@ export default class CrashBetControl extends ObserverComponent {
     onLoad() {
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
-        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndCashOutAt, this);
-        this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
+        // this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndCashOutAt, this);
+        // this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
 
         this.nodeInputValues.children.forEach((child, index) => {
             child.on(Button.EventType.CLICK, () => {
