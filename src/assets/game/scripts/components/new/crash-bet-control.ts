@@ -134,6 +134,12 @@ export default class CrashBetControl extends ObserverComponent {
         }
     }
 
+    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
+    onToggleAutoCashOut() {
+        this.playSFX(AudioIds.CLICK);
+        return this.betKey;
+    }
+
     @handle(CrashBetHandler, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
     openPopup() {
         this.playSFX(AudioIds.CLICK);

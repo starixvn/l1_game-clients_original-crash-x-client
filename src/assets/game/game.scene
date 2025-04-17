@@ -2554,7 +2554,7 @@
       "0",
       "handler"
     ],
-    "value": "onClickCashOut"
+    "value": "onToggleAutoCashOut"
   },
   {
     "__type__": "cc.Node",
@@ -2787,7 +2787,7 @@
       "0",
       "handler"
     ],
-    "value": "onClickCashOut"
+    "value": "onToggleAutoCashOut"
   },
   {
     "__type__": "cc.UITransform",
