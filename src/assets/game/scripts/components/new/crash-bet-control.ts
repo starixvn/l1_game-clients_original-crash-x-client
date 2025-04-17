@@ -8,6 +8,7 @@ import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
 import { AutoCashOutHandlers } from "../../handlers/crash-v2/handlers/auto-cash-out-handlers";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
+import { BetInput } from "../bet-amount/bet-input";
 import { InputValueItem } from "./input-value-item";
 
 const { Connection, GameCrash } = gc;
@@ -60,6 +61,9 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(Button)
     btnIncreaseBet: Button = null;
+
+    @property(Node)
+    betInput: Node = null;
 
     betKey = 0;
 
@@ -302,9 +306,11 @@ export default class CrashBetControl extends ObserverComponent {
 
     setActiveDownBet(active: boolean) {
         this.btnDecreaseBet.interactable = active;
+        this.betInput.getComponent(BetInput).setDecreaseButtonStatus(active);
     }
 
     setActiveUpBet(active: boolean) {
         this.btnIncreaseBet.interactable = active;
+        this.betInput.getComponent(BetInput).setDecreaseButtonStatus(active);
     }
 }

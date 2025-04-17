@@ -47,12 +47,12 @@ export class BetInput extends ObserverComponent {
     }
 
     @render(BetInputStore, (store) => store.increaseStatus)
-    private setIncreaseButtonStatus(increaseStatus: boolean) {
+    setIncreaseButtonStatus(increaseStatus: boolean) {
         this.handleStakeButtonQuickChange(this.btnIncrease, increaseStatus);
     }
 
     @render(BetInputStore, (store) => store.decreaseStatus)
-    private setDecreaseButtonStatus(decreaseStatus: boolean) {
+    setDecreaseButtonStatus(decreaseStatus: boolean) {
         this.handleStakeButtonQuickChange(this.btnDecrease, decreaseStatus);
     }
 
