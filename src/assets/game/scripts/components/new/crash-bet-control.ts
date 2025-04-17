@@ -5,6 +5,7 @@ import { ToggleNode } from "db://shared-components/shared/common-components/togg
 import Observer from "observer";
 import { AudioIds } from "../../../audios/AudioIds";
 import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
+import { AutoCashOutHandlers } from "../../handlers/crash-v2/handlers/auto-cash-out-handlers";
 import { ButtonState, IBetControlSettings } from "../../handlers/crash-v2/interfaces";
 import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
 import { InputValueItem } from "./input-value-item";
@@ -23,9 +24,6 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(EditBox)
     inputBetAmount: EditBox = null;
-
-    // @property(EditBox)
-    // inputCashOutAt: EditBox = null;
 
     @property(Label)
     labelAutoCashOut: Label = null;
@@ -120,6 +118,12 @@ export default class CrashBetControl extends ObserverComponent {
         return this.betKey;
     }
 
+    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
+    onToggleAutoCashOut() {
+        this.playSFX(AudioIds.CLICK);
+        return this.betKey;
+    }
+
     @render(BetControlStore, (store) => store.controls[0].setting.cashOutAt)
     bindAutoMultiPlayer0(cashOutAt: number) {
         if (this.betKey === 0) {
@@ -134,13 +138,7 @@ export default class CrashBetControl extends ObserverComponent {
         }
     }
 
-    @handle(BetControlStore, (handler, betKey: number) => handler.toggleAutoCashOut(betKey))
-    onToggleAutoCashOut() {
-        this.playSFX(AudioIds.CLICK);
-        return this.betKey;
-    }
-
-    @handle(CrashBetHandler, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
+    @handle(AutoCashOutHandlers, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
     openPopup() {
         this.playSFX(AudioIds.CLICK);
         return this.betKey;
@@ -193,8 +191,6 @@ export default class CrashBetControl extends ObserverComponent {
     onLoad() {
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
         this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
-        // this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndCashOutAt, this);
-        // this.inputCashOutAt.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
 
         this.nodeInputValues.children.forEach((child, index) => {
             child.on(Button.EventType.CLICK, () => {

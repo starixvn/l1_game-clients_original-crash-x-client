@@ -1,9 +1,10 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, instantiate, Label, Node, Prefab } from "cc";
+import { _decorator, Button, Color, Label } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { BetAmountItem } from "./bet-amount-item";
+import { BetInputStore } from "../../handlers/crash-v2/bet/bet-input-store";
+import { BetInputHandlers } from "../../handlers/crash-v2/handlers/bet-input-handlers";
 
 const { FormatUtils, GameCrash } = gc;
 const { ccclass, property } = _decorator;
@@ -11,12 +12,6 @@ const { render, handle } = Observer;
 
 @ccclass
 export class BetAmountPopup extends ObserverComponent {
-    @property(Node)
-    nodeBetContainer: Node = null;
-
-    @property(Prefab)
-    prfBetAmount: Prefab = null;
-
     @property(Label)
     lblBetAmount: Label = null;
 
@@ -28,51 +23,16 @@ export class BetAmountPopup extends ObserverComponent {
 
     private readonly chipsLimit = 8;
 
-    @render(GameCrash.BetInput.BetInputStore, (store) => ({ chips: store.chips, minBet: store.minBet, maxBet: store.maxBet }))
-    private initBetAmount({ chips, minBet, maxBet }) {
-        this.nodeBetContainer.destroyAllChildren();
-        let count = 1;
-        chips.forEach((chip) => {
-            if (+chip < minBet || +chip > maxBet || count > this.chipsLimit) {
-                return;
-            }
-            const node = instantiate(this.prfBetAmount);
-            const comp = node.getComponent(BetAmountItem);
-            comp?.setBetAmountItem(chip);
-            this.nodeBetContainer.addChild(node);
-            count += 1;
-        });
-        this.updateBetRange({ minBet, maxBet });
-    }
-
-    @render(GameCrash.BetInput.BetInputStore, (store) => store.isOpenBetAmountPopup)
+    @render(BetInputStore, (store) => store.isOpenBetAmountPopup)
     private setBetAmountPopupVisibilty(status: boolean) {
         this.node.active = status;
         status && this.closeOtherPopups();
     }
 
-    @render(GameCrash.BetInput.BetInputStore, (store) => store.betAmountTemp)
+    @render(BetInputStore, (store) => store.betAmountTemp)
     private updateBetAmount(amount: number) {
         this.lblBetAmount.string = `${FormatUtils.numberWithCommas(amount, 2)}`;
         this.checkConfirmBtnStatus(amount > 0);
-    }
-
-    @handle(GameCrash.Popups.PopupsHandlers, (handle) => handle.closeOtherPopupsWithoutBetInput())
-    closeOtherPopups() {}
-
-    @handle(GameCrash.BetInput.BetInputHandler, (handle) => handle.closeBetAmountPopup())
-    private onCloseClick() {
-        this.playSoundClick();
-    }
-
-    @handle(GameCrash.BetInput.BetInputHandler)
-    private onConfirmClick() {
-        this.playSoundClick();
-    }
-
-    @handle(GameCrash.BetInput.BetInputHandler, (handler) => handler.resetBetAmount())
-    private onClearClick() {
-        this.playSoundClick();
     }
 
     private checkConfirmBtnStatus(status: boolean) {
@@ -82,6 +42,100 @@ export class BetAmountPopup extends ObserverComponent {
 
     private updateBetRange({ minBet, maxBet }) {
         this.lblBetRange.string = `${FormatUtils.numberWithCommas(minBet, 2)} - ${FormatUtils.numberWithCommas(maxBet, 2)}`;
+    }
+
+    @handle(BetInputHandlers, (handle, enable: boolean) => handle.closePopup())
+    close() {
+        this.playSoundClick();
+    }
+
+    @handle(BetInputHandlers, (handle, multiplier: number) => handle.setBetAmount(multiplier))
+    confirm() {
+        this.playSoundClick();
+        return parseFloat(this.removeCommasMultiplier());
+    }
+
+    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    addValue(event, value) {
+        this.playSoundClick();
+        const multiplier = this.removeCommasMultiplier();
+
+        if (multiplier === "0" && value !== ".") {
+            return value;
+        }
+
+        const regex = new RegExp(/^[1-9]\d{0,3}(\.\d{0,2})?$/);
+        const newValue = `${multiplier}${value}`;
+
+        if (regex.test(newValue)) {
+            return newValue;
+        }
+
+        return multiplier;
+    }
+
+    @render(BetInputStore, (store) => store.betAmountString)
+    updateMultiplierString(multiplier: string) {
+        let slitStr;
+        const suffix = multiplier.split(".")[1];
+        if (suffix === "") {
+            slitStr = ".";
+        } else if (suffix === "0" || suffix === "00") {
+            slitStr = `.${suffix}`;
+        } else {
+            slitStr = "";
+        }
+
+        this.lblBetAmount.string = `${FormatUtils.numberWithCommas(+multiplier, 2)}${slitStr}`;
+    }
+
+    @render(GameCrash.CrashGameConfigs.CrashGameConfigStore, (store) => ({
+        minMultiplier: store.minMultiplier,
+        maxMultiplier: store.maxMultiplier,
+    }))
+    updateMultiplierRangeLabel({ minMultiplier, maxMultiplier }) {
+        this.lblBetRange.string = `${FormatUtils.numberWithCommas(minMultiplier, 2, false)}x - ${FormatUtils.numberWithCommas(
+            maxMultiplier,
+            2,
+            false
+        )}x`;
+    }
+
+    @render(BetInputStore, (store) => store.isAmountValid)
+    updateMultiplierTextColor(isValid: boolean) {
+        this.lblBetAmount.color = isValid ? Color.fromHEX(this.lblBetAmount.color, "#FFFC09") : Color.RED;
+        this.btnConfirm.interactable = isValid;
+        this.btnConfirm.node.getChildByName("overlay").active = !isValid;
+    }
+
+    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    removeLastLetter() {
+        this.playSoundClick();
+        let multiplierString = this.removeCommasMultiplier().slice(0, -1);
+        if (!multiplierString) {
+            multiplierString = "0";
+        }
+
+        return multiplierString;
+    }
+
+    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    clear() {
+        this.playSoundClick();
+        return "0";
+    }
+
+    @render(BetInputStore, (store) => store.enable)
+    setDisplayAutoCashoutPopup(enable: boolean) {
+        this.node.active = enable;
+        enable && this.closeOtherPopups();
+    }
+
+    @handle(GameCrash.Popups.PopupsHandlers, (handle) => handle.closeOtherPopupsWithoutAutoCashOut())
+    closeOtherPopups() {}
+
+    private removeCommasMultiplier(): string {
+        return this.lblBetAmount.string.replace(",", "");
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))

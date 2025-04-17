@@ -6,7 +6,7 @@ const { injectable, inject } = inversify;
 
 @injectable()
 export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
-    @inject(BetControlStore) private betControlStore: BetControlStore;
+    @inject(BetControlStore) private readonly betControlStore: BetControlStore;
 
     handle() {}
 
@@ -124,22 +124,5 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         } else if (this.roundTimeStore.roundTime === 0 || this.roundTimeStore.roundTime > this.roundTimeStore.placingBet) {
             this.enableEarlyBet(betKey);
         }
-    }
-
-    closeAutoCashOutPopup() {
-        this.betControlStore.enableAutoCashOut = false;
-    }
-
-    openAutoCashOutPopup(betKey: number) {
-        this.betControlStore.currentFocusAutoCashOutIndex = betKey;
-        this.betControlStore.enableAutoCashOut = true;
-    }
-
-    handleMultiplier(multiplierString: string) {
-        this.betControlStore.multiplierAutoCashOut = multiplierString;
-    }
-
-    setMultiplierAutoCashOut(multiplier: number) {
-        this.betControlStore.setMultiplierAutoCashOut(multiplier);
     }
 }

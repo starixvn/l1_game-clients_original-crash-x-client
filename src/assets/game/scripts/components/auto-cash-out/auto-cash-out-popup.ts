@@ -1,10 +1,10 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, Color, Label, Node } from "cc";
+import { _decorator, Button, Color, Label } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
-import { BetControlStore } from "../../handlers/crash-v2/bet/bet-control-store";
-import { CrashBetHandler } from "../../handlers/override/crash-bet-handler";
+import { AutoCashOutStore } from "../../handlers/crash-v2/bet/auto-cash-out-store";
+import { AutoCashOutHandlers } from "../../handlers/crash-v2/handlers/auto-cash-out-handlers";
 
 const { FormatUtils, GameCrash } = gc;
 const { ccclass, property } = _decorator;
@@ -18,24 +18,21 @@ export class AutoCashOutPopup extends ObserverComponent {
     @property(Label)
     multiplierRangeLabel: Label = null;
 
-    @property(Node)
-    nodeContent: Node = null;
-
     @property(Button)
     confirmButton: Button = null;
 
-    @handle(CrashBetHandler, (handle, enable: boolean) => handle.closeAutoCashOutPopup())
+    @handle(AutoCashOutHandlers, (handle, enable: boolean) => handle.closeAutoCashOutPopup())
     close() {
         this.playSoundClick();
     }
 
-    @handle(CrashBetHandler, (handle, multiplier: number) => handle.setMultiplierAutoCashOut(multiplier))
+    @handle(AutoCashOutHandlers, (handle, multiplier: number) => handle.setMultiplierAutoCashOut(multiplier))
     confirm() {
         this.playSoundClick();
         return parseFloat(this.removeCommasMultiplier());
     }
 
-    @handle(CrashBetHandler, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
+    @handle(AutoCashOutHandlers, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
     addValue(event, value) {
         this.playSoundClick();
         const multiplier = this.removeCommasMultiplier();
@@ -54,7 +51,7 @@ export class AutoCashOutPopup extends ObserverComponent {
         return multiplier;
     }
 
-    @render(BetControlStore, (store) => store.multiplierAutoCashOut)
+    @render(AutoCashOutStore, (store) => store.multiplierString)
     updateMultiplierString(multiplier: string) {
         let slitStr;
         const suffix = multiplier.split(".")[1];
@@ -81,14 +78,14 @@ export class AutoCashOutPopup extends ObserverComponent {
         )}x`;
     }
 
-    @render(BetControlStore, (store) => store.isValidAutoCashOutValue)
+    @render(AutoCashOutStore, (store) => store.isValidAutoCashOutValue)
     updateMultiplierTextColor(isValid: boolean) {
         this.multiplierLabel.color = isValid ? Color.fromHEX(this.multiplierLabel.color, "#FFFC09") : Color.RED;
         this.confirmButton.interactable = isValid;
         this.confirmButton.node.getChildByName("overlay").active = !isValid;
     }
 
-    @handle(CrashBetHandler, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
+    @handle(AutoCashOutHandlers, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
     removeLastLetter() {
         this.playSoundClick();
         let multiplierString = this.removeCommasMultiplier().slice(0, -1);
@@ -99,13 +96,13 @@ export class AutoCashOutPopup extends ObserverComponent {
         return multiplierString;
     }
 
-    @handle(CrashBetHandler, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
+    @handle(AutoCashOutHandlers, (handle, multiplier: string) => handle.handleMultiplier(multiplier))
     clear() {
         this.playSoundClick();
         return "0";
     }
 
-    @render(BetControlStore, (store) => store.enableAutoCashOut)
+    @render(AutoCashOutStore, (store) => store.enable)
     setDisplayAutoCashoutPopup(enable: boolean) {
         this.node.active = enable;
         enable && this.closeOtherPopups();

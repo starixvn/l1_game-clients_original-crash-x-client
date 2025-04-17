@@ -4,6 +4,7 @@ const { injectable, inject } = inversify;
 
 import gc from "@sg/game-client-base";
 import { ButtonState, CrashCashOutData, IBetControl, IBetControlSettings, MinMultiplier } from "../interfaces";
+import { BetInputStore } from "./bet-input-store";
 
 @injectable()
 export class BetControlStore {
@@ -15,6 +16,7 @@ export class BetControlStore {
     @inject(gc.GameCrash.CrashGameConfigs.CrashGameConfigStore)
     protected readonly crashGameConfigStore: gc.GameCrash.CrashGameConfigs.CrashGameConfigStore;
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
+    @inject(BetInputStore) protected readonly betInputStore: BetInputStore;
 
     @inject(gc.GameUserSettings.GameUserSettingHandler)
     protected readonly gameUserSettingHandler: gc.GameUserSettings.GameUserSettingHandler;
@@ -98,23 +100,8 @@ export class BetControlStore {
         },
     };
 
-    private _multiplierAutoCashOut = "0";
-    get multiplierAutoCashOut(): string {
-        return this._multiplierAutoCashOut;
-    }
-
-    set multiplierAutoCashOut(multiplier: string) {
-        this._multiplierAutoCashOut = multiplier;
-    }
-
     inputValues: number[] = [];
     selectedInputIndex: { [betKey: number]: number } = {};
-    currentFocusAutoCashOutIndex: number = 0;
-    enableAutoCashOut: boolean = false;
-    get isValidAutoCashOutValue(): boolean {
-        const parsedMultiplier = parseFloat(this.multiplierAutoCashOut);
-        return parsedMultiplier >= this.crashGameConfigStore.minMultiplier && parsedMultiplier <= this.crashGameConfigStore.maxMultiplier;
-    }
 
     get notAllowChangeClientSeed(): boolean {
         return this.isNotAllowChangeClientSeed();
@@ -237,13 +224,6 @@ export class BetControlStore {
             ...this.controls[betKey].setting,
             autoCashOut: enabled,
         };
-        this.onSaveStorage();
-    }
-
-    setMultiplierAutoCashOut(multiplier: number) {
-        const betKey = this.currentFocusAutoCashOutIndex;
-        this.controls[betKey].setting.cashOutAt = multiplier;
-
         this.onSaveStorage();
     }
 
