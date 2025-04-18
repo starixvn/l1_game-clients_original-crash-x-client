@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Button, CCInteger, Label, Node, UIOpacity } from "cc";
+import { _decorator, Button, CCInteger, Label, Node } from "cc";
 import Observer from "observer";
 
 import { ObserverComponent } from "db://shared-components/shared/common-components/observer-component/scripts/observer-component";
@@ -46,16 +46,6 @@ export class BetInput extends ObserverComponent {
         }
     }
 
-    //@render(BetInputStore, (store) => store.increaseStatus)
-    setIncreaseButtonStatus(increaseStatus: boolean) {
-        this.handleStakeButtonQuickChange(this.btnIncrease, increaseStatus);
-    }
-
-    //@render(BetInputStore, (store) => store.decreaseStatus)
-    setDecreaseButtonStatus(decreaseStatus: boolean) {
-        this.handleStakeButtonQuickChange(this.btnDecrease, decreaseStatus);
-    }
-
     @handle(BetInputHandlers, (handle, betKey: number) => handle.openPopup(betKey))
     openPopup() {
         this.playSoundClick();
@@ -65,12 +55,6 @@ export class BetInput extends ObserverComponent {
     private onClickBetAmountQuickChange(event) {
         this.playSoundClick();
         return event.target.name === "increase";
-    }
-
-    private handleStakeButtonQuickChange(button: Button, status: boolean) {
-        this.playSoundClick();
-        button.interactable = status;
-        button.node.getComponent(UIOpacity).opacity = status ? 255 : 100;
     }
 
     @handle(gc.Audios.AudioHandler, (handle, id: string) => handle.playSFX(id))

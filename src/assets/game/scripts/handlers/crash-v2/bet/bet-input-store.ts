@@ -38,10 +38,6 @@ export class BetInputStore {
         return this.betAmount < this.maxBet;
     }
 
-    // get betAmountRatio(): number {
-    //     return this.betAmount * this.cashOutStore.ratio;
-    // }
-
     get minBet(): number {
         return this.roundStore.minBet;
     }
