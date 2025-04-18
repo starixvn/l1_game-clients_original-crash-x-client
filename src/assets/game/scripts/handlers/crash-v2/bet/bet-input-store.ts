@@ -11,6 +11,14 @@ export class BetInputStore {
 
     constructor() {
         mobx.makeAutoObservable(this);
+        // setTimeout(() => {
+        //     mobx.reaction(
+        //         () => this.roundStore.maxBet && this.roundStore.minBet,
+        //         () => {
+        //             this.validCurrentBetAmounts();
+        //         }
+        //     );
+        // }, 0);
     }
 
     isOpenBetAmountPopup = false;
@@ -39,7 +47,7 @@ export class BetInputStore {
     }
 
     get maxBet(): number {
-        return this.gameConfig.maxBet;
+        return this.roundStore.maxBet;
     }
 
     get chips(): string[] {
@@ -51,7 +59,7 @@ export class BetInputStore {
     }
 
     get isAmountValid() {
-        this.betAmount = Number(this.betAmountString);
-        return this.betAmount >= this.minBet && this.betAmount <= this.maxBet;
+        const betAmount = Number(this.betAmountString);
+        return betAmount >= this.minBet && betAmount <= this.maxBet;
     }
 }

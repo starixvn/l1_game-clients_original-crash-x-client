@@ -23,6 +23,6 @@ export class BetInputHandlers {
     }
 
     setBetAmount(betAmount: number) {
-        this.betControlStore.setBetAmount(this.betInputStore.currentBetKey, betAmount);
+        this.betControlStore.setValidBetAmount(this.betInputStore.currentBetKey, betAmount);
     }
 }

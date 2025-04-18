@@ -46,12 +46,12 @@ export class BetInput extends ObserverComponent {
         }
     }
 
-    @render(BetInputStore, (store) => store.increaseStatus)
+    //@render(BetInputStore, (store) => store.increaseStatus)
     setIncreaseButtonStatus(increaseStatus: boolean) {
         this.handleStakeButtonQuickChange(this.btnIncrease, increaseStatus);
     }
 
-    @render(BetInputStore, (store) => store.decreaseStatus)
+    //@render(BetInputStore, (store) => store.decreaseStatus)
     setDecreaseButtonStatus(decreaseStatus: boolean) {
         this.handleStakeButtonQuickChange(this.btnDecrease, decreaseStatus);
     }
@@ -62,7 +62,6 @@ export class BetInput extends ObserverComponent {
         return this.beyKey;
     }
 
-    // @handle(BetInputHandlers, (handle, isIncrease: boolean) => handle.quickChangeBetAmount(isIncrease))
     private onClickBetAmountQuickChange(event) {
         this.playSoundClick();
         return event.target.name === "increase";

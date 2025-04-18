@@ -311,6 +311,6 @@ export default class CrashBetControl extends ObserverComponent {
 
     setActiveUpBet(active: boolean) {
         this.btnIncreaseBet.interactable = active;
-        this.betInput.getComponent(BetInput).setDecreaseButtonStatus(active);
+        this.betInput.getComponent(BetInput).setIncreaseButtonStatus(active);
     }
 }

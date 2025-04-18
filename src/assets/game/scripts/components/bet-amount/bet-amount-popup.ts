@@ -22,6 +22,7 @@ export class BetAmountPopup extends ObserverComponent {
     btnConfirm: Button = null;
 
     private readonly chipsLimit = 8;
+    private maxBetLimit = 0;
 
     @render(BetInputStore, (store) => store.isOpenBetAmountPopup)
     private setBetAmountPopupVisibilty(status: boolean) {
@@ -38,10 +39,6 @@ export class BetAmountPopup extends ObserverComponent {
     private checkConfirmBtnStatus(status: boolean) {
         this.btnConfirm.interactable = status;
         this.btnConfirm.node.getChildByName("overlay").active = !status;
-    }
-
-    private updateBetRange({ minBet, maxBet }) {
-        this.lblBetRange.string = `${FormatUtils.numberWithCommas(minBet, 2)} - ${FormatUtils.numberWithCommas(maxBet, 2)}`;
     }
 
     @handle(BetInputHandlers, (handle, enable: boolean) => handle.closePopup())
@@ -63,11 +60,12 @@ export class BetAmountPopup extends ObserverComponent {
         if (multiplier === "0" && value !== ".") {
             return value;
         }
-
-        const regex = new RegExp(/^[1-9]\d{0,3}(\.\d{0,2})?$/);
+        const maxBetLength = this.maxBetLimit.toString().length;
+        const regex = new RegExp(`^[1-9]\\d{0,${maxBetLength - 1}}(\\.\\d{0,2})?$`);
         const newValue = `${multiplier}${value}`;
 
         if (regex.test(newValue)) {
+            console.log("newValue", newValue);
             return newValue;
         }
 
@@ -75,9 +73,9 @@ export class BetAmountPopup extends ObserverComponent {
     }
 
     @render(BetInputStore, (store) => store.betAmountString)
-    updateMultiplierString(multiplier: string) {
+    updateMultiplierString(betAmount: string) {
         let slitStr;
-        const suffix = multiplier.split(".")[1];
+        const suffix = betAmount.split(".")[1];
         if (suffix === "") {
             slitStr = ".";
         } else if (suffix === "0" || suffix === "00") {
@@ -86,23 +84,21 @@ export class BetAmountPopup extends ObserverComponent {
             slitStr = "";
         }
 
-        this.lblBetAmount.string = `${FormatUtils.numberWithCommas(+multiplier, 2)}${slitStr}`;
+        this.lblBetAmount.string = `${FormatUtils.numberWithCommas(+betAmount, 2)}${slitStr}`;
     }
 
-    @render(GameCrash.CrashGameConfigs.CrashGameConfigStore, (store) => ({
-        minMultiplier: store.minMultiplier,
-        maxMultiplier: store.maxMultiplier,
+    @render(gc.Rounds.RoundStore, (store) => ({
+        minBet: store.minBet,
+        maxBet: store.maxBet,
     }))
-    updateMultiplierRangeLabel({ minMultiplier, maxMultiplier }) {
-        this.lblBetRange.string = `${FormatUtils.numberWithCommas(minMultiplier, 2, false)}x - ${FormatUtils.numberWithCommas(
-            maxMultiplier,
-            2,
-            false
-        )}x`;
+    private updateBetRange({ minBet, maxBet }) {
+        this.maxBetLimit = maxBet;
+        this.lblBetRange.string = `${FormatUtils.numberWithCommas(minBet, 2)} - ${FormatUtils.numberWithCommas(maxBet, 2)}`;
     }
 
     @render(BetInputStore, (store) => store.isAmountValid)
     updateMultiplierTextColor(isValid: boolean) {
+        console.log("isValid", isValid);
         this.lblBetAmount.color = isValid ? Color.fromHEX(this.lblBetAmount.color, "#FFFC09") : Color.RED;
         this.btnConfirm.interactable = isValid;
         this.btnConfirm.node.getChildByName("overlay").active = !isValid;
