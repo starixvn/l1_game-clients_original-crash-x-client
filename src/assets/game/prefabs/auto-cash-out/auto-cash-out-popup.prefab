@@ -46,7 +46,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -17.2415,
+      "y": 90,
       "z": 0
     },
     "_lrot": {
@@ -7538,9 +7538,6 @@
     },
     "multiplierRangeLabel": {
       "__id__": 40
-    },
-    "nodeContent": {
-      "__id__": 19
     },
     "confirmButton": {
       "__id__": 313
