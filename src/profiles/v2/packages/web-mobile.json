@@ -12,7 +12,7 @@
       "startScene": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
       "scenes": [
         {
-          "url": "db://assets/game/game.scene",
+          "url": "db://assets/game/direct-game.scene",
           "uuid": "4229fd91-1ded-407f-b130-7b678b820c27",
           "inBundle": false
         },
@@ -35,6 +35,20 @@
           "url": "db://shared-components/under-maintenance/under-maintenance.scene",
           "uuid": "3640a00f-a2ed-4aec-b369-779ede63f5df",
           "inBundle": false
+        },
+        {
+          "url": "db://shared-components/game/scoreboards/scoreboard.scene",
+          "uuid": "9ec9624e-8ef6-4e81-bf0e-34a4eab4a438",
+          "inBundle": false
+        },
+        {
+          "url": "db://shared-components/shared/common-components/integrations/identifier.scene",
+          "uuid": "8fa0d7ef-6c87-40c2-bd73-c63184ba47ff",
+          "inBundle": false
+        },
+        {
+          "url": "db://assets/game/game.scene",
+          "uuid": "cd7178df-94c2-41c3-999f-e058c7332880"
         }
       ],
       "polyfills": {
@@ -49,7 +63,7 @@
     },
     "options": {
       "web-mobile": {
-        "orientation": "portrait",
+        "orientation": "landscape",
         "embedWebDebugger": false,
         "__version__": "1.0.1",
         "cullEngineAsmJsModule": false
@@ -57,7 +71,7 @@
     },
     "taskOptionsMap": {
       "1681353552761": {
-        "orientation": "portrait",
+        "orientation": "landscape",
         "embedWebDebugger": false,
         "__version__": "1.0.1",
         "cullEngineAsmJsModule": false
