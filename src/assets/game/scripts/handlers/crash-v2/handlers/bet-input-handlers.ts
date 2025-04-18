@@ -24,5 +24,6 @@ export class BetInputHandlers {
 
     setBetAmount(betAmount: number) {
         this.betControlStore.setValidBetAmount(this.betInputStore.currentBetKey, betAmount);
+        this.closePopup();
     }
 }

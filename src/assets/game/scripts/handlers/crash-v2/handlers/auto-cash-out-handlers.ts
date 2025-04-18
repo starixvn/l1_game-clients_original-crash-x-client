@@ -24,5 +24,6 @@ export class AutoCashOutHandlers {
 
     setMultiplierAutoCashOut(multiplier: number) {
         this.betControlStore.setCashOutMultiplier(this.autoCashOutStore.currentBetKey, multiplier);
+        this.closeAutoCashOutPopup();
     }
 }

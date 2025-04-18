@@ -82,6 +82,16 @@ export default class CrashBetControlContainer extends ObserverComponent {
         this.controls[1].renderCashOutValue(value);
     }
 
+    @render(BetControlStore, (store) => store.controls[0].setting.cashOutAt)
+    bindAutoMultiPlayer0(cashOutAt: number) {
+        this.controls[0].labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+    }
+
+    @render(BetControlStore, (store) => store.controls[1].setting.cashOutAt)
+    bindAutoMultiPlayer1(cashOutAt: number) {
+        this.controls[1].labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
+    }
+
     @render(BetControlStore, (store) => store.inputValues)
     renderInputValues(values: number[]) {
         if (values.length === 0) {

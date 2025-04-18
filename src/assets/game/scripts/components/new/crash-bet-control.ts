@@ -127,20 +127,6 @@ export default class CrashBetControl extends ObserverComponent {
         return this.betKey;
     }
 
-    @render(BetControlStore, (store) => store.controls[0].setting.cashOutAt)
-    bindAutoMultiPlayer0(cashOutAt: number) {
-        if (this.betKey === 0) {
-            this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
-        }
-    }
-
-    @render(BetControlStore, (store) => store.controls[1].setting.cashOutAt)
-    bindAutoMultiPlayer1(cashOutAt: number) {
-        if (this.betKey === 1) {
-            this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(cashOutAt, 2, false)}x`;
-        }
-    }
-
     @handle(AutoCashOutHandlers, (handle, betKey: number) => handle.openAutoCashOutPopup(betKey))
     openPopup() {
         this.playSFX(AudioIds.CLICK);
@@ -165,8 +151,6 @@ export default class CrashBetControl extends ObserverComponent {
     updatePreventInput() {
         const disableInput = this.toggleAutoBet.isChecked || this.disableInput;
         this.nodePreventInput.active = disableInput;
-        //this.inputCashOutAt.enabled = !disableInput;
-        this.inputBetAmount.enabled = !disableInput;
     }
 
     renderSetting(setting: IBetControlSettings) {
@@ -192,9 +176,6 @@ export default class CrashBetControl extends ObserverComponent {
     }
 
     onLoad() {
-        this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_ENDED, this.onEditEndBetAmount, this);
-        this.inputBetAmount.node.on(EditBox.EventType.EDITING_DID_BEGAN, this.onEditBegin, this);
-
         this.nodeInputValues.children.forEach((child, index) => {
             child.on(Button.EventType.CLICK, () => {
                 this.onClickInputValue(index);
