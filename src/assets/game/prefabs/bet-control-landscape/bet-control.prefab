@@ -4428,7 +4428,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 218.137,
-      "height": 84
+      "height": 38.141999999999996
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -5702,7 +5702,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 278.80100000000004,
+      "x": 268.049,
       "y": -88.339,
       "z": 0
     },
@@ -5755,7 +5755,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 0,
+      "x": -0.46750000000000025,
       "y": 0,
       "z": 0
     },
@@ -5796,7 +5796,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 32.03996276855469,
+      "width": 109.07991027832031,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -5832,7 +5832,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "1.1x",
+    "_string": "2,000,00x",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 24,
@@ -5980,7 +5980,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 110,
+      "width": 130,
       "height": 40
     },
     "_anchorPoint": {
@@ -6088,7 +6088,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 194.71300000000002,
+      "x": 184.71300000000002,
       "y": -89.664,
       "z": 0
     },
@@ -6684,7 +6684,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 223.76788330078125,
-      "height": 30
+      "height": 50
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -9596,7 +9596,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 1.1,
+    "_zoomScale": 1.05,
     "_target": {
       "__id__": 353
     },
@@ -10402,7 +10402,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 1.1,
+    "_zoomScale": 1.05,
     "_target": null,
     "_id": ""
   },
@@ -11330,7 +11330,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 1.2,
+    "_zoomScale": 1.05,
     "_target": {
       "__id__": 453
     },
@@ -11976,7 +11976,7 @@
     "_pressedSprite": null,
     "_disabledSprite": null,
     "_duration": 0.1,
-    "_zoomScale": 1.2,
+    "_zoomScale": 1.05,
     "_target": {
       "__id__": 453
     },

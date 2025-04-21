@@ -14,9 +14,5 @@ export class BetWinCell extends Component {
         this.lblWin.color = new Color().fromHEX("F1E344");
 
         this.btnReachMaxWin.node.active = isReachMaxWin;
-
-        if (!isReachMaxWin) {
-            this.lblWin.node.setPosition(0, 0);
-        }
     }
 }
