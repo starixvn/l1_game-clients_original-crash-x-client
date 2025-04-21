@@ -22,18 +22,12 @@ export class BetAmountPopup extends ObserverComponent {
     btnConfirm: Button = null;
 
     private readonly chipsLimit = 8;
-    private maxBetLimit = 0;
+    private maxBet = 0;
 
     @render(BetInputStore, (store) => store.isOpenBetAmountPopup)
     private setBetAmountPopupVisibilty(status: boolean) {
         this.node.active = status;
         status && this.closeOtherPopups();
-    }
-
-    @render(BetInputStore, (store) => store.betAmountTemp)
-    private updateBetAmount(amount: number) {
-        this.lblBetAmount.string = `${FormatUtils.numberWithCommas(amount, 2)}`;
-        this.checkConfirmBtnStatus(amount > 0);
     }
 
     private checkConfirmBtnStatus(status: boolean) {
@@ -46,34 +40,31 @@ export class BetAmountPopup extends ObserverComponent {
         this.playSoundClick();
     }
 
-    @handle(BetInputHandlers, (handle, multiplier: number) => handle.setBetAmount(multiplier))
+    @handle(BetInputHandlers, (handle, betAmount: number) => handle.setBetAmount(betAmount))
     confirm() {
         this.playSoundClick();
-        return parseFloat(this.removeCommasMultiplier());
+        return parseFloat(this.removeCommas());
     }
 
-    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    @handle(BetInputHandlers, (handle, betAmount: string) => handle.handleBetAmount(betAmount))
     addValue(event, value) {
         this.playSoundClick();
-        const multiplier = this.removeCommasMultiplier();
+        const betAmount = this.removeCommas();
 
-        if (multiplier === "0" && value !== ".") {
+        if (betAmount === "0" && value !== ".") {
             return value;
         }
-        const maxBetLength = this.maxBetLimit.toString().length;
-        const regex = new RegExp(`^[1-9]\\d{0,${maxBetLength - 1}}(\\.\\d{0,2})?$`);
-        const newValue = `${multiplier}${value}`;
 
-        if (regex.test(newValue)) {
-            console.log("newValue", newValue);
-            return newValue;
+        let newValue = `${betAmount}${value}`;
+        if (Number(newValue) > this.maxBet) {
+            newValue = this.maxBet.toString();
         }
 
-        return multiplier;
+        return newValue;
     }
 
     @render(BetInputStore, (store) => store.betAmountString)
-    updateMultiplierString(betAmount: string) {
+    updateBetAmountString(betAmount: string) {
         let slitStr;
         const suffix = betAmount.split(".")[1];
         if (suffix === "") {
@@ -92,30 +83,29 @@ export class BetAmountPopup extends ObserverComponent {
         maxBet: store.maxBet,
     }))
     private updateBetRange({ minBet, maxBet }) {
-        this.maxBetLimit = maxBet;
+        this.maxBet = maxBet;
         this.lblBetRange.string = `${FormatUtils.numberWithCommas(minBet, 2)} - ${FormatUtils.numberWithCommas(maxBet, 2)}`;
     }
 
     @render(BetInputStore, (store) => store.isAmountValid)
     updateMultiplierTextColor(isValid: boolean) {
-        console.log("isValid", isValid);
         this.lblBetAmount.color = isValid ? Color.fromHEX(this.lblBetAmount.color, "#FFFC09") : Color.RED;
         this.btnConfirm.interactable = isValid;
         this.btnConfirm.node.getChildByName("overlay").active = !isValid;
     }
 
-    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    @handle(BetInputHandlers, (handle, betAmount: string) => handle.handleBetAmount(betAmount))
     removeLastLetter() {
         this.playSoundClick();
-        let multiplierString = this.removeCommasMultiplier().slice(0, -1);
-        if (!multiplierString) {
-            multiplierString = "0";
+        let betAmountString = this.removeCommas().slice(0, -1);
+        if (!betAmountString) {
+            betAmountString = "0";
         }
 
-        return multiplierString;
+        return betAmountString;
     }
 
-    @handle(BetInputHandlers, (handle, multiplier: string) => handle.handleBetAmount(multiplier))
+    @handle(BetInputHandlers, (handle, betAmount: string) => handle.handleBetAmount(betAmount))
     clear() {
         this.playSoundClick();
         return "0";
@@ -130,7 +120,7 @@ export class BetAmountPopup extends ObserverComponent {
     @handle(GameCrash.Popups.PopupsHandlers, (handle) => handle.closeOtherPopupsWithoutAutoCashOut())
     closeOtherPopups() {}
 
-    private removeCommasMultiplier(): string {
+    private removeCommas(): string {
         return this.lblBetAmount.string.replace(",", "");
     }
 

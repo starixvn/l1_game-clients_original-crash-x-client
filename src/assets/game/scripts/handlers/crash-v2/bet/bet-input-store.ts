@@ -11,23 +11,13 @@ export class BetInputStore {
 
     constructor() {
         mobx.makeAutoObservable(this);
-        // setTimeout(() => {
-        //     mobx.reaction(
-        //         () => this.roundStore.maxBet && this.roundStore.minBet,
-        //         () => {
-        //             this.validCurrentBetAmounts();
-        //         }
-        //     );
-        // }, 0);
     }
 
     isOpenBetAmountPopup = false;
-    betAmountTemp = 0;
-    isDisabledBetInput = false;
 
     currentBetKey: number = 0;
     enable: boolean = false;
-    betAmount: number = -1;
+    betAmount: number = 0;
     betAmountString: string = "0";
 
     get decreaseStatus(): boolean {
