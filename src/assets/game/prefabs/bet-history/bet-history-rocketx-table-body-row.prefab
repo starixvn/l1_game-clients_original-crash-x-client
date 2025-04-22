@@ -1559,7 +1559,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 90,
+      "x": 131,
       "y": 0,
       "z": 0
     },
@@ -1601,7 +1601,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 150,
-      "height": 60
+      "height": 44
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1636,13 +1636,13 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Pengembalian dana",
+    "_string": "Refund",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 19,
+    "_fontSize": 19,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 44,
     "_overflow": 3,
     "_enableWrapText": false,
     "_font": {
