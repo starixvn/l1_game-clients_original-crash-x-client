@@ -14,17 +14,16 @@ export class TopWinHandlers {
     @inject(gc.RoundPF.RoundPFHandler) protected readonly roundPFHandler: gc.RoundPF.RoundPFHandler;
     @inject(gc.RoundPF.RoundPFStore) protected readonly roundPFStore: gc.RoundPF.RoundPFStore;
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
-    
+
     async getTopWinByType(type: number) {
         let topWinItems: TopWinItem[] = [];
-        if(type === PeriodType.Monthly) {
+        if (type === PeriodType.Monthly) {
             topWinItems = await this.topResultClient.getTopWinMonthly();
-            
-        } else if(type === PeriodType.Yearly) {
+        } else if (type === PeriodType.Yearly) {
             topWinItems = await this.topResultClient.getTopWinYearly();
         }
 
-        topWinItems.forEach(item => {
+        topWinItems.forEach((item) => {
             this.convertValueByCurrency(item);
         });
 
@@ -41,29 +40,27 @@ export class TopWinHandlers {
 
     getRoundPF(roundId: number) {
         const topWinItem = this.topWinStore.getTopWinItemByRoundId(roundId);
-        
-        var roundPfResult: gc.GameServiceMessage.RoundPFResult = {
+
+        let roundPfResult: gc.GameServiceMessage.RoundPFResult = {
             roundId: topWinItem.provablyFair?.roundId,
             serverSeedHash: topWinItem.provablyFair?.serverSeedHash,
             serverSeed: topWinItem.provablyFair?.serverSeed,
-            clientSeeds: topWinItem.provablyFair?.clientSeeds?.map(clientSeed => ({
+            clientSeeds: topWinItem.provablyFair?.clientSeeds?.map((clientSeed) => ({
                 nickname: clientSeed?.name,
-                ...clientSeed
+                ...clientSeed,
             })),
             mergeClientSeed: topWinItem.provablyFair?.mergeClientSeed,
             mergeSeed: topWinItem.provablyFair?.mergeSeed,
             finalHash: topWinItem.provablyFair?.finalHash,
             result: topWinItem.crashPoint,
-        }
+        };
 
         return roundPfResult;
     }
 
     convertValueByCurrency(topWinItem: TopWinItem) {
-        this.mainPlayerStore.rate;
-        let rate = topWinItem.rate; 
+        let rate = topWinItem.rate;
         topWinItem.betAmount = gc.NumberUtils.getValueByCurrency(topWinItem.betAmount, this.mainPlayerStore.rate, rate);
         topWinItem.winAmount = gc.NumberUtils.getValueByCurrency(topWinItem.winAmount, this.mainPlayerStore.rate, rate);
     }
-
 }

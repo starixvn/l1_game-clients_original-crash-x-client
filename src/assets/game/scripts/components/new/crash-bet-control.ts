@@ -22,9 +22,6 @@ export default class CrashBetControl extends ObserverComponent {
     @property(Toggle)
     toggleAutoCashOut: Toggle = null;
 
-    @property(EditBox)
-    inputBetAmount: EditBox = null;
-
     @property(Label)
     labelAutoCashOut: Label = null;
 
@@ -63,6 +60,9 @@ export default class CrashBetControl extends ObserverComponent {
 
     @property(Node)
     betInput: Node = null;
+
+    @property(Label)
+    lblBetAmount: Label = null;
 
     betKey = 0;
 
@@ -160,9 +160,8 @@ export default class CrashBetControl extends ObserverComponent {
         this.updatePreventInput();
 
         const betValue = gc.FormatUtils.numberWithCommas(setting.amount, 2);
-        this.inputBetAmount.string = betValue;
         this.labelBetValue.string = betValue;
-        this.inputBetAmount.placeholder = betValue;
+        this.lblBetAmount.string = betValue;
 
         this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;
         this.labelAutoCashOut.string = `${gc.FormatUtils.numberWithCommas(setting.cashOutAt, 2, false)}x`;

@@ -50,6 +50,7 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
 
     cancelEarlyBet(betKey: number) {
         this.betControlStore.setEarlyBet(betKey, false);
+        this.betControlStore.setAutoBet(betKey, false);
     }
 
     newHandleBetData(data: any, betKey: number) {
@@ -107,6 +108,8 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
         this.betControlStore.toggleAutoBet(betKey);
         if (this.betControlStore.getBetSetting(betKey).autoBet) {
             this.onTurnOnAutoBet(betKey);
+        } else {
+            this.cancelEarlyBet(betKey);
         }
     }
 

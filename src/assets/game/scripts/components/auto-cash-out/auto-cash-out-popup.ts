@@ -21,6 +21,8 @@ export class AutoCashOutPopup extends ObserverComponent {
     @property(Button)
     confirmButton: Button = null;
 
+    private maxMultiplier: number = 0;
+
     @handle(AutoCashOutHandlers, (handle, enable: boolean) => handle.closeAutoCashOutPopup())
     close() {
         this.playSoundClick();
@@ -42,13 +44,17 @@ export class AutoCashOutPopup extends ObserverComponent {
         }
 
         const regex = new RegExp(/^[1-9]\d{0,3}(\.\d{0,2})?$/);
-        const newValue = `${multiplier}${value}`;
+        let newValue = `${multiplier}${value}`;
 
-        if (regex.test(newValue)) {
-            return newValue;
+        if (!regex.test(newValue)) {
+            newValue = multiplier;
         }
 
-        return multiplier;
+        if (Number(newValue) > this.maxMultiplier) {
+            newValue = this.maxMultiplier.toString();
+        }
+
+        return newValue;
     }
 
     @render(AutoCashOutStore, (store) => store.multiplierString)
@@ -71,6 +77,7 @@ export class AutoCashOutPopup extends ObserverComponent {
         maxMultiplier: store.maxMultiplier,
     }))
     updateMultiplierRangeLabel({ minMultiplier, maxMultiplier }) {
+        this.maxMultiplier = maxMultiplier;
         this.multiplierRangeLabel.string = `${FormatUtils.numberWithCommas(minMultiplier, 2, false)}x - ${FormatUtils.numberWithCommas(
             maxMultiplier,
             2,
