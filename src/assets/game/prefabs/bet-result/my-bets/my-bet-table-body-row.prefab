@@ -1548,8 +1548,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150,
-      "height": 30
+      "width": 85,
+      "height": 15
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1587,7 +1587,7 @@
     "_string": "Refund",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 22,
+    "_actualFontSize": 13,
     "_fontSize": 13,
     "_fontFamily": "Arial",
     "_lineHeight": 15,
