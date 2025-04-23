@@ -11,8 +11,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "4-22-2025 14:56:58 build success in 1 min 16 s!",
-        "detailMessage": "builder:build-project-total (76379ms)\r",
+        "message": "4-23-2025 11:07:00 build success in 1 min 9 s!",
+        "detailMessage": "builder:build-project-total (68978ms)\r",
         "options": {
           "name": "cocos-3x",
           "platform": "web-mobile",
@@ -102,7 +102,7 @@
           },
           "wasmCompressionMode": false
         },
-        "time": "4-22-2025 14:55:41",
+        "time": "4-23-2025 11:05:50",
         "dirty": false
       }
     }

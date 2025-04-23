@@ -3299,8 +3299,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
-      "height": 30
+      "width": 40,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3327,7 +3327,7 @@
     },
     "_alignFlags": 8,
     "_target": null,
-    "_left": 6,
+    "_left": 1,
     "_right": 0,
     "_top": 0,
     "_bottom": 0,
@@ -3817,8 +3817,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 30,
-      "height": 30
+      "width": 40,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -3846,7 +3846,7 @@
     "_alignFlags": 32,
     "_target": null,
     "_left": 0,
-    "_right": 6,
+    "_right": 1,
     "_top": 0,
     "_bottom": 0,
     "_horizontalCenter": 0,
@@ -5059,15 +5059,6 @@
     },
     "lblBetAmount": {
       "__id__": 183
-    },
-    "btnDecrease": {
-      "__id__": 173
-    },
-    "btnIncrease": {
-      "__id__": 207
-    },
-    "nodeDisabledLayer": {
-      "__id__": 191
     },
     "beyKey": 0,
     "_id": ""
@@ -8417,7 +8408,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 44
     },
     "_anchorPoint": {
@@ -9135,7 +9126,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -9813,7 +9804,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -10671,7 +10662,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 44
     },
     "_anchorPoint": {
@@ -11044,7 +11035,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 34
     },
     "_anchorPoint": {
@@ -11544,7 +11535,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 330,
+      "width": 310,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -12140,9 +12131,6 @@
     "toggleAutoCashOut": {
       "__id__": 287
     },
-    "inputBetAmount": {
-      "__id__": 98
-    },
     "labelAutoCashOut": {
       "__id__": 249
     },
@@ -12182,6 +12170,7 @@
     "betInput": {
       "__id__": 108
     },
+    "lblBetAmount": null,
     "_id": ""
   },
   {
