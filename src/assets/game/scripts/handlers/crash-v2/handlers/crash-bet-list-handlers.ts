@@ -19,7 +19,6 @@ export class CrashBetListHandlers implements IMultipleHandlers {
     constructor() {
         setTimeout(() => {
             mobx.reaction(() => this.roundTimeStore.isStartRound, this.reactionStartRound.bind(this));
-            // mobx.reaction(() => this.betStore.lastReceivedBet, this.reactionLastReceivedBet.bind(this));
             mobx.reaction(() => this.crashCashOutStore.cashOut, this.reactionCashOut.bind(this));
         }, 0);
     }
@@ -205,6 +204,6 @@ export class CrashBetListHandlers implements IMultipleHandlers {
         {
             name: gc.GameCrash.GameCrashServiceMessage.CrashOtherPlayer.eventName,
             handle: this.handleNewOtherCashOut,
-        }
+        },
     ];
 }
