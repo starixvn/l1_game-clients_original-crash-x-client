@@ -11,8 +11,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "4-24-2025 10:16:51 build success in 1 min 23 s!",
-        "detailMessage": "builder:build-project-total (82486ms)\r",
+        "message": "4-24-2025 13:44:35 build success in 1 min 20 s!",
+        "detailMessage": "// ---- build task adsense-h5g-plugin：onAfterBuild ----\r",
         "options": {
           "name": "cocos-3x",
           "platform": "web-mobile",
@@ -102,7 +102,7 @@
           },
           "wasmCompressionMode": false
         },
-        "time": "4-24-2025 10:15:28",
+        "time": "4-24-2025 13:43:14",
         "dirty": false
       }
     }
