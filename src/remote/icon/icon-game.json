@@ -1,6 +1,6 @@
 {
 "skeleton": {
-	"hash": "6Mz+QvsRqP/TxI/cN0imqWtCxV4",
+	"hash": "ddYyMHdPqhZZwnB8l+D24y0VhJc",
 	"spine": "3.8.99",
 	"x": -102.68,
 	"y": -106.43,
@@ -11,7 +11,7 @@
 },
 "bones": [
 	{ "name": "root" },
-	{ "name": "all-rocket", "parent": "root", "scaleX": 0.8, "scaleY": 0.8 },
+	{ "name": "all-rocket", "parent": "root", "y": 9.45, "scaleX": 0.8, "scaleY": 0.8 },
 	{ "name": "rocket", "parent": "all-rocket", "x": 1.6, "y": 40.7 },
 	{ "name": "bg-duoi", "parent": "root", "x": 1.45, "y": -171.02 },
 	{ "name": "smoke", "parent": "root", "x": 3.44, "y": -139.44, "scaleX": 0.8, "scaleY": 0.8 },
@@ -93,7 +93,7 @@
 					"type": "clipping",
 					"end": "rocket",
 					"vertexCount": 4,
-					"vertices": [ -102.06, -106.43, 101.91, -105.67, 102.43, 92.23, -102.86, 93.19 ],
+					"vertices": [ -101.77, -99.87, 102.2, -99.11, 102.72, 98.79, -102.57, 99.75 ],
 					"color": "ce3a3aff"
 				}
 			},
@@ -101,7 +101,7 @@
 				"bg-duoi": { "y": 38.28, "width": 34, "height": 206 }
 			},
 			"bg-icon": {
-				"bg-icon": { "x": -1.68, "y": -8.32, "width": 202, "height": 203 }
+				"bg-icon": { "width": 202, "height": 203 }
 			},
 			"cham": {
 				"cham": { "x": -3.85, "width": 21, "height": 20 }
@@ -195,7 +195,7 @@
 				"rocket": { "x": 0.5, "y": -35.81, "width": 99, "height": 133 }
 			},
 			"top": {
-				"top": { "x": -1.08, "y": 54.57, "width": 203, "height": 77 }
+				"top": { "x": -1.08, "y": 61.94, "width": 203, "height": 77 }
 			}
 		}
 	}
