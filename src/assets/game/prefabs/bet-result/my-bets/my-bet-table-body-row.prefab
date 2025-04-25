@@ -1487,7 +1487,7 @@
       "__id__": 18
     },
     "_children": [],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 72
@@ -1584,7 +1584,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Hoan tien",
+    "_string": "Refund",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 14,
@@ -1682,6 +1682,8 @@
       "__id__": 0
     },
     "fileId": "93pDDfvHpE+7Y/w5Lurp/Y",
+    "instance": null,
+    "targetOverrides": null,
     "nestedPrefabInstanceRoots": null
   },
   {
@@ -1693,7 +1695,7 @@
       "__id__": 18
     },
     "_children": [],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 82
