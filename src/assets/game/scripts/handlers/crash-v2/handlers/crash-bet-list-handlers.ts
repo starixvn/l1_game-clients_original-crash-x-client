@@ -11,7 +11,6 @@ export class CrashBetListHandlers implements IMultipleHandlers {
     @inject(gc.Rounds.RoundTimeStore) protected readonly roundTimeStore: gc.Rounds.RoundTimeStore;
     @inject(gc.Player.MainPlayerStore) protected readonly mainPlayerStore: gc.Player.MainPlayerStore;
     @inject(gc.GameCrash.CrashCashOut.CrashCashOutStore) protected readonly crashCashOutStore: gc.GameCrash.CrashCashOut.CrashCashOutStore;
-
     @inject(gc.Bet.BetStore) protected readonly betStore: gc.Bet.BetStore;
     @inject(CrashBetListStore) protected readonly betListStore: CrashBetListStore;
     @inject(gc.RoundBasePF.ProvablyFairStore) protected readonly provablyFairStore: gc.RoundBasePF.ProvablyFairStore;
