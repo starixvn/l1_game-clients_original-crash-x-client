@@ -20,6 +20,7 @@ export const languages = {
         "bet_option_even": "คู่",
         "bet_option_odd": "คี่",
         "button_change": "เปลี่ยน",
+        "button_confirm": "ยืนยัน",
         "character_name": "ชื่อเล่น",
         "copy_failed_md5": "ฟังก์ชันคัดลอกใช้งานไม่ได้ชั่วคราว",
         "copy_successfully_md5": "คัดลอกสำเร็จ!",

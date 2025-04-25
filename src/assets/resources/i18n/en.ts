@@ -20,6 +20,7 @@ export const languages = {
         "bet_option_even": "Even",
         "bet_option_odd": "Odd",
         "button_change": "Change",
+        "button_confirm": "Confirm",
         "character_name": "Nickname",
         "copy_failed_md5": "Copy function is temporarily unavailable.",
         "copy_successfully_md5": "Copy successful!",

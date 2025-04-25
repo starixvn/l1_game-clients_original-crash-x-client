@@ -20,6 +20,7 @@ export const languages = {
         "bet_option_even": "Chẵn",
         "bet_option_odd": "Lẻ",
         "button_change": "Thay Đổi",
+        "button_confirm": "Xác Nhận",
         "character_name": "Tên nhân vật",
         "copy_failed_md5": "Chức năng Copy tạm thời không hoạt động.",
         "copy_successfully_md5": "Copy thành công!",
