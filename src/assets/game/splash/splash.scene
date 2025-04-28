@@ -231,8 +231,7 @@
     "instance": {
       "__id__": 7
     },
-    "targetOverrides": [],
-    "nestedPrefabInstanceRoots": null
+    "targetOverrides": []
   },
   {
     "__type__": "cc.PrefabInstance",
