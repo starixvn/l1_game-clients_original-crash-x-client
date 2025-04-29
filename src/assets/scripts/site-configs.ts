@@ -27,7 +27,6 @@ const defaultConfig: gc.Configs.SiteConfigs = {
     mainObserverNamespace: "RocketX",
     tolgeeUrl: "",
     storagePrefixKey: "RocketX",
-    clientSubDomain: "l1-client",
 };
 
 let configDev = {
