@@ -62,7 +62,7 @@ export interface TopCrashItem {
     provablyFair: ProvablyFair;
 }
 
-export interface TopWinItem {   
+export interface TopWinItem {
     cashoutPoint: number;
     crashPoint: number;
     uid: string;

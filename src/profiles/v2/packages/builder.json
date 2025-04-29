@@ -11,8 +11,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "4-25-2025 15:30:48 build success in 1 min 29 s!",
-        "detailMessage": "builder:build-project-total (88808ms)\r",
+        "message": "4-29-2025 14:38:50 build success in 2 min 18 s!",
+        "detailMessage": "builder:build-project-total (137768ms)\r",
         "options": {
           "name": "cocos-3x",
           "platform": "web-mobile",
@@ -101,9 +101,12 @@
             "handleTemplateMd5Link": true
           },
           "wasmCompressionMode": false,
-          "buildMode": "normal"
+          "buildMode": "normal",
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": false,
+          "inlineEnum": true
         },
-        "time": "4-25-2025 15:29:19",
+        "time": "4-29-2025 14:36:32",
         "dirty": false
       }
     }
