@@ -12,10 +12,13 @@ import { CrashCashOutHandlers } from "./handlers/override/crash-cash-out-handler
 import { GameCrashUserSettingHandlerV2 } from "./handlers/override/crash-game-user-setting-handler-v2";
 import { PlayerActionHandlers } from "./handlers/override/player-action-handlers";
 
+const GAME_NAME = "RocketX";
+
 export const settings = {
     id: 113,
-    name: "RocketX",
-    namespaces: ["RocketX", "Spaceflight"],
+    name: GAME_NAME,
+    observerNamespace: GAME_NAME,
+    namespaces: [GAME_NAME, "Spaceflight"],
     durations: {
         wholeRound: 14,
         lockingBet: 3,
