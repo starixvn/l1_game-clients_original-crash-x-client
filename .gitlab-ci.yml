@@ -11,9 +11,38 @@ variables:
   INTEGRATION_IMAGE: pentagon/l1_spaceflight_client
   INTEGRATION_WS_PATH: spaceflight
 
+.prepare_vars_test: &prepare_vars_test
+  stage: .pre
+  before_script:
+    - echo "Prepare shared environment variables"
+  script:
+    - echo $VARS_DATA > VARS_DATA.json
+    - curl --fail -o ${CD_VARS_FILE_NAME}.j2 --header "PRIVATE-TOKEN:$CI_JOB_TOKEN" $GITLAB_API_URL/projects/ci%2fcore-cicd/repository/files/$CD_VARS_FILE_PATH/raw?ref=$CD_REF
+    - jinja render -d ./VARS_DATA.json -t ./${CD_VARS_FILE_NAME}.j2 -o ./${CD_VARS_FILE_NAME}
+    - |
+      CONFIG_FILE_PATH=$(grep '^CONFIG_FILE_PATH=' "$CD_VARS_FILE_NAME" | cut -d'=' -f2-)
+      echo "CONFIG_FILE_PATH is: $CONFIG_FILE_PATH"
+    - |
+      if [ -z "$CONFIG_FILE_PATH" ] || [ "$CONFIG_FILE_PATH" = "" ] || [ "$CONFIG_FILE_PATH" = "." ]; then
+        echo "CONFIG_DEFAULT_PATH=./src/splash-resources" >> $CD_VARS_FILE_NAME
+      else
+        echo "CONFIG_DEFAULT_PATH=$CONFIG_FILE_PATH" >> $CD_VARS_FILE_NAME
+      fi
+    - cat $CD_VARS_FILE_NAME
+  artifacts:
+    reports:
+      dotenv: $CD_VARS_FILE_NAME
+  tags:
+    - docker
+
+.prepare_vars:
+  <<: *prepare_vars_test
+
 .build_cocos_creator_script: &build_cocos_creator_script
   stage: test
   script:
+    - echo $CONFIG_DEFAULT_PATH
+    - echo $CONFIG_FILE_PATH
     - echo "====== Build Cocos Web Mobile ======"
     - |
       if [[ -d "./$COCOS_PROJECT_DIR/build/web-mobile" ]]; then
@@ -22,6 +51,7 @@ variables:
       fi
     - node --version
     - npm run install-dependencies --prefix "./$COCOS_PROJECT_DIR"
+    
     - set +e
     - /Applications/CocosCreator/Creator/$COCOS_VERSION/CocosCreator.app/Contents/MacOS/CocosCreator --project "./$COCOS_PROJECT_DIR" --build "platform=web-mobile;debug=false;webOrientation=landscape;md5Cache=true;replaceSplashScreen=true"
     - set -e
@@ -30,12 +60,19 @@ variables:
         echo -e "\033[0;31mFolder build is empty, please check the build scritp"
         exit 1
       fi
+    - |
+      if [ -z "${IS_NOT_OBFUSCATOR+x}" ] || [ "$IS_NOT_OBFUSCATOR" = "false" ]; then
+        npm run obfuscator-config-file --prefix "./$COCOS_PROJECT_DIR"
+      else
+        echo "IS_NOT_OBFUSCATOR is true. Ignore run obfuscator-config-file"
+      fi
   tags:
     - cocos-v3.8.4
   artifacts:
     when: always
     paths:
       - $COCOS_PROJECT_DIR/build/web-mobile
+      - $CONFIG_DEFAULT_PATH
     expire_in: 1 day
   cache:
     - key:
@@ -47,6 +84,10 @@ variables:
     - key: $CI_COMMIT_SHORT_SHA
       paths:
         - $COCOS_PROJECT_DIR/build/web-mobile
+        - $CONFIG_DEFAULT_PATH
+  rules:
+    - when: always
+
 .base_build_cocos:
   <<: *build_cocos_creator_script
 
