@@ -11,8 +11,8 @@
         "progress": 1,
         "state": "success",
         "stage": "build",
-        "message": "6-10-2025 11:29:50 build success in 2 min 10 s!",
-        "detailMessage": "builder:build-project-total (129948ms)\r",
+        "message": "6-10-2025 14:09:15 build success in 2 min 54 s!",
+        "detailMessage": "builder:build-project-total (173375ms)\r",
         "options": {
           "name": "cocos-3x",
           "platform": "web-mobile",
@@ -33,11 +33,6 @@
           "startScene": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
           "outputName": "web-mobile",
           "scenes": [
-            {
-              "url": "db://assets/game/direct-game.scene",
-              "uuid": "4229fd91-1ded-407f-b130-7b678b820c27",
-              "inBundle": false
-            },
             {
               "url": "db://assets/game/splash/splash.scene",
               "uuid": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
@@ -67,6 +62,14 @@
               "url": "db://shared-components/shared/common-components/integrations/identifier.scene",
               "uuid": "8fa0d7ef-6c87-40c2-bd73-c63184ba47ff",
               "inBundle": false
+            },
+            {
+              "url": "db://assets/game/portrait-game.scene",
+              "uuid": "a7426dc7-5eb6-494a-8c42-b98a079f1bcd"
+            },
+            {
+              "url": "db://assets/game/direct-game.scene",
+              "uuid": "4229fd91-1ded-407f-b130-7b678b820c27"
             }
           ],
           "web-desktop": [],
@@ -97,9 +100,12 @@
             "handleTemplateMd5Link": true
           },
           "wasmCompressionMode": false,
-          "buildMode": "normal"
+          "buildMode": "normal",
+          "engineModulesConfigKey": "migrationsConfig",
+          "mangleProperties": false,
+          "inlineEnum": true
         },
-        "time": "6-10-2025 11:27:40",
+        "time": "6-10-2025 14:06:20",
         "dirty": false
       }
     }
@@ -115,13 +121,13 @@
     "startScene": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
     "scenes": [
       {
-        "url": "db://assets/game/game.scene",
-        "uuid": "4229fd91-1ded-407f-b130-7b678b820c27",
+        "url": "db://assets/game/splash/splash.scene",
+        "uuid": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
         "inBundle": false
       },
       {
-        "url": "db://assets/game/splash/splash.scene",
-        "uuid": "cdeb5c24-9ba8-4cab-a306-8a562fd04b39",
+        "url": "db://shared-components/feature-structure/scene.scene",
+        "uuid": "b97b166d-3dd1-4968-8fa8-488f447e05b0",
         "inBundle": false
       },
       {
@@ -133,6 +139,24 @@
         "url": "db://shared-components/under-maintenance/under-maintenance.scene",
         "uuid": "3640a00f-a2ed-4aec-b369-779ede63f5df",
         "inBundle": false
+      },
+      {
+        "url": "db://shared-components/game/scoreboards/scoreboard.scene",
+        "uuid": "9ec9624e-8ef6-4e81-bf0e-34a4eab4a438",
+        "inBundle": false
+      },
+      {
+        "url": "db://shared-components/shared/common-components/integrations/identifier.scene",
+        "uuid": "8fa0d7ef-6c87-40c2-bd73-c63184ba47ff",
+        "inBundle": false
+      },
+      {
+        "url": "db://assets/game/portrait-game.scene",
+        "uuid": "a7426dc7-5eb6-494a-8c42-b98a079f1bcd"
+      },
+      {
+        "url": "db://assets/game/direct-game.scene",
+        "uuid": "4229fd91-1ded-407f-b130-7b678b820c27"
       }
     ],
     "polyfills": {
