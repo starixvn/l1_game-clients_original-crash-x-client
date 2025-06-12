@@ -1,6 +1,6 @@
 include:
   - project: "l1/game-clients/ci-scripts"
-    ref: obfuscator-configs
+    ref: main
     file: "cocos-3x.gitlab-ci.yml"
 variables:
   COCOS_VERSION: "3.8.4"
