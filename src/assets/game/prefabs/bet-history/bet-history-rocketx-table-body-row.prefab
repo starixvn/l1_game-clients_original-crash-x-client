@@ -263,7 +263,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 816,
+      "width": 744,
       "height": 80
     },
     "_anchorPoint": {
@@ -531,14 +531,14 @@
     "_string": "17:15",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 23,
+    "_fontSize": 23,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
@@ -610,7 +610,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 44.73,
+      "width": 49.83,
       "height": 30
     },
     "_anchorPoint": {
@@ -758,14 +758,14 @@
     "_string": "07/08/2023",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 23,
+    "_fontSize": 23,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
@@ -837,7 +837,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 124.67,
+      "width": 139.53,
       "height": 30
     },
     "_anchorPoint": {
@@ -988,14 +988,14 @@
     "_string": "12",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 23,
+    "_fontSize": 23,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
@@ -1067,7 +1067,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 19.8,
+      "width": 23,
       "height": 30
     },
     "_anchorPoint": {
@@ -1218,14 +1218,14 @@
     "_string": "20",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 23,
+    "_fontSize": 23,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
@@ -1297,7 +1297,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 25.67,
+      "width": 28.37,
       "height": 30
     },
     "_anchorPoint": {
@@ -1429,7 +1429,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 150,
-      "height": 60
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1464,7 +1464,7 @@
       "b": 223,
       "a": 255
     },
-    "_string": "Pengembalian dana",
+    "_string": "Refund",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 22,
@@ -1635,14 +1635,14 @@
     "_string": "5",
     "_horizontalAlign": 1,
     "_verticalAlign": 0,
-    "_actualFontSize": 22,
-    "_fontSize": 22,
+    "_actualFontSize": 23,
+    "_fontSize": 23,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
@@ -1714,7 +1714,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 12.47,
+      "width": 13.8,
       "height": 30
     },
     "_anchorPoint": {
@@ -2016,7 +2016,7 @@
     ],
     "value": {
       "__type__": "cc.Size",
-      "width": 33,
+      "width": 36.8,
       "height": 30
     }
   },
@@ -2054,7 +2054,7 @@
     "propertyPath": [
       "_fontSize"
     ],
-    "value": 22
+    "value": 23
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -2064,7 +2064,7 @@
     "propertyPath": [
       "_actualFontSize"
     ],
-    "value": 22
+    "value": 23
   },
   {
     "__type__": "CCPropertyOverrideInfo",
@@ -2115,7 +2115,7 @@
       "_font"
     ],
     "value": {
-      "__uuid__": "8811202a-f1b7-4f61-9b1a-0f6d3f538e1d",
+      "__uuid__": "90f4b1f9-725f-4087-94d1-1998d8e86383",
       "__expectedType__": "cc.BitmapFont"
     }
   },
@@ -2506,7 +2506,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 816,
+      "width": 744,
       "height": 80
     },
     "_anchorPoint": {
@@ -2602,7 +2602,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 816,
+      "width": 744,
       "height": 80
     },
     "_anchorPoint": {

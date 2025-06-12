@@ -24,7 +24,6 @@ const defaultConfig: gc.Configs.SiteConfigs = {
         proxyPath: "rocketx",
         route: "rocketx",
     },
-    mainObserverNamespace: "RocketX",
     tolgeeUrl: "",
     storagePrefixKey: "portrait_rocketx",
 };
