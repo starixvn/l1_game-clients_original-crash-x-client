@@ -41,7 +41,7 @@ export class MyBetTableBody extends ObserverComponent {
         betHistoryLog: gc.BetHistory.BetHistoryLog,
         index: number,
         betKey: number,
-        fractionalOddsFormat: boolean = false
+        fractionalOddsFormat = false
     ): Node {
         const bodyItem = instantiate(bodyItemPrefab);
         const component = this.getHistoryItemComponent(bodyItem);

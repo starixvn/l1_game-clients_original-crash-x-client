@@ -10,7 +10,7 @@ const { render, handle } = Observer;
 @ccclass
 export class ClientSeedSettingsDirectPopup extends ClientSeedSettingsPopup {
     @property(EditBox)
-    private inputManualSeed: EditBox = null;
+    private readonly inputManualSeed: EditBox = null;
 
     private static readonly OPACITY_DISABLED = 153;
     private static readonly OPACITY_ENABLED = 255;

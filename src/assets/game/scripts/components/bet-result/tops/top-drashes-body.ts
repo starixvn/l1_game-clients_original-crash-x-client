@@ -30,7 +30,7 @@ export class TopDrashesBody extends ObserverComponent {
         }
 
         topCrashItems.forEach((data, rowIndex) => {
-            let item = this.buildBodyRow(this.itemPrefab, rowIndex, data);
+            const item = this.buildBodyRow(this.itemPrefab, rowIndex, data);
             this.content.addChild(item);
 
             const currentPosition = item.getPosition();

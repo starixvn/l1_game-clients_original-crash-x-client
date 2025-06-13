@@ -33,7 +33,7 @@ export class ProbablyFairRichText extends Component {
     }
 
     fetchRender() {
-        let richText = this.getComponent(RichText);
+        const richText = this.getComponent(RichText);
         if (richText) {
             this.richText = richText;
             this.updateRichText();
