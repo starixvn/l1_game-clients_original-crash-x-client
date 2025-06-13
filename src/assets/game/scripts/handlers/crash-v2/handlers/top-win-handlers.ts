@@ -60,10 +60,10 @@ export class TopWinHandlers {
     }
 
     convertValueByCurrency(topWinItem: TopWinItem) {
-        this.mainPlayerStore.rate;
-        let rate = topWinItem.rate; 
-        topWinItem.betAmount = gc.NumberUtils.getValueByCurrency(topWinItem.betAmount, this.mainPlayerStore.rate, rate);
-        topWinItem.winAmount = gc.NumberUtils.getValueByCurrency(topWinItem.winAmount, this.mainPlayerStore.rate, rate);
+        const playerRate = this.mainPlayerStore.rate;
+        const rate = topWinItem.rate;
+        topWinItem.betAmount = gc.NumberUtils.getValueByCurrency(topWinItem.betAmount, playerRate, rate);
+        topWinItem.winAmount = gc.NumberUtils.getValueByCurrency(topWinItem.winAmount, playerRate, rate);
     }
 
 }

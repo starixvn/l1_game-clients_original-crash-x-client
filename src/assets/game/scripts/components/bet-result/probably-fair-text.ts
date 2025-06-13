@@ -9,7 +9,7 @@ export class ProbablyFairRichText extends Component {
     richText: RichText | null = null;
 
     @property({ visible: false })
-    key: string = "";
+    key = "";
 
     @property({ displayName: "Key", visible: true })
     get _key() {
@@ -28,7 +28,8 @@ export class ProbablyFairRichText extends Component {
     }
 
     setKey(key: string) {
-        this._key = key;
+        this.key = key;
+        this.updateRichText();
     }
 
     fetchRender() {
@@ -36,7 +37,6 @@ export class ProbablyFairRichText extends Component {
         if (richText) {
             this.richText = richText;
             this.updateRichText();
-            return;
         }
     }
 

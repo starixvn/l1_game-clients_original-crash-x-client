@@ -1,12 +1,12 @@
 import gc from "@sg/game-client-base";
-import { Node, _decorator } from "cc";
+import { _decorator, Node } from "cc";
 import { InGameMenuEvents } from "db://shared-components/game/in-game-menu/scripts/stores/in-game-menu-events";
 import { InGameMenuStore } from "db://shared-components/game/in-game-menu/scripts/stores/in-game-menu-store";
 import { NodeContainer } from "db://shared-components/shared/common-components/node-container/node-container";
 import Observer from "observer";
 
-const { ccclass, property } = _decorator;
-const { render, handle } = Observer;
+const { ccclass } = _decorator;
+const { render } = Observer;
 
 @ccclass("BetHistoryRocketXContainer")
 export default class BetHistoryRocketXContainer extends NodeContainer {
