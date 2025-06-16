@@ -9,7 +9,7 @@ const { ccclass, property } = _decorator;
 const { observer, render, handle } = Observer;
 
 @ccclass("BetAcceptedNotice")
-export default class BetAcceptedNotice extends ObserverComponent {
+export class BetAcceptedNotice extends ObserverComponent {
     private isShowing = false;
     onLoad(): void {
         this.node.active = false;

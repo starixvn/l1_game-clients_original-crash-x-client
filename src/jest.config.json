@@ -6,6 +6,7 @@
     "transform": {
         "^.+\\.tsx?$": ["ts-jest", { "tsconfig": "tsconfig.test.json" }]
     },
+    "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
     "testPathIgnorePatterns": ["/node_modules/", "/integration-tests/"],
     "testMatch": ["**/?(*.)+(spec|test).+(ts)"],
     "testResultsProcessor": "jest-sonar-reporter",
