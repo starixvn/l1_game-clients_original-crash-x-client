@@ -8,15 +8,14 @@ const { ccclass, property, executeInEditMode } = _decorator;
 export class ProbablyFairRichText extends Component {
     richText: RichText | null = null;
 
-    @property({ visible: false })
-    key = "";
+    private _key = "";
 
     @property({ displayName: "Key", visible: true })
-    get _key() {
-        return this.key;
+    get key() {
+        return this._key;
     }
-    set _key(str: string) {
-        this.key = str;
+    set key(value: string) {
+        this._key = value;
         this.updateRichText();
     }
 
@@ -25,10 +24,6 @@ export class ProbablyFairRichText extends Component {
             i18n.init("en");
         }
         this.fetchRender();
-    }
-
-    setKey(key: string) {
-        this._key = key;
     }
 
     fetchRender() {
