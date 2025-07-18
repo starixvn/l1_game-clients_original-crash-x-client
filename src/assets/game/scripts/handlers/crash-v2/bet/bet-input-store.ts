@@ -15,10 +15,10 @@ export class BetInputStore {
 
     isOpenBetAmountPopup = false;
 
-    currentBetKey: number = 0;
-    enable: boolean = false;
-    betAmount: number = 0;
-    betAmountString: string = "0";
+    currentBetKey = 0;
+    enable = false;
+    betAmount = 0;
+    betAmountString = "0";
 
     get decreaseStatus(): boolean {
         return this.betAmount > this.minBet;

@@ -14,7 +14,7 @@ export class BetInput extends ObserverComponent {
     lblBetAmount: Label = null;
 
     @property(CCInteger)
-    beyKey: number = 0;
+    beyKey = 0;
 
     @handle(BetInputHandlers, (handle, betKey: number) => handle.openPopup(betKey))
     openPopup() {

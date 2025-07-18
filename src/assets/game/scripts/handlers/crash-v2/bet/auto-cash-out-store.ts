@@ -14,10 +14,10 @@ export class AutoCashOutStore {
         mobx.makeAutoObservable(this);
     }
 
-    currentBetKey: number = 0;
-    enable: boolean = false;
-    multiplier: number = 0;
-    multiplierString: string = "0";
+    currentBetKey = 0;
+    enable = false;
+    multiplier = 0;
+    multiplierString = "0";
 
     get isValidAutoCashOutValue(): boolean {
         const parsedMultiplier = parseFloat(this.multiplierString);

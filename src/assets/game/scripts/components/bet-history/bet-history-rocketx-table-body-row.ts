@@ -67,15 +67,22 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     private setLabels(betTime: string, betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
-        if (this.lblDate) this.lblDate.string = DateTimeUtils.getStringDate(betTime);
-        if (this.lblTime) this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
-        if (this.lblDateTime)
+        if (this.lblDate) {
+            this.lblDate.string = DateTimeUtils.getStringDate(betTime);
+        }
+        if (this.lblTime) {
+            this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
+        }
+        if (this.lblDateTime) {
             this.lblDateTime.string = `${DateTimeUtils.getStringHourByTime(betTime)} ${DateTimeUtils.getStringDate(betTime)}`;
+        }
 
         this.lblRound.string = betHistoryLog.roundId.toString();
 
         const betAmount = this.getBetAmount(betHistoryLog, betKey);
-        if (this.lblTotalStake) this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
+        if (this.lblTotalStake) {
+            this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
+        }
 
         this.bindMultiplier(betHistoryLog, betKey);
         this.bindWin(betHistoryLog, betKey);
@@ -121,12 +128,12 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     }
 
     isBetRowData(betDetail: DynamicObject<object>, betKey: string): boolean {
-        let actionName = betDetail.action.toString();
+        const actionName = betDetail.action.toString();
         return actionName === gc.GameClientEmitMessage.Bet.eventName.toString() && betDetail.betKey.toString() === betKey;
     }
 
     isSettledData(betDetail: DynamicObject<object>, betKey: string): boolean {
-        let actionName = betDetail.action.toString();
+        const actionName = betDetail.action.toString();
         return (
             (actionName === CrashUtils.betEventNames.cashOut || actionName === CrashUtils.betEventNames.refund) &&
             betDetail.betKey.toString() === betKey

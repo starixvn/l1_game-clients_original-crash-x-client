@@ -84,7 +84,9 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     }
 
     private renderData(betHistoryRocketXModel: BetHistoryRocketXModel): void {
-        if (!this.itemPrefab) return;
+        if (!this.itemPrefab) {
+            return;
+        }
 
         betHistoryRocketXModel.betLogs.forEach((betLogItem, rowIndex) => {
             this.renderBetLogDetails(betLogItem, rowIndex);
@@ -95,7 +97,9 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
 
     private renderBetLogDetails(betLogItem: gc.BetHistory.BetHistoryLog, rowIndex: number): void {
         betLogItem.betLogDetails.forEach((betLogDetail) => {
-            if (betLogDetail.action.toString() !== gc.GameClientEmitMessage.Bet.eventName.toString()) return;
+            if (betLogDetail.action.toString() !== gc.GameClientEmitMessage.Bet.eventName.toString()) {
+                return;
+            }
 
             const bodyItem = instantiate(this.itemPrefab);
             const item = this.buildBodyRow(bodyItem, betLogItem, rowIndex, Number(betLogDetail.betKey));
@@ -139,7 +143,9 @@ export class BetHistoryRocketXTableBody extends ObserverComponent {
     }
 
     private handleScroll() {
-        if (this.isNodataToFetch || this.isFetchingData) return;
+        if (this.isNodataToFetch || this.isFetchingData) {
+            return;
+        }
 
         this.currentPageIndex++;
         this.isFetchingData = true;

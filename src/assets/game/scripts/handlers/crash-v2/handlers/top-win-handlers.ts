@@ -41,7 +41,7 @@ export class TopWinHandlers {
     getRoundPF(roundId: number) {
         const topWinItem = this.topWinStore.getTopWinItemByRoundId(roundId);
 
-        let roundPfResult: gc.GameServiceMessage.RoundPFResult = {
+        const roundPfResult: gc.GameServiceMessage.RoundPFResult = {
             roundId: topWinItem.provablyFair?.roundId,
             serverSeedHash: topWinItem.provablyFair?.serverSeedHash,
             serverSeed: topWinItem.provablyFair?.serverSeed,
@@ -59,7 +59,7 @@ export class TopWinHandlers {
     }
 
     convertValueByCurrency(topWinItem: TopWinItem) {
-        let rate = topWinItem.rate;
+        const rate = topWinItem.rate;
         topWinItem.betAmount = gc.NumberUtils.getValueByCurrency(topWinItem.betAmount, this.mainPlayerStore.rate, rate);
         topWinItem.winAmount = gc.NumberUtils.getValueByCurrency(topWinItem.winAmount, this.mainPlayerStore.rate, rate);
     }

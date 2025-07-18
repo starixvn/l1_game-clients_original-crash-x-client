@@ -21,7 +21,7 @@ export class AutoCashOutPopup extends ObserverComponent {
     @property(Button)
     confirmButton: Button = null;
 
-    private maxMultiplier: number = 0;
+    private maxMultiplier = 0;
 
     @handle(AutoCashOutHandlers, (handle, enable: boolean) => handle.closeAutoCashOutPopup())
     close() {
