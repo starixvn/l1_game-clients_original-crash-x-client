@@ -20,19 +20,19 @@ export class TopResultClient {
 
 
     async getTopCrashMonthly() {
-        return await this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashMonthly.url + settings.id);
+        return this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashMonthly.url + settings.id);
     }
 
     async getTopCrashYearly() {
-        return await this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashYearly.url + settings.id);
+        return this.apiClient.get<TopCrashItem[]>(APISettings.TopCrashYearly.url + settings.id);
     }
 
     async getTopWinMonthly() {
-        return await this.apiClient.get<TopWinItem[]>(APISettings.TopWinMonthly.url + settings.id);
+        return this.apiClient.get<TopWinItem[]>(APISettings.TopWinMonthly.url + settings.id);
     }
 
     async getTopWinYearly() {
-        return await this.apiClient.get<TopWinItem[]>(APISettings.TopWinYearly.url + settings.id);
+        return this.apiClient.get<TopWinItem[]>(APISettings.TopWinYearly.url + settings.id);
     }
 }
 
