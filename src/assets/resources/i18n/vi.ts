@@ -264,7 +264,7 @@ export const languages = {
         "bet_accepted": "Đã Nhận Cược",
         "biggest_win": "Thắng Lớn",
         "cancel_bet": "(Hủy Cược)",
-        "cashed": "Cashed",
+        "cashed": "Rút Tiền",
         "cashout": "Rút Tiền",
         "crashed": "Bay Mất",
         "date": "Thời Gian",
