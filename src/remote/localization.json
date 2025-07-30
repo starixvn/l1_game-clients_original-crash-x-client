@@ -5,7 +5,9 @@
         "th": "ร็อคเก็ต เอ็กซ์",
         "vi": "Tên Lửa X",
         "zh_cn": "火箭 X",
-        "zh_tw": "火箭 X"
+        "zh_tw": "火箭 X",
+        "ja": "ロケットX",
+        "es": "Rocket X"
     },
     "gameNames": {
         "en": "Rocket X",
@@ -13,6 +15,8 @@
         "th": "ร็อคเก็ต เอ็กซ์",
         "vi": "Tên Lửa X",
         "zh_cn": "火箭 X",
-        "zh_tw": "火箭 X"
+        "zh_tw": "火箭 X",
+        "ja": "ロケットX",
+        "es": "Rocket X"
     }
 }
