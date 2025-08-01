@@ -3881,7 +3881,7 @@
     "propertyPath": [
       "_horizontalAlign"
     ],
-    "value": 2
+    "value": 1
   },
   {
     "__type__": "CCPropertyOverrideInfo",
