@@ -225,8 +225,8 @@
     "_string": "Time",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
@@ -304,7 +304,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 52.48796081542969,
+      "width": 43.739959716796875,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -500,8 +500,8 @@
     "_string": "Round",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
@@ -579,7 +579,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 70.46395874023438,
+      "width": 58.71995544433594,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -775,8 +775,8 @@
     "_string": "Bet",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
@@ -854,7 +854,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 38.327972412109375,
+      "width": 31.939971923828125,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -1050,8 +1050,8 @@
     "_string": "Multiplier",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
@@ -1129,7 +1129,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 101.18391418457031,
+      "width": 84.31991577148438,
       "height": 37.8
     },
     "_anchorPoint": {
@@ -1325,8 +1325,8 @@
     "_string": "Win",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 24,
-    "_fontSize": 24,
+    "_actualFontSize": 20,
+    "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 0,
@@ -1404,7 +1404,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 39.71995544433594,
+      "width": 33.0999755859375,
       "height": 37.8
     },
     "_anchorPoint": {
