@@ -27,10 +27,10 @@ export class MyBetTableBody extends ObserverComponent {
     private itemHeight: number;
     private readonly pageSize: number = HistoryConstants.pageSizeMyHistory;
 
-    private currentPageIndex: number = 1;
-    private currentIndex: number = 0;
-    private isFetchingData: boolean = false;
-    private isNodataToFetch: boolean = false;
+    private currentPageIndex = 1;
+    private currentIndex = 0;
+    private isFetchingData = false;
+    private isNodataToFetch = false;
 
     private getHistoryItemComponent(node: Node): BetResultHistoryBodyItem {
         return node.getComponent(BetResultHistoryBodyItem);
@@ -41,7 +41,7 @@ export class MyBetTableBody extends ObserverComponent {
         betHistoryLog: gc.BetHistory.BetHistoryLog,
         index: number,
         betKey: number,
-        fractionalOddsFormat: boolean = false
+        fractionalOddsFormat = false
     ): Node {
         const bodyItem = instantiate(bodyItemPrefab);
         const component = this.getHistoryItemComponent(bodyItem);
