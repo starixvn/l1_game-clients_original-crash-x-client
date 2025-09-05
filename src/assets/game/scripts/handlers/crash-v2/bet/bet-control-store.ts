@@ -69,7 +69,6 @@ export class BetControlStore {
                             this.saveTempStorage();
                             break;
                         case gc.GameUserSettings.GameUserSettingAction.Load:
-                            this.onLoadStorage();
                         case gc.GameUserSettings.GameUserSettingAction.Clear:
                             this.onLoadStorage();
                             break;
