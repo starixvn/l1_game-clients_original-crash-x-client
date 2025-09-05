@@ -3,6 +3,7 @@ import mobx from "mobx";
 const { injectable, inject } = inversify;
 
 import gc from "@sg/game-client-base";
+import { GameCrashUserSettingHandlerV2 } from "../../override/crash-game-user-setting-handler-v2";
 import { ButtonState, CrashCashOutData, IBetControl, IBetControlSettings, MinMultiplier } from "../interfaces";
 import { BetInputStore } from "./bet-input-store";
 
@@ -21,10 +22,12 @@ export class BetControlStore {
     @inject(gc.GameUserSettings.GameUserSettingHandler)
     protected readonly gameUserSettingHandler: gc.GameUserSettings.GameUserSettingHandler;
 
+    @inject(gc.GameUserSettings.GameUserSettingStore) protected readonly gameUserSettingStore: gc.GameUserSettings.GameUserSettingStore;
+    @inject(GameCrashUserSettingHandlerV2) protected readonly gameUserSettingHandlerV2: GameCrashUserSettingHandlerV2;
+
     constructor() {
         mobx.makeAutoObservable(this);
         setTimeout(() => {
-            this.onLoadStorage();
             mobx.reaction(
                 () => this.gameConfigStore.chips,
                 (chips) => {
@@ -56,6 +59,23 @@ export class BetControlStore {
                     this.validCurrentBetAmounts();
                 }
             );
+
+            mobx.when(() => this.mainPlayerStore.readyUserInfo, () => {
+                this.onLoadStorage();
+
+                mobx.reaction(() => this.gameUserSettingStore.tempStorage, (trigger) => {
+                    switch (trigger?.action) {
+                        case gc.GameUserSettings.GameUserSettingAction.Save:
+                            this.saveTempStorage();
+                            break;
+                        case gc.GameUserSettings.GameUserSettingAction.Load:
+                            this.onLoadStorage();
+                        case gc.GameUserSettings.GameUserSettingAction.Clear:
+                            this.onLoadStorage();
+                            break;
+                    }
+                }, { fireImmediately: true })
+            })
         }, 0);
     }
 
@@ -313,7 +333,7 @@ export class BetControlStore {
     }
 
     onLoadStorage() {
-        const data = gc.StorageManager.get(gc.localStorageKeys.gameUserSetting);
+        const data = this.gameUserSettingHandlerV2.getGameUserSetting();
         if (data) {
             Object.values(data).forEach((setting, index) => {
                 this.controls[index].setting = setting;
@@ -323,5 +343,13 @@ export class BetControlStore {
                 this.controls[+key].setting = this.defaultSettings[+key];
             });
         }
+    }
+
+    saveTempStorage() {
+        const settings = Object.keys(this.controls).reduce((acc, betKey) => {
+            acc[betKey] = this.controls[betKey].setting;
+            return acc;
+        }, {});
+        gc.StorageManager.set(this.gameUserSettingHandlerV2.tempStorageKey, settings);
     }
 }
