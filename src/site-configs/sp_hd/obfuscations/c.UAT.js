@@ -8,5 +8,6 @@ window.envConfig = {
     enableMsgpackParserAllGames: true,
     enableMsgpackParserOnNotification: true,
     subDirectory: "uat",
-    SGConnectSubDomain: "l1uatconnectsite",
+    SGConnectSubDomain: "hd-connect-uat",
+    clientSubDomain: "hduatclient",
 };
