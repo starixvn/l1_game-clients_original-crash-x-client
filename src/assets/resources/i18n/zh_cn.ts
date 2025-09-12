@@ -221,7 +221,51 @@ export const languages = {
         "under_maintenance_time": "从 %{startTime} 到 %{endTime} (GMT+8)",
         "win": "赢",
         "win_loss": "赢 输",
-        "you_reach_max_win": "您达到了最大胜利"
+        "you_reach_max_win": "您达到了最大胜利",
+        "invalid_payline": "invalid_payline",
+        "invalid_bonus": "invalid_bonus",
+        "opened_bonus": "opened_bonus",
+        "invalid_jackpot": "invalid_jackpot",
+        "opened_jackpot": "opened_jackpot",
+        "no_data": "无数据可用。",
+        "all": "全部",
+        "message_loading": "正在加载",
+        "message_error_claim_expired": "奖金已过期，不再有效。 (%{errorCode})",
+        "pf_header_server_seed_sha256_single": "服务器种子 SHA256",
+        "pf_ header_merge_client_seed_single": "合并客户种子",
+        "player": "玩家",
+        "bet_amount": "投注金额",
+        "bet_detail_note": "仅提供近7日数据。",
+        "players": "玩家",
+        "original_tagline": "畅玩新体验，赢取最高奖励",
+        "auto_cashout": "自动兑现",
+        "auto_play": "自动游戏",
+        "bet_accepted": "接受投注",
+        "chip_value": "筹码价值",
+        "total_bet": "总赌注",
+        "waiting_for_the_next_round": "等待下一轮",
+        "show_more": "显示更多",
+        "show_less": "显示更少",
+        "start_in": "开始于 {time}s",
+        "cancel_bet": "取消投注",
+        "cashed": "兑现",
+        "cashout": "兑现",
+        "message_bet_is_accepted": "投注接受",
+        "message_total_cashout_reach_max": "提现总额 达到最大胜利",
+        "my_bets": "我的投注",
+        "waiting": "等待...",
+        "bet_slip": "投注单",
+        "game": "游戏",
+        "auto_rebet": "自动重押",
+        "label_custom_rounds": "自定义回合数",
+        "scoreboard_odd": "单",
+        "scoreboard_even": "双",
+        "tooltip_double": "双倍之前的投注",
+        "tooltip_sound": "声音",
+        "tooltip_guide": "游戏指南",
+        "tooltip_fairness": "公平",
+        "lock_bet": "等待结果",
+        "tooltip_stat": "View stat"
     },
     "Spaceflight": {
         "auto_cashout": "自动兑现",
@@ -254,7 +298,8 @@ export const languages = {
         "stop_auto_play": "停止自动游戏",
         "total_cashout_amount_reach_max": "提现总额 达到最大胜利",
         "waiting": "等待...",
-        "you_reach_max_win": "您达到了最大胜利"
+        "you_reach_max_win": "您达到了最大胜利",
+        "cashed_out": "已兑现"
     },
     "RocketX": {
         "all_bets": "全部投注",
@@ -286,6 +331,11 @@ export const languages = {
         "top": "顶部",
         "waiting": "等待...",
         "year": "年"
+    },
+    "Crash X": {
+        "game_name": "Crash X",
+        "game_icon_name": "Crash X",
+        "cashed_bets": "已提前兑现的投注"
     }
 };
 

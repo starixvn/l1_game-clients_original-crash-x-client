@@ -27,7 +27,7 @@ export class LeaderBoard extends ObserverComponent {
     @property(Node)
     nodeLeaderBoardMask: Node = null;
 
-    private readonly itemHeight = 35;
+    private readonly itemHeight = 44;
     private otherPlayerTween: Tween<Widget> = null;
 
     onLoad() {
@@ -56,7 +56,7 @@ export class LeaderBoard extends ObserverComponent {
             const comp = node.getComponent(LeaderBoardCashOut);
             comp.lblMultiplier.color =
                 player.multiplier < 1 ? CrashUtils.getWhiteColor() : CrashUtils.getMultiplierColor(player.multiplier);
-            comp?.setData(player, index);
+            comp?.setData(player);
         });
         this.updateContentHeight();
     }

@@ -221,7 +221,51 @@ export const languages = {
         "under_maintenance_time": "เริ่มต้นจาก %{startTime} ถึง %{endTime} (GMT+8)",
         "win": "ชนะ",
         "win_loss": "ชนะ แพ้",
-        "you_reach_max_win": "คุณถึงยอดชนะสูงสุด"
+        "you_reach_max_win": "คุณถึงยอดชนะสูงสุด",
+        "message_invalid_payline": "Payline ไม่ถูกต้อง",
+        "message_invalid_bonus": "เกมโบนัสไม่ถูกต้อง",
+        "message_invalid_jackpot": "เกม Jackpot ไม่ถูกต้อง",
+        "message_opened_jackpot": "เกม Jackpot ไม่ถูกต้อง",
+        "message_opened_bonus": "เกมโบนัสไม่ถูกต้อง",
+        "no_data": "ไม่มีข้อมูล",
+        "all": "ทั้งหมด",
+        "message_loading": "กำลังโหลด",
+        "message_error_claim_expired": "โบนัสหมดอายุ ไม่สามารถใช้งานได้อีกต่อไป (%{errorCode})",
+        "pf_header_server_seed_sha256_single": "Server Seed SHA256 ",
+        "pf_ header_merge_client_seed_single": "ผสาน Client Seed",
+        "player": "ผู้เล่น",
+        "bet_amount": "จำนวนเงินเดิมพัน",
+        "bet_detail_note": "สามารถดูข้อมูลย้อนหลังได้ 7 วันนับจากวันปัจจุบันเท่านั้น",
+        "players": "ผู้เล่น",
+        "original_tagline": "เล่นสดใหม่ ชนะเลิศ",
+        "auto_cashout": "ถอนเงินอัตโนมัติ",
+        "auto_play": "เล่นอัตโนมัติ",
+        "bet_accepted": "ยอมรับการเดิมพัน  \nแล้ว",
+        "chip_value": "มูลค่าชิป",
+        "total_bet": "เดิมพันรวม",
+        "waiting_for_the_next_round": "กำลังรอรอบถัดไป",
+        "show_more": "แสดงเพิ่มเติม",
+        "show_less": "แสดงน้อยลง",
+        "start_in": "เริ่มเข้า {time}s",
+        "cancel_bet": "(ยกเลิกเดิมพัน)",
+        "cashed": "เงินสด",
+        "cashout": "ถอนเงิน",
+        "message_bet_is_accepted": "ยอมรับการเดิมพันแล้ว",
+        "message_total_cashout_reach_max": "จ่ายเงินยอดชนะสูงสุด",
+        "my_bets": "การเดิมพันของฉัน",
+        "waiting": "กำลังรอ...",
+        "bet_slip": "สลิปเดิมพัน",
+        "game": "เกม",
+        "auto_rebet": "เดิมพันซ้ำอัตโนมัติ",
+        "label_custom_rounds": "จำนวนรอบที่กำหนดเอง",
+        "scoreboard_odd": "คี่",
+        "scoreboard_even": "คู่",
+        "tooltip_double": "เดิมพันสองเท่าก่อนหน้า",
+        "tooltip_sound": "เสียง",
+        "tooltip_guide": "คู่มือเกม",
+        "tooltip_fairness": "ยุติธรรม",
+        "lock_bet": "รอผล",
+        "tooltip_stat": "View stat"
     },
     "Spaceflight": {
         "auto_cashout": "ถอนเงินอัตโนมัติ",
@@ -254,7 +298,8 @@ export const languages = {
         "stop_auto_play": "หยุดเล่นอัตโนมัติ",
         "total_cashout_amount_reach_max": "จ่ายเงินยอดชนะสูงสุด",
         "waiting": "กำลังรอ...",
-        "you_reach_max_win": "คุณถึงยอดชนะสูงสุด"
+        "you_reach_max_win": "คุณถึงยอดชนะสูงสุด",
+        "cashed_out": "ถอนออกแล้ว"
     },
     "RocketX": {
         "all_bets": "การเดิมพันทั้งหมด",
@@ -286,6 +331,11 @@ export const languages = {
         "top": "อันดับสูงสุด",
         "waiting": "กำลังรอ...",
         "year": "ปี"
+    },
+    "Crash X": {
+        "game_name": "Crash X",
+        "game_icon_name": "Crash X",
+        "cashed_bets": "เดิมพันที่ถอนออกแล้ว"
     }
 };
 

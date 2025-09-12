@@ -1,12 +1,12 @@
 
 
-const GAME_NAME = "RocketX";
+const GAME_NAME = "CrashX";
 
 export const settings = {
-    id: 113,
+    id: 144,
     name: GAME_NAME,
     observerNamespace: GAME_NAME,
-    namespaces: [GAME_NAME, "Spaceflight"],
+    namespaces: ["Crash X","RocketX", "Spaceflight"],
     durations: {
         wholeRound: 14,
         lockingBet: 3,
@@ -14,7 +14,7 @@ export const settings = {
         generatingResult: 0,
         startRound: 1,
     },
-    numberOfRoundHistory: 12,
+    numberOfRoundHistory: 6,
     validateBalanceWhenBet: true,
 };
 

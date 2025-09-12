@@ -221,7 +221,51 @@ export const languages = {
         "under_maintenance_time": "Mulai dari %{startTime} hingga %{endTime} (GMT+8)",
         "win": "Menang",
         "win_loss": "Menang Kalah",
-        "you_reach_max_win": "Anda mencapai Maksimal Menang"
+        "you_reach_max_win": "Anda mencapai Maksimal Menang",
+        "invalid_payline": "invalid_payline",
+        "invalid_bonus": "invalid_bonus",
+        "opened_bonus": "opened_bonus",
+        "invalid_jackpot": "invalid_jackpot",
+        "opened_jackpot": "opened_jackpot",
+        "no_data": "Data tidak tersedia.",
+        "all": "Semua",
+        "message_loading": "Memuat",
+        "message_error_claim_expired": "Bonus berakhir. Tidak lagi tersedia. (%{errorCode})",
+        "pf_header_server_seed_sha256_single": "Server Seed SHA256 ",
+        "pf_ header_merge_client_seed_single": "Gabungkan Seed Klien",
+        "player": "Player",
+        "bet_amount": "JUMLAH TARUHAN",
+        "bet_detail_note": "Data hanya tersedia untuk 7 hari terakhir terhitung dari tanggal saat ini.",
+        "players": "Pemain",
+        "original_tagline": "Main Segar, Menang Terbaik",
+        "auto_cashout": "CASHOUT OTOMATIS",
+        "auto_play": "AUTO-PLAY",
+        "bet_accepted": "Taruhan\nDiterima",
+        "chip_value": "Nilai Chip",
+        "total_bet": "Total Taruhan",
+        "waiting_for_the_next_round": "Menunggu putaran berikutnya",
+        "show_more": "Tampilkan Lebih Banyak",
+        "show_less": "Tampilkan Lebih Sedikit",
+        "start_in": "Mulai masuk {time}s",
+        "cancel_bet": "(Batalkan Taruhan)",
+        "cashed": "Dicairkan",
+        "cashout": "Cashout",
+        "message_bet_is_accepted": "Taruhan diterima",
+        "message_total_cashout_reach_max": "Total jumlah pembayaran Raih kemenangan maksimal",
+        "my_bets": "Taruhan Saya",
+        "waiting": "MENUNGGU...",
+        "bet_slip": "Slip Taruhan",
+        "game": "game",
+        "auto_rebet": "Rebet Otomatis",
+        "label_custom_rounds": "Jumlah ronde khusus",
+        "scoreboard_odd": "GE",
+        "scoreboard_even": "GE",
+        "tooltip_double": "Gandakan Taruhan Sebelumnya",
+        "tooltip_sound": "Suara",
+        "tooltip_guide": "Panduan Permainan",
+        "tooltip_fairness": "adil",
+        "lock_bet": "Tunggu hasil",
+        "tooltip_stat": "View stat"
     },
     "Spaceflight": {
         "auto_cashout": "CASHOUT OTOMATIS",
@@ -254,7 +298,8 @@ export const languages = {
         "stop_auto_play": "STOP AUTO-PLAY",
         "total_cashout_amount_reach_max": "Total jumlah pembayaran Raih kemenangan maksimal",
         "waiting": "MENUNGGU...",
-        "you_reach_max_win": "Anda mencapai Maksimal Menang"
+        "you_reach_max_win": "Anda mencapai Maksimal Menang",
+        "cashed_out": "DITARIK"
     },
     "RocketX": {
         "all_bets": "Semua Taruhan",
@@ -286,6 +331,11 @@ export const languages = {
         "top": "Teratas",
         "waiting": "MENUNGGU...",
         "year": "Tahun"
+    },
+    "Crash X": {
+        "game_name": "Crash X",
+        "game_icon_name": "Crash X",
+        "cashed_bets": "Taruhan yang Dicashout"
     }
 };
 
