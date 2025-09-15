@@ -160,6 +160,16 @@ export class BetControlStore {
         return currentAmount < this.maxBet;
     }
 
+    activeHalfBet(betKey: number) {
+        const currentAmount = this.getBetAmount(betKey);
+        return currentAmount > this.minBet;
+    }
+
+    activeDoubleBet(betKey: number) {
+        const currentAmount = this.getBetAmount(betKey);
+        return currentAmount < this.maxBet;
+    }
+
     validCurrentBetAmounts() {
         Object.values(this.controls).forEach((control, betKey) => {
             const currentAmount = control.setting.amount;
@@ -174,6 +184,11 @@ export class BetControlStore {
         const currentAmount = this.getBetAmount(betkey);
         const newAmount = currentAmount + amount;
         this.setValidBetAmount(betkey, newAmount);
+    }
+
+    multiplyBetAmount(betKey: number, multiplier: number) {
+        const newAmount = this.getBetAmount(betKey) * multiplier;
+        this.setValidBetAmount(betKey, newAmount);
     }
 
     setValidBetAmount(betKey: number, amount: number) {

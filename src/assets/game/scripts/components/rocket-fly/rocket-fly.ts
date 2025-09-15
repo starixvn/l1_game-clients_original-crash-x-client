@@ -122,7 +122,7 @@ export class RocketFly extends ObserverComponent {
     private startFly() {
         this.flying = true;
         this.flyingTween = tween(this.spineRocket.node)
-            .to(0.7, { position: v3(0, 0, 0) }, { easing: "sineInOut" })
+            .to(0.7, { position: v3(0, -50, 0) }, { easing: "sineInOut" })
             .start();
 
         this.spinePlanet.timeScale = 1;
@@ -131,7 +131,7 @@ export class RocketFly extends ObserverComponent {
 
     private startedFly() {
         this.flying = true;
-        this.spineRocket.node.position = v3(0, 0, 0);
+        this.spineRocket.node.position = v3(0, -50, 0);
 
         this.spinePlanet.timeScale = 1;
         this.spinePlanet.setAnimation(0, "hanhtinh", true);
