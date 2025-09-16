@@ -2091,10 +2091,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2269,15 +2269,15 @@
     "_string": "10,000",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 17,
+    "_actualFontSize": 16,
     "_fontSize": 16,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2457,10 +2457,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2640,10 +2640,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3138,10 +3138,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3187,7 +3187,7 @@
     "node": {
       "__id__": 126
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 132
     },
@@ -3316,15 +3316,15 @@
     "_string": "20,000",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 17,
+    "_actualFontSize": 16,
     "_fontSize": 16,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3370,7 +3370,7 @@
     "node": {
       "__id__": 134
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 140
     },
@@ -3504,10 +3504,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3553,7 +3553,7 @@
     "node": {
       "__id__": 142
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 148
     },
@@ -3687,10 +3687,10 @@
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 2,
-    "_enableWrapText": true,
+    "_enableWrapText": false,
     "_font": {
-      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
-      "__expectedType__": "cc.TTFFont"
+      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
+      "__expectedType__": "cc.BitmapFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3736,7 +3736,7 @@
     "node": {
       "__id__": 150
     },
-    "_enabled": true,
+    "_enabled": false,
     "__prefab": {
       "__id__": 156
     },

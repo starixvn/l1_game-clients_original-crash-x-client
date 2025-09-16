@@ -4,12 +4,12 @@ const { ccclass, property } = _decorator;
 export class CrashUtils extends Component {
     static readonly config = {
         thresholds: [2, 5, 10],
-        colors: ["01d8ff", "ff9601", "ff010d", "D608FB"],
+        colors: ["01d8ff", "FFD900", "ff010d", "D608FB"],
         colorNames: ["blue", "orange", "red", "purple"],
         whiteColor: "E6E5DF",
         tabColors: {
-            Active: "30df0a",
-            InActive: "E6E5DF",
+            Active: "ffffff",
+            InActive: "ffffff",
         },
     };
     static readonly betEventNames = {
@@ -54,5 +54,29 @@ export class CrashUtils extends Component {
 
     static encryptedName(name: string): string {
         return `${name.substring(0, 1)}***${name.substring(name.length - 3, name.length)}`;
+    }
+
+    static formatDate(isoString: string): string {
+        const date = new Date(isoString);
+
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+
+        return `${day}-${month}-${year}`;
+    }
+
+    static formatTime(isoString: string): string {
+        const date = new Date(isoString);
+
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, "0");
+        const seconds = String(date.getSeconds()).padStart(2, "0");
+
+        const ampm = hours >= 12 ? "PM" : "AM";
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+
+        return `${String(hours).padStart(2, "0")}:${minutes}:${seconds} ${ampm}`;
     }
 }

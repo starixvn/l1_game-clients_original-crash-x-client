@@ -14,7 +14,7 @@ export const settings = {
         generatingResult: 0,
         startRound: 1,
     },
-    numberOfRoundHistory: 6,
+    numberOfRoundHistory: 8,
     validateBalanceWhenBet: true,
 };
 

@@ -1,5 +1,5 @@
 import gc from "@sg/game-client-base";
-import { _decorator, Label, Node } from "cc";
+import { _decorator, Color, Label, Node } from "cc";
 import Observer from "observer";
 
 import { DynamicObject } from "@sg/game-client-base/dist/game/bet-history";
@@ -9,7 +9,7 @@ import { HistoryConstants } from "../../handlers/crash-v2";
 import { BetWinCell } from "./bet-win-cell";
 
 const { property, ccclass } = _decorator;
-const { DateTimeUtils, FormatUtils } = gc;
+const { BetHistory, FormatUtils } = gc;
 const { handle } = Observer;
 
 export type BetResultHistoryBodyItemType = {
@@ -51,46 +51,44 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     @property(Node)
     betWinCell: Node = null;
 
+    @property(Label)
+    lblWin: Label = null;
+
     betHistoryLog: gc.BetHistory.BetHistoryLog = null;
 
     setData(data: BetResultHistoryBodyItemType) {
         const { betHistoryLog, index, betKey } = data;
         this.betHistoryLog = betHistoryLog;
-        this.nodeBackground.active = index % 2 === 0;
-
-        const betTime = this.getBetTime(betHistoryLog, betKey);
-        this.setLabels(betTime, betHistoryLog, betKey);
+        this.nodeBackground.active = index % 2 > 0;
+        this.setLabels(betHistoryLog);
     }
 
     private getBetTime(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): string {
         return betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()))?.time.toString();
     }
 
-    private setLabels(betTime: string, betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
-        if (this.lblDate) {
-            this.lblDate.string = DateTimeUtils.getStringDate(betTime);
-        }
-        if (this.lblTime) {
-            this.lblTime.string = DateTimeUtils.getStringHourByTime(betTime);
-        }
-        if (this.lblDateTime) {
-            this.lblDateTime.string = `${DateTimeUtils.getStringHourByTime(betTime)} ${DateTimeUtils.getStringDate(betTime)}`;
-        }
-
+    private setLabels(betHistoryLog: gc.BetHistory.BetHistoryLog) {
+        this.lblDate.string = CrashUtils.formatDate(betHistoryLog.time);
+        this.lblTime.string = CrashUtils.formatTime(betHistoryLog.time);
         this.lblRound.string = betHistoryLog.roundId.toString();
 
-        const betAmount = this.getBetAmount(betHistoryLog, betKey);
-        if (this.lblTotalStake) {
-            this.lblTotalStake.string = FormatUtils.numberWithCommas(betAmount, 2);
+        const totalAmount = this.getTotalAmountFromBetLogDetails(betHistoryLog);
+        this.lblTotalStake.string = FormatUtils.numberWithCommas(totalAmount, 2);
+        this.lblWin.string = FormatUtils.numberWithCommas(betHistoryLog.betwin, 2);
+        if (betHistoryLog.betwin > 0) {
+            this.lblWin.color = new Color().fromHEX("FFF600");
         }
-
-        this.bindMultiplier(betHistoryLog, betKey);
-        this.bindWin(betHistoryLog, betKey);
     }
 
     private getBetAmount(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number): number {
         const betDetail = betHistoryLog.betLogDetails.find((element) => this.isBetRowData(element, betKey.toString()));
         return betDetail === undefined ? 0 : Number(betDetail.amount);
+    }
+
+    public getTotalAmountFromBetLogDetails(betHistoryLog: gc.BetHistory.BetHistoryLog): number {
+        return betHistoryLog.betLogDetails
+            .filter((element) => this.isBetRowData(element, element.betKey.toString()))
+            .reduce((total, betDetail) => total + Number(betDetail.amount), 0);
     }
 
     private bindMultiplier(betHistoryLog: gc.BetHistory.BetHistoryLog, betKey: number) {
@@ -149,6 +147,12 @@ export default class BetHistoryRocketXTableBodyRow extends ObserverComponent {
     onClickVerify() {
         this.playSoundClick();
         return this.betHistoryLog.roundId;
+    }
+
+    @handle(BetHistory.BetDetailsHandlers)
+    openTicketDetail() {
+        this.playSoundClick();
+        return this.betHistoryLog;
     }
 
     onLoad() {

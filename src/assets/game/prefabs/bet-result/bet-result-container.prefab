@@ -49,7 +49,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 0,
+      "y": 36.564,
       "z": 0
     },
     "_lrot": {
@@ -1183,7 +1183,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 288.196,
+      "y": 337.5,
       "z": 0
     },
     "_lrot": {
@@ -1273,7 +1273,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 369,
+      "width": 1208,
       "height": 687
     },
     "_anchorPoint": {
@@ -1400,7 +1400,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 369,
+      "width": 1208,
       "height": 687
     },
     "_anchorPoint": {
@@ -1477,7 +1477,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 369,
+      "width": 1208,
       "height": 687
     },
     "_anchorPoint": {
@@ -2352,8 +2352,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 369,
-      "height": 711
+      "width": 1208,
+      "height": 699
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2383,13 +2383,13 @@
     "_dstBlendFactor": 4,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 24,
+      "g": 33,
+      "b": 48,
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "633480e4-5419-4fba-8e2d-8d22327e7088@14d77",
+      "__uuid__": "92ee9e47-d2b3-4678-a65b-ef38b604a432@d9517",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -2405,7 +2405,7 @@
     "_isTrimmedMode": true,
     "_useGrayscale": false,
     "_atlas": {
-      "__uuid__": "633480e4-5419-4fba-8e2d-8d22327e7088",
+      "__uuid__": "92ee9e47-d2b3-4678-a65b-ef38b604a432",
       "__expectedType__": "cc.SpriteAtlas"
     },
     "_id": ""
@@ -2436,10 +2436,10 @@
     "_startAxis": 0,
     "_paddingLeft": 0,
     "_paddingRight": 0,
-    "_paddingTop": 24,
+    "_paddingTop": 12,
     "_paddingBottom": 0,
     "_spacingX": 0,
-    "_spacingY": 24,
+    "_spacingY": 0,
     "_verticalDirection": 1,
     "_horizontalDirection": 0,
     "_constraint": 0,
