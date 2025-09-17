@@ -2093,8 +2093,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2276,8 +2276,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2459,8 +2459,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -2642,8 +2642,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3140,8 +3140,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3323,8 +3323,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3506,8 +3506,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
@@ -3689,8 +3689,8 @@
     "_overflow": 2,
     "_enableWrapText": false,
     "_font": {
-      "__uuid__": "eafd4908-648e-4416-af38-e41872d60033",
-      "__expectedType__": "cc.BitmapFont"
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
+      "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
     "_spacingX": 0,
