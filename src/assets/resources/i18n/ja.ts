@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "ゲームガイド",
         "tooltip_fairness": "公平性",
         "lock_bet": "結果を待つ",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "auto_cashout": "オートキャッシュアウト",

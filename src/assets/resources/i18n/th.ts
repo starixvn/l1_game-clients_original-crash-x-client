@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "คู่มือเกม",
         "tooltip_fairness": "ยุติธรรม",
         "lock_bet": "รอผล",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "auto_cashout": "ถอนเงินอัตโนมัติ",

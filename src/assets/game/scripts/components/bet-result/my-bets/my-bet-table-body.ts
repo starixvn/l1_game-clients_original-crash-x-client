@@ -114,7 +114,6 @@ export class MyBetTableBody extends ObserverComponent {
     }
 
     private processBetHistory(betHistoryLog: gc.BetHistory.BetHistoryLog, rowIndex: number): void {
-        console.log("betHistoryLog", betHistoryLog.betwin, betHistoryLog.roundId);
         const item = this.buildBodyRow(this.itemPrefab, betHistoryLog, rowIndex, Number(betHistoryLog.betwin));
         this.content.addChild(item);
         const currentPosition = item.getPosition();

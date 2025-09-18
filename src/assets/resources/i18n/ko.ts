@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "게임 가이드",
         "tooltip_fairness": "공정성",
         "lock_bet": "결과 대기 중",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "game_name": "스페이스플라이트",

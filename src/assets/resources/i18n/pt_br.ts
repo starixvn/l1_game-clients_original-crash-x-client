@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "Regras do Jogo",
         "tooltip_fairness": "Justeza",
         "lock_bet": "Aguardando resultado",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": null
     },
     "Spaceflight": {
         "game_name": "Voo Espacial",

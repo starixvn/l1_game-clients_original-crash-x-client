@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "Oyun Kuralları",
         "tooltip_fairness": "Adillik",
         "lock_bet": "Sonuç bekleniyor",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "game_name": "Uzay Uçuşu",

@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "Guías de Juego",
         "tooltip_fairness": "Equidad",
         "lock_bet": "Esperando resultado",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "auto_cashout": "Auto Retiro",

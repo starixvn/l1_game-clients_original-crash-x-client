@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "Panduan Permainan",
         "tooltip_fairness": "adil",
         "lock_bet": "Tunggu hasil",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "auto_cashout": "CASHOUT OTOMATIS",

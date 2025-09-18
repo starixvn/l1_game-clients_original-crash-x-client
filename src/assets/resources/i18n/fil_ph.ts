@@ -265,7 +265,8 @@ export const languages = {
         "tooltip_guide": "Gabay sa Laro",
         "tooltip_fairness": "Fairness",
         "lock_bet": "Maghintay ng resulta",
-        "tooltip_stat": "View stat"
+        "tooltip_stat": "View stat",
+        "tooltip_auto": "Auto"
     },
     "Spaceflight": {
         "game_name": "Spaceflight",

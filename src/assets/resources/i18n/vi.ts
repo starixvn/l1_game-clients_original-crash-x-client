@@ -243,10 +243,10 @@ export const languages = {
         "bet_accepted": "Đã\nNhận Cược",
         "chip_value": "Giá trị chip",
         "total_bet": "Tổng Cược",
-        "waiting_for_the_next_round": "Đang chờ phiên tiếp theo",
+        "waiting_for_the_next_round": "Hiển thị kết quả",
         "show_more": "Xem thêm",
         "show_less": "Thu gọn",
-        "start_in": "Bắt đầu sau {time}s",
+        "start_in": "Thời gian đặt cược: {time}s",
         "cancel_bet": "(Hủy Cược)",
         "cashed": "Rút Tiền",
         "cashout": "Rút Tiền",
@@ -260,12 +260,13 @@ export const languages = {
         "label_custom_rounds": "Tùy chỉnh số lượt",
         "scoreboard_odd": "L",
         "scoreboard_even": "C",
-        "tooltip_double": "Gấp đôi cược trước",
+        "tooltip_double": "Gấp đôi",
         "tooltip_sound": "Âm thanh",
         "tooltip_guide": "Hướng dẫn",
         "tooltip_fairness": "Minh bạch",
         "lock_bet": "Đang chờ kết quả",
-        "tooltip_stat": "Xem thống kê"
+        "tooltip_stat": "Thống kê",
+        "tooltip_auto": "Tự động"
     },
     "Spaceflight": {
         "auto_cashout": "TỰ ĐỘNG RÚT TIỀN",
