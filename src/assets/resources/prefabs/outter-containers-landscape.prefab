@@ -2100,7 +2100,7 @@
     "__type__": "PrefabItem",
     "name": "ClientSeedSetting",
     "prefab": {
-      "__uuid__": "e497dfc9-ec2f-47c8-8633-5d1bab395fe6",
+      "__uuid__": "a63b40fa-38a5-47a3-aea0-56f532d2165e",
       "__expectedType__": "cc.Prefab"
     }
   },
@@ -2108,7 +2108,7 @@
     "__type__": "PrefabItem",
     "name": "PFVerification",
     "prefab": {
-      "__uuid__": "febedec5-eefd-473d-905e-5dbc2f88d6cb",
+      "__uuid__": "21baba3b-61bb-497f-ba2f-8d5d07ed15ff",
       "__expectedType__": "cc.Prefab"
     }
   },
@@ -2116,7 +2116,7 @@
     "__type__": "PrefabItem",
     "name": "PFVerificationDetail",
     "prefab": {
-      "__uuid__": "bb224742-a61e-49b7-9076-b83480117c7b",
+      "__uuid__": "65e25bda-d454-4517-9c43-2ff789ac2cbd",
       "__expectedType__": "cc.Prefab"
     }
   },
