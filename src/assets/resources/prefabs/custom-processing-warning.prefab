@@ -139,7 +139,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 460,
+      "width": 300,
       "height": 30
     },
     "_anchorPoint": {
@@ -178,14 +178,14 @@
     "_string": "messages.betProcessing",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 20,
-    "_fontSize": 20,
+    "_actualFontSize": 14,
+    "_fontSize": 14,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
     "_overflow": 3,
     "_enableWrapText": true,
     "_font": {
-      "__uuid__": "e29f4d44-84b4-49f3-92fa-c562331d2424",
+      "__uuid__": "234a1ff4-365c-4619-9288-220c0268bb31",
       "__expectedType__": "cc.TTFFont"
     },
     "_isSystemFontUsed": false,
@@ -269,7 +269,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 500,
+      "width": 343,
       "height": 50
     },
     "_anchorPoint": {
@@ -346,7 +346,7 @@
       "a": 255
     },
     "_spriteFrame": {
-      "__uuid__": "cbfa37b0-1f73-4971-947b-01282ea94fca@cd7cd",
+      "__uuid__": "92ee9e47-d2b3-4678-a65b-ef38b604a432@279f0",
       "__expectedType__": "cc.SpriteFrame"
     },
     "_type": 1,
@@ -361,7 +361,10 @@
     "_fillRange": 0,
     "_isTrimmedMode": true,
     "_useGrayscale": false,
-    "_atlas": null,
+    "_atlas": {
+      "__uuid__": "92ee9e47-d2b3-4678-a65b-ef38b604a432",
+      "__expectedType__": "cc.SpriteAtlas"
+    },
     "_id": ""
   },
   {
