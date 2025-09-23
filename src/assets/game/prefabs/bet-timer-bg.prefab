@@ -487,7 +487,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 83.361328125,
-      "height": 100
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -878,6 +878,9 @@
     },
     "countdownBar": {
       "__id__": 26
+    },
+    "nodeLabel": {
+      "__id__": 2
     },
     "_id": ""
   },

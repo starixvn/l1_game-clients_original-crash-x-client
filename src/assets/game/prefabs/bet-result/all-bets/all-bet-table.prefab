@@ -405,7 +405,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -118,
+      "x": -123,
       "y": -21.106,
       "z": 0
     },
@@ -613,7 +613,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": -38,
+      "x": -43,
       "y": -21.106,
       "z": 0
     },
@@ -821,7 +821,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 43,
+      "x": 48,
       "y": -21.106,
       "z": 0
     },
@@ -1029,7 +1029,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 124,
+      "x": 125,
       "y": -21.106,
       "z": 0
     },
@@ -2083,10 +2083,10 @@
       "b": 80,
       "a": 255
     },
-    "_string": "ColorGame45789",
+    "_string": "ColorGame",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 12,
+    "_actualFontSize": 16,
     "_fontSize": 16,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
@@ -2372,7 +2372,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 43,
+      "x": 48,
       "y": 0,
       "z": 0
     },
@@ -3130,10 +3130,10 @@
       "b": 80,
       "a": 255
     },
-    "_string": "ColorGame45789",
+    "_string": "ColorGame",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 12,
+    "_actualFontSize": 16,
     "_fontSize": 16,
     "_fontFamily": "Arial",
     "_lineHeight": 30,
@@ -3419,7 +3419,7 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 43,
+      "x": 48,
       "y": 0,
       "z": 0
     },
