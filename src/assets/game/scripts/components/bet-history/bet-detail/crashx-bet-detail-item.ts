@@ -30,7 +30,7 @@ export class CrashxBetDetailItem extends BaseBetDetailLogItem {
 
     setData(data: BetDetailLogItemType) {
 
-        const { amount, multiplier, winAmount, time, action } = data.betDetailsLog as CrashGameBetDetailsLog &
+        const { amount, multiplier, winAmount, time } = data.betDetailsLog as CrashGameBetDetailsLog &
             gc.BetHistory.DynamicObject<object>;
 
         this.nodeBackground.active = data.index % 2 === 0;
