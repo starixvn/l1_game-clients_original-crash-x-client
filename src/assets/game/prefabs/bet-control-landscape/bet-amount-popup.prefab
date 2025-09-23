@@ -299,7 +299,7 @@
     "__prefab": {
       "__id__": 9
     },
-    "key": "Spaceflight.bet_amount",
+    "key": "Common.bet_amount",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -919,7 +919,7 @@
     "__prefab": {
       "__id__": 34
     },
-    "key": "Spaceflight.bet_amount",
+    "key": "Common.bet_amount",
     "format": 3,
     "prefix": "",
     "suffix": "",

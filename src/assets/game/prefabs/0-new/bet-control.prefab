@@ -5980,7 +5980,7 @@
     "__prefab": {
       "__id__": 251
     },
-    "key": "Spaceflight.auto_cashout",
+    "key": "Common.auto_cashout",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -6809,7 +6809,7 @@
     "__prefab": {
       "__id__": 288
     },
-    "key": "Spaceflight.auto_play",
+    "key": "Common.auto_play",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -8147,7 +8147,7 @@
     "__prefab": {
       "__id__": 344
     },
-    "key": "Spaceflight.place_bet",
+    "key": "ui.place_bet_break",
     "format": 1,
     "prefix": "",
     "suffix": "",
@@ -9666,7 +9666,7 @@
     "__prefab": {
       "__id__": 414
     },
-    "key": "Spaceflight.cashout",
+    "key": "Common.cashout",
     "format": 1,
     "prefix": "",
     "suffix": "",
@@ -10612,7 +10612,7 @@
     "__prefab": {
       "__id__": 454
     },
-    "key": "Spaceflight.place_bet",
+    "key": "ui.place_bet_break",
     "format": 1,
     "prefix": "",
     "suffix": "",
@@ -10985,7 +10985,7 @@
     "__prefab": {
       "__id__": 470
     },
-    "key": "Spaceflight.next_round",
+    "key": "Common.crash_next_round",
     "format": 0,
     "prefix": "",
     "suffix": "",
@@ -11526,7 +11526,7 @@
     "__prefab": {
       "__id__": 494
     },
-    "key": "Spaceflight.waiting",
+    "key": "Common.waiting",
     "format": 1,
     "prefix": "",
     "suffix": "",
@@ -11713,7 +11713,7 @@
     "__prefab": {
       "__id__": 502
     },
-    "key": "Spaceflight.cancel_bet",
+    "key": "Common.cancel_bet",
     "format": 0,
     "prefix": "",
     "suffix": "",
