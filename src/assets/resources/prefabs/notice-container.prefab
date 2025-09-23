@@ -3,6 +3,7 @@
     "__type__": "cc.Prefab",
     "_name": "notice-container",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_native": "",
     "data": {
       "__id__": 1
@@ -65,6 +66,7 @@
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -74,7 +76,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 1398,
+      "width": 1208,
       "height": 786
     },
     "_anchorPoint": {
@@ -92,6 +94,7 @@
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -127,6 +130,7 @@
     "__type__": "8ea7cy+HLdJNKNp4sw0DEe+",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -135,15 +139,14 @@
       "__id__": 7
     },
     "prefab": {
-      "__uuid__": "36155e0b-972d-4aca-a1f9-9fea663e9e62",
+      "__uuid__": "b4ecacdc-cb1d-4613-a2ff-aa0f51a9c38e",
       "__expectedType__": "cc.Prefab"
     },
-    "namespaceObserver": "SeDie",
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "a3dT6FGcpDlq5Qmjn+nmKg"
+    "fileId": "a7L3c+5RBFr5zgODTFUxEv"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -154,6 +157,7 @@
       "__id__": 0
     },
     "fileId": "e22BwO1ihPxqLETz0GktMD",
+    "instance": null,
     "targetOverrides": null
   }
 ]
