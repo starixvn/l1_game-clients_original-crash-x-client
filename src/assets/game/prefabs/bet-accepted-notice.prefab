@@ -136,7 +136,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 205.75,
+      "width": 239.546875,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -162,7 +162,7 @@
     "__prefab": {
       "__id__": 6
     },
-    "key": "Common.bet_accepted",
+    "key": "Common.message_bet_is_accepted",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -194,7 +194,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "Bet Accepted",
+    "_string": "Bet Is Accepted",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 32,
