@@ -283,7 +283,14 @@ export const languages = {
         "wins": "Wins",
         "waggred": "Waggred",
         "losses": "Losses",
-        "all_bets": "All Bets"
+        "all_bets": "All Bets",
+        "crash_glossary_refund": "Refund",
+        "glossary_bet": "Bet",
+        "glossary_crash_point": "Crash Point",
+        "glossary_message_reach_max_win": "Reach the Max Win",
+        "title_multiplier": "Multiplier ",
+        "crash_start_in": "Start in %{time}",
+        "crashed": "Crashed"
     },
     "Spaceflight": {
         "auto_cashout": "AUTO CASHOUT",

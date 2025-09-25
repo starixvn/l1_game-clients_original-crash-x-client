@@ -238,7 +238,7 @@ export const languages = {
         "bet_detail_note": "Os dados estão disponíveis apenas para os últimos 7 dias a partir da data atual.",
         "players": "Jogadores",
         "original_tagline": "Jogue Fresco, Ganhe o Melhor",
-        "auto_cashout": "Saque Automático",
+        "auto_cashout": "Saque \nAutomático",
         "auto_play": "JOGADA AUTOMÁTICA",
         "bet_accepted": "Aposta\nAceita",
         "chip_value": "Valor da Ficha",
@@ -283,7 +283,14 @@ export const languages = {
         "wins": "Vitórias",
         "waggred": "Waggred",
         "losses": "Perdas",
-        "all_bets": "Todas as Apostas"
+        "all_bets": "Todas as Apostas",
+        "crash_glossary_refund": "Reembolso",
+        "glossary_bet": "Aposta",
+        "glossary_crash_point": "Ponto de Crash",
+        "glossary_message_reach_max_win": "Atingir o Ganho Máximo",
+        "title_multiplier": "Multiplicador",
+        "crash_start_in": "Começa em %{time}",
+        "crashed": "CAIU"
     },
     "Spaceflight": {
         "game_name": "Voo Espacial",
