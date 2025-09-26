@@ -159,7 +159,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 1.016,
-      "y": 134.525,
+      "y": 129.525,
       "z": 0
     },
     "_lrot": {
@@ -200,7 +200,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 156.31640625,
-      "height": 37.8
+      "height": 35.28
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -241,7 +241,7 @@
     "_actualFontSize": 24,
     "_fontSize": 24,
     "_fontFamily": "Arial",
-    "_lineHeight": 30,
+    "_lineHeight": 28,
     "_overflow": 0,
     "_enableWrapText": true,
     "_font": {
@@ -296,7 +296,7 @@
     "__prefab": {
       "__id__": 9
     },
-    "key": "RocketX.auto_cashout",
+    "key": "Common.auto_cashout",
     "format": 3,
     "prefix": "",
     "suffix": "",
@@ -368,7 +368,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 2.522,
+      "y": -7.478,
       "z": 0
     },
     "_lrot": {
