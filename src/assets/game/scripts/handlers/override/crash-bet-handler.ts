@@ -128,4 +128,8 @@ export class CrashBetHandler extends gc.GameCrash.CrashBet.CrashBetHandler {
             this.enableEarlyBet(betKey);
         }
     }
+
+    turnOffAutoBet() {
+        this.betControlStore.turnOffAutoBet();
+    }
 }
