@@ -205,7 +205,7 @@
     "_priority": 0,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 451.746887966805,
+    "_orthoHeight": 484.94877505567933,
     "_near": 0,
     "_far": 1000,
     "_color": {
@@ -8874,18 +8874,6 @@
     "_id": "c5V1EV8IpMtrIvY1OE9t2u"
   },
   {
-    "__type__": "e60bchtFAxPHZ5Hue8Azebd",
-    "_name": "",
-    "_objFlags": 0,
-    "__editorExtras__": {},
-    "node": {
-      "__id__": 2
-    },
-    "_enabled": true,
-    "__prefab": null,
-    "_id": "9977YIpz1M8KVDS0TatgQ2"
-  },
-  {
     "__type__": "45095HC9rNPjYcv582jRrBd",
     "_name": "",
     "_objFlags": 0,
@@ -8925,6 +8913,18 @@
     "_enabled": true,
     "__prefab": null,
     "_id": "9ew8HKZqFJ6JhDnJRWwTs4"
+  },
+  {
+    "__type__": "5fb4fOMa31PjqDs4d1zk9va",
+    "_name": "",
+    "_objFlags": 0,
+    "__editorExtras__": {},
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_id": "e8ZL0oQHlDd45vnMuol7NM"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -9024,7 +9024,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9044,7 +9044,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9066,7 +9066,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9088,7 +9088,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9109,7 +9109,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9130,7 +9130,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
@@ -9151,7 +9151,7 @@
   {
     "__type__": "cc.TargetOverrideInfo",
     "source": {
-      "__id__": 504
+      "__id__": 503
     },
     "sourceInfo": null,
     "propertyPath": [
