@@ -276,7 +276,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 300,
-      "height": 30
+      "height": 37.8
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -311,7 +311,7 @@
       "b": 255,
       "a": 255
     },
-    "_string": "messages.betProcessing",
+    "_string": "",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
     "_actualFontSize": 14,
@@ -330,7 +330,7 @@
     "_isBold": false,
     "_isUnderline": false,
     "_underlineHeight": 2,
-    "_cacheMode": 2,
+    "_cacheMode": 0,
     "_enableOutline": false,
     "_outlineColor": {
       "__type__": "cc.Color",
