@@ -49,7 +49,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": 393,
+      "y": 392.99999999999994,
       "z": 0
     },
     "_lrot": {
@@ -603,7 +603,7 @@
     "__prefab": {
       "__id__": 22
     },
-    "key": "Spaceflight.glossary_crash_point",
+    "key": "Common.glossary_crash_point",
     "format": 3,
     "prefix": "",
     "suffix": ":",
@@ -1528,7 +1528,7 @@
     "_left": 0,
     "_right": 0,
     "_top": 0,
-    "_bottom": 740.8,
+    "_bottom": 740.7999999999998,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
     "_isAbsLeft": true,

@@ -1999,7 +1999,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "key": "Spaceflight.crashed",
+    "key": "Common.crashed",
     "format": 1,
     "prefix": "",
     "suffix": "",
